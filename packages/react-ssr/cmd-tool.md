@@ -1,1 +1,0 @@
-* [cmder](http://cmder.net/)
