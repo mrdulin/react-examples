@@ -29,6 +29,7 @@
 ### video播放器
 
 * [完美解码](http://jm.wmzhe.com/)
+* [potplayer](http://potplayer.daum.net/?lang=en)
 
 ### 翻墙
 
@@ -41,7 +42,8 @@
 ### 压缩解压
 
 * [7-Zip](http://www.7-zip.org/)
-
+* [WinRAR](http://www.winrar.com/)
+* 
 ### 数据库管理
 
 * [MySQL-Front](http://www.mysqlfront.de/)
@@ -49,3 +51,9 @@
 ### 游戏
 
 * [Steam](http://store.steampowered.com/)
+
+### 前端移动设备调试工具
+
+* Chrome Inspect (审查元素时，经常crash)
+* [GapDebug](https://www.genuitec.com/products/gapdebug/)
+* 
