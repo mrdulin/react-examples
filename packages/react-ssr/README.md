@@ -43,7 +43,7 @@
 
 * [7-Zip](http://www.7-zip.org/)
 * [WinRAR](http://www.winrar.com/)
-* 
+
 ### 数据库管理
 
 * [MySQL-Front](http://www.mysqlfront.de/)
@@ -54,6 +54,5 @@
 
 ### 前端移动设备调试工具
 
-* Chrome Inspect (审查元素时，经常crash)
-* [GapDebug](https://www.genuitec.com/products/gapdebug/)
-* 
+* Chrome Inspect (审查元素时，经常crash，需翻墙)
+* [GapDebug](https://www.genuitec.com/products/gapdebug/)（需翻墙）
