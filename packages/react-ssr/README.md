@@ -4,6 +4,10 @@
 
 * [cmder](http://cmder.net/)
 
+### VPS服务商
+
+* [bandwagon](https://bandwagonhost.com/)
+
 ### 编辑器/IDE
 
 * [Sublime Text](https://www.sublimetext.com/)
