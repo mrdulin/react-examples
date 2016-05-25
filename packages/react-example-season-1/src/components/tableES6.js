@@ -10,6 +10,9 @@ class TableES6 extends React.Component {
     //mixins,ES6语法不支持mixins
 
     render() {
+        const headings = this.props.headings.map((heading, index) => {
+            return <th key={index}>{heading}</th>
+        });
         const rows = this.props.datas.map((data, index) => {
             return (
                 <tr key={index}>
@@ -21,7 +24,14 @@ class TableES6 extends React.Component {
         });
         return (
             <div>
+                <h3>{this.props.title}</h3>
+
                 <table>
+                    <thead>
+                        <tr>
+                            {headings}
+                        </tr>
+                    </thead>
                     <tbody>
                         {rows}
                     </tbody>

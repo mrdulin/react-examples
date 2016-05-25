@@ -28,6 +28,11 @@ var TableES5 = React.createClass({
         // return '123';
     },
     render: function() {
+        var headings = this.props.headings.map(function(heading, index) {
+            return (
+                <th key={index}>{heading}</th>
+            );
+        });
         var rows = this.props.datas.map(function(data, index) {
             return (
                 <tr key={index}>
@@ -38,11 +43,19 @@ var TableES5 = React.createClass({
             );
         });
         return (
-            <table>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
+            <div>
+                <h3>{this.props.title}</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            {headings}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 });

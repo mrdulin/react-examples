@@ -1,26 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router, Route, Link, browserHistory} from 'react-router';
 
-import TableES6 from './components/tableES6';
-import TableES5 from './components/tableES5'
-
-class App extends React.Component{
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <div>
-                <h1>React Table ES6 Version</h1>
-                <TableES6></TableES6>
-                <h1>React Table ES5 Version</h1>
-                <TableES5></TableES5>
-            </div>
-        );
-    }
-}
+import routes from './routes';
 
 ReactDOM.render(
-    <App/>,
+    <Router history={browserHistory}>
+        {routes}
+    </Router>,
     document.getElementById('container')
 );
