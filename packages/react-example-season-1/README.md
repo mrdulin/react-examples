@@ -37,11 +37,24 @@ _说明:_
 
 *   项目采用ES5+ES6+ES7混写的方式
 
+*   使用`webpack-dev-server`，需要加上`--history-api-fallback`参数，否则，当没有匹配的路由时，浏览器会404，下面的路由规则会没有作用; 并且用户直接向服务器请求某个子路由，会显示网页找不到的404错误
+```js
+import NoMatch from './pages/NoMatch';
+//...
+<Route path='*' component={NoMatch}></Route>
+```
+
 _出现的问题:_
 
+
+1.
 ```bash
 dulindeiMac:react-examples dulin$ npm i webpack-dev-middleware express --save-dev
 (node:3781) fs: re-evaluating native module sources is not supported. If you are using the graceful-fs module, please update it to a more recent version.
 ```
 
 原因：据说是因为node 6.x版本有些`package`不支持。所以使用`nvm`或者`n`切换node到`LTS`版本，注意，切换node版本后，`npm`的版本也会相应的切换
+
+2.
+
+`react`表单控件属性`value`和`defaultValue`的区别？

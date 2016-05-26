@@ -6,6 +6,7 @@ var config = require('./webpack.config.dev');
 var port = 3000;
 var app = express();
 var compiler = webpack(config);
+app.use(express.static(__dirname + '/dist'));
 
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
@@ -15,8 +16,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function (req, res) {
-    var indexPath = path.join(__dirname, 'dist/index.html');
-    console.log(indexPath)
+    var indexPath = path.join(__dirname, 'dist', 'index.html');
     res.sendFile(indexPath);
 });
 

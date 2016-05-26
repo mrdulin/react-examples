@@ -5,7 +5,6 @@ import {Route, IndexRoute} from 'react-router';
 import App from './pages/App.react';
 import Table from './pages/Table.react';
 import Form from './pages/Form.react';
-import NoMatch from './pages/NoMatch.react';
 
 //定义路由规则
 const routes = (
@@ -14,9 +13,7 @@ const routes = (
         //各个demo页面路由
         <Route path='table' component={Table}></Route>
         <Route path='form' component={Form}></Route>
-        <Route path='*' component={NoMatch}></Route>
     </Route>
-
 );
 
 export default routes;
