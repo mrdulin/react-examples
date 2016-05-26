@@ -68,6 +68,10 @@ class Form extends React.Component {
                     <div>
                         {checkboxes}
                     </div>
+
+                    <div>
+
+                    </div>
                     <div>
                         <button type="submit">提交</button>
                     </div>

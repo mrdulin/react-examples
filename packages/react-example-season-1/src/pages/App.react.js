@@ -13,10 +13,12 @@ class App extends React.Component{
 
     constructor(props) {
         super(props);
-
+        console.log(this.props);
+        // let routeName = this.props.location.pathname.replace('/', '') || '';
+        let routeName = this.props.routes[this.props.routes.length - 1].path || '';
         //ES6写法在constructor中初始化state
         this.state = {
-            demoKey: ''
+            demoKey: routeName
         };
     }
 
@@ -39,7 +41,8 @@ class App extends React.Component{
                 <form>
                     <label>
                         选择demo:
-                        <select onChange={(e) => this.selectChange(e)}>
+                        {/*select可以通过react提供的value属性来指定选择的option，而不用在option上使用selected属性*/}
+                        <select onChange={(e) => this.selectChange(e)} value={this.state.demoKey}>
                             <option value=''>-- 请选择demo --</option>
                             {options}
                         </select>
