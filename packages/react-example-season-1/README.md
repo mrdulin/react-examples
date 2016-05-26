@@ -9,7 +9,7 @@ dulindeiMac:react-examples dulin$ npm -v
 
 ```bash
 dulindeiMac:react-examples dulin$ node -v
-v4.4.5
+v4.4.Â
 ```
 
 _如何运行:_
@@ -32,6 +32,10 @@ _说明:_
 *   `webpack-dev-middleware`（[地址](https://github.com/webpack/webpack-dev-middleware)）中间件结合`express`使用，用来启动一个http服务器，比起[Webpack Development Server](https://webpack.github.io/docs/webpack-dev-server.html)的优点是，前者不从硬盘上读取文件，而是放在内存中，所以速度要快；前者如果开启文件监视模式，当文件有修改时，中间件将不再使用旧的bundle文件，而是延迟到当所修改的文件编译完成后。包含livereload功能。
 
 *   `webpack-hot-middleware`中间件，Webpack提供了一个强大的特性叫做“模块热载”或者叫“模块热插拔”。__这个特性不会刷新整个页面，而是只刷新修改过的模块的那一部分__
+
+*   `babel-preset-stage-0`模块，将ES7提供的一些特性转换为ES5，常见的就是在`react`中`getDefaultProps`和`propTypes`，详见`table`例子。
+
+*   项目采用ES5+ES6+ES7混写的方式
 
 _出现的问题:_
 

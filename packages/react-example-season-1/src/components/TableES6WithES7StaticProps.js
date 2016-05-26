@@ -5,7 +5,7 @@ class TableES6WithES7StaticProps extends React.Component {
     constructor(props) {
         super(props);
     }
-
+    //ES7提案提供了class的静态属性特性，需要使用babel-presets-stage-0
     static defaultProps = {
         datas: [{
             "when": "2 minutes ago",
