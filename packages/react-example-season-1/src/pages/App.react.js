@@ -13,7 +13,7 @@ class App extends React.Component{
 
     constructor(props) {
         super(props);
-        console.log(this.props);
+        // console.log(this.props);
         // let routeName = this.props.location.pathname.replace('/', '') || '';
         let routeName = this.props.routes[this.props.routes.length - 1].path || '';
         //ES6写法在constructor中初始化state
@@ -25,7 +25,8 @@ class App extends React.Component{
     static defaultProps = {
         demoMap: {
             table: '表格',
-            form: '表单'
+            form: '表单',
+            redux01: 'redux01测试'
         }
     }
 
