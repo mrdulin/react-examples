@@ -4,6 +4,10 @@
 
 * [cmder](http://cmder.net/)
 
+### office办公
+
+* [LibreOffice](https://www.libreoffice.org/)
+
 ### VPS服务商
 
 * [bandwagon](https://bandwagonhost.com/)
@@ -16,7 +20,6 @@
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [WebStorm](https://www.jetbrains.com/webstorm/)
 * [Atom](https://atom.io/)
-* [Notepad++](https://notepad-plus-plus.org/)
 
 ### Git图形管理
 
@@ -26,7 +29,7 @@
 ### PDF查看编辑
 
 * [Sumatra PDF](http://www.sumatrapdfreader.org/free-pdf-reader.html)
-* [Foxit PDF Reader](https://www.foxitsoftware.com/) 
+* [Foxit PDF Reader](https://www.foxitsoftware.com/)
 * [Adobe Acrobar Reader DC](https://acrobat.adobe.com/us/en/products/pdf-reader.html)
 * [PDF-XChange Viewer](http://www.tracker-software.com/product/pdf-xchange-viewer)
 
@@ -34,10 +37,10 @@
 
 * [完美解码](http://jm.wmzhe.com/)
 * [potplayer](http://potplayer.daum.net/?lang=en)
+* [splayer](http://www.splayer.org/)
 
 ### 翻墙
 
-* [Astrill](https://www.astrill.com/)
 * [SoftEther](https://www.softether.org/)
 * [Shadowsocks](https://shadowsocks.org/en/index.html)
 * [Lantern](https://getlantern.org/)
@@ -48,9 +51,14 @@
 * [7-Zip](http://www.7-zip.org/)
 * [WinRAR](http://www.winrar.com/)
 
+### 密码管理
+
+* [KeyPass](http://keepass.info/)
+
 ### 数据库管理
 
 * [MySQL-Front](http://www.mysqlfront.de/)
+* [MySQL Workbench](http://www.mysql.com/)
 
 ### 游戏
 
