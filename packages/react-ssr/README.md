@@ -8,6 +8,10 @@
 
 * [LibreOffice](https://www.libreoffice.org/)
 
+### 桌面邮件客户端
+
+* [Thunderbird](https://www.mozilla.org/en-US/thunderbird/)
+
 ### VPS服务商
 
 * [bandwagon](https://bandwagonhost.com/)
