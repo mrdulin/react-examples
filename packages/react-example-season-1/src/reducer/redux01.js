@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { ADD_TODO, COMPLETE_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFIlters} from '../actions/redux01';
+import { ADD_TODO, COMPLETE_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters} from '../actions/redux01';
 
-const SHOW_ALL = VisibilityFIlters.SHOW_ALL;
+const SHOW_ALL = VisibilityFilters.SHOW_ALL;
 
 const todos = (state = [], action) => {
     switch (action.type) {
@@ -18,6 +18,10 @@ const todos = (state = [], action) => {
                     });
                 }
                 return todo;
+            });
+        case COMPLETE_TODO:
+            return state.map((todo, index) => {
+                return index === action.index ? Object.assign({}, todo, {completed: true}) : todo;
             });
         default:
             return state;

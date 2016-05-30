@@ -11,8 +11,9 @@ class Todos extends Component {
     }
 
     render() {
+        console.log('todos click handler', this.props.todoClickHandler)
         const todos = this.props.todos.map((todo, index) => {
-            return <Todo {...todo} key={index} onClick={this.props.todoClickHandler}></Todo>
+            return <Todo {...todo} key={index} onClick={() => {this.props.todoClickHandler(index)}}></Todo>
         });
         return (
             <ul>{todos}</ul>
