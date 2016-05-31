@@ -72,7 +72,8 @@ class TodoList extends Component{
     }
 }
 
-
+//state中present的todos，需要根据state.visibilityFilter的过滤条件过滤
+//最后通过connect注入到TodoList组件props上的visibleTodos是过滤后的数据
 const selectTodos = (todos, filter) => {
     switch (filter) {
         case VisibilityFilters.SHOW_ALL:
@@ -84,7 +85,9 @@ const selectTodos = (todos, filter) => {
     }
 };
 
-
+//该函数的作用是从store的state tree上取出业务逻辑需要的数据，经过逻辑处理后，返回一个对象，这个对象就是需要注入到组件中数据。
+//将这个函数(这里是select)传入connect方法，将该函数返回的对象，注入到TodoList组件中
+//常见的方法名是mapStateToProps
 const select = (state) => {
     const presentTodos = state.todos.present;
     const visibleTodos = selectTodos(presentTodos, state.visibilityFilter);

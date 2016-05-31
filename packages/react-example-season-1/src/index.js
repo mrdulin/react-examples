@@ -14,7 +14,7 @@ let logger = createLogger();
 //logger中间件必须放在所有中间件的最后，否则它会打印出thunk和promise中间件的一些操作，而不是action
 let store = createStore(redux01Reducer, applyMiddleware(logger));
 
-console.log(store.getState());
+// console.log(store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
