@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 
 class Footer extends Component{
     renderFilter(filter, name) {
-        if(filter === this.props.filter) {
+        if(filter === this.props.filter || this.props.todoCount === 0) {
             return name;
         }
 
@@ -25,6 +25,10 @@ class Footer extends Component{
                 {this.renderFilter('SHOW_COMPLETE', 'completed')}
                 {', '}
                 {this.renderFilter('SHOW_ACTIVE', 'active')}
+                <div>
+                    <button type="button" disabled={this.props.undoDisabled} onClick={() => {this.props.onUndo()}}>Undo</button>
+                    <button type="button" disabled={this.props.redoDisabled} onClick={() => {this.props.onRedo()}}>Redo</button>
+                </div>
             </div>
         );
     }

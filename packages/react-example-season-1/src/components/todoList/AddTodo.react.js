@@ -22,6 +22,7 @@ class AddTodo extends Component{
         e.preventDefault();
         let node = this.refs.add_todo_input;
         let text = node.value.trim();
+        if(!text.length) return;
         this.props.onAddClick(text);
         node.value = '';
     }

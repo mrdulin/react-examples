@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import undoable, {distinctState} from 'redux-undo';
 import { ADD_TODO, COMPLETE_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters} from '../actions/redux01';
 
 const SHOW_ALL = VisibilityFilters.SHOW_ALL;
@@ -37,6 +38,13 @@ const visibilityFilter = (state = SHOW_ALL, action) => {
     }
 };
 
-const redux01Reducer = combineReducers({todos, visibilityFilter});
+
+//通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
+//传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
+//与key名相同的好处就是，在使用ES6语法的时候，如果一个对象的key和value相同，那么可以简写为{key},等同于es5的{key: key}
+const redux01Reducer = combineReducers({
+    todos: undoable(todos, { filter: distinctState() }),
+    visibilityFilter
+});
 
 export default redux01Reducer;

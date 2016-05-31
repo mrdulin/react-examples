@@ -1,3 +1,5 @@
+import {makeActionCreator} from './makeActionCreator';
+
 export const ADD_TODO = 'ADD_TODO';
 export const COMPLETE_TODO = 'COMPLETE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
@@ -9,7 +11,7 @@ export const VisibilityFilters = {
     SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
 
-export const addTodo = (text) => ({type: ADD_TODO, text});
-export const completeTodo = (index) => ({type: COMPLETE_TODO, index});
-export const toggleTodo = (index) => ({type: TOGGLE_TODO, index});
-export const setVisibilityFilter = (filter) => ({type: SET_VISIBILITY_FILTER, filter});
+export const addTodo = makeActionCreator(ADD_TODO, 'text');
+export const completeTodo = makeActionCreator(COMPLETE_TODO, 'index')
+export const toggleTodo = makeActionCreator(TOGGLE_TODO, 'index');
+export const setVisibilityFilter = makeActionCreator(ADD_TODO, 'filter');

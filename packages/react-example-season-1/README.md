@@ -33,7 +33,7 @@ _说明:_
 
 *   `webpack-hot-middleware`中间件，Webpack提供了一个强大的特性叫做“模块热载”或者叫“模块热插拔”。__这个特性不会刷新整个页面，而是只刷新修改过的模块的那一部分__
 
-*   `babel-preset-stage-0`模块，将ES7提供的一些特性转换为ES5，常见的就是在`react`中`getDefaultProps`和`propTypes`，详见`table`例子。
+*   `babel-preset-stage-1`模块，将ES7提供的一些特性转换为ES5，常见的就是在`react`中`getDefaultProps`和`propTypes`，详见`table`例子。但是为啥我这里只安装了`babel-preset-stage-0`？原因是，ES7的每个stage的提案，都会依赖后一个stage提案，也就是说，安装`babel-preset-stage-0`依赖的时候，它会安装它的依赖`babel-preset-stage-1`，`babel-preset-stage-1`又会安装`babel-preset-stage-2`，依次类推。可以查看`node_modules`查看，所以如果要使用全部ES7提案的新特性，只需要在`.babelrc`文件中的`presets`字段中指定`stage-0`就可以了。
 
 *   项目采用ES5+ES6+ES7混写的方式
 
