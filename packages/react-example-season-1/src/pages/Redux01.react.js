@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
-import redux01Reducer from '../reducer/redux01';
+import rootReducer from '../reducer/index';
 import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFIlters} from '../actions/redux01';
 
 class Redux01 extends Component{
 
     constructor(props) {
         super(props);
-        this.store = createStore(redux01Reducer);
+        this.store = createStore(rootReducer);
     }
 
     componentWillMount() {

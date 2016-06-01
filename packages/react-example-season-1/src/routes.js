@@ -7,6 +7,7 @@ import Table from './pages/Table.react';
 import Form from './pages/Form.react';
 import Redux01 from './pages/Redux01.react';
 import TodoList from './pages/TodoList.react';
+import Redux02 from './pages/Redux02.react';
 
 //定义路由规则
 const routes = (
@@ -17,6 +18,7 @@ const routes = (
         <Route path='form' component={Form}></Route>
         <Route path='redux01' component={Redux01}></Route>
         <Route path='todoList' component={TodoList}></Route>
+        <Route path='redux02' component={Redux02}></Route>
     </Route>
 );
 

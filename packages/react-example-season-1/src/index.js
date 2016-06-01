@@ -3,18 +3,20 @@ import ReactDOM from 'react-dom';
 import {Router, Route, Link, browserHistory} from 'react-router';
 import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
-import redux01Reducer from './reducer/redux01';
+import rootReducer from './reducer/index';
 import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import routes from './routes';
 import NoMatch from './pages/NoMatch.react';
 
-let logger = createLogger();
+const logger = createLogger();
 
 //logger中间件必须放在所有中间件的最后，否则它会打印出thunk和promise中间件的一些操作，而不是action
-let store = createStore(redux01Reducer, applyMiddleware(logger));
+const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
+const store = createStoreWithMiddleware(rootReducer);
 
-// console.log(store.getState());
+console.log('init state is:', store.getState());
 
 ReactDOM.render(
     <Provider store={store}>

@@ -18,6 +18,7 @@
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
     "redux-undo": "^0.6.1"
   },
   "devDependencies": {
