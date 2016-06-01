@@ -1,5 +1,5 @@
 import {todos, visibilityFilter} from './redux01';
-import {user} from './redux02';
+import {user, polling} from './redux02';
 import {combineReducers} from 'redux';
 import undoable, {distinctState} from 'redux-undo';
 
@@ -14,7 +14,8 @@ import undoable, {distinctState} from 'redux-undo';
 const rootReducer = combineReducers({
     todos: undoable(todos, { filter: distinctState() }),
     visibilityFilter,
-    user
+    user,
+    polling
 });
 
 export default rootReducer;

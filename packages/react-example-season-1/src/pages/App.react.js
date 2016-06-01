@@ -26,9 +26,9 @@ class App extends React.Component{
         demoMap: {
             table: '表格',
             form: '表单',
-            redux01: 'redux01测试',
+            redux01: 'redux测试',
             todoList: 'todoList',
-            redux02: 'redux02异步action测试'
+            redux02: 'redux异步action测试'
         }
     }
 
