@@ -12,9 +12,17 @@
 
 * [Thunderbird](https://www.mozilla.org/en-US/thunderbird/)
 
+### 虚拟机
+
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
 ### VPS服务商
 
 * [bandwagon](https://bandwagonhost.com/)
+
+### 实用小工具
+
+* [Rufus](https://rufus.akeo.ie/?locale=zh_CN)  轻松创建USB启动盘
 
 ### 编辑器/IDE
 
@@ -24,6 +32,7 @@
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [WebStorm](https://www.jetbrains.com/webstorm/)
 * [Atom](https://atom.io/)
+* [gedit](https://wiki.gnome.org/Apps/Gedit)
 
 ### Git图形管理
 
