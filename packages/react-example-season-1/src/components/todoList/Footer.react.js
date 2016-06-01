@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 
 class Footer extends Component{
     renderFilter(filter, name) {
-        if(filter === this.props.filter || this.props.todoCount === 0) {
+        if(filter === this.props.filter) {
             return name;
         }
 

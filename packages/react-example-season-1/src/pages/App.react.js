@@ -27,8 +27,7 @@ class App extends React.Component{
             table: '表格',
             form: '表单',
             redux01: 'redux01测试',
-            todoList: 'todoList',
-            reddit: 'reddit'
+            todoList: 'todoList'
         }
     }
 
