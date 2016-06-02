@@ -29,7 +29,8 @@ class App extends React.Component{
             redux01: 'redux测试',
             todoList: 'todoList',
             redux02: 'redux异步action测试',
-            'react-redux01': 'api_mapStateToProps测试'
+            'react-redux01': 'api_mapStateToProps测试',
+            'redux-api-middware': 'redux-api-middware测试'
         }
     }
 
