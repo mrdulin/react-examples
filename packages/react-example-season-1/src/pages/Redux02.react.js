@@ -23,7 +23,7 @@ class Redux02 extends Component{
         this.timeout && clearTimeout(this.timeout);
         if(nextProps.polling) {
             this.timeout = setTimeout(() => {
-                this.props.dispatch(fetchData())
+                this.props.dispatch(fetchData());
             }, 2000);
         }
     }

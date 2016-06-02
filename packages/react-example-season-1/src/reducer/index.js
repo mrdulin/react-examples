@@ -2,6 +2,7 @@ import {todos, visibilityFilter} from './redux01';
 import {user, polling} from './redux02';
 import {combineReducers} from 'redux';
 import undoable, {distinctState} from 'redux-undo';
+import * as reactRedux01Reducers from './reactRedux01';
 
 //通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
 //传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
@@ -11,11 +12,13 @@ import undoable, {distinctState} from 'redux-undo';
 //使用该模块后，它将数据结构转换为{todos: {future: [], history: {...}, present: [], past: []}}
 //这时候'todos'reducer操作的应该是present字段对应的数据
 
+console.log(reactRedux01Reducers);
 const rootReducer = combineReducers({
     todos: undoable(todos, { filter: distinctState() }),
     visibilityFilter,
     user,
-    polling
+    polling,
+    ...reactRedux01Reducers
 });
 
 export default rootReducer;
