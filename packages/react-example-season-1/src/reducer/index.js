@@ -12,7 +12,7 @@ import * as reactRedux01Reducers from './reactRedux01';
 //使用该模块后，它将数据结构转换为{todos: {future: [], history: {...}, present: [], past: []}}
 //这时候'todos'reducer操作的应该是present字段对应的数据
 
-console.log(reactRedux01Reducers);
+// console.log(reactRedux01Reducers);
 const rootReducer = combineReducers({
     todos: undoable(todos, { filter: distinctState() }),
     visibilityFilter,

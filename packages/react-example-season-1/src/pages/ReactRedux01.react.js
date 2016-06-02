@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {selectCity, fetchCity} from '../actions/reactRedux01';
 import Form from '../components/reactRedux01Form.react';
+import {bindActionCreators  } from 'redux';
 
 class ReactRedux01 extends Component{
     constructor(props) {
@@ -17,7 +18,7 @@ class ReactRedux01 extends Component{
     }
 
     componentDidMount() {
-        // console.log(this.props)
+        // console.log('props', this.props)
         this.props.dispatch(fetchCity('novaline_12312312313'));
     }
 
@@ -25,7 +26,7 @@ class ReactRedux01 extends Component{
         return (
             <div>
                 <h2>react-redux api测试_mapStateToProps</h2>
-                <Form cityList={this.props.cityList} selectCity={this.props.selectCity} onSelectCity={(e) => this.onSelectCity(e)}></Form>
+                <Form cityList={this.props.cityList} selectCity={this.props.city} onSelectCity={(e) => this.onSelectCity(e)}></Form>
             </div>
         );
     };
@@ -44,14 +45,15 @@ class ReactRedux01 extends Component{
 //state是store中的全局state，我们不一定要把所有的state传入这个组件，一般都是传入需要的state
 const mapStateToProps = (state, ownProps) => {
     return {
-        selectCity: state.city,
+        city: state.city,
         cityList: state.cityList
     };
 };
 
 //connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
-//将react组件连接到redux的store，connect方法并没有修改组件class，而是返回一个新的链接好redux的store的组件class
-
+//将react组件连接到redux的store，connect方法并没有修改组件class，而是返回一个新的链接好redux的store的组件class（被注入了state和action creators的组件）
+//connect被调用了两次，第一次调用的参数是mapStateToProps,mapDispatchToProps等，第二次调用是组件class
 export default connect(
     mapStateToProps
+
 )(ReactRedux01);

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 class ReactRedux01Form extends Component{
 
     render() {
-        console.log('selectCity', this.props.selectCity);
+        // console.log('selectCity', this.props.selectCity);
         const {cityList} = this.props;
         const options = cityList.map((city) => {
             return <option key={city.key} value={city.key}>{city.name}</option>;
@@ -23,16 +23,15 @@ class ReactRedux01Form extends Component{
             </form>
         );
     }
-
 }
-
 
 //为组件props注入dispatch和cityList
 //ownProps是父组件传过来的props
+//这个方法会在父组件传过来新的props时再次调用
 const mapStateToProps = (state, ownProps) => {
-    console.log('ownProps', ownProps);
+    // console.log('ownProps', ownProps);
     return {
-        selectCity: ownProps.selectCity
+        selectCity: ownProps.city
     };
 };
 
