@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchData, openPolling} from '../actions/redux02';
+import {fetchData, togglePolling} from '../actions/redux02';
 
 class Redux02 extends Component{
 
@@ -13,17 +13,24 @@ class Redux02 extends Component{
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchData());
-        
+        this.props.dispatch(fetchData()).then(() => {
+            console.log('componentDidMount request done');
+        });
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('nextProps', nextProps);
+        // console.log('nextProps', nextProps);
+        this.timeout && clearTimeout(this.timeout);
+        if(nextProps.polling) {
+            this.timeout = setTimeout(() => {
+                this.props.dispatch(fetchData())
+            }, 2000);
+        }
     }
 
     render() {
         const {dispatch, user, polling} = this.props;
-        console.log('user', user);
+        // console.log('user', user);
         return (
             <div>
                 <h2>异步action测试</h2>
@@ -32,7 +39,7 @@ class Redux02 extends Component{
                 <p>job: {user.job}</p>
                 <form>
                     <label>
-                        <input type="checkbox" onChange={(e) => {this.pollingChange(e)}}></input>
+                        <input checked={polling} type="checkbox" onChange={(e) => {this.pollingChange(e)}}></input>
                         开启轮询
                     </label>
                 </form>
@@ -40,15 +47,17 @@ class Redux02 extends Component{
         );
     }
 
-    pollingChange() {
-
+    pollingChange(e) {
+        var isChecked = e.target.checked;
+        // console.log('isChecked', isChecked);
+        this.props.dispatch(togglePolling(isChecked));
     }
 }
 
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        isPolling: state.polling
+        polling: state.polling
     };
 };
 

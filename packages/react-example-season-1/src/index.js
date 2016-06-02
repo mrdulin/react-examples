@@ -16,7 +16,7 @@ const logger = createLogger();
 const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
 const store = createStoreWithMiddleware(rootReducer);
 
-console.log('init state is:', store.getState());
+// console.log('init state is:', store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
