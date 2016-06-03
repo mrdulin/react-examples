@@ -9,6 +9,7 @@ import Redux01 from './pages/Redux01.react';
 import TodoList from './pages/TodoList.react';
 import Redux02 from './pages/Redux02.react';
 import ReactRedux01 from './pages/ReactRedux01.react';
+import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 
 //定义路由规则
 const routes = (
@@ -21,6 +22,7 @@ const routes = (
         <Route path='todoList' component={TodoList}></Route>
         <Route path='redux02' component={Redux02}></Route>
         <Route path='react-redux01' component={ReactRedux01}></Route>
+        <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
     </Route>
 );
 
