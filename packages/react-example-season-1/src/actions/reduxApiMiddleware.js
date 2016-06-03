@@ -36,7 +36,7 @@ export const requestCity = () => {
             //`omit`默认值，不发送任何cookie
             //`same-origin`只给当前域名发送cookies
             //`include`始终发送cookies,即使是跨域请求
-            // credentials: 'include'
+            // credentials: 'include',
 
             //有时候，一些你想请求的数据已经在redux的store中缓存了，或是当前用户没有足够的权限发送请求调用接口
             //通过`[CALL_API].bailout`可以告诉`redux-api-middleware`不要取发送请求，如果`bailout`的值为true,则 RSAA会被销毁，没有FSA传入下一个中间件
@@ -87,3 +87,53 @@ export const login = (formData) => {
 
 //`[CALL_API]`中禁止：
 //* 包含除上述7种属性意外的其他属性
+
+
+//生命周期
+/*
+`[CALL_API].types`属性控制`redux-api-middware`的输出。最简单的形式是，types是由3个string类型或symbol类型的元素组成的一个数组。
+详细描述如下：
+
+1. 当`redux-api-middware`中间件接收到一个action，它会先检查这个action对象有没有`[CALL_API]`属性。如果没有，
+它不会处理这个action，只是将这个action传递给下一个中间件。
+
+2. 如果action有`[CALL_API]`属性，则开始进行RSAA验证。如果验证失败，一个FSA将被dipatch，带有如下属性：
+* `type`: `[CALL_API].types`数组第一个元素，如上例中的REQUEST常量
+* `payload`: 一个InvalidRSAA对象，包含一个验证错误列表
+* `error`: true
+
+验证失败后，`redux-api-middware`中间件不会再往下进行处理，不会创建API请求
+
+3. 如果action验证通过，也就是说这个action是一个标准的RSAA，中间件将会创建API请求，一个请求的FSA将会被dispatch，包含如下属性：
+
+* `type`: [CALL_API].types`数组第一个元素
+
+但是在这个阶段，也有可能抛出错误，几个原因：
+
+* 当`[CALL_API].bailout`，`[CALL_API].endpoint`,`[CALL_API].headers`这些被指定为函数的时候，这些函数内可能会抛出错误
+* `isomorphic-fetch`也可能会抛出错误，RSAA定义不足以杜绝任何错误，比如`[CALL_API].body`的值不是fetch specification中允许的json和formData的形式
+* 网络导致的错误
+
+当上述的错误发生时，不同的FSA将会被dispatch，包含如下属性：
+
+* `type`: [CALL_API].types`数组第一个元素
+* `payload`: 一个包含错误信息的`RequestError`对象
+* `error`: true
+
+4. 当中间件从服务器端接收到一个响应，并且status code 在200范围内，一个成功的FSA将会被dispatch，包含如下属性：
+* `type`: [CALL_API].types`数组第二个元素，上例中是REQUEST_SUCCESS
+* 'payload': 如果响应头的`Content-Type`设置为`json`，则是服务器端返回的解析后的json格式的数据，否则是undefined
+
+如果status code不在200范围，一个失败的FSA将会被dispatch，包含如下属性
+
+* `type`: [CALL_API].types`数组的最后一个元素
+* `payload`: 一个包含status和statusText的ApiError对象
+* `error`: true
+
+
+
+
+
+
+
+*/
