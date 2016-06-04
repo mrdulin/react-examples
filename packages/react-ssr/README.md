@@ -3,6 +3,7 @@
 ### 命令行工具
 
 * [cmder](http://cmder.net/)
+* [Git Bash](https://git-scm.com/downloads) Git GUI Client自带
 
 ### office办公
 
@@ -15,6 +16,7 @@
 ### 虚拟机
 
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* [VMware Workstation](http://www.vmware.com/cn)
 
 ### VPS服务商
 
@@ -23,6 +25,7 @@
 ### 实用小工具
 
 * [Rufus](https://rufus.akeo.ie/?locale=zh_CN)  轻松创建USB启动盘
+* [PuTTY](http://www.putty.org/) SSH and telnet client
 
 ### 编辑器/IDE
 
@@ -50,7 +53,6 @@
 
 * [完美解码](http://jm.wmzhe.com/)
 * [potplayer](http://potplayer.daum.net/?lang=en)
-* [splayer](http://www.splayer.org/)
 
 ### 翻墙
 
@@ -63,10 +65,11 @@
 
 * [7-Zip](http://www.7-zip.org/)
 * [WinRAR](http://www.winrar.com/)
+* [Bandizip](https://www.bandisoft.com/bandizip/cn/) 轻巧、快速、免费的压缩软件
 
 ### 密码管理
 
-* [KeyPass](http://keepass.info/)
+* [KeePass](http://keepass.info/)
 
 ### 数据库管理
 
@@ -81,3 +84,15 @@
 
 * Chrome Inspect (审查元素时，经常crash，需翻墙)
 * [GapDebug](https://www.genuitec.com/products/gapdebug/)（需翻墙）
+
+### chrome扩展
+
+* [Adblock Plus](https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb?hl=zh-CN&gl=US)
+* [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
+* [FireShot](https://chrome.google.com/webstore/detail/capture-webpage-screensho/mcbpblocgmgfnpjjppndjkmgjaogfceg?hl=zh-CN&gl=US)
+* [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=zh-CN&gl=US)
+* [划词翻译](https://chrome.google.com/webstore/detail/%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/ikhdkkncnoglghljlkmcimlnlhkeamad?hl=zh-CN&gl=US)
+* [Axure RP Extension for Chrome](https://chrome.google.com/webstore/detail/axure-rp-extension-for-ch/dogkpdfcklifaemcdfbildhcofnopogp?hl=zh-CN&gl=US)
+* [Proxy SwitchyOmega](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=zh-CN&gl=US)
+* [WEB前端助手(FeHelper)](https://chrome.google.com/webstore/detail/web%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8Bfehelper/pkgccpejnmalmdinmhkkfafefagiiiad?hl=zh-CN&gl=US)
+* [Flash Video Downloader](https://chrome.google.com/webstore/detail/flash-video-downloader/aiimdkdngfcipjohbjenkahhlhccpdbc?hl=zh-CN&gl=US)
