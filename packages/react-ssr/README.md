@@ -8,6 +8,7 @@
 ### office办公
 
 * [LibreOffice](https://www.libreoffice.org/)
+* [Apache OpenOffice](https://www.openoffice.org/zh-cn/) 开放免费的文字处理软件
 
 ### 桌面邮件客户端
 
@@ -25,7 +26,15 @@
 ### 实用小工具
 
 * [Rufus](https://rufus.akeo.ie/?locale=zh_CN)  轻松创建USB启动盘
+* [TumblOne](http://www.tumblone.com/) free Tumblr image downloader
+* [Lingoes Translator 灵格斯词霸](http://www.lingoes.cn/) 免费的词典与文本翻译软件
+
+### HTTP&FTP&SSH
+
 * [PuTTY](http://www.putty.org/) SSH and telnet client
+* [FileZilla](https://filezilla-project.org/) The free FTP solution
+* [Charles](https://www.charlesproxy.com/) Web Debugging Proxy Application for Windows, Mac OS and Linux
+* [Fiddler](http://www.telerik.com/fiddler) free web debugging proxy
 
 ### 编辑器/IDE
 
@@ -80,7 +89,7 @@
 
 * [Steam](http://store.steampowered.com/)
 
-### 前端移动设备调试工具
+### 调试工具
 
 * Chrome Inspect (审查元素时，经常crash，需翻墙)
 * [GapDebug](https://www.genuitec.com/products/gapdebug/)（需翻墙）
