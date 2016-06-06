@@ -5,7 +5,13 @@ class TableES6WithES7StaticProps extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    state = {
+        name: 'novaline',
+        age: 24
+    }
     //ES7提案提供了class的静态属性特性，需要使用babel-presets-stage-0
+    //ES7的方式初始化props
     static defaultProps = {
         datas: [{
             "when": "2 minutes ago",
@@ -22,11 +28,13 @@ class TableES6WithES7StaticProps extends React.Component {
         }]
     }
 
+    //ES7的方式验证props
     static propTypes = {
         datas: React.PropTypes.array.isRequired
     }
 
     render() {
+        console.log('es7 initState', this.state);
         const headings = this.props.headings.map((heading, index) => {
             return <th key={index}>{heading}</th>;
         });

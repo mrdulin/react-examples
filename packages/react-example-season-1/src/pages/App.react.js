@@ -30,7 +30,8 @@ class App extends React.Component{
             todoList: 'todoList',
             redux02: 'redux异步action测试',
             'react-redux01': 'api_mapStateToProps测试',
-            'redux-api-middware': 'redux-api-middware测试'
+            'redux-api-middware': 'redux-api-middware测试',
+            ref_callback_attribute: 'ref_callback_attribute'
         }
     }
 
@@ -59,7 +60,7 @@ class App extends React.Component{
     }
 
     selectChange(e) {
-        console.log(this, e);
+        // console.log(this, e);
         let value = e.target.value;
         this.setState({demoKey: value});
         //如果使用browserHistory.push(`/#/${value}`);不回报错，并且url的路由也会改变，react-router不会匹配到这个路由，所以相应的component不会加载

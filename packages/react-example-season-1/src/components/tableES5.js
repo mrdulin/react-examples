@@ -2,12 +2,22 @@ import React from 'react';
 import componentLifeCycleMixins from '../mixins/componentLifeCycleMixins';
 
 var TableES5 = React.createClass({
+    //ES5的方式验证props
     propTypes: {
         datas: React.PropTypes.array.isRequired
     },
 
     mixins: [componentLifeCycleMixins],
 
+    //ES5的方式初始化state
+    getInitialState: function() {
+        return {
+            user: 'novaline',
+            age: 24
+        }
+    },
+
+    //es5的方式初始化props
     getDefaultProps: function() {
         return {
             datas: [{
@@ -28,6 +38,7 @@ var TableES5 = React.createClass({
         // return '123';
     },
     render: function() {
+        // console.log('es5 initState', this.state);
         var headings = this.props.headings.map(function(heading, index) {
             return (
                 <th key={index}>{heading}</th>
