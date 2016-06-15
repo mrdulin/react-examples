@@ -5,6 +5,7 @@ import undoable, {distinctState} from 'redux-undo';
 import * as reactRedux01Reducers from './reactRedux01';
 import * as reduxApiMiddlewareReducers from './reduxApiMiddleware';
 import * as reactRedux02Reducers from './reactRedux02';
+import * as reactRedux03Reducers from './reactRedux03';
 
 //通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
 //传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     polling,
     ...reactRedux01Reducers,
     ...reactRedux02Reducers,
+    ...reactRedux03Reducers,
     ...reduxApiMiddlewareReducers
 });
 
