@@ -42,3 +42,5 @@ _10000个站点计划，排名不分先后_
 38. [Test CSS Flexbox Rules Live](http://flexbox.help/)
 39. [The Apache Software Foundation](http://www.apache.org/)
 40. [SourceForge](https://sourceforge.net/)
+41. [小众软件](http://www.appinn.com/)
+42. [Engadget 中国版](http://cn.engadget.com/)
