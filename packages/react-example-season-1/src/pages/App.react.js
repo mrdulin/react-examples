@@ -30,6 +30,7 @@ class App extends React.Component{
             todoList: 'todoList',
             redux02: 'redux异步action测试',
             'react-redux01': 'api_mapStateToProps测试',
+            'react-redux02': 'api_inject-state-and-all-action-creators测试',
             'redux-api-middware': 'redux-api-middware测试',
             ref_callback_attribute: 'ref_callback_attribute'
         }
