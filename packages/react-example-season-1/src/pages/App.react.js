@@ -26,14 +26,15 @@ class App extends React.Component{
         demoMap: {
             table: '表格',
             form: '表单',
-            redux01: 'redux测试',
             todoList: 'todoList',
+            redux01: 'redux测试',
             redux02: 'redux异步action测试',
             'react-redux01': 'api_mapStateToProps测试',
             'react-redux02': 'api_inject-state-and-all-action-creators测试',
             'react-redux03': 'api_inject-state-and-all-action-creators-as-actions测试',
             'redux-api-middware': 'redux-api-middware测试',
-            ref_callback_attribute: 'ref_callback_attribute'
+            ref_callback_attribute: 'ref_callback_attribute',
+            'stateless-functional-component': '无状态函数组件'
         }
     }
 
