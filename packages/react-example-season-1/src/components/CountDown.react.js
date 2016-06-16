@@ -93,16 +93,23 @@ class CountDown extends Component{
     render() {
         const countDown = this.state.countDown;
         const style = {
+            container: {
+                display: 'inline-block',
+                margin: '0 4px',
+                verticalAlign: 'center'
+            },
             countCell: {
                 backgroundColor: '#000',
-                padding: '4px 6px',
+                width: '16px',
+                padding: '4px 0',
                 color: '#fff',
-                display: 'inline-block'
+                display: 'inline-block',
+                textAlign: 'center'
             }
         }
         console.log(countDown)
         return (
-            <div id="countDown">
+            <div style={style.container} id="countDown">
                 <span style={style.countCell}>{countDown.hours}</span>：
                 <span style={style.countCell}>{countDown.minutes}</span>：
                 <span style={style.countCell}>{countDown.seconds}</span>
