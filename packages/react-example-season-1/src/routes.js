@@ -14,6 +14,7 @@ import ReactRedux03 from './pages/ReactRedux03.react';
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import Ref from './pages/Ref.react';
 import StateLessFunctionalComponent from './pages/StateLessFunctionalComponent.react';
+import CountDownPage from './pages/CountDownPage.react';
 
 //定义路由规则
 const routes = (
@@ -31,6 +32,7 @@ const routes = (
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
         <Route path='ref_callback_attribute' component={Ref}></Route>
         <Route path='stateless-functional-component' component={StateLessFunctionalComponent}></Route>
+        <Route path='countDown' component={CountDownPage}></Route>
     </Route>
 );
 
