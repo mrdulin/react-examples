@@ -22,6 +22,7 @@
 ### VPS服务商
 
 * [bandwagon](https://bandwagonhost.com/)
+* [Host1Plus](http://www.host1plus.com/)
 
 ### 实用小工具
 
