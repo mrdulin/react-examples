@@ -95,23 +95,33 @@ class CountDown extends Component{
         const style = {
             container: {
                 display: 'inline-block',
-                margin: '0 4px',
+                marginLeft: '7px',
                 verticalAlign: 'center'
             },
             countCell: {
                 backgroundColor: '#000',
-                width: '16px',
-                padding: '4px 0',
+                width: '30px',
+                height: '23px',
                 color: '#fff',
                 display: 'inline-block',
+                textAlign: 'center',
+                lineHeight: '23px',
+                fontSize: '16px',
+                fontFamily: 'SF UI Display',
+                fontWeight: 'bold'
+            },
+            colon: {
+                display: 'inline-block',
+                width: '10px',
                 textAlign: 'center'
             }
         }
-        console.log(countDown)
         return (
             <div style={style.container} id="countDown">
-                <span style={style.countCell}>{countDown.hours}</span>：
-                <span style={style.countCell}>{countDown.minutes}</span>：
+                <span style={style.countCell}>{countDown.hours}</span>
+                <span style={style.colon}>:</span>
+                <span style={style.countCell}>{countDown.minutes}</span>
+                <span style={style.colon}>:</span>
                 <span style={style.countCell}>{countDown.seconds}</span>
             </div>
         );

@@ -15,6 +15,7 @@ import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import Ref from './pages/Ref.react';
 import StateLessFunctionalComponent from './pages/StateLessFunctionalComponent.react';
 import CountDownPage from './pages/CountDownPage.react';
+import xScroll from './pages/xScroll.react';
 
 //定义路由规则
 const routes = (
@@ -33,6 +34,7 @@ const routes = (
         <Route path='ref_callback_attribute' component={Ref}></Route>
         <Route path='stateless-functional-component' component={StateLessFunctionalComponent}></Route>
         <Route path='countDown' component={CountDownPage}></Route>
+        <Route path='xScroll' component={xScroll}></Route>
     </Route>
 );
 

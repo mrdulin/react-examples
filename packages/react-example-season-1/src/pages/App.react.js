@@ -35,7 +35,8 @@ class App extends React.Component{
             'redux-api-middware': 'redux-api-middware测试',
             ref_callback_attribute: 'ref_callback_attribute',
             'stateless-functional-component': '无状态函数组件',
-            'countDown': '倒计时'
+            'countDown': '倒计时',
+            'xScroll': 'xScroll组件'
         }
     }
 
