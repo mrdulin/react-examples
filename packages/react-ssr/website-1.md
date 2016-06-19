@@ -1,7 +1,5 @@
 # 站点推荐
 
-_10000个站点计划，排名不分先后_
-
 1. [敏捷开发指南](http://www.scrumguides.org/)
 2. [I Tell You](http://itellyou.cn/)
 3. [ss64](http://ss64.com/)
@@ -44,3 +42,8 @@ _10000个站点计划，排名不分先后_
 40. [SourceForge](https://sourceforge.net/)
 41. [小众软件](http://www.appinn.com/)
 42. [Engadget 中国版](http://cn.engadget.com/)
+43. [Can I use... Support tables for HTML5, CSS3, etc](http://caniuse.com/)
+44. [Detect Mobile Browsers](http://detectmobilebrowsers.com/)
+45. [JavaScript 标准参考教程（alpha）](http://javascript.ruanyifeng.com/)
+46. [天梯排名-关注cpu,显卡,笔记本,安卓智能手机,iphone手机的性能排名](http://itianti.sinaapp.com/index.php)
+47. [PassMark Software - PC Benchmark and Test Software](http://www.passmark.com/index.html)
