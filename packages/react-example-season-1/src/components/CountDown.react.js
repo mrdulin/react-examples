@@ -30,10 +30,11 @@ class CountDown extends Component{
 
     componentDidMount() {
         const scope = this;
-        const {end, period} = this.props;
+        const {end, period, cb} = this.props;
         this.interval = window.setInterval(() => {
             if(this.state.countDown.total <= 0) {
                 this._clearInterval();
+                cb();
                 return;
             }
             this.setState({
