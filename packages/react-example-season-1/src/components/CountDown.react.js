@@ -4,15 +4,7 @@ class CountDown extends Component{
 
     constructor(props) {
         super(props);
-
         this.state = {
-            countDown: {
-                total: 1000,
-                hours: '00',
-                minutes: '00',
-                seconds: '00',
-                days: '00'
-            },
             //服务器时间基准
             start: Date.parse(new Date()),
             //以服务器时间为基准的时间，随着倒计时，每次加1秒
@@ -30,16 +22,9 @@ class CountDown extends Component{
 
     componentDidMount() {
         const scope = this;
-        const {end, period, cb} = this.props;
         this.interval = window.setInterval(() => {
-            if(this.state.countDown.total <= 0) {
-                this._clearInterval();
-                cb();
-                return;
-            }
-            this.setState({
-                now: new Date(this.state.now.getTime() + 1000),
-                countDown: scope.getTimeRemaining(end, period)
+            scope.setState({
+                now: new Date(scope.state.now.getTime() + 1000),
             });
         }, 1000);
     }
@@ -92,7 +77,9 @@ class CountDown extends Component{
     }
 
     render() {
-        const countDown = this.state.countDown;
+        // const countDown = this.state.countDown;
+        let countDown = this.getTimeRemaining(this.props.end);
+
         const style = {
             container: {
                 display: 'inline-block',
