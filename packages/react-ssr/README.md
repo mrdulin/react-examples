@@ -29,6 +29,10 @@
 * [Rufus](https://rufus.akeo.ie/?locale=zh_CN)  轻松创建USB启动盘
 * [TumblOne](http://www.tumblone.com/) free Tumblr image downloader
 * [Lingoes Translator 灵格斯词霸](http://www.lingoes.cn/) 免费的词典与文本翻译软件
+* [f.lux](https://justgetflux.com/) software to make your life better
+* [AutoHotkey](https://www.autohotkey.com/)
+* [LICEcap](http://www.cockos.com/licecap/) simple animated screen captures
+* [Clover 3](http://cn.ejie.me/)
 
 ### HTTP&FTP&SSH
 
