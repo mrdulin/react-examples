@@ -4,7 +4,8 @@ import {Link} from 'react-router';
 class ReactChinaQuestions extends Component{
     static defaultProps = {
         demoRouteMap: new Map([
-            ['onMouseOver', '鼠标移动到一个元素时，插入另一个元素']
+            ['onMouseOver', '鼠标移动到一个元素时，插入另一个元素'],
+            ['domRerenderOrAppendNew', 'dom重新渲染还是append']
         ])
     }
     render() {

@@ -21,7 +21,7 @@ import ReactRouter01 from './pages/ReactRouter01.react';
 import ReactRouter02 from './pages/ReactRouter02.react';
 import ReactRouter03 from './pages/ReactRouter03.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
-
+import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
 
 //定义路由规则
 const routes = (
@@ -46,6 +46,7 @@ const routes = (
         <Route path='react-router03' component={ReactRouter03}></Route>
         <Route path='react-china-questions' component={ReactChinaQuestions}></Route>
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
+        <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
     </Route>
 );
 
