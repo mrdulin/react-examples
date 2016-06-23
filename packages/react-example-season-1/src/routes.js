@@ -16,6 +16,12 @@ import Ref from './pages/Ref.react';
 import StateLessFunctionalComponent from './pages/StateLessFunctionalComponent.react';
 import CountDownPage from './pages/CountDownPage.react';
 import xScroll from './pages/xScroll.react';
+import ReactChinaQuestions from './pages/ReactChinaQuestions.react';
+import ReactRouter01 from './pages/ReactRouter01.react';
+import ReactRouter02 from './pages/ReactRouter02.react';
+import ReactRouter03 from './pages/ReactRouter03.react';
+import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
+
 
 //定义路由规则
 const routes = (
@@ -35,6 +41,11 @@ const routes = (
         <Route path='stateless-functional-component' component={StateLessFunctionalComponent}></Route>
         <Route path='countDown' component={CountDownPage}></Route>
         <Route path='xScroll' component={xScroll}></Route>
+        <Route path='react-router01(/:page)' component={ReactRouter01}></Route>
+        <Route path='react-router02' component={ReactRouter02}></Route>
+        <Route path='react-router03' component={ReactRouter03}></Route>
+        <Route path='react-china-questions' component={ReactChinaQuestions}></Route>
+        <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
     </Route>
 );
 

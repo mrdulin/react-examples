@@ -27,6 +27,9 @@ class App extends React.Component{
             table: '表格',
             form: '表单',
             todoList: 'todoList',
+            'react-router01/1?name=novaline&age=26': '如何获取url中的?s=xxx&page=2查询字符串',
+            'react-router02': '离开当前路由时，弹出提示',
+            'react-router03': '路由跳转3种方式',
             redux01: 'redux测试',
             redux02: 'redux异步action测试',
             'react-redux01': 'api_mapStateToProps测试',
@@ -36,7 +39,8 @@ class App extends React.Component{
             ref_callback_attribute: 'ref_callback_attribute',
             'stateless-functional-component': '无状态函数组件',
             'countDown': '倒计时',
-            'xScroll': 'xScroll组件'
+            'xScroll': 'xScroll组件',
+            'react-china-questions': 'React-China各种问题解决demo'
         }
     }
 
