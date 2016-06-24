@@ -6,6 +6,7 @@ class TableES6WithES7StaticProps extends React.Component {
         super(props);
     }
 
+
     state = {
         name: 'novaline',
         age: 24
@@ -31,6 +32,11 @@ class TableES6WithES7StaticProps extends React.Component {
     //ES7的方式验证props
     static propTypes = {
         datas: React.PropTypes.array.isRequired
+    }
+
+    //ES6的类的静态方法
+    static classMethod() {
+        console.log('This is a class method');
     }
 
     render() {
@@ -64,5 +70,7 @@ class TableES6WithES7StaticProps extends React.Component {
         );
     }
 };
+
+TableES6WithES7StaticProps.classMethod();
 
 export default TableES6WithES7StaticProps;
