@@ -47,3 +47,8 @@
 45. [JavaScript 标准参考教程（alpha）](http://javascript.ruanyifeng.com/)
 46. [天梯排名-关注cpu,显卡,笔记本,安卓智能手机,iphone手机的性能排名](http://itianti.sinaapp.com/index.php)
 47. [PassMark Software - PC Benchmark and Test Software](http://www.passmark.com/index.html)
+48. [Digitally Imported](http://www.di.fm/)
+49. [YouTube Stats, YouTube Statistics](http://vidstatsx.com/)
+50. [福利吧](http://fuliba.net/)
+51. [Steam](http://store.steampowered.com/)
+52. [Enhanced Steam](http://www.enhancedsteam.com/index.php)
