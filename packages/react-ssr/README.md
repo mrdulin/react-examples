@@ -13,11 +13,13 @@
 ### 桌面邮件客户端
 
 * [Thunderbird](https://www.mozilla.org/en-US/thunderbird/)
+* [foxmail](http://www.foxmail.com/)
 
 ### 虚拟机
 
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 * [VMware Workstation](http://www.vmware.com/cn)
+* [Parallels Desktop](http://www.parallelsdesktop.cn/)
 
 ### VPS服务商
 
@@ -110,3 +112,4 @@
 * [Proxy SwitchyOmega](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=zh-CN&gl=US)
 * [WEB前端助手(FeHelper)](https://chrome.google.com/webstore/detail/web%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8Bfehelper/pkgccpejnmalmdinmhkkfafefagiiiad?hl=zh-CN&gl=US)
 * [Flash Video Downloader](https://chrome.google.com/webstore/detail/flash-video-downloader/aiimdkdngfcipjohbjenkahhlhccpdbc?hl=zh-CN&gl=US)
+* [React Developer Tools](https://chrome.google.com/webstore/detail/fmkadmapgofadopljbjfkapdkoienihi)
