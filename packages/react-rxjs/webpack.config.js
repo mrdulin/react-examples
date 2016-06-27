@@ -1,29 +1,50 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const src = __dirname + '/src/';
+const dist = __dirname + '/dist/';
 
 module.exports = {
-    entry: __dirname + '/src/app.js',
+    entry: {
+        app: src + 'app.js'
+    },
     output: {
-        path: __dirname + '/dist',
-        filename: 'bundle.js'
+        path: dist,
+        filename: '[name].[hash].js'
     },
     devServer: {
-        contentBase: "./dist",
+        contentBase: dist,
         port: "8080",
         colors: true,
         historyApiFallback: true,
-        inline: true
+        inline: true,
+        hot: true
     },
     module: {
-        loaders: [
-            {test: /\.js$/, exclude: /(node_modules|bower_components)/, loaders: ['react-hot', 'babel']},
-            {test: /\.json$/, loaders: ['json']},
-            {test: /\.scss$/, exclude: /(node_modules|bower_components)/, loader: ExtractTextPlugin.extract(
-                    'style', // The backup style loader
-                    'css?sourceMap!postcss!sass?sourceMap'
-                )
+        loaders: [{
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            loaders: ['react-hot', 'babel']
+        }, {
+            test: /\.json$/,
+            loaders: ['json']
+        }, {
+            test: /\.scss$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: ExtractTextPlugin.extract(
+                'style', // The backup style loader
+                'css?sourceMap!postcss!sass?sourceMap'
+            )
+        }, {
+            test: /\.(png|jpg|jpeg|gif|woff)$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'url-loader',
+            query: {
+                limit: 8192
             }
-        ]
+        }]
     },
     //解决import scss文件时相对路径的问题
     sassLoader: {
@@ -34,17 +55,13 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
-        new ExtractTextPlugin('style.css', {
-          allChunks: true
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            template: src + 'index.html',
+            filename: 'index.html'
         }),
-        new webpack.BannerPlugin("Copyright Novaline"),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-            },
-            output: {
-                comments: false,
-            }
+        new ExtractTextPlugin('style.[hash].css', {
+            allChunks: true
         })
     ]
 };
