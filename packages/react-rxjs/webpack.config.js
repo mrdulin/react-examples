@@ -8,12 +8,14 @@ const dist = __dirname + '/dist/';
 
 module.exports = {
     entry: {
-        app: src + 'app.js'
+        app: src + 'app.js',
+        lib: src + 'lib.js'
     },
     output: {
         path: dist,
         filename: '[name].[hash].js'
     },
+    devtool: "source-map",
     devServer: {
         contentBase: dist,
         port: "8080",
@@ -34,7 +36,7 @@ module.exports = {
             test: /\.scss$/,
             exclude: /(node_modules|bower_components)/,
             loader: ExtractTextPlugin.extract(
-                'style', // The backup style loader
+                'style',
                 'css?sourceMap!postcss!sass?sourceMap'
             )
         }, {
@@ -55,6 +57,10 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'commons',
+            filename: 'commons.[hash].js'
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: src + 'index.html',

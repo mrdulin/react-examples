@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "whatwg-fetch": "^1.0.0"
   }
 }
