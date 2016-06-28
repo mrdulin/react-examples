@@ -7,6 +7,8 @@ import rootReducer from './reducer/index';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import {apiMiddleware} from 'redux-api-middleware';
+import 'whatwg-fetch';
+
 
 import routes from './routes';
 import NoMatch from './pages/NoMatch.react';

@@ -40,7 +40,8 @@ class App extends React.Component{
             'stateless-functional-component': '无状态函数组件',
             'countDown': '倒计时',
             'xScroll': 'xScroll组件',
-            'react-china-questions': 'React-China各种问题解决demo'
+            'react-china-questions': 'React-China各种问题解决demo',
+            'scrollTop': '测试scrollTop'
         }
     }
 
