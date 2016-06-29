@@ -23,6 +23,7 @@ import ReactRouter03 from './pages/ReactRouter03.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
 import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
 import ScrollTop from './pages/ScrollTop.react';
+import IOSScrollEvent from './pages/IOSScrollEvent.react';
 
 //定义路由规则
 const routes = (
@@ -49,6 +50,7 @@ const routes = (
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
         <Route path='ScrollTop' component={ScrollTop}></Route>
+        <Route path='ios-scroll-event' component={IOSScrollEvent}></Route>
     </Route>
 );
 

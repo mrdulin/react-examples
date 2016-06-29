@@ -41,7 +41,8 @@ class App extends React.Component{
             'countDown': '倒计时',
             'xScroll': 'xScroll组件',
             'react-china-questions': 'React-China各种问题解决demo',
-            'scrollTop': '测试scrollTop'
+            'scrollTop': '测试scrollTop',
+            'ios-scroll-event': 'ios-scroll-event阻塞测试'
         }
     }
 
