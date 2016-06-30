@@ -25,6 +25,7 @@ import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerender
 import ScrollTop from './pages/ScrollTop.react';
 import IOSScrollEvent from './pages/IOSScrollEvent.react';
 import LoopScroll from './pages/LoopScroll.react';
+import ModalInput from './pages/ModalInput.react';
 
 //定义路由规则
 const routes = (
@@ -53,6 +54,7 @@ const routes = (
         <Route path='ScrollTop' component={ScrollTop}></Route>
         <Route path='ios-scroll-event' component={IOSScrollEvent}></Route>
         <Route path='loop-scroll' component={LoopScroll}></Route>
+        <Route path='modal-input' component={ModalInput}></Route>
     </Route>
 );
 
