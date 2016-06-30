@@ -82,6 +82,10 @@ module.exports = {
                 unused: true,
                 drop_console: true
             },
+            mangle: {
+                //avoid mangling the Webpack runtime.
+                except: ['webpackJsonp']
+            },
             output: {
                 comments: false
             }
