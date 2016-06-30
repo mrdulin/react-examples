@@ -1,19 +1,22 @@
 const webpack = require('webpack');
+const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-const src = __dirname + '/src/';
-const dist = __dirname + '/dist/';
+const paths = {
+    src: path.resolve(__dirname, 'src'),
+    dist: path.resolve(__dirname, 'dist')
+};
 
 module.exports = {
     entry: {
-        app: src + 'app.js',
-        lib: src + 'lib.js'
+        app: paths.src + 'app.js',
+        lib: paths.src + 'lib.js'
     },
     output: {
-        path: dist,
+        path: paths.dist,
         filename: '[name].[hash].js'
     },
     devtool: "source-map",
@@ -61,7 +64,7 @@ module.exports = {
             filename: 'commons.[hash].js'
         }),
         new HtmlWebpackPlugin({
-            template: src + 'index.html',
+            template: paths.src + 'index.html',
             filename: 'index.html',
             hash: true
         }),
@@ -69,12 +72,18 @@ module.exports = {
             allChunks: true
         }),
         new webpack.BannerPlugin("Copyright Novaline"),
+        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false,
             compress: {
                 warnings: false,
+                dead_code: true,
+                drop_debugger: true,
+                unused: true,
+                drop_console: true
             },
             output: {
-                comments: false,
+                comments: false
             }
         })
     ]

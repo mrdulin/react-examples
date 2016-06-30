@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 const src = __dirname + '/src/';
 const dist = __dirname + '/dist/';
@@ -57,6 +58,7 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
+        new WebpackBrowserPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
             filename: 'commons.[hash].js'
