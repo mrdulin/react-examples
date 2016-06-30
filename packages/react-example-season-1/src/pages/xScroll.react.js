@@ -7,6 +7,7 @@ class xScroll extends Component {
 		this._container.addEventListener('scroll', (e) => {
 			console.log('xscroll');
 			window.clearTimeout(scope.scrollTimer);
+			//滚动结束触发
 			scope.scrollTimer = window.setTimeout(scope.scrollEndCallback, 250, e);
 		});
 	}

@@ -42,7 +42,8 @@ class App extends React.Component{
             'xScroll': 'xScroll组件',
             'react-china-questions': 'React-China各种问题解决demo',
             'scrollTop': '测试scrollTop',
-            'ios-scroll-event': 'ios-scroll-event阻塞测试'
+            'ios-scroll-event': 'ios-scroll-event阻塞测试',
+            'loop-scroll': '无缝滚动'
         }
     }
 
