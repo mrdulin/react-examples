@@ -58,7 +58,11 @@ module.exports = {
          Module not found: Error: Cannot resolve 'file' or 'directory' ../jsons/city in /Users/dulin/workspace/react-weather/src/pages
          @ ./src/pages/Home.react.js 15:12-36
          */
-        extensions: ['', '.js', '.json', '.jsx']
+        extensions: ['', '.js', '.json', '.jsx'],
+        alias: {
+            commonScript: __dirname + '/src/common/js',
+            commonStyle: __dirname + '/src/common/scss'
+        }
     },
     //解决import scss文件时相对路径的问题
     sassLoader: {

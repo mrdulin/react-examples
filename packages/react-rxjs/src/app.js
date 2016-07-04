@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './scss/index.scss';
+require('commonStyle/index.scss');
 
 import Home from './pages/Home.react';
 

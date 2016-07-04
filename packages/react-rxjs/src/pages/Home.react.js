@@ -3,7 +3,30 @@ import cityMap from '../jsons/city';
 import AComponent from '../component/A.react';
 import BComponent from '../component/B.react';
 
+//如果不在webpack config中指定resolve.alias，则需要通过相对路径引用
+// import util from '../common/js/util';
+
+//指定resolve.alias，则通过指定映射的目录名引用
+// 不能使用es6的import引入模块，因为这是webpack的特性，需要使用require来引入
+// import util from 'commonScript/util';
+
+const util = require('commonScript/util');
+
 class Home extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            headColor: ''
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            headColor: util.getComputedStyleValue(document.querySelector('.header'), 'color')
+        });
+    }
+
     render() {
         const urls = ['./test.png'];
         const url = urls[0];
@@ -11,7 +34,7 @@ class Home extends Component{
 
         return (
             <div id="home">
-                <h2>首页</h2>
+                <h2 className="header">首页</h2>
                 <form>
                     <label>
                         请选择城市:
@@ -37,6 +60,10 @@ class Home extends Component{
                 <div className="icon-qq" style={{width: '20px', height: '20px'}}></div>
                 <AComponent></AComponent>
                 <BComponent></BComponent>
+                <div>
+                {this.state.headColor}
+                <a href="http://www.google.com">google</a>
+                </div>
             </div>
         );
     }
