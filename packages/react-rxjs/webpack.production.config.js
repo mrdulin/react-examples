@@ -58,6 +58,8 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
+        //不要在生产环境使用，因为该插件会在页面中插入browser-sync-client.js文件（调试用）
+        //这里只是用做编译成功后快速预览用
         new WebpackBrowserPlugin({
             port: 8080,
             browser: 'default'
