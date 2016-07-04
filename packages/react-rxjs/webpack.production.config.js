@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 const paths = {
     src: path.resolve(__dirname, 'src'),
@@ -12,8 +13,8 @@ const paths = {
 
 module.exports = {
     entry: {
-        app: paths.src + 'app.js',
-        lib: paths.src + 'lib.js'
+        app: path.resolve(paths.src, 'app.js'),
+        lib: path.resolve(paths.src, 'lib.js')
     },
     output: {
         path: paths.dist,
@@ -22,7 +23,7 @@ module.exports = {
     devtool: "source-map",
     module: {
         loaders: [{
-            test: /\.js$/,
+            test: /\.(js|jsx)$/,
             exclude: /(node_modules|bower_components)/,
             loaders: ['react-hot', 'babel']
         }, {
@@ -44,6 +45,10 @@ module.exports = {
             }
         }]
     },
+    resolve: {
+        modulesDirectories: ['node_modules'],
+        extensions: ['', '.js', '.json', '.jsx']
+    },
     //解决import scss文件时相对路径的问题
     sassLoader: {
         //相对于webpack.config.js文件的路径
@@ -53,6 +58,10 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
+        new WebpackBrowserPlugin({
+            port: 8080,
+            browser: 'default'
+        }),
         new FaviconsWebpackPlugin(__dirname + '/favicon.png'),
         new CleanWebpackPlugin(['dist', 'build'], {
             root: __dirname,
@@ -64,7 +73,7 @@ module.exports = {
             filename: 'commons.[hash].js'
         }),
         new HtmlWebpackPlugin({
-            template: paths.src + 'index.html',
+            template: path.resolve(paths.src, 'index.html'),
             filename: 'index.html',
             hash: true
         }),

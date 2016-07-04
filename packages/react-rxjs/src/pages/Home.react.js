@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import cityMap from '../jsons/city.json';
+import cityMap from '../jsons/city';
+import AComponent from '../component/A.react';
+import BComponent from '../component/B.react';
 
 class Home extends Component{
     render() {
@@ -33,6 +35,8 @@ class Home extends Component{
                    <img src={req(url)}/>
                 </div>
                 <div className="icon-qq" style={{width: '20px', height: '20px'}}></div>
+                <AComponent></AComponent>
+                <BComponent></BComponent>
             </div>
         );
     }
