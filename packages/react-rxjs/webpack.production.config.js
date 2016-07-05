@@ -6,25 +6,24 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const WebpackBrowserPlugin = require('webpack-browser-plugin');
 
-const paths = {
-    src: path.resolve(__dirname, 'src'),
-    dist: path.resolve(__dirname, 'dist')
-};
+const src = __dirname + '/src/';
+const dist = __dirname + '/dist/';
 
 module.exports = {
     entry: {
-        app: path.resolve(paths.src, 'app.js'),
-        lib: path.resolve(paths.src, 'lib.js')
+        app: src + 'app.js',
+        lib: src + 'lib.js'
     },
     output: {
-        path: paths.dist,
-        filename: '[name].[hash].js'
+        path: dist,
+        filename: 'scripts/[name].[hash].js'
     },
     devtool: "source-map",
     module: {
         loaders: [{
             test: /\.(js|jsx)$/,
             exclude: /(node_modules|bower_components)/,
+            include: src,
             loaders: ['react-hot', 'babel']
         }, {
             test: /\.json$/,
@@ -33,14 +32,27 @@ module.exports = {
             test: /\.scss$/,
             exclude: /(node_modules|bower_components)/,
             loader: ExtractTextPlugin.extract(
-                'style', // The backup style loader
-                'css?sourceMap!postcss!sass?sourceMap'
+                'style',
+                'css?sourceMap!postcss!sass?sourceMap', {
+                    publicPath: '../'
+                }
             )
         }, {
-            test: /\.(png|jpg|jpeg|gif|woff)$/,
+            test: /\.(png|jpg|jpeg|gif|)$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'url-loader',
             query: {
+                name: './images/[name].[ext]?[hash]',
+                limit: 8192
+            }
+        }, {
+            //不用$正则，因为fontawesome-webfont.eot?v=4.6.3
+            test: /\.(woff|eot|svg|ttf|woff2|otf)/,
+            exclude: /(node_modules|bower_components)/,
+            include: src + 'common/fonts',
+            loader: 'url',
+            query: {
+                name: './fonts/[name].[ext]',
                 limit: 8192
             }
         }]
@@ -56,7 +68,7 @@ module.exports = {
     //解决import scss文件时相对路径的问题
     sassLoader: {
         //相对于webpack.config.js文件的路径
-        includePaths: ['/scss']
+        includePaths: [path.resolve(__dirname, '/src')]
     },
     postcss: [
         require('autoprefixer')
@@ -68,7 +80,13 @@ module.exports = {
             port: 8080,
             browser: 'default'
         }),
-        new FaviconsWebpackPlugin(__dirname + '/favicon.png'),
+        new FaviconsWebpackPlugin({
+            logo: __dirname + '/favicon.png',
+            prefix: 'favicons-[hash]/',
+            emitStats: true,
+            inject: true,
+            persistentCache: true,
+        }),
         new CleanWebpackPlugin(['dist', 'build'], {
             root: __dirname,
             verbose: true,
@@ -76,14 +94,14 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
-            filename: 'commons.[hash].js'
+            filename: 'scripts/commons.[hash].js'
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(paths.src, 'index.html'),
+            template: src + 'index.html',
             filename: 'index.html',
             hash: true
         }),
-        new ExtractTextPlugin('style.[hash].css', {
+        new ExtractTextPlugin('styles/style.[hash].css', {
             allChunks: true
         }),
         new webpack.BannerPlugin("Copyright Novaline"),
