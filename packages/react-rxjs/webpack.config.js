@@ -52,8 +52,8 @@ module.exports = {
                 limit: 8192
             }
         }, {
-            //不用$正则，因为fontawesome-webfont.eot?v=4.6.3
-            test: /\.(woff|eot|svg|ttf|woff2|otf)/,
+            //fontawesome-webfont.eot?v=4.6.3
+            test: /\.(woff|eot|svg|ttf|woff2|otf)\??.*$/,
             exclude: /(node_modules|bower_components)/,
             include: src + 'common/fonts',
             loader: 'url',
@@ -88,6 +88,7 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
             filename: 'scripts/commons.[hash].js'
