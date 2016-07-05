@@ -39,8 +39,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "webpack-dev-server": "node_modules/.bin/webpack-dev-server --history-api-fallback"
+    "dev-server": "rm -rf ./dist && webpack && webpack-dev-server --progress"
   },
   "keywords": [],
   "author": "",

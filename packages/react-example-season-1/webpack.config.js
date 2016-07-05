@@ -1,36 +1,48 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const dist = __dirname + '/dist/';
+const src = __dirname + '/src/';
 
 module.exports = {
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        './src/index.js'
+        app: src + 'index.js'
     ],
+
+    output: {
+        path: dist,
+        publicPath: '/',
+        filename: '[name].[hash].js'
+    },
 
     module: {
         loaders: [{
-            test: /\.js?$/,
+            test: /\.(js|jsx)?$/,
             exclude: /node_modules/,
             loader: 'react-hot!babel'
         }]
     },
 
-    resolve: {
-        extensions: ['', '.js']
+    resolve: {add 
+        extensions: ['', '.js', '.jsx']
     },
 
-    output: {
-        path: 'dist',
-        publicPath: '/',
-        filename: 'bundle.js'
-    },
+    devtool: 'source-map',
 
     devServer: {
         contentBase: './dist',
-        hot: true
+        historyApiFallback: true,
+        hot: true,
+        colors: true,
+        port: 3001,
+        inline: true,
+        open: true
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new HtmlWebpackPlugin({
+            template: src + 'index.html',
+            filename: 'index.html'
+        })
     ]
 };
