@@ -47,7 +47,11 @@ module.exports = {
     },
     resolve: {
         modulesDirectories: ['node_modules'],
-        extensions: ['', '.js', '.json', '.jsx']
+        extensions: ['', '.js', '.json', '.jsx', '.scss', '.sass'],
+        alias: {
+            commonScript: __dirname + '/src/common/js',
+            commonStyle: __dirname + '/src/common/scss'
+        }
     },
     //解决import scss文件时相对路径的问题
     sassLoader: {

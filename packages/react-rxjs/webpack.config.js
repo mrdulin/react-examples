@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const src = __dirname + '/src/';
 const dist = __dirname + '/dist/';
@@ -28,6 +27,7 @@ module.exports = {
         loaders: [{
             test: /\.(js|jsx)$/,
             exclude: /(node_modules|bower_components)/,
+            include: src,
             loaders: ['react-hot', 'babel']
         }, {
             test: /\.json$/,
@@ -58,7 +58,7 @@ module.exports = {
          Module not found: Error: Cannot resolve 'file' or 'directory' ../jsons/city in /Users/dulin/workspace/react-weather/src/pages
          @ ./src/pages/Home.react.js 15:12-36
          */
-        extensions: ['', '.js', '.json', '.jsx'],
+        extensions: ['', '.js', '.json', '.jsx', '.scss', '.sass'],
         alias: {
             commonScript: __dirname + '/src/common/js',
             commonStyle: __dirname + '/src/common/scss'

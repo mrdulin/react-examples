@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import './scss/index.scss';
-require('commonStyle/index.scss');
+import './scss/index';
+require('commonStyle/index');
 
 import Home from './pages/Home.react';
 
