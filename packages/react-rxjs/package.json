@@ -4,7 +4,7 @@
   "description": "A React Weather Application",
   "main": "index.js",
   "scripts": {
-    "start": "webpack && webpack-dev-server --hot --progress",
+    "start": "rm -rf ./dist && webpack && webpack-dev-server --hot --progress",
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress"
   },
   "repository": {

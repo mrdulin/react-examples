@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const src = __dirname + '/src/';
 const dist = __dirname + '/dist/';
@@ -12,7 +13,7 @@ module.exports = {
     },
     output: {
         path: dist,
-        filename: '[name].[hash].js'
+        filename: 'scripts/[name].[hash].js'
     },
     devtool: "source-map",
     devServer: {
@@ -37,13 +38,27 @@ module.exports = {
             exclude: /(node_modules|bower_components)/,
             loader: ExtractTextPlugin.extract(
                 'style',
-                'css?sourceMap!postcss!sass?sourceMap'
+                'css?sourceMap!postcss!sass?sourceMap',
+                {
+                    publicPath: '../'
+                }
             )
         }, {
-            test: /\.(png|jpg|jpeg|gif|woff)$/,
+            test: /\.(png|jpg|jpeg|gif|)$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'url-loader',
             query: {
+                name: './images/[name].[ext]?[hash]',
+                limit: 8192
+            }
+        }, {
+            //不用$正则，因为fontawesome-webfont.eot?v=4.6.3
+            test: /\.(woff|eot|svg|ttf|woff2|otf)/,
+            exclude: /(node_modules|bower_components)/,
+            include: src + 'common/fonts',
+            loader: 'url',
+            query: {
+                name: './fonts/[name].[ext]',
                 limit: 8192
             }
         }]
@@ -67,7 +82,7 @@ module.exports = {
     //解决import scss文件时相对路径的问题
     sassLoader: {
         //相对于webpack.config.js文件的路径
-        includePaths: ['/scss']
+        includePaths: [path.resolve(__dirname, '/src')]
     },
     postcss: [
         require('autoprefixer')
@@ -75,7 +90,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
-            filename: 'commons.[hash].js'
+            filename: 'scripts/commons.[hash].js'
         }),
         //不要和devServer字段的的hot属性一起使用，会失效，并且会报如下错误：
         //`Uncaught RangeError: Maximum call stack size exceeded`
@@ -84,7 +99,7 @@ module.exports = {
             template: src + 'index.html',
             filename: 'index.html'
         }),
-        new ExtractTextPlugin('style.[hash].css', {
+        new ExtractTextPlugin('styles/style.[hash].css', {
             allChunks: true
         })
     ]

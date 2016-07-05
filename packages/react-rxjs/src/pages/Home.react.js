@@ -64,6 +64,23 @@ class Home extends Component{
                 {this.state.headColor}
                 <a href="http://www.google.com">google</a>
                 </div>
+                <i className="fa fa-camera-retro fa-5x"></i>
+                <div>
+                    <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                    <span className="sr-only">Loading...</span>
+
+                    <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                    <span className="sr-only">Loading...</span>
+
+                    <i className="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                    <span className="sr-only">Loading...</span>
+
+                    <i className="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                    <span className="sr-only">Loading...</span>
+
+                    <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <span className="sr-only">Loading...</span>
+                </div>
             </div>
         );
     }
