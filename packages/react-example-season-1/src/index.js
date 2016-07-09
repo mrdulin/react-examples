@@ -16,7 +16,7 @@ import NoMatch from './pages/NoMatch.react';
 const logger = createLogger();
 
 //logger中间件必须放在所有中间件的最后，否则它会打印出thunk和promise中间件的一些操作，而不是action
-const createStoreWithMiddleware = applyMiddleware(apiMiddleware, thunk, logger)(createStore);
+const createStoreWithMiddleware = applyMiddleware(apiMiddleware, thunk, __DEBUG__ ? logger : null)(createStore);
 const store = createStoreWithMiddleware(rootReducer);
 
 // console.log('init state is:', store.getState());
