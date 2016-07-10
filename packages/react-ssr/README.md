@@ -4,6 +4,8 @@
 
 * [cmder](http://cmder.net/)
 * [Git Bash](https://git-scm.com/downloads) Git GUI Client自带
+* [iTerm2 - Mac OS Terminal Replacement](https://www.iterm2.com/)
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)  
 
 ### office办公
 
@@ -13,7 +15,7 @@
 ### 桌面邮件客户端
 
 * [Thunderbird](https://www.mozilla.org/en-US/thunderbird/)
-* [foxmail](http://www.foxmail.com/)
+* [Foxmail](http://www.foxmail.com/)
 
 ### 虚拟机
 

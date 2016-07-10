@@ -52,3 +52,6 @@
 50. [福利吧](http://fuliba.net/)
 51. [Steam](http://store.steampowered.com/)
 52. [Enhanced Steam](http://www.enhancedsteam.com/index.php)
+53. [BookDL › eBooks for PC &amp; Mobile Devices](http://bookdl.com/)
+54. [Free Online YouTube Downloader: Download YouTube Videos, Facebook and many others!](http://en.savefrom.net/)
+55. [编程随想的博客](https://program-think.blogspot.com/)
