@@ -2,12 +2,23 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const clearWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const dist = path.resolve(__dirname, 'dist');
 const src = path.resolve(__dirname, 'src');
 
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
+
+const getNodeModulePath = (nodeModulePath, symbol = '.') => {
+    const lastSeparatorIndex = nodeModulePath.lastIndexOf('/');
+    const filePath = nodeModulePath.substr(0, lastSeparatorIndex + 1);
+    const filenameWithExt = nodeModulePath.substr(lastSeparatorIndex + 1);
+    const filename = filenameWithExt.substr(0, filenameWithExt.lastIndexOf('.'));
+    const ext = filenameWithExt.substr(filenameWithExt.lastIndexOf('.'));
+
+    return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
+}
 
 const config = {
     entry: {
@@ -17,16 +28,22 @@ const config = {
     output: {
         path: dist,
         filename: '[name].[hash].js'
+
     },
 
     module: {
         noParse: [],
         loaders: [{
             test: /\.(js|jsx)?$/,
+            exclude: /(node_modules|bower_components)/,
             include: [
                 src
             ],
-            loaders: ['react-hot', 'babel']
+            loader: 'babel'
+        }, {
+            test: /\.(scss|sass)$/,
+            include: src,
+            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
         }]
     },
 
@@ -34,7 +51,7 @@ const config = {
         root: __dirname,
         extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
         alias: {
-
+            'react-dom': getNodeModulePath('react-dom/dist/react-dom.js')
         }
     },
 
@@ -48,28 +65,21 @@ const config = {
         new webpack.DefinePlugin({
             __DEV__: __DEV__,
             __PROD__: __PROD__
+        }),
+        new ExtractTextPlugin('[name].css', {
+            allChunks: true
         })
     ],
 
     addNoParse: (noParseMap) => {
         if (noParseMap.keys().length === 0) return;
         for (let [name, path] of noParseMap.entries()) {
-            const filepath = config.getNodeModulePath(path);
-            console.log('filepath---->>>>>', filepath)
+            const filepath = getNodeModulePath(path);
             config.resolve.alias[name] = filepath;
             config.module.noParse.push(filepath);
         }
-    },
-
-    getNodeModulePath: (nodeModulePath, symbol = '.') => {
-        const lastSeparatorIndex = nodeModulePath.lastIndexOf('/');
-        const filePath = nodeModulePath.substr(0, lastSeparatorIndex + 1);
-        const filenameWithExt = nodeModulePath.substr(lastSeparatorIndex + 1);
-        const filename = filenameWithExt.substr(0, filenameWithExt.lastIndexOf('.'));
-        const ext = filenameWithExt.substr(filenameWithExt.lastIndexOf('.'));
-
-        return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
     }
+
 };
 
 //以redux-logger为例,
@@ -78,14 +88,15 @@ const config = {
 //[0] 418ms -> factory:546ms building:109ms = 1073ms
 //编译模块数量为547个
 
-//开启noParse时
+//开启noParse时，编译模块数量为367个
 
 config.addNoParse(new Map([
-    // ['react', 'react/dist/react.js'],
+    ['react', 'react/dist/react.js'],
+    //react-redux依赖react，因此不能使用noParse
     // ['react-redux', 'react-redux/dist/react-redux.js'],
-    // ['redux', 'redux/dist/redux.js'],
-    ['redux-logger', 'redux-logger/dist/index.js']
-    // ['redux-thunk', 'redux-thunk/dist/redux-thunk.js']
+    ['redux', 'redux/dist/redux.js'],
+    ['redux-logger', 'redux-logger/dist/index.js'],
+    ['redux-thunk', 'redux-thunk/dist/redux-thunk.js']
 ]));
 
 console.log(config.module.noParse)
@@ -112,7 +123,8 @@ if (__PROD__) {
         compress: {
             warnings: false
         }
-    }))
+    })),
+    config.plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"))
     config.plugins.push(new webpack.optimize.DedupePlugin());
     config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
 }
