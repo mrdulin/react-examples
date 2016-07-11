@@ -45,7 +45,8 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "scripts": {
-    "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail && webpack-dev-server",
+    "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail",
+    "dev-server": "rm -rf ./dist && webpack --progress --profile --display-error-detail && webpack-dev-server",
     "release": "NODE_ENV='production' wepback"
   },
   "keywords": [],

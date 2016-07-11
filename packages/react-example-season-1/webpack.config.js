@@ -20,6 +20,7 @@ const config = {
     },
 
     module: {
+        noParse: [],
         loaders: [{
             test: /\.(js|jsx)?$/,
             include: [
@@ -30,7 +31,11 @@ const config = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json']
+        root: __dirname,
+        extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
+        alias: {
+
+        }
     },
 
     devtool: __DEV__ ? 'source-map' : false,
@@ -44,8 +49,46 @@ const config = {
             __DEV__: __DEV__,
             __PROD__: __PROD__
         })
-    ]
+    ],
+
+    addNoParse: (noParseMap) => {
+        if (noParseMap.keys().length === 0) return;
+        for (let [name, path] of noParseMap.entries()) {
+            const filepath = config.getNodeModulePath(path);
+            console.log('filepath---->>>>>', filepath)
+            config.resolve.alias[name] = filepath;
+            config.module.noParse.push(filepath);
+        }
+    },
+
+    getNodeModulePath: (nodeModulePath, symbol = '.') => {
+        const lastSeparatorIndex = nodeModulePath.lastIndexOf('/');
+        const filePath = nodeModulePath.substr(0, lastSeparatorIndex + 1);
+        const filenameWithExt = nodeModulePath.substr(lastSeparatorIndex + 1);
+        const filename = filenameWithExt.substr(0, filenameWithExt.lastIndexOf('.'));
+        const ext = filenameWithExt.substr(filenameWithExt.lastIndexOf('.'));
+
+        return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
+    }
 };
+
+//以redux-logger为例,
+//未开启noParse时，编译时输出如下：
+//[368] ./~/redux-logger/lib/index.js 8.49 kB {0} [built]
+//[0] 418ms -> factory:546ms building:109ms = 1073ms
+//编译模块数量为547个
+
+//开启noParse时
+
+config.addNoParse(new Map([
+    // ['react', 'react/dist/react.js'],
+    // ['react-redux', 'react-redux/dist/react-redux.js'],
+    // ['redux', 'redux/dist/redux.js'],
+    ['redux-logger', 'redux-logger/dist/index.js']
+    // ['redux-thunk', 'redux-thunk/dist/redux-thunk.js']
+]));
+
+console.log(config.module.noParse)
 
 if (__DEV__) {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
