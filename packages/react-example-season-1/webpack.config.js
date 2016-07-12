@@ -11,11 +11,15 @@ const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
 
 const getNodeModulePath = (nodeModulePath, symbol = '.') => {
-    const lastSeparatorIndex = nodeModulePath.lastIndexOf('/');
-    const filePath = nodeModulePath.substr(0, lastSeparatorIndex + 1);
-    const filenameWithExt = nodeModulePath.substr(lastSeparatorIndex + 1);
-    const filename = filenameWithExt.substr(0, filenameWithExt.lastIndexOf('.'));
-    const ext = filenameWithExt.substr(filenameWithExt.lastIndexOf('.'));
+    // const lastSeparatorIndex = nodeModulePath.lastIndexOf('/');
+    // const filePath = nodeModulePath.substr(0, lastSeparatorIndex + 1);
+    // const filenameWithExt = nodeModulePath.substr(lastSeparatorIndex + 1);
+    // const filename = filenameWithExt.substr(0, filenameWithExt.lastIndexOf('.'));
+    // const ext = filenameWithExt.substr(filenameWithExt.lastIndexOf('.'));
+    // 
+    const filePath = path.dirname(nodeModulePath);
+    const filename = path.basename(nodeModulePath);
+    const ext = path.extname(filename);
 
     return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
 }
