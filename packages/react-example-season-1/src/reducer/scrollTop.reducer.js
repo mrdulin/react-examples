@@ -3,11 +3,13 @@ const initState = {
     err: null
 };
 
-export scrollTop = (state = initState, action) => {
+export const scrollTop = (state = initState, action) => {
     switch (action.type) {
-        case 'requestSucess':
+        case 'requestSuccess':
+            const data = action.data;
             return Object.assign({}, state, {
-                books: action.data
+                books: data.Books,
+                err: data.Error
             });
         case 'requestError':
             return Object.assign({}, state, {

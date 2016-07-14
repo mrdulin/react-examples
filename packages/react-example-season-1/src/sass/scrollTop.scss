@@ -1,0 +1,15 @@
+img[data-src] {
+	opacity: 0;
+}
+
+img {
+	opacity: 1;
+	transition: opacity .3s;
+}
+
+.search{
+	padding: 6px 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    outline: none;
+}

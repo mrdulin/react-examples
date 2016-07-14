@@ -25,9 +25,10 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 }
 
 const config = {
-    entry: {
-        app: src + '/index.js'
-    },
+    entry: [
+        'babel-polyfill',
+        src + '/index.js'
+    ],
 
     output: {
         path: dist,
