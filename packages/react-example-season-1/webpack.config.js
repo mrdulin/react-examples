@@ -25,7 +25,7 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
     return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
 }
 
-const publicPath = __DEV__ ? `http://localhost:${PORT}` : `http://localhost:${PORT}`
+const publicPath = __DEV__ ? '/' : `http://localhost:${PORT}`;
 
 const config = {
     entry: [
@@ -35,8 +35,8 @@ const config = {
 
     output: {
         path: dist,
-        filename: '[name].[hash].js'
-        // publicPath: publicPath
+        filename: '[name].[hash].js',
+        publicPath: publicPath
     },
 
     module: {
@@ -107,12 +107,12 @@ config.addNoParse(new Map([
 // console.log(config.module.noParse)
 
 if (__DEV__) {
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+    // webpack-dev-server 的cli 的--hot会添加HotModuleReplacementPlugin，所以不要重复添加。
+    // config.plugins.push(new webpack.HotModuleReplacementPlugin());
     config.devServer = {
         contentBase: dist,
         historyApiFallback: true,
         colors: true,
-        inline: true,
         port: PORT,
         progress: true
     };

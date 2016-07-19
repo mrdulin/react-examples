@@ -11,7 +11,8 @@ class FilterBar extends Component{
 	}
 
 	static defaultProps = {
-		category3AllText: '全部商品'
+		category3AllText: '全部商品',
+		category2AllText: '全部分类'
 	}
 
 	constructor(props) {
@@ -80,7 +81,7 @@ class FilterBar extends Component{
 		const categoryNodes = categoryFilters.map((filter, index) => {
 			const {categories, key, text} = filter;
 			const categoriesClone = this.clone(categories);
-			categoriesClone.unshift({id: '', name: text, children: []})
+			categoriesClone.unshift({id: '', name: this.props.category2AllText, children: []})
 			
 			const category2 = categoriesClone.map((category, idx) => {
 				const {name, id} = category;
@@ -157,7 +158,7 @@ class FilterBar extends Component{
 			field: sort[0],
 			direction: sort[1]
 		};
-		data.categoryId = [selectedCategory3Id];
+		data.categoryId = selectedCategory3Id ? [selectedCategory3Id] : [];
 		for (let i = 0; i < checkboxKeyLen; i++) {
 			const checkboxKey = this.checkboxKeys[i];
 			data[checkboxKey] = this.state[checkboxKey];

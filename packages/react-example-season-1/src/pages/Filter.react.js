@@ -37,19 +37,20 @@ class Filter extends Component {
             key: 'healthGoldItem',
             type: 'checkbox',
             isChecked: true
-        }, {
+        }];
+
+        const oneHour = {
         	text: '1小时送达',
         	key: 'oneHour',
         	type: 'checkbox',
         	isChecked: false
-        }];
+        };
 
         const bizTypes = ['O2O_ONLY', 'B2C_ONLY', 'BOTH_O2O_B2C'];
 
         const bizType = bizTypes[0];
 
         return <div>
-			<h2>filter component example</h2>
 			<FilterBar 
 				filters={filters}
 				onFilterChange={filterObj => this.onFilterChange(filterObj)}>
@@ -59,6 +60,7 @@ class Filter extends Component {
 
     onFilterChange(filterData) {
         console.log(filterData);
+        //TODO 拿到筛选数据，调用后台接口
 
     }
 }
