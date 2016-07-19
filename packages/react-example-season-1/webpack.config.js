@@ -6,6 +6,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const dist = path.resolve(__dirname, 'dist');
 const src = path.resolve(__dirname, 'src');
+const PORT = 3001;
 
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
@@ -24,6 +25,8 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
     return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
 }
 
+const publicPath = __DEV__ ? `http://localhost:${PORT}` : `http://localhost:${PORT}`
+
 const config = {
     entry: [
         'babel-polyfill',
@@ -33,7 +36,7 @@ const config = {
     output: {
         path: dist,
         filename: '[name].[hash].js'
-
+        // publicPath: publicPath
     },
 
     module: {
@@ -41,13 +44,10 @@ const config = {
         loaders: [{
             test: /\.(js|jsx)?$/,
             exclude: /(node_modules|bower_components)/,
-            include: [
-                src
-            ],
             loader: 'babel'
         }, {
             test: /\.(scss|sass)$/,
-            include: src,
+            exclude: /node_modules/,
             loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
         }]
     },
@@ -71,7 +71,7 @@ const config = {
             __DEV__: __DEV__,
             __PROD__: __PROD__
         }),
-        new ExtractTextPlugin('[name].css', {
+        new ExtractTextPlugin('[name].[hash].css', {
             allChunks: true
         })
     ],
@@ -104,17 +104,17 @@ config.addNoParse(new Map([
     ['redux-thunk', 'redux-thunk/dist/redux-thunk.js']
 ]));
 
-console.log(config.module.noParse)
+// console.log(config.module.noParse)
 
 if (__DEV__) {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
     config.devServer = {
         contentBase: dist,
         historyApiFallback: true,
-        hot: true,
         colors: true,
-        port: 3001,
-        inline: true
+        inline: true,
+        port: PORT,
+        progress: true
     };
 }
 

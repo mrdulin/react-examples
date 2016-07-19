@@ -1,0 +1,78 @@
+#filter-bar-container{
+	font-size: 14px;
+	
+	.filter-bar{
+		position: relative;
+		z-index: 1015;
+		background-color: #fff;
+	}
+	
+	.filter-list {
+		display: flex;
+		border-bottom: 1px solid #ddd;
+
+		> li {
+			flex: 1;
+			text-align: center;
+			line-height: 45px;
+
+			&.selected{
+				color: #ff6f00;
+			}
+		}
+	}
+
+	.dropmenu{
+		background-color: #fff;
+	}
+
+	.sort{
+		&-list{
+			> li{
+				line-height: 45px;
+				padding-left: 15px;
+
+				&.selected{
+					color: #ff6f00;
+				}
+			}
+		}
+	}
+
+	.category{
+		overflow: hidden;
+		&-group{
+			float: left;
+			width: 50%;
+
+			&:first-child{
+				background-color: #f5f5f5;
+			}
+		}
+
+		&-item{
+			line-height: 45px;
+			padding-left: 15px;
+			
+			&.selected{
+				color: #ff6f00;
+				background-color: #fff;
+			}
+		}
+	}
+
+	.backdrop{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: #000;
+	    opacity: .5;
+	    z-index: 1014;
+	}
+
+	.filter-checkbox{
+
+	}
+}

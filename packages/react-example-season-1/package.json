@@ -48,7 +48,7 @@
   },
   "scripts": {
     "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail",
-    "server": "rm -rf ./dist && webpack --progress --profile --display-error-detail && webpack-dev-server",
+    "server": "rm -rf && webpack-dev-server -d --profile --hot",
     "release": "NODE_ENV='production' webpack"
   },
   "keywords": [],
