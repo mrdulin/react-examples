@@ -35,7 +35,6 @@ class FilterBar extends Component{
 	}
 
 	componentDidMount() {
-		
 	}
 	render() {
 		const scope = this;
