@@ -45,7 +45,8 @@ class App extends React.Component{
             'ios-scroll-event': 'ios-scroll-event阻塞测试',
             'loop-scroll': '无缝滚动',
             'modal-input': 'ios设备第三方输入法键盘弹出模态框位置问题',
-            'filter': 'filterBar'
+            'filter': 'filterBar',
+            'dynamic-inline-style': '动态行内样式'
         }
     }
 
