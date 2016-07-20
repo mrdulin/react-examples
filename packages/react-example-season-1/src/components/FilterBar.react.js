@@ -7,7 +7,10 @@ class FilterBar extends Component{
 		selectedSort: '',
 		selectedSortField: '',
 		selectedCategory2Id: '',
-		selectedCategory3Id: ''
+		selectedCategory3Id: '',
+
+		selectCategory2Text: '',
+		selectCategory3Text: ''
 	}
 
 	static defaultProps = {
@@ -86,7 +89,7 @@ class FilterBar extends Component{
 			const category2 = categoriesClone.map((category, idx) => {
 				const {name, id} = category;
 				const c2domKey = index + '-' + idx + '-' + id;
-				return <div onClick={() => this.selectCategory2(id)} 
+				return <div onClick={() => this.selectCategory2(id, name, filter)} 
 							className={`category-item ${(this.state.selectedCategory2Id && this.state.selectedCategory2Id === id) ? 'selected' : ''}`} 
 							key={c2domKey}>
 							{name}
@@ -112,7 +115,7 @@ class FilterBar extends Component{
 				category3 = category3Data.map((category, idx) => {
 					const {name, id} = category;
 					const c3domKey = index + '-' + idx + '-' + id;
-					return <div className={`category-item ${this.state.selectedCategory3Id && this.state.selectedCategory3Id === id ? 'selected' : ''}`} onClick={() => this.selectCategory3(id, name, filter)} key={c3domKey}>{name}</div>
+					return <div className={`category-item ${this.state.selectedCategory3Id === id ? 'selected' : ''}`} onClick={() => this.selectCategory3(id, name, filter)} key={c3domKey}>{name}</div>
 				});
 			}
 
@@ -148,17 +151,19 @@ class FilterBar extends Component{
 		}, this.transformFilterFieldData);
 	}
 
-	transformFilterFieldData() {
-		this.dismissDropMenu();
+	transformFilterFieldData(isCloseDropMenu = true) {
+		isCloseDropMenu && this.dismissDropMenu();
 		let data = {};
-		const {selectedSort, selectedCategory3Id} = this.state; 
+		const {selectedSort, selectedCategory2Id, selectedCategory3Id} = this.state; 
 		const sort = selectedSort.split('-');
 		const checkboxKeyLen = this.checkboxKeys.length;
 		data.sort = {
 			field: sort[0],
 			direction: sort[1]
 		};
-		data.categoryId = selectedCategory3Id ? [selectedCategory3Id] : [];
+		data.categoryId = selectedCategory3Id 
+		? [selectedCategory3Id] 
+		: (selectedCategory2Id ? [selectedCategory2Id] : []);
 		for (let i = 0; i < checkboxKeyLen; i++) {
 			const checkboxKey = this.checkboxKeys[i];
 			data[checkboxKey] = this.state[checkboxKey];
@@ -168,17 +173,27 @@ class FilterBar extends Component{
 
 	selectCategory3(id, name, filter) {
 		// console.log('selectCategory3', id);
-		filter.text = name;
+		if(id) {
+			filter.text = name;	
+		} else {
+			filter.text = filter._tempText;
+		}
 		this.setState({
 			selectedCategory3Id: id
 		}, this.transformFilterFieldData);
 
 	}
 
-	selectCategory2(id, name) {
-		this.setState({
+	selectCategory2(id, name, filter) {
+		filter._tempText = name;
+		let newState = {
 			selectedCategory2Id: id
-		});
+		}
+		if(!id) {
+			filter.text = name;
+			Object.assign(newState, {selectedCategory3Id: ''});
+		} 
+		this.setState(newState, this.transformFilterFieldData.bind(this, !id));
 	}
 
 	selectSort(sortField, direction, text,filter) {
