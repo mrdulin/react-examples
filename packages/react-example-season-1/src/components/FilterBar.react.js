@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+//问题，异步数据，组件更新
+
 class FilterBar extends Component{
 	
 	state = {
@@ -7,10 +9,7 @@ class FilterBar extends Component{
 		selectedSort: '',
 		selectedSortField: '',
 		selectedCategory2Id: '',
-		selectedCategory3Id: '',
-
-		selectCategory2Text: '',
-		selectCategory3Text: ''
+		selectedCategory3Id: ''
 	}
 
 	static defaultProps = {
@@ -30,6 +29,10 @@ class FilterBar extends Component{
 				this.state[key] = typeof filter.isChecked === 'boolean' 
 				? filter.isChecked 
 				: false;
+			} 
+			if(type === 'sort') {
+				const defaultSort = filter.sorts[0];
+ 				this.state.selectedSort = defaultSort.field + '-' + defaultSort.direction;
 			}
 		})
 	}
