@@ -29,6 +29,7 @@ import ModalInput from './pages/ModalInput.react';
 import Filter from './pages/Filter.react';
 import DynamicInlineStyle from './pages/DynamicInlineStyle.react';
 import PassAsyncDataToChildComponent from './pages/PassAsyncDataToChildComponent.react';
+import Redux03Middleware from './pages/Redux03-middleware.react';
 
 //定义路由规则
 const routes = (
@@ -61,6 +62,7 @@ const routes = (
         <Route path='filter' component={Filter}></Route>
         <Route path='dynamic-inline-style' component={DynamicInlineStyle}></Route>
         <Route path='PassAsyncDataToChildComponent' component={PassAsyncDataToChildComponent}></Route>
+        <Route path='redux03-middleware' component={Redux03Middleware}></Route>
     </Route>
 );
 

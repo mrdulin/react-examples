@@ -47,7 +47,8 @@ class App extends React.Component{
             'modal-input': 'ios设备第三方输入法键盘弹出模态框位置问题',
             'filter': 'filterBar',
             'dynamic-inline-style': '动态行内样式',
-            'PassAsyncDataToChildComponent': '组件获取异步数据更新问题'
+            'PassAsyncDataToChildComponent': '组件获取异步数据更新问题',
+            'redux03-middleware': 'redux中间件'
         }
     }
 

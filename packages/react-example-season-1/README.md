@@ -15,7 +15,7 @@ v4.4.Â
 _如何运行:_
 
 1.  `npm install`
-2.  `npm run webpack-dev-server`启动服务器，浏览器访问`localhost:8080`（使用Webpack Development Server），或者使用
+2.  `npm run server`启动服务器，浏览器访问`localhost:3001`（使用Webpack Development Server），或者使用
 `express` + `webpack-dev-middleware`，运行`npm start`，浏览器访问`localhost:3000`(暂时不可用，报错)
 
 

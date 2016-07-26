@@ -7,6 +7,7 @@ import * as reduxApiMiddlewareReducers from './reduxApiMiddleware';
 import * as reactRedux02Reducers from './reactRedux02';
 import * as reactRedux03Reducers from './reactRedux03';
 import * as scrollTop from './scrollTop.reducer';
+import * as redux03 from './redux03';
 
 //通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
 //传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
     ...reactRedux02Reducers,
     ...reactRedux03Reducers,
     ...reduxApiMiddlewareReducers,
-    ...scrollTop
+    ...scrollTop,
+    ...redux03
 });
 
 export default rootReducer;
