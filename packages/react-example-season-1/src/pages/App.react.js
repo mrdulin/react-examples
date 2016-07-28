@@ -49,7 +49,8 @@ class App extends React.Component{
             'dynamic-inline-style': '动态行内样式',
             'PassAsyncDataToChildComponent': '组件获取异步数据更新问题',
             'redux03-middleware': 'redux中间件',
-            'array-dom': '将模板放在数组中渲染'
+            'array-dom': '将模板放在数组中渲染',
+            'changeStateTreeRefData': '能否更改state上引用类型数据'
         }
     }
 

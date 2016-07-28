@@ -31,6 +31,7 @@ import DynamicInlineStyle from './pages/DynamicInlineStyle.react';
 import PassAsyncDataToChildComponent from './pages/PassAsyncDataToChildComponent.react';
 import Redux03Middleware from './pages/Redux03-middleware.react';
 import ArrayDom from './pages/ArrayDom.react';
+import ChangeStateTreeRefData from './pages/ChangeStateTreeRefData';
 
 //定义路由规则
 const routes = (
@@ -65,6 +66,7 @@ const routes = (
         <Route path='PassAsyncDataToChildComponent' component={PassAsyncDataToChildComponent}></Route>
         <Route path='redux03-middleware' component={Redux03Middleware}></Route>
         <Route path='array-dom' component={ArrayDom}></Route>
+        <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
     </Route>
 );
 
