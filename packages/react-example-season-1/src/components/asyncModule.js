@@ -1,4 +1,4 @@
-
+require('babel-polyfill');
 // export default new Promise(resolve => resolve(data));
 
 export default async function() {

@@ -15,8 +15,7 @@ v4.4.Â
 _如何运行:_
 
 1.  `npm install`
-2.  `npm run server`启动服务器，浏览器访问`localhost:3001`（使用Webpack Development Server），或者使用
-`express` + `webpack-dev-middleware`，运行`npm start`，浏览器访问`localhost:3000`(暂时不可用，报错)
+2.  `npm run server`启动服务器，浏览器访问`localhost:3001`（使用Webpack Development Server)
 
 
 _说明:_
@@ -31,7 +30,7 @@ _说明:_
 
 *   `webpack-dev-middleware`（[地址](https://github.com/webpack/webpack-dev-middleware)）中间件结合`express`使用，用来启动一个http服务器，比起[Webpack Development Server](https://webpack.github.io/docs/webpack-dev-server.html)的优点是，前者不从硬盘上读取文件，而是放在内存中，所以速度要快；前者如果开启文件监视模式，当文件有修改时，中间件将不再使用旧的bundle文件，而是延迟到当所修改的文件编译完成后。包含livereload功能。
 
-*   `webpack-hot-middleware`中间件，Webpack提供了一个强大的特性叫做“模块热载”或者叫“模块热插拔”。__这个特性不会刷新整个页面，而是只刷新修改过的模块的那一部分__
+*   `webpack-hot-middleware`中间件，Webpack提供了一个强大的特性叫做“模块热载”或者叫“模块热插拔”。__这个特性不会刷新整个页面（不会重新初始化应用），而是只刷新修改过的模块的那一部分__
 
 *   `babel-preset-stage-1`模块，将ES7提供的一些特性转换为ES5，常见的就是在`react`中`getDefaultProps`和`propTypes`，详见`table`例子。但是为啥我这里只安装了`babel-preset-stage-0`？原因是，ES7的每个stage的提案，都会依赖后一个stage提案，也就是说，安装`babel-preset-stage-0`依赖的时候，它会安装它的依赖`babel-preset-stage-1`，`babel-preset-stage-1`又会安装`babel-preset-stage-2`，依次类推。可以查看`node_modules`查看，所以如果要使用全部ES7提案的新特性，只需要在`.babelrc`文件中的`presets`字段中指定`stage-0`就可以了。
 
@@ -43,6 +42,8 @@ import NoMatch from './pages/NoMatch';
 //...
 <Route path='*' component={NoMatch}></Route>
 ```
+
+* 	`babel-polyfill`，使用`async`和`await`时，报`Uncaught ReferenceError: regeneratorRuntime is not defined`错误，解决办法是在使用`async`和`await`的文件中，先`require('babel-polyfill')`，或者在`webpack`的`entry`中加入`babel-polyfill`。
 
 _出现的问题:_
 
@@ -58,3 +59,9 @@ dulindeiMac:react-examples dulin$ npm i webpack-dev-middleware express --save-de
 2.
 
 `react`表单控件属性`value`和`defaultValue`的区别？
+
+
+__TODO__
+
+*	[ ] `webpack生产环境编译报错`
+*	[ ] `webpack-dev-middleware`配置报错

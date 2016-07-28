@@ -1,22 +1,31 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var config = require('./webpack.config.dev');
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const config = require('./webpack.config.js');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackhotMiddleware = require('webpack-hot-middleware');
 
-var port = 3000;
-var app = express();
-var compiler = webpack(config);
-app.use(express.static(__dirname + '/dist'));
+const port = 3000;
+const app = express();
+const compiler = webpack(config);
+const static_dir = path.resolve(__dirname, 'dist');
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
+app.use(express.static(static_dir));
+
+app.use(webpackDevMiddleware(compiler, {
+    noInfo: false,
+    publicPath: config.output.publicPath,
+    stats: {
+        colors: true
+    }
 }));
 
-app.use(require('webpack-hot-middleware')(compiler));
+app.use(webpackhotMiddleware(compiler, {
+	log: console.log 
+}));
 
 app.get('*', function (req, res) {
-    var indexPath = path.join(__dirname, 'dist', 'index.html');
+    var indexPath = path.resolve(__dirname, 'dist', 'index.html');
     res.sendFile(indexPath);
 });
 

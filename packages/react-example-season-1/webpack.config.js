@@ -23,7 +23,7 @@ const publicPath = __DEV__ ? '/' : '/';
 
 const config = {
     entry: [
-        'babel-polyfill',
+        // 'babel-polyfill',
         src + '/index.js'
     ],
 
