@@ -35,3 +35,5 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('container')
 );
+
+console.log(process)
