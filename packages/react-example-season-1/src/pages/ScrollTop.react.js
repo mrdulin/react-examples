@@ -3,10 +3,10 @@ import {getBook} from '../actions/scrollTop.action';
 import {connect} from 'react-redux';
 import asyncModule from '../components/asyncModule';
 
-console.log('asyncModule------>>>>', asyncModule);
-asyncModule().then(data => {
-    console.log(data)
-})
+// console.log('asyncModule------>>>>', asyncModule);
+// asyncModule().then(data => {
+//     console.log(data)
+// })
 
 class Image extends Component{
     componentDidMount() {
@@ -32,7 +32,7 @@ class ScrollTop extends Component{
     }
 
     componentDidMount() {
-        console.log('componentDidMount')
+        // console.log('componentDidMount')
         //需求：刷新滚动到顶部
         //1.无效
         //window.scrollTo(0, 0);

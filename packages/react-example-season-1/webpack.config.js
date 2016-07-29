@@ -63,7 +63,10 @@ const config = {
         }),
         new webpack.DefinePlugin({
             __DEV__: __DEV__,
-            __PROD__: __PROD__
+            __PROD__: __PROD__,
+            'process.env': {
+                'NODE_ENV': process.env.NODE_ENV
+            }
         }),
         new ExtractTextPlugin('[name].[hash].css', {
             allChunks: true

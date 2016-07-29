@@ -36,4 +36,4 @@ ReactDOM.render(
     document.getElementById('container')
 );
 
-console.log(process)
+// console.log(process)
