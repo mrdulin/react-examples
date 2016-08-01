@@ -6,7 +6,7 @@ import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from './reducer/index';
 //webpack未开启noParse
-import createLogger from 'redux-logger'; 
+import createLogger from 'redux-logger';
 // const createLogger = require('redux-logger');
 import thunk from 'redux-thunk';
 import {apiMiddleware} from 'redux-api-middleware';

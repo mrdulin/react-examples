@@ -1,16 +1,30 @@
-import 'whatwg-fetch';
+const ajaxMiddleware = ({
+	getState,
+	dispatch
+}) => next => action => {
+	console.log('middleware', next, action);
 
-const ajaxMiddleware = store => next => action => {
-	// console.log('middleware next is ', next);
-	if(action.type !== 'ajax') return next(action);
-
-	console.log('middleware store is ', store);
-
+	if (action.type !== 'ajax') return next(action);
 	fetch(action.url, {
-		method: action.method
-	})
-	.then(res => res.json())
-	.then(json => action.cb(json, store.dispatch));
+			method: action.method
+		})
+		.then(res => res.json())
+		// .then(json => action.cb(json, store.dispatch));
+		.then(json => {
+			action.content = json;
+			return next(action);
+		})
 }
 
-export {ajaxMiddleware};
+//es5
+var middlewware = function middlewware(store) {
+	return function(next) {
+		return function(action) {
+			if (action.type !== 'ajax') return next(action);
+		};
+	};
+};
+
+export {
+	ajaxMiddleware
+};

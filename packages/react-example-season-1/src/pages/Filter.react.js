@@ -26,7 +26,7 @@ class Filter extends Component {
             key: 'sort',
             type: 'sort',
             sorts: [
-	            { text: '默认排序', field: "score", direction: "DESC" }, 
+	            { text: '默认排序', field: "score", direction: "DESC" },
 	            { text: "销量排序", field: "salesVolume", direction: "DESC" },
 	            { text: "价格由低到高", field: "price", direction: "ASC" },
 	            { text: "价格由高到低", field: "price", direction: "DESC" }
@@ -51,7 +51,7 @@ class Filter extends Component {
         const bizType = bizTypes[0];
 
         return <div>
-			<FilterBar 
+			<FilterBar
 				filters={filters}
 				onFilterChange={filterObj => this.onFilterChange(filterObj)}>
 			</FilterBar>

@@ -1,7 +1,17 @@
-import {todos, visibilityFilter} from './redux01';
-import {user, polling} from './redux02';
-import {combineReducers} from 'redux';
-import undoable, {distinctState} from 'redux-undo';
+import {
+	todos,
+	visibilityFilter
+} from './redux01';
+import {
+	user,
+	polling
+} from './redux02';
+import {
+	combineReducers
+} from 'redux';
+import undoable, {
+	distinctState
+} from 'redux-undo';
 import * as reactRedux01Reducers from './reactRedux01';
 import * as reduxApiMiddlewareReducers from './reduxApiMiddleware';
 import * as reactRedux02Reducers from './reactRedux02';
@@ -20,17 +30,19 @@ import * as InitStateTreeData from './InitStateTreeData.reducer';
 
 // console.log(reactRedux01Reducers);
 const rootReducer = combineReducers({
-    todos: undoable(todos, { filter: distinctState() }),
-    visibilityFilter,
-    user,
-    polling,
-    ...reactRedux01Reducers,
-    ...reactRedux02Reducers,
-    ...reactRedux03Reducers,
-    ...reduxApiMiddlewareReducers,
-    ...scrollTop,
-    ...redux03,
-    ...InitStateTreeData
+	todos: undoable(todos, {
+		filter: distinctState()
+	}),
+	visibilityFilter,
+	user,
+	polling,
+	...reactRedux01Reducers,
+	...reactRedux02Reducers,
+	...reactRedux03Reducers,
+	...reduxApiMiddlewareReducers,
+	...scrollTop,
+	...redux03,
+	...InitStateTreeData
 });
 
 export default rootReducer;
