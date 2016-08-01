@@ -16,7 +16,7 @@ export const requestCity = () => {
             // endpoint: './json/cityMap.api.json',
 
             endpoint: () => {
-                return './json/cityMap.api.json'
+                return 'http://localhost:3000/v2/city';
             },
 
             //method 是http方法动词，字符串类型，这些动词必须是GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS中的一种
@@ -53,9 +53,9 @@ export const requestCity = () => {
 export const login = (formData) => {
     return {
         [CALL_API]: {
-            endpoint: './json/login.api.json',
+            endpoint: 'http://localhost:3000/login',
             method: 'post',
-            types: [REQUEST, REQUEST_SUCCESS, REQUEST_FAIL],
+            types: ['LOGIN', 'LOGIN_SUCCESS', 'LOGIN_FAIL'],
             body: formData
         }
     }

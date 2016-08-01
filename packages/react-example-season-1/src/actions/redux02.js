@@ -23,7 +23,8 @@ export const togglePolling = (isOpen) => {
 }
 
 export const fetchData = () => {
-    const url = '../../json/redux02.api.json';
+    // const url = '../../json/redux02.api.json';
+    const url = 'http://localhost:3000/me';
 
     return (dispatch, getState) => {
 

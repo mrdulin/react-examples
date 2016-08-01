@@ -20,7 +20,9 @@ export const requestCityFail = (err) => {
 };
 
 export const fetchCity = (userId) => {
-    const url = './json/city.api.json';
+    // const url = './json/city.api.json';
+    const url = 'http://localhost:3000/city';
+
     return dispatch => {
         dispatch(requestCity(userId));
 

@@ -8,7 +8,7 @@ export const cityMap = (state = {}, action) => {
 	switch (action.type) {
 		case REQUEST_SUCCESS:
 			// console.log('REQUEST_SUCCESS reducer action', action);
-			return action.payload;
+			return Object.assign({}, state, action.payload);
 		default:
 			return state;
 	}
@@ -23,10 +23,12 @@ export const err = (state = {}, action) => {
 	}
 };
 
-export const usr = (state = {}, action) => {
+export const usr = (state = {usr: {}}, action) => {
 	switch (action.type) {
-		case REQUEST_SUCCESS:
-			return action.usr;
+		case 'LOGIN_SUCCESS':
+			return Object.assign({}, state, {
+				usr: action.payload
+			});
 		default:
 			return state;
 	}
