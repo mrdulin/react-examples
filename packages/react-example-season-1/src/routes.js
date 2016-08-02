@@ -33,6 +33,7 @@ import Redux03Middleware from './pages/Redux03-middleware.react';
 import ArrayDom from './pages/ArrayDom.react';
 import ChangeStateTreeRefData from './pages/ChangeStateTreeRefData';
 import InitStateTreeData from './pages/initStateTreeData.react';
+import Download from './pages/Download.react';
 
 
 //定义路由规则
@@ -70,6 +71,7 @@ const routes = (
         <Route path='array-dom' component={ArrayDom}></Route>
         <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
         <Route path="initStateTreeData" component={InitStateTreeData}></Route>
+        <Route path='downloadAll' component={Download}></Route>
     </Route>
 );
 

@@ -51,7 +51,8 @@ class App extends React.Component{
             'redux03-middleware': 'redux中间件',
             'array-dom': '将模板放在数组中渲染',
             'changeStateTreeRefData': '能否更改state上引用类型数据',
-            initStateTreeData: '在什么时机初始化state树上的数据有效'
+            initStateTreeData: '在什么时机初始化state树上的数据有效',
+            downloadAll: 'a标签批量下载组件'
         }
     }
 
