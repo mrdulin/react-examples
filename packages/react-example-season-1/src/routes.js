@@ -35,6 +35,7 @@ import ChangeStateTreeRefData from './pages/ChangeStateTreeRefData';
 import InitStateTreeData from './pages/initStateTreeData.react';
 import Download from './pages/Download.react';
 import MobileInputFocusAndKeyboard from './pages/MobileInputFocusAndKeyboard.react';
+import AudioPages from './pages/Audio.react';
 
 //定义路由规则
 const routes = (
@@ -73,6 +74,7 @@ const routes = (
         <Route path="initStateTreeData" component={InitStateTreeData}></Route>
         <Route path='downloadAll' component={Download}></Route>
         <Route path='MobileInputFocusAndKeyboard' component={MobileInputFocusAndKeyboard}></Route>
+        <Route path='audio' component={AudioPages}></Route>
     </Route>
 );
 

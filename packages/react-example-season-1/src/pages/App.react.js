@@ -53,7 +53,8 @@ class App extends React.Component{
             'changeStateTreeRefData': '能否更改state上引用类型数据',
             initStateTreeData: '在什么时机初始化state树上的数据有效',
             downloadAll: 'a标签批量下载组件',
-            MobileInputFocusAndKeyboard:  '移动端input变成方式聚焦时，虚拟键盘状态测试'
+            MobileInputFocusAndKeyboard:  '移动端input变成方式聚焦时，虚拟键盘状态测试',
+            audio: 'audio api测试'
         }
     }
 
