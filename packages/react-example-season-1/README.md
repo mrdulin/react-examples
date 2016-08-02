@@ -15,10 +15,13 @@ v4.4.Â
 _如何运行:_
 
 1.  `npm install`
-2.  `npm run server`启动服务器，浏览器访问`localhost:3001`（使用Webpack Development Server)
+2.  `npm run server`启动开发服务器，浏览器访问`localhost:3001`（使用Webpack Development Server)
+3.  `npm start`启动`node`api服务器，用于提供测试数据，测试异步请求
 
 
 _说明:_
+
+*   使用`charles`，设置`wifi`的代理服务器为本机，如`10.0.72.211`,端口`8888`，在`ios`的`safari`浏览器中直接访问`http://localhost.charlesproxy.com:3001`访问本地项目，本机访问地址是`http://localhost:3001`
 
 *   在项目根目录下新建使用`.babelrc`文件配置或者在`package.json`文件中添加`babel`字段进行配置（[文档地址](http://babeljs.io/docs/usage/babelrc/#use-via-package-json)），预设ES2015(ES6)向ES5的转换编译规则
 
@@ -46,7 +49,6 @@ import NoMatch from './pages/NoMatch';
 * 	`babel-polyfill`，使用`async`和`await`时，报`Uncaught ReferenceError: regeneratorRuntime is not defined`错误，解决办法是在使用`async`和`await`的文件中，先`require('babel-polyfill')`，或者在`webpack`的`entry`中加入`babel-polyfill`。
 
 _出现的问题:_
-
 
 1.
 ```bash
