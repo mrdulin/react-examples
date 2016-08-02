@@ -58,10 +58,10 @@ class AudioPages extends Component{
 
             <div>
                 <label>
-                    volume: <span>{this.state.volume * 100 + '%'}</span>
                     <input type="range" name="volume" min={minVolume} max={maxVolume} step={volumeStep}
                         onChange={() => this.handleVolume()}
                         ref={ref => this._range = ref}/>
+                    volume: <span>{new Number(this.state.volume * 100).toFixed(2) + '%'}</span>
                 </label>
             </div>
         </div>
