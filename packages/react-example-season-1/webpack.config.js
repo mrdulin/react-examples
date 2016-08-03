@@ -13,10 +13,10 @@ const __DEV__ = __PROD__ === false;
 
 const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	const filePath = path.dirname(nodeModulePath);
-	const filename = path.basename(nodeModulePath);
+	const filename = path.basename(nodeModulePath, '.js');
 	const ext = path.extname(filename);
 
-	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
+	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + '/' + filename + symbol + 'min' + ext));
 }
 
 const publicPath = __DEV__ ? '/' : '/';
@@ -126,7 +126,7 @@ if (__PROD__) {
 				warnings: false
 			}
 		})),
-		config.plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"))
+	config.plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"))
 	config.plugins.push(new webpack.optimize.DedupePlugin());
 	config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
 }

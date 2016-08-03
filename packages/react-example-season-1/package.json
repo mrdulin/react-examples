@@ -50,7 +50,7 @@
   "scripts": {
     "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail",
     "server": "rm -rf && webpack-dev-server --inline --hot",
-    "release": "NODE_ENV='production' webpack",
+    "release": "NODE_ENV=production webpack",
     "start": "nodemon server.js"
   },
   "keywords": [],

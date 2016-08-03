@@ -17,6 +17,8 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// app.use('/', express.static(static_dir));
+
 app.get('/city', (req, res) => {
     const city = {
         "data": [

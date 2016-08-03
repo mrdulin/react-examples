@@ -61,9 +61,3 @@ dulindeiMac:react-examples dulin$ npm i webpack-dev-middleware express --save-de
 2.
 
 `react`表单控件属性`value`和`defaultValue`的区别？
-
-
-__TODO__
-
-*	[ ] `webpack生产环境编译报错`
-*	[ ] `webpack-dev-middleware`配置报错
