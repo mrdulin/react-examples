@@ -55,7 +55,9 @@ class App extends React.Component{
             downloadAll: 'a标签批量下载组件',
             MobileInputFocusAndKeyboard:  '移动端input变成方式聚焦时，虚拟键盘状态测试',
             audio: 'audio api测试',
-            iframe: '添加iframe'
+            iframe: '添加iframe',
+            GrabChildComponentState: '在父组件中获取子组件的state',
+            AjaxInConstructor: '在constructor中ajax'
         }
     }
 

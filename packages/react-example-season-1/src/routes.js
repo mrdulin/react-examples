@@ -38,6 +38,8 @@ import Download from './pages/Download.react';
 import MobileInputFocusAndKeyboard from './pages/MobileInputFocusAndKeyboard.react';
 import AudioPages from './pages/Audio.react';
 import IframePage from './pages/iframe.react';
+import GrabChildComponentState from './pages/GrabChildComponentState.react';
+import AjaxInConstructor from './pages/AjaxInConstructor.react';
 
 //定义路由规则
 const routes = (
@@ -78,6 +80,8 @@ const routes = (
         <Route path='MobileInputFocusAndKeyboard' component={MobileInputFocusAndKeyboard}></Route>
         <Route path='audio' component={AudioPages}></Route>
         <Route path='iframe' component={IframePage}></Route>
+        <Route path='GrabChildComponentState' component={GrabChildComponentState}></Route>
+        <Route path='AjaxInConstructor' component={AjaxInConstructor}></Route>
     </Route>
 );
 
