@@ -59,7 +59,8 @@ class App extends React.Component{
             GrabChildComponentState: '在父组件中获取子组件的state',
             AjaxInConstructor: '在constructor中ajax',
             hoc: 'High-Order-Component高阶组件',
-            inheritComponent: '组件继承'
+            inheritComponent: '组件继承',
+            composableComponent: '组件组合'
         }
     }
 
