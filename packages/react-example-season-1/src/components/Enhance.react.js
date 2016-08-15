@@ -1,12 +1,24 @@
 import React, {Component, PropTypes} from 'react';
 
-const Enhance = ({title}) => ComposedComponent => class extends Component{
+const Enhance = ({title = 'No Title'}) => ComposedComponent => class extends Component{
 
     static defaultProps = {
         title
     }
+
+    state = {
+        val: 1
+    };
     constructor() {
         super();
+        const funcNames = ['update'];
+        for(let funcName of funcNames) {
+            this[funcName] = ::this[funcName];
+        }
+    }
+
+    update() {
+        this.setState({val: this.state.val + 1});
     }
 
     componentDidMount() {
@@ -21,7 +33,7 @@ const Enhance = ({title}) => ComposedComponent => class extends Component{
             ...this.props,
             ...this.state
         };
-        return <ComposedComponent {...props}/>
+        return <ComposedComponent {...props} update={this.update}/>
     }
 }
 
