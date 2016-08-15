@@ -40,6 +40,8 @@ import AudioPages from './pages/Audio.react';
 import IframePage from './pages/iframe.react';
 import GrabChildComponentState from './pages/GrabChildComponentState.react';
 import AjaxInConstructor from './pages/AjaxInConstructor.react';
+import TestHocComponent from './pages/TestHocComponent.react';
+import InheritComponent from './pages/InheritComponent.react';
 
 //定义路由规则
 const routes = (
@@ -82,6 +84,8 @@ const routes = (
         <Route path='iframe' component={IframePage}></Route>
         <Route path='GrabChildComponentState' component={GrabChildComponentState}></Route>
         <Route path='AjaxInConstructor' component={AjaxInConstructor}></Route>
+        <Route path='HOC' component={TestHocComponent}></Route>
+        <Route path='InheritComponent' component={InheritComponent}></Route>
     </Route>
 );
 

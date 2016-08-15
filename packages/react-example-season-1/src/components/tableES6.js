@@ -11,6 +11,7 @@ class TableES6 extends React.Component {
             name: 'novaline',
             age: 24
         };
+
     }
 
     //mixins,ES6语法不支持mixins
@@ -47,6 +48,9 @@ class TableES6 extends React.Component {
         );
     }
 };
+
+
+TableES6.displayName = 'ES6-Table';
 
 //如果组件的props上没有datas属性，则报Warning: Failed propType: Required prop `datas` was not specified in `TableES6`.错误
 //如果组件的props上有datas属性，但数据类型不是array,则报Warning: Failed propType: Invalid prop `datas` of type `string` supplied to `TableES6`, expected `array`.

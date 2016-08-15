@@ -1,7 +1,9 @@
-import React from 'react';
-import componentLifeCycleMixins from '../mixins/componentLifeCycleMixins';
+var React = require('react');
+var componentLifeCycleMixins = require('../mixins/componentLifeCycleMixins');
 
 var TableES5 = React.createClass({
+    displayName: 'ES5-Table',
+
     //ES5的方式验证props
     propTypes: {
         datas: React.PropTypes.array.isRequired
@@ -72,4 +74,5 @@ var TableES5 = React.createClass({
 });
 
 
-export default TableES5;
+// export default TableES5;
+module.exports = TableES5;
