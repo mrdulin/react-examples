@@ -43,6 +43,7 @@ import AjaxInConstructor from './pages/AjaxInConstructor.react';
 import TestHocComponent from './pages/TestHocComponent.react';
 import InheritComponent from './pages/InheritComponent.react';
 import ComposableComponent from './pages/ComposableComponent.react';
+import FunctionBind from './pages/FunctionBind.react';
 
 //定义路由规则
 const routes = (
@@ -88,6 +89,7 @@ const routes = (
         <Route path='HOC' component={TestHocComponent}></Route>
         <Route path='InheritComponent' component={InheritComponent}></Route>
         <Route path='composableComponent' component={ComposableComponent}></Route>
+        <Route path='function-bind' component={FunctionBind}></Route>
     </Route>
 );
 

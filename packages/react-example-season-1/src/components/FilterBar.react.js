@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 //问题，异步数据，组件更新
 
 class FilterBar extends Component{
-	
+
 	state = {
 		selectedFilter: '',
 		selectedSort: '',
@@ -26,10 +26,10 @@ class FilterBar extends Component{
 			const {type, key} = filter;
 			if(type === 'checkbox') {
 				this.checkboxKeys.push(key);
-				this.state[key] = typeof filter.isChecked === 'boolean' 
-				? filter.isChecked 
+				this.state[key] = typeof filter.isChecked === 'boolean'
+				? filter.isChecked
 				: false;
-			} 
+			}
 			if(type === 'sort') {
 				const defaultSort = filter.sorts[0];
  				this.state.selectedSort = defaultSort.field + '-' + defaultSort.direction;
@@ -46,19 +46,19 @@ class FilterBar extends Component{
 			let checkboxNode = null;
 			let isCheckBoxChecked;
 			if(type === 'checkbox') {
-				isCheckBoxChecked = (typeof scope.state[key] === 'boolean') 
-				? scope.state[key] 
+				isCheckBoxChecked = (typeof scope.state[key] === 'boolean')
+				? scope.state[key]
 				: ((typeof filter.isChecked === 'boolean') ? filter.isChecked : false);
-				
 
-				checkboxNode = <input type="checkbox" 
-								className="filter-checkbox" 
-								onChange={() => this.onCheckboxChange(key, isCheckBoxChecked)} 
+
+				checkboxNode = <input type="checkbox"
+								className="filter-checkbox"
+								onChange={() => this.onCheckboxChange(key, isCheckBoxChecked)}
 								checked={isCheckBoxChecked}/>
 			}
 
-			return <li onClick={this.selectFilter.bind(this, key, type)} 
-						className={`${this.state.selectedFilter === key ? 'selected' : ''}`} 
+			return <li onClick={this.selectFilter.bind(this, key, type)}
+						className={`${this.state.selectedFilter === key ? 'selected' : ''}`}
 						key={index + '-' + key}>
 						{type === 'checkbox' ? <label>{checkboxNode}{text}</label> : <a>{text}</a>}
 					</li>
@@ -69,14 +69,14 @@ class FilterBar extends Component{
 			const sortNodes = filter.sorts.map((sort, idx) => {
 				const {text, field, direction} = sort;
 				const sortKey = field + '-' + direction;
-				return <li onClick={() => this.selectSort(field, direction, text, filter)} 
-							key={sortKey} 
+				return <li onClick={() => this.selectSort(field, direction, text, filter)}
+							key={sortKey}
 							className={`${this.state.selectedSort === sortKey ? 'selected' : ''}`}>
 							{text}
 						</li>
 			});
-			return <div className="dropmenu sort" 
-					style={{display: `${this.state.selectedFilter === filter.key ? 'block' : 'none'}`}} 
+			return <div className="dropmenu sort"
+					style={{display: `${this.state.selectedFilter === filter.key ? 'block' : 'none'}`}}
 					key={index}>
 				<ul className="sort-list">{sortNodes}</ul>
 			</div>
@@ -87,12 +87,12 @@ class FilterBar extends Component{
 			const {categories, key, text} = filter;
 			const categoriesClone = this.clone(categories);
 			categoriesClone.unshift({id: '', name: this.props.category2AllText, children: []})
-			
+
 			const category2 = categoriesClone.map((category, idx) => {
 				const {name, id} = category;
 				const c2domKey = index + '-' + idx + '-' + id;
-				return <div onClick={() => this.selectCategory2(id, name, filter)} 
-							className={`category-item ${(this.state.selectedCategory2Id && this.state.selectedCategory2Id === id) ? 'selected' : ''}`} 
+				return <div onClick={() => this.selectCategory2(id, name, filter)}
+							className={`category-item ${(this.state.selectedCategory2Id && this.state.selectedCategory2Id === id) ? 'selected' : ''}`}
 							key={c2domKey}>
 							{name}
 						</div>;
@@ -121,8 +121,8 @@ class FilterBar extends Component{
 				});
 			}
 
-			return <div className="dropmenu category" 
-					style={{display: `${this.state.selectedFilter === key ? 'block' : 'none'}`}} 
+			return <div className="dropmenu category"
+					style={{display: `${this.state.selectedFilter === key ? 'block' : 'none'}`}}
 					key={index}>
 					<div className="category-group">{category2}</div>
 					<div className="category-group">{category3}</div>
@@ -137,7 +137,7 @@ class FilterBar extends Component{
 				{dropmenuNodes}
 				{categoryNodes}
 			</div>
-			<div onClick={() => this.dismissDropMenu()} 
+			<div onClick={() => this.dismissDropMenu()}
 				className="backdrop" style={{display: `${this.state.selectedFilter.length > 0 ? 'block' : 'none'}`}}>
 			</div>
 		</div>
@@ -156,15 +156,15 @@ class FilterBar extends Component{
 	transformFilterFieldData(isCloseDropMenu = true) {
 		isCloseDropMenu && this.dismissDropMenu();
 		let data = {};
-		const {selectedSort, selectedCategory2Id, selectedCategory3Id} = this.state; 
+		const {selectedSort, selectedCategory2Id, selectedCategory3Id} = this.state;
 		const sort = selectedSort.split('-');
 		const checkboxKeyLen = this.checkboxKeys.length;
 		data.sort = {
 			field: sort[0],
 			direction: sort[1]
 		};
-		data.categoryId = selectedCategory3Id 
-		? [selectedCategory3Id] 
+		data.categoryId = selectedCategory3Id
+		? [selectedCategory3Id]
 		: (selectedCategory2Id ? [selectedCategory2Id] : []);
 		for (let i = 0; i < checkboxKeyLen; i++) {
 			const checkboxKey = this.checkboxKeys[i];
@@ -176,7 +176,7 @@ class FilterBar extends Component{
 	selectCategory3(id, name, filter) {
 		// console.log('selectCategory3', id);
 		if(id) {
-			filter.text = name;	
+			filter.text = name;
 		} else {
 			filter.text = filter._tempText;
 		}
@@ -194,7 +194,7 @@ class FilterBar extends Component{
 		if(!id) {
 			filter.text = name;
 			Object.assign(newState, {selectedCategory3Id: ''});
-		} 
+		}
 		this.setState(newState, this.transformFilterFieldData.bind(this, !id));
 	}
 
@@ -217,6 +217,14 @@ class FilterBar extends Component{
 
 	dismissDropMenu() {
 		this.setState({selectedFilter: ''});
+	}
+
+	componentWillUnmount() {
+		if (this.isIOS) {
+			this.detachTouch();
+		} else {
+			this.bodyStyle.overflow = 'auto';
+		}
 	}
 
 	getFiltersByType(type) {

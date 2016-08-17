@@ -4,9 +4,10 @@ class AjaxInConstructor extends Component{
     constructor() {
         super();
         this.state = {name: '', age: ''}
-        this.loadData().then(data => {
+        const loadDataSuccess = data => {
             this.setState(data);
-        });
+        };
+        this.loadData().then(loadDataSuccess);
     }
     loadData() {
         return new Promise((resolve, reject) => {

@@ -60,7 +60,8 @@ class App extends React.Component{
             AjaxInConstructor: '在constructor中ajax',
             hoc: 'High-Order-Component高阶组件',
             inheritComponent: '组件继承',
-            composableComponent: '组件组合'
+            composableComponent: '组件组合',
+            'function-bind': 'ES7函数绑定'
         }
     }
 
