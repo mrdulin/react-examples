@@ -44,6 +44,7 @@ import TestHocComponent from './pages/TestHocComponent.react';
 import InheritComponent from './pages/InheritComponent.react';
 import ComposableComponent from './pages/ComposableComponent.react';
 import FunctionBind from './pages/FunctionBind.react';
+import ReactChildren from './pages/ReactChildren.react';
 
 //定义路由规则
 const routes = (
@@ -90,6 +91,7 @@ const routes = (
         <Route path='InheritComponent' component={InheritComponent}></Route>
         <Route path='composableComponent' component={ComposableComponent}></Route>
         <Route path='function-bind' component={FunctionBind}></Route>
+        <Route path='ReactChildren' component={ReactChildren}></Route>
     </Route>
 );
 
