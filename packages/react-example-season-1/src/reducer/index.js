@@ -19,6 +19,7 @@ import * as reactRedux03Reducers from './reactRedux03';
 import * as scrollTop from './scrollTop.reducer';
 import * as redux03 from './redux03';
 import * as InitStateTreeData from './InitStateTreeData.reducer';
+import * as AsyncActionInCWRP from './AsyncActionInCWRP.reducer';
 
 //通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
 //传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
@@ -42,7 +43,8 @@ const rootReducer = combineReducers({
 	...reduxApiMiddlewareReducers,
 	...scrollTop,
 	...redux03,
-	...InitStateTreeData
+	...InitStateTreeData,
+    ...AsyncActionInCWRP
 });
 
 export default rootReducer;

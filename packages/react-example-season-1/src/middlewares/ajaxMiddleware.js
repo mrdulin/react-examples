@@ -2,7 +2,7 @@ const ajaxMiddleware = ({
 	getState,
 	dispatch
 }) => next => action => {
-	console.log('middleware', next, action);
+	// console.log('middleware', next, action);
 
 	if (action.type !== 'ajax') return next(action);
 	fetch(action.url, {

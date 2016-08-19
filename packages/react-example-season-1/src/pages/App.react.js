@@ -63,7 +63,8 @@ class App extends React.Component{
             composableComponent: '组件组合',
             'function-bind': 'ES7函数绑定',
             'ReactChildren': '测试React.Children上的方法',
-            'ios-input-focus': 'ios设备下input focus后, position: fixed失效问题'
+            'ios-input-focus': 'ios设备下input focus后, position: fixed失效问题',
+            'async-action-in-componentWillReceiveProps': '在componentWillReceiveProps中dispatch异步action'
         }
     }
 
