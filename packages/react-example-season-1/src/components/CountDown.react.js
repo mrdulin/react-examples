@@ -80,6 +80,8 @@ class CountDown extends Component{
         // const countDown = this.state.countDown;
         let countDown = this.getTimeRemaining(this.props.end);
 
+        console.count();
+
         const style = {
             container: {
                 display: 'inline-block',

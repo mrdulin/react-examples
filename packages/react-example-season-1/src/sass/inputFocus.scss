@@ -1,0 +1,19 @@
+#ios-input-focus{
+    position: relative;
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: lightblue;
+
+        &.sticky{
+            position: -webkit-sticky;
+            position: sticky;
+        }
+    }
+
+    input {
+        padding: 8px 6px;
+    }
+}

@@ -62,7 +62,8 @@ class App extends React.Component{
             inheritComponent: '组件继承',
             composableComponent: '组件组合',
             'function-bind': 'ES7函数绑定',
-            'ReactChildren': '测试React.Children上的方法'
+            'ReactChildren': '测试React.Children上的方法',
+            'ios-input-focus': 'ios设备下input focus后, position: fixed失效问题'
         }
     }
 

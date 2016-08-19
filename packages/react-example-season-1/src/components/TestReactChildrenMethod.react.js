@@ -20,17 +20,19 @@ class TestReactChildrenMethod extends Component{
         // this.test1();
     }
     render() {
-
+        //React.Children.map 和this.props.children.map的区别是, 如果children只有一个元素, React.Children.map会将其放在一个数组中再调用map方法
+        //而this.props.children, 如果只有一个元素, children不是数组,调用map方法会报错
         const childDoms = React.Children.map(this.props.children, (child) => {
             console.log(child);
             return child;
         });
 
-
         // const childDoms = this.props.children.map((child) => {
         //     console.log(child);
         //     return child;
         // })
+
+
         return <div>
             {childDoms}
         </div>

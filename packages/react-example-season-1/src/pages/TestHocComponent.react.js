@@ -7,13 +7,13 @@ const Button = (props) => <div>
     <button type='button' onClick={props.update}>
         {props.txt} - {props.val}
     </button>
-</div>
+</div>;
 
 const ButtonEnhanced = Enhance({})(Button);
 
 const Label = (props) => <div>
     <label onMouseMove={props.update}>{props.txt} - {props.val}</label>
-</div>
+</div>;
 
 const LabelEnhanced = Enhance({})(Label);
 
