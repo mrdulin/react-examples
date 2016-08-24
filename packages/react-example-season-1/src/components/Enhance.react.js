@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 const Enhance = ({title = 'No Title'}) => ComposedComponent => class extends Component{
 
     static defaultProps = {
-        title
+        title: ''
     }
 
     state = {

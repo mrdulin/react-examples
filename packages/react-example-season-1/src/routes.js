@@ -47,6 +47,7 @@ import FunctionBind from './pages/FunctionBind.react';
 import ReactChildren from './pages/ReactChildren.react';
 import IOSInputFocus from './pages/IOSInputFocus.react';
 import AsyncActionInComponentWillReceiveProps from './pages/AsyncActionInComponentWillReceiveProps.react';
+import callChildComponentMethod from './pages/callChildComponentMethod.react';
 
 //定义路由规则
 const routes = (
@@ -96,6 +97,7 @@ const routes = (
         <Route path='ReactChildren' component={ReactChildren}></Route>
         <Route path='ios-input-focus' component={IOSInputFocus}></Route>
         <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
+        <Route path='callChildComponentMethod' component={callChildComponentMethod} />
     </Route>
 );
 
