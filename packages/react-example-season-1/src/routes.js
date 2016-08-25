@@ -48,6 +48,7 @@ import ReactChildren from './pages/ReactChildren.react';
 import IOSInputFocus from './pages/IOSInputFocus.react';
 import AsyncActionInComponentWillReceiveProps from './pages/AsyncActionInComponentWillReceiveProps.react';
 import callChildComponentMethod from './pages/callChildComponentMethod.react';
+import setChildrenReactElementStyle from './pages/setChildrenReactElementStyle.react';
 
 //定义路由规则
 const routes = (
@@ -98,6 +99,7 @@ const routes = (
         <Route path='ios-input-focus' component={IOSInputFocus}></Route>
         <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
         <Route path='callChildComponentMethod' component={callChildComponentMethod} />
+        <Route path='setChildrenReactElementStyle' component={setChildrenReactElementStyle}></Route> 
     </Route>
 );
 

@@ -65,7 +65,8 @@ class App extends React.Component{
             'ReactChildren': '测试React.Children上的方法',
             'ios-input-focus': 'ios设备下input focus后, position: fixed失效问题',
             'async-action-in-componentWillReceiveProps': '在componentWillReceiveProps中dispatch异步action',
-            'callChildComponentMethod': '在父组件中调用子组件的方法'
+            'callChildComponentMethod': '在父组件中调用子组件的方法',
+            'setChildrenReactElementStyle': '在父组件中设置this.props.children的样式'
         }
     }
 
