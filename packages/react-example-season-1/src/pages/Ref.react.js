@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import TextInput  from '../components/TextInput.react';
+import Rate from '../common/components/Rate/';
 
 class Ref extends Component {
     render() {
@@ -11,6 +12,8 @@ class Ref extends Component {
                 {/*在组件上添加ref属性，ref callback的参数是这个组件class的实例*/}
                 <TextInput ref={textInputInstance => this.textInputComponent = textInputInstance}></TextInput>
                 <input type="button" value="Focus the text input" onClick={e => this.handleClick(e)}/>
+
+                <Rate count={3}/>
             </div>
         );
     }
