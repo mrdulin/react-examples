@@ -12,6 +12,7 @@
   },
   "homepage": "https://github.com/mrdulin/react-examples#readme",
   "dependencies": {
+    "babel-standalone": "^6.13.2",
     "body-parser": "^1.15.2",
     "normalize-scss": "^5.0.3",
     "react": "^15.1.0",
