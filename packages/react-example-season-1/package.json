@@ -37,6 +37,11 @@
     "babel-preset-stage-0": "^6.5.0",
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.0",
+    "eslint-plugin-react": "^6.1.2",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.21.0",
@@ -51,7 +56,7 @@
   },
   "scripts": {
     "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail",
-    "server": "rm -rf && webpack-dev-server --inline --hot",
+    "server": "webpack-dev-server --inline --hot",
     "release": "NODE_ENV=production webpack",
     "start": "nodemon server.js"
   },

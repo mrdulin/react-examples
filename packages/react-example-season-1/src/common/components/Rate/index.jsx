@@ -7,12 +7,15 @@ class Rate extends Component{
     }
 
     state = {
-        stars: []
+        stars: [],
+        isVote: false
     }
 
     constructor(){
         super();
         this.handleMouseOver = ::this.handleMouseOver;
+        this.handleMouseOut = ::this.handleMouseOut;
+        this.handleClick = ::this.handleClick;
     }
 
     componentWillMount() {
@@ -37,6 +40,7 @@ class Rate extends Component{
     
     handleMouseOver(id) {
         console.log('rate handleMouseOver')
+        if(this.state.isVote) return;
         const stars = this.state.stars.map(star => {
             if(star.id <= id) {
                 star.content = '★';
@@ -49,10 +53,21 @@ class Rate extends Component{
         this.setState({stars});
     }
 
+    handleMouseOut() {
+        console.log('rate handleMouseOut')
+        if(this.state.isVote) return;
+        this.buildStarData(this.props.count);
+    }
+
+    handleClick(id) {
+        this.handleMouseOver(id);
+        this.setState({isVote: true});
+    }   
+
     render() {
         console.count('Rate render count');
         const {stars} = this.state;
-        const starItems = stars.map(star => <Star id={star.id} onMouseOver={this.handleMouseOver} key={star.id}>{star.content}</Star>)
+        const starItems = stars.map(star => <Star id={star.id} onClick={this.handleClick} onMouseOut={this.handleMouseOut} onMouseOver={this.handleMouseOver} key={star.id}>{star.content}</Star>)
         return <div>
            {starItems}
         </div>
@@ -69,16 +84,28 @@ class Star extends Component{
     constructor() {
         super();
         this.handleMouseOver = ::this.handleMouseOver;
+        this.handleMouseOut = ::this.handleMouseOut;
+        this.handleClick = ::this.handleClick;
     }
     render() {
         const {children} = this.props;
-        return <span style={this.props.starStyle} onMouseOver={this.handleMouseOver}>{children}</span>
+        return <span style={this.props.starStyle} onClick={this.handleClick} onMouseOut={this.handleMouseOut} onMouseOver={this.handleMouseOver}>{children}</span>
     }
 
     handleMouseOver(e) {
         console.log('star handleMouseOver');
         const {id, onMouseOver} = this.props;
         onMouseOver && onMouseOver(id);
+    }
+
+    handleMouseOut() {
+        const {onMouseOut} = this.props;
+        onMouseOut && onMouseOut();
+    }
+
+    handleClick() {
+        const {id, onClick} = this.props;
+        onClick && onClick(id);
     }
 }
 
