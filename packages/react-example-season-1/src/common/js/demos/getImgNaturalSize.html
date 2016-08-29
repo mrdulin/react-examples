@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+           width: 400px;
+           height: 300px; 
+        }
+    </style>
+</head>
+<body>
+    <img src="http://7xp9vw.com1.z0.glb.clouddn.com/image/2.jpg" alt="">
+    <script src="../util.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', ready);
+
+        function ready() {
+            var img = document.getElementsByTagName('img')[0];
+            img.addEventListener('load', function() {
+                console.log(util.getImgNaturalSize(img));
+            });
+        }
+    </script>
+</body>
+</html>

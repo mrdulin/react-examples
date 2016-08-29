@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .shape{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            -webkit-transition: border-radius linear 1s;
+            -o-transition: border-radius linear 1s;
+            transition: border-radius linear 1s;
+        }
+
+        .shape.transform{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class='shape'></div>
+    <script src="../util.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', domReady);
+
+        function domReady() {
+            var shape = document.querySelector('.shape');
+            setTimeout(function() {
+                shape.classList.add('transform');
+            }, 2000);
+            
+            var transitionEvent = util.getTransitionEvent();
+            transitionEvent && shape.addEventListener(transitionEvent, function(e) {
+                //transitionend事件可能会触发很多次，本例中，过渡的属性是border-radius
+                //实际触发了4次，分别是 `border-bottom-right-radius`, `border-bottom-left-radius`, `border-top-right-radius`, `border-top-left-radius`
+                console.dir(e);
+                alert('动画过渡结束');
+            })
+        }
+    </script>
+</body>
+</html>
