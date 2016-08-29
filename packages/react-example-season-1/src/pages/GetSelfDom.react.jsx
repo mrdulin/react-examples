@@ -24,17 +24,17 @@ class GetSelfDom extends Component{
         console.log('GetSelfDom did mount')
         const el = ReactDOM.findDOMNode(this);
         console.log(el);
-        ReactDOM.render(
-            <MyComponent />,
-            document.getElementById('content')
-        )
+        // ReactDOM.render(
+        //     <MyComponent />,
+        //     document.getElementById('content')
+        // )
     }
     render() {
         console.count('GetSelfDom render');
         return <div id='get-self-dom'>
             container component
             <div id='content'>
-                {/*<MyComponent />*/}
+                <MyComponent />
             </div>
         </div>
     }
