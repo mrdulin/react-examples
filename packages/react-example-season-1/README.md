@@ -12,6 +12,12 @@ dulindeiMac:react-examples dulin$ node -v
 v4.4.Â
 ```
 
+```bash
+dulin@dulindeiMac-2:~/workspace/react-examples (master*=) % gulp -v                                                                                                                                                                                                  
+[12:07:06] CLI version 3.9.1                                                                                                                                                                                                                                         
+[12:07:06] Local version 3.9.1 
+```
+
 _如何运行:_
 
 1.  `npm install`
@@ -47,6 +53,8 @@ import NoMatch from './pages/NoMatch';
 ```
 
 * 	`babel-polyfill`，使用`async`和`await`时，报`Uncaught ReferenceError: regeneratorRuntime is not defined`错误，解决办法是在使用`async`和`await`的文件中，先`require('babel-polyfill')`，或者在`webpack`的`entry`中加入`babel-polyfill`。
+
+*   `gulp + es6`, `gulp` 3.9版本以上，支持`es6`语法，步骤：1.在`.babelrc`中添加`es2015`，2.将`gulpfile.js`文件重命名为`gulpfile.babel.js`;
 
 _出现的问题:_
 
