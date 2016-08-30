@@ -35,7 +35,7 @@ class InputPage extends Component{
                 <input type="text" defaultValue={value}/>
             </div>
             <div>
-                <label htmlFor="">input-value(null)</label>
+                <label htmlFor="">input-value({null})</label>
                 <input type="text" value={null}/>
             </div>
             <div>
@@ -43,8 +43,12 @@ class InputPage extends Component{
                 <input type="text" value={undefined}/>
             </div>
             <div>
-                <label htmlFor="">input-value('')</label>
+                <label htmlFor="">input-value({''})</label>
                 <input type="text" value={''}/>
+            </div>
+            <div>
+                <label htmlFor="">input-value('')</label>
+                <input type="text" value=''/>
             </div>
 
             <div>
