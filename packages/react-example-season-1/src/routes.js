@@ -50,6 +50,7 @@ import AsyncActionInComponentWillReceiveProps from './pages/AsyncActionInCompone
 import callChildComponentMethod from './pages/callChildComponentMethod.react';
 import setChildrenReactElementStyle from './pages/setChildrenReactElementStyle.react';
 import GetSelfDom from './pages/getSelfDom.react';
+import InputPage from './pages/InputPage.react';
 
 //定义路由规则
 const routes = (
@@ -102,6 +103,7 @@ const routes = (
         <Route path='callChildComponentMethod' component={callChildComponentMethod} />
         <Route path='setChildrenReactElementStyle' component={setChildrenReactElementStyle}></Route> 
         <Route path='getSelfDom' component={GetSelfDom}/>
+        <Route path='input' component={InputPage}/>
     </Route>
 );
 
