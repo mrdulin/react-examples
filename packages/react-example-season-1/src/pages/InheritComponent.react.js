@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import BaseComponent from '../components/BaseComponent.react';
+import ReceiveContext from '../components/ReceiveContext.react';
 
 class InheritComponent extends BaseComponent{
 
@@ -7,12 +8,20 @@ class InheritComponent extends BaseComponent{
         title: ''
     };
 
-    constructor(props) {
+    constructor(props, context) {
         //props包含了React.Component的props和BaseComponent中定义的props
         // console.log(props)
-        // console.log(super);
-        super(props);
-        console.log(this);
+        // super(props);
+        // console.log(this);
+        console.log(super(props, context))
+        // console.log(super(props, context));
+        // console.log(props);
+        // console.log(context);
+
+    }
+
+    getChildContext() {
+        return {color: 'lightgreen'};
     }
 
     componentDidMount() {
@@ -24,8 +33,13 @@ class InheritComponent extends BaseComponent{
         return <div>
             <p>I inherit BaseComponent</p>
             <p>current title is {this.state.title}</p>
+            <ReceiveContext />
         </div>
     }
+}
+
+InheritComponent.childContextTypes = {
+    color: PropTypes.string
 }
 
 export default InheritComponent;
