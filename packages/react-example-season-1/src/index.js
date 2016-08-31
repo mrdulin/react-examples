@@ -14,8 +14,9 @@ import store from './store';
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>
-            {routes}
+        <Router history={browserHistory} routes={routes}>
+            {/**或者将routes当作chilren插入也可以 */}
+            {/*routes*/}
             {/*这里的注释只能这样写，//这种方式的注释会报错*/}
             <Route path='*' component={NoMatch}></Route>
         </Router>
