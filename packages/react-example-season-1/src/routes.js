@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
+import {Route, IndexRoute, IndexRedirect} from 'react-router';
 
 
 //各个demo页面component
@@ -51,61 +51,70 @@ import callChildComponentMethod from './pages/callChildComponentMethod.react';
 import setChildrenReactElementStyle from './pages/setChildrenReactElementStyle.react';
 import GetSelfDom from './pages/getSelfDom.react';
 import InputPage from './pages/InputPage.react';
+import Main from './pages/Main.react';
+import Sidebar from './pages/Sidebar.react';
+import ReactRouter04 from './pages/ReactRouter04.react';
 
 //定义路由规则
-// const routes = (
-//     //导航首页，导航到各个demo页面
-//     <Route path='/' component={App}>
-//         //各个demo页面路由
-//         <Route path='table' component={Table}></Route>
-//         <Route path='form' component={Form}></Route>
-//         <Route path='redux01' component={Redux01}></Route>
-//         <Route path='redux02' component={Redux02}></Route>
-//         <Route path='todoList' component={TodoList}></Route>
-//         <Route path='react-redux01' component={ReactRedux01}></Route>
-//         <Route path='react-redux02' component={ReactRedux02}></Route>
-//         <Route path='react-redux03' component={ReactRedux03}></Route>
-//         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
-//         <Route path='ref_callback_attribute' component={Ref}></Route>
-//         <Route path='stateless-functional-component' component={StateLessFunctionalComponent}></Route>
-//         <Route path='countDown' component={CountDownPage}></Route>
-//         <Route path='xScroll' component={xScroll}></Route>
-//         <Route path='react-router01(/:page)' component={ReactRouter01}></Route>
-//         <Route path='react-router02' component={ReactRouter02}></Route>
-//         <Route path='react-router03' component={ReactRouter03}></Route>
-//         <Route path='react-china-questions' component={ReactChinaQuestions}></Route>
-//         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
-//         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
-//         <Route path='ScrollTop' component={ScrollTop}></Route>
-//         <Route path='ios-scroll-event' component={IOSScrollEvent}></Route>
-//         <Route path='loop-scroll' component={LoopScroll}></Route>
-//         <Route path='modal-input' component={ModalInput}></Route>
-//         <Route path='filter' component={Filter}></Route>
-//         <Route path='dynamic-inline-style' component={DynamicInlineStyle}></Route>
-//         <Route path='PassAsyncDataToChildComponent' component={PassAsyncDataToChildComponent}></Route>
-//         <Route path='redux03-middleware' component={Redux03Middleware}></Route>
-//         <Route path='array-dom' component={ArrayDom}></Route>
-//         <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
-//         <Route path="initStateTreeData" component={InitStateTreeData}></Route>
-//         <Route path='downloadAll' component={Download}></Route>
-//         <Route path='MobileInputFocusAndKeyboard' component={MobileInputFocusAndKeyboard}></Route>
-//         <Route path='audio' component={AudioPages}></Route>
-//         <Route path='iframe' component={IframePage}></Route>
-//         <Route path='GrabChildComponentState' component={GrabChildComponentState}></Route>
-//         <Route path='AjaxInConstructor' component={AjaxInConstructor}></Route>
-//         <Route path='HOC' component={TestHocComponent}></Route>
-//         <Route path='InheritComponent' component={InheritComponent}></Route>
-//         <Route path='composableComponent' component={ComposableComponent}></Route>
-//         <Route path='function-bind' component={FunctionBind}></Route>
-//         <Route path='ReactChildren' component={ReactChildren}></Route>
-//         <Route path='ios-input-focus' component={IOSInputFocus}></Route>
-//         <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
-//         <Route path='callChildComponentMethod' component={callChildComponentMethod} />
-//         <Route path='setChildrenReactElementStyle' component={setChildrenReactElementStyle}></Route> 
-//         <Route path='getSelfDom' component={GetSelfDom}/>
-//         <Route path='input' component={InputPage}/>
-//     </Route>
-// );
+const routes = (
+    //导航首页，导航到各个demo页面
+    <Route path='/' component={App}>
+        //各个demo页面路由
+        <Route path='table' component={Table}></Route>
+        <Route path='form' component={Form}></Route>
+        <Route path='redux01' component={Redux01}></Route>
+        <Route path='redux02' component={Redux02}></Route>
+        <Route path='todoList' component={TodoList}></Route>
+        <Route path='react-redux01' component={ReactRedux01}></Route>
+        <Route path='react-redux02' component={ReactRedux02}></Route>
+        <Route path='react-redux03' component={ReactRedux03}></Route>
+        <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
+        <Route path='ref_callback_attribute' component={Ref}></Route>
+        <Route path='stateless-functional-component' component={StateLessFunctionalComponent}></Route>
+        <Route path='countDown' component={CountDownPage}></Route>
+        <Route path='xScroll' component={xScroll}></Route>
+        <Route path='react-router01(/:page)' component={ReactRouter01}></Route>
+        <Route path='react-router02' component={ReactRouter02}></Route>
+        <Route path='react-router03' component={ReactRouter03}></Route>
+        {/*<Route path='react-router04' component={ReactRouter04}>
+            <IndexRoute components={{main: <Main />, sidebar: <Sidebar/>}}/>
+        </Route>*/}
+        <Route path='react-china-questions' component={ReactChinaQuestions}></Route>
+        <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
+        <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
+        <Route path='ScrollTop' component={ScrollTop}></Route>
+        <Route path='ios-scroll-event' component={IOSScrollEvent}></Route>
+        <Route path='loop-scroll' component={LoopScroll}></Route>
+        <Route path='modal-input' component={ModalInput}></Route>
+        <Route path='filter' component={Filter}></Route>
+        <Route path='dynamic-inline-style' component={DynamicInlineStyle}></Route>
+        <Route path='PassAsyncDataToChildComponent' component={PassAsyncDataToChildComponent}></Route>
+        <Route path='redux03-middleware' component={Redux03Middleware}></Route>
+        <Route path='array-dom' component={ArrayDom}></Route>
+        <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
+        <Route path="initStateTreeData" component={InitStateTreeData}></Route>
+        <Route path='downloadAll' component={Download}></Route>
+        <Route path='MobileInputFocusAndKeyboard'>
+            <IndexRedirect to='/focus' />
+            <Route path='focus' component={MobileInputFocusAndKeyboard}/>
+        </Route>
+        <Route path='audio' component={AudioPages}></Route>
+        <Route path='iframe' component={IframePage}></Route>
+        <Route path='GrabChildComponentState' component={GrabChildComponentState}></Route>
+        <Route path='AjaxInConstructor' component={AjaxInConstructor}></Route>
+        <Route path='HOC' component={TestHocComponent}></Route>
+        <Route path='InheritComponent' component={InheritComponent}></Route>
+        <Route path='composableComponent' component={ComposableComponent}></Route>
+        <Route path='function-bind' component={FunctionBind}></Route>
+        <Route path='ReactChildren' component={ReactChildren}></Route>
+        <Route path='ios-input-focus' component={IOSInputFocus}></Route>
+        <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
+        <Route path='callChildComponentMethod' component={callChildComponentMethod} />
+        <Route path='setChildrenReactElementStyle' component={setChildrenReactElementStyle}></Route> 
+        <Route path='getSelfDom' component={GetSelfDom}/>
+        <Route path='input' component={InputPage}/>
+    </Route>
+);
 
 //路由改造: 一，JS原始对象的形式,同步加载方式
 // const routes = {
@@ -129,17 +138,17 @@ import InputPage from './pages/InputPage.react';
 // }
 
 //路由改造：三，异步加载方式
-const routes = {
-    path: '/',
-    component: App,
-    getChildRoutes(partialNextState, cb) {
-        require.ensure([], require => {
-            const tableRoute = require('./routes/Table');
-            cb(null, [
-                tableRoute
-            ]);
-        })
-    }
-}
+// const routes = {
+//     path: '/',
+//     component: App,
+//     getChildRoutes(partialNextState, cb) {
+//         require.ensure([], require => {
+//             const tableRoute = require('./routes/Table');
+//             cb(null, [
+//                 tableRoute
+//             ]);
+//         })
+//     }
+// }
 
 export default routes;

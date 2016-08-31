@@ -30,6 +30,7 @@ class App extends React.Component{
             'react-router01/1?name=novaline&age=26': '如何获取url中的?s=xxx&page=2查询字符串',
             'react-router02': '离开当前路由时，弹出提示',
             'react-router03': '路由跳转3种方式',
+            'react-router04': '多个命名组件',
             redux01: 'redux测试',
             redux02: 'redux异步action测试',
             'react-redux01': 'api_mapStateToProps测试',
