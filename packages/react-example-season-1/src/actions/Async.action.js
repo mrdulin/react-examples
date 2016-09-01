@@ -18,8 +18,9 @@ export const requestCityFinish = () => {
 };
 
 export const getCities = (key) => {
-    return (dispatch, getState) => {
+    return (dispatch, getState, {api_host}) => {
         dispatch(requestCity(key));
+        console.log('api_host', api_host);
 
         return new Promise((resolve, reject) => {
             const condition = Math.random();
