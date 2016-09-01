@@ -73,6 +73,22 @@ class App extends React.Component{
         }
     }
 
+    static contextTypes = {
+        router: React.PropTypes.object
+    }
+
+    componentDidMount() {
+        this.context.router.listen(this.routeChange.bind(this));
+    }
+
+    componentWillUnmount() {
+        this.context.router.unregisterTransitionHook(this.routeChange.bind(this))
+    }
+
+    routeChange(...arg) {
+        console.log('routeChange', arg, this);
+    }
+
     render() {
         let demoKeys = Object.keys(this.props.demoMap);
         const options = demoKeys.map((key) => {
@@ -104,6 +120,7 @@ class App extends React.Component{
         //如果使用browserHistory.push(`/#/${value}`);不回报错，并且url的路由也会改变，react-router不会匹配到这个路由，所以相应的component不会加载
         //下面的也可以使用browserHistory.push(`/${value}`);
         browserHistory.push(`${value}`);
+        console.log('browserHistory', browserHistory);
     }
 };
 

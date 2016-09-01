@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route, IndexRoute, IndexRedirect} from 'react-router';
 
-
 //各个demo页面component
 import App from './pages/App.react';
 import Table from './pages/Table.react';
@@ -54,6 +53,7 @@ import InputPage from './pages/InputPage.react';
 import Main from './pages/Main.react';
 import Sidebar from './pages/Sidebar.react';
 import ReactRouter04 from './pages/ReactRouter04.react';
+import Redirect from './pages/Redirect.react';
 
 //定义路由规则
 const routes = (
@@ -76,9 +76,9 @@ const routes = (
         <Route path='react-router01(/:page)' component={ReactRouter01}></Route>
         <Route path='react-router02' component={ReactRouter02}></Route>
         <Route path='react-router03' component={ReactRouter03}></Route>
-        {/*<Route path='react-router04' component={ReactRouter04}>
-            <IndexRoute components={{main: <Main />, sidebar: <Sidebar/>}}/>
-        </Route>*/}
+        <Route path='react-router04' component={ReactRouter04}>
+            <IndexRoute components={{main: Main, sidebar: Sidebar}}/>
+        </Route>
         <Route path='react-china-questions' component={ReactChinaQuestions}></Route>
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
@@ -94,10 +94,8 @@ const routes = (
         <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
         <Route path="initStateTreeData" component={InitStateTreeData}></Route>
         <Route path='downloadAll' component={Download}></Route>
-        <Route path='MobileInputFocusAndKeyboard'>
-            <IndexRedirect to='/focus' />
-            <Route path='focus' component={MobileInputFocusAndKeyboard}/>
-        </Route>
+        <Route path='MobileInputFocusAndKeyboard' component={Redirect}></Route>
+        <Route path='focus' component={MobileInputFocusAndKeyboard}/>
         <Route path='audio' component={AudioPages}></Route>
         <Route path='iframe' component={IframePage}></Route>
         <Route path='GrabChildComponentState' component={GrabChildComponentState}></Route>

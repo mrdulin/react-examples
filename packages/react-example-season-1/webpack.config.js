@@ -66,7 +66,7 @@ const config = {
 			__DEV__: __DEV__,
 			__PROD__: __PROD__,
 			'process.env': {
-				'NODE_ENV': process.env.NODE_ENV
+				NODE_ENV: JSON.stringify(__PROD__ ? 'production' : 'development')
 			}
 		}),
 		new ExtractTextPlugin('[name].[hash].css', {

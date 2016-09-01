@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const multiparty = require('multiparty');
+// const multiparty = require('multiparty');
 const util = require('util');
 
 const port = 3000;
@@ -17,7 +17,11 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use('/', express.static(static_dir));
+// app.use(express.static(static_dir));
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(static_dir, 'index.html'));
+// });
 
 app.get('/city', (req, res) => {
     const city = {

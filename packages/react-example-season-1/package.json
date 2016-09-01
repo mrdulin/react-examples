@@ -57,9 +57,9 @@
   },
   "scripts": {
     "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail",
-    "server": "webpack-dev-server --inline --hot",
+    "server": "webpack-dev-server --progress --profile --inline --hot",
     "release": "NODE_ENV=production webpack",
-    "start": "nodemon server.js"
+    "start": "rm -rf ./dist && NODE_ENV=production webpack --progress --profile && nodemon server.js"
   },
   "keywords": [],
   "author": "",

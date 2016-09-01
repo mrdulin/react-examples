@@ -11,8 +11,8 @@ class MobileInputFocusAndKeyboard extends Component{
     componentDidMount() {
         // alert('componentDidMount');
         // 虚拟键盘不弹出
-        // this._input.focus();
-        this._input.click();
+        this._input.focus();
+        // this._input.click();
     }
 
     render() {
