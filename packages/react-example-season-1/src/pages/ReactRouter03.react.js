@@ -17,18 +17,25 @@ class ReactRouter03 extends Component{
     static contextTypes = {
         router: PropTypes.object
     }
+    
+    state = {
+        data: ['angular', 'jquery', 'backbone', 'react']
+    }
 
     render() {
         return (
             <div>
-                <h2>路由跳转的3种方式</h2>
-                <Link to="/table">table</Link>
+                <h2>路由跳转的N种方式</h2>
+                <Link to="/table">link1</Link>
                 <button type="button" onClick={() => {this.transitionTo1()}}>transitionTo1</button>
                 <button type="button" onClick={() => {this.transitionTo2()}}>transitionTo2</button>
                 <button type="button" onClick={() => {this.transitionTo3()}}>transitionTo3</button>
                 <button type="button" onClick={() => {this.transitionTo4()}}>transitionTo4</button>
                 <button type="button" onClick={() => {this.transitionTo5()}}>transitionTo5</button>
                 <button type="button" onClick={() => {this.transitionTo6()}}>transitionTo6</button>
+                <button type="button" onClick={() => {this.transitionTo7()}}>transitionTo7</button>
+
+                <Link to={{pathname: '/table', query: {the: 'query'}}}>link2</Link>    
             </div>
         );
     }
@@ -52,12 +59,20 @@ class ReactRouter03 extends Component{
 
     transitionTo5() {
         // this.props.router.push('table');
-        this.props.router.push({path: 'table'});
+        this.props.router.push({
+            pathname: 'table',
+            query: {the: 'query'}
+        });
     }
 
     transitionTo6() {
-        //浏览器history中不记录历史
+        //替换浏览器history中当前历史，而不是往里push
         this.props.router.replace('table');
+    }
+
+    transitionTo7() {
+        //Warning: [react-router] `props.history` and `context.history` are deprecated. Please use `context.router`. http://tiny.cc/router-contextchanges
+        // this.props.history.pushState('table');
     }
 
 }

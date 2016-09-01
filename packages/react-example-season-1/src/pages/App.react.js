@@ -1,5 +1,5 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
+import {browserHistory, withRouter} from 'react-router';
 
 class App extends React.Component{
 
@@ -78,6 +78,12 @@ class App extends React.Component{
     }
 
     componentDidMount() {
+         //比较引用
+        console.log('browserHistory', browserHistory);
+        console.log('this.context.router is same as this.props.router', this.context.router === this.props.router); //true
+        console.log('this.context.router is same as browserHistory', this.context.router === browserHistory);   //false
+        console.log('this.context.router.push is same as browserHistory.push', this.context.router.push === browserHistory.push);   //true
+
         this.context.router.listen(this.routeChange.bind(this));
     }
 
@@ -120,7 +126,6 @@ class App extends React.Component{
         //如果使用browserHistory.push(`/#/${value}`);不回报错，并且url的路由也会改变，react-router不会匹配到这个路由，所以相应的component不会加载
         //下面的也可以使用browserHistory.push(`/${value}`);
         browserHistory.push(`${value}`);
-        console.log('browserHistory', browserHistory);
     }
 };
 
@@ -132,4 +137,4 @@ App.propTypes = {
     demoMap: React.PropTypes.object
 };
 
-export default App;
+export default withRouter(App);
