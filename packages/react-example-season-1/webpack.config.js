@@ -55,7 +55,7 @@ const config = {
 		}
 	},
 
-	devtool: __DEV__ ? 'source-map' : false,
+	devtool: __DEV__ ? false : false,
 
 	plugins: [
 		new HtmlWebpackPlugin({

@@ -124,32 +124,46 @@ import {Route, IndexRoute, IndexRedirect} from 'react-router';
 //     ]
 // };
 
-//路由改造：二，同步加载方式，但开始import的代码不执行，而是延后到具体路由加载的时候执行
-const routes = {
-    path: '/',
-    getComponent: (nextState, cb) => {
-        cb(null, require('./pages/App.react').default)
-    },
-    childRoutes: [
-        {path: 'table', getComponent: (nextState, callback) => {
-            callback(null, require('./pages/Table.react').default)
-        }}
-    ]
-}
+//路由改造：二，同步加载方式，不同于改造前静态import, 静态import，打包后的代码要马上执行很多__webpack_require__(moduleid),
+// 改造后，代码打包后的__webpack_require__(moduleid)不执行，而是延后到具体路由加载的时候执行
+//打包的js文件没有[id].chunk.js，还是一次性将所有代码打包到一个文件，所以下载也是下载整个bundle文件，这点和异步加载生成单独chunk.js文件的方式不同。
 
-//路由改造：三，异步加载方式
+// import App from './pages/App.react';
 // const routes = {
 //     path: '/',
 //     component: App,
-//     getChildRoutes(partialNextState, cb) {
-//         require.ensure([], require => {
-//             const tableRoute = require('./routes/Table');
-//             cb(null, [
-//                 tableRoute
-//             ]);
-//         })
-//     }
+//     childRoutes: [
+//         {
+//             path: 'table', 
+//             getComponent: (nextState, cb) => {
+//                 const tableComponent = require('./pages/Table.react');
+//                 cb(null, tableComponent);
+//             }
+//         },
+//         {
+//             path: 'Form',
+//             getComponent: (nextState, cb) => cb(null, require('./pages/Form.react'))
+//         }
+//     ]
 // }
+
+//路由改造：三，异步加载方式，每个异步加载的模块生成单独的[id].chunk.js，根据路由动态加载（向服务器请求并下载）该模块的路由和组件文件(chunk.js)
+import App from './pages/App.react';
+const routes = {
+    path: '/',
+    component: App,
+    getChildRoutes(partialNextState, cb) {
+        //partialNextState是react-router的Link的{pathname, query, state}中的state
+        //使用partialNextState做一些逻辑处理，决定加载哪个route
+        require.ensure([], require => {
+            const tableRoute = require('./routes/Table');
+            cb(null, [
+                tableRoute,
+                require('./routes/Form')
+            ]);
+        })
+    }
+}
 
 
 export default routes;
