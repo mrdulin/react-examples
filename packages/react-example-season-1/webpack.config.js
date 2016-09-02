@@ -44,6 +44,14 @@ const config = {
 			test: /\.(scss|sass)$/,
 			exclude: /node_modules/,
 			loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
+		}, {
+			test: /\.(png|jpg)$/,
+			exclude: /(node_modules|bower_components)/,
+			loader: 'file',
+			query: {
+				name: '[path][name].[ext]?[hash]',
+				context: './src'
+			}
 		}]
 	},
 
@@ -69,7 +77,7 @@ const config = {
 				NODE_ENV: JSON.stringify(__PROD__ ? 'production' : 'development')
 			}
 		}),
-		new ExtractTextPlugin('[name].[hash].css', {
+		new ExtractTextPlugin('[name].[contenthash].css', {
 			allChunks: true
 		})
 	],

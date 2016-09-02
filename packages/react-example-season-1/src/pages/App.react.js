@@ -69,7 +69,8 @@ class App extends React.Component{
             'callChildComponentMethod': '在父组件中调用子组件的方法',
             'setChildrenReactElementStyle': '在父组件中设置this.props.children的样式',
             'getSelfDom': '组件挂载后获取自身dom节点',
-            'input': 'input标签测试'
+            'input': 'input标签测试',
+            'importImage': 'ES6 import 图片？'
         }
     }
 
