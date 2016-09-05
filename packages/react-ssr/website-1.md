@@ -89,3 +89,4 @@
 87. [Daily game deals and bundles](http://dailyindiegame.com/)
 88. [AStats - Guides, Trading and Ranking for Steam Achievements and Games and Cards](http://astats.astats.nl/astats/)
 89. [RARBG Torrents , filmi , download](https://rarbg.to/torrents.php)
+90. [果壳网 科技有意思](http://www.guokr.com/)
