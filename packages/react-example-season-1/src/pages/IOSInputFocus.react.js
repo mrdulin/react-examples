@@ -8,6 +8,8 @@ class IOSInputFocus extends Component{
         return <div id="ios-input-focus">
             <header className="header" ref={ref => this._header = ref}>头部</header>
             <input type="text" placeholder="王宝强" onFocus={() => this.handleFocus()}/>
+
+            <input type='file' accept='image/*'/>   
         </div>
     }
 

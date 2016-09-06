@@ -1,4 +1,6 @@
-require('babel-polyfill');
+//https://babeljs.io/docs/plugins/transform-runtime/
+// require('babel-polyfill');
+
 // export default new Promise(resolve => resolve(data));
 
 export default async function() {

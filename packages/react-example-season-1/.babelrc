@@ -6,7 +6,11 @@
     ],
     "plugins": [
         ["transform-decorators-legacy"],
-        "add-module-exports"
+        "add-module-exports",
+        ["transform-runtime", {
+            "polyfill": false,
+            "regenerator": true
+        }]
     ],
     "env": {
         "development": {
