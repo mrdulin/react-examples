@@ -9,6 +9,16 @@ class ArticleList extends Component {
     static defaultProps = {
         ...articles
     }
+    state = {
+        filterText: ''
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // console.log(nextProps.filterText);
+        if(this.props.filterText !== nextProps.filterText) {
+            this.setState({filterText: nextProps.filterText});
+        }
+    }
     
     render() {
         const articleList = this.renderArticleList();
@@ -18,11 +28,13 @@ class ArticleList extends Component {
         this.currentRoute = this.props.location.pathname.replace('/', '');
         const articleDataMap = this.props.items[this.currentRoute];
         const articleItems = Object.keys(articleDataMap).map((articleKey, index) => {
-            return <li key={articleKey}>
-                <a href="javascript:void(0)" onClick={e => this.handleArticleClick(e, articleKey)}>
-                    <span>{articleKey}</span> - <span>{articleDataMap[articleKey]}</span>
-                </a>
-            </li>
+            if(articleKey.indexOf(this.state.filterText) !== -1) {
+                return <li key={articleKey}>
+                    <a href="javascript:void(0)" onClick={e => this.handleArticleClick(e, articleKey)}>
+                        <span>{articleKey}</span> - <span>{articleDataMap[articleKey]}</span>
+                    </a>
+                </li>
+            }
         })
         return <ul className='article-list'>{articleItems}</ul> 
     }

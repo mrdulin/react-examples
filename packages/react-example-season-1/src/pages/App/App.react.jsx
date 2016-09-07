@@ -18,8 +18,10 @@ class App extends React.Component{
         let routeName = this.props.routes[this.props.routes.length - 1].path || '';
         //ES6写法在constructor中初始化state
         this.state = {
-            demoKey: routeName
+            demoKey: routeName,
+            dataPassMainAndSidebar: {filterText: ''}
         };
+        this.handleFilterChange = ::this.handleFilterChange;
     }
 
     static defaultProps = {
@@ -72,7 +74,7 @@ class App extends React.Component{
             'input': 'input标签测试',
             'importImage': 'ES6 import 图片？'
         },
-        dataPassMainAndSidebar: {data: {filterText: ''}}
+        
     }
 
     static contextTypes = {
@@ -97,14 +99,15 @@ class App extends React.Component{
         // console.log('routeChange', arg, this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps.dataPassMainAndSidebar)
+    handleFilterChange(filterText) {
+        this.setState({dataPassMainAndSidebar: {filterText}})
     }
 
     render() {
-        const {main, sidebar, dataPassMainAndSidebar} = this.props;
-        const mainWithData = React.cloneElement(main, dataPassMainAndSidebar);
-        const sidebarWithData = React.cloneElement(sidebar, dataPassMainAndSidebar);
+        const {main, sidebar} = this.props;
+        const data = Object.assign({}, this.state.dataPassMainAndSidebar, {handleFilterChangeCallback: this.handleFilterChange});
+        const mainWithData = React.cloneElement(main, data);
+        const sidebarWithData = React.cloneElement(sidebar, data);
 
         // let demoKeys = Object.keys(this.props.demoMap);
         // const options = demoKeys.map((key) => {

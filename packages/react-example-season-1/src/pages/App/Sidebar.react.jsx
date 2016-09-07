@@ -7,24 +7,22 @@ class Sidebar extends Component{
         super(props);
         this.handleTextFilterChange = ::this.handleTextFilterChange;
         this.state = {
-            dataCommunicateBetweenSidebarAndMain: this.props.data
+            filterText: this.props.filterText
         }
     }
     render() {
         const sideBarItems = this.renderItems();
         return <div className='sidebar'>
             <Link className='toc_title' to='/'>React全家桶<span>(1.0)</span></Link>
-            <input id='article-filter' type="text" placeholder='Filter' value={this.state.dataCommunicateBetweenSidebarAndMain.filterText} onChange={this.handleTextFilterChange}/>
+            <input id='article-filter' type="text" placeholder='Filter' value={this.state.filterText} onChange={this.handleTextFilterChange}/>
             {sideBarItems}
         </div>
     }
 
     handleTextFilterChange(e) {
-        this.setState({
-            dataCommunicateBetweenSidebarAndMain: {
-                filterText: e.target.value
-            } 
-        });
+        const value = e.target.value;
+        this.setState({filterText: value});
+        this.props.handleFilterChangeCallback(value);
     }
 
     renderItems() {
@@ -33,7 +31,7 @@ class Sidebar extends Component{
         return libNames.map((libName, index) => {
             const articleKeys = Object.keys(items[libName]);
             const articles = articleKeys.map((articleKey, idx) => {
-                if(articleKey.indexOf(this.state.dataCommunicateBetweenSidebarAndMain.filterText) !== -1) {
+                if(articleKey.indexOf(this.state.filterText) !== -1) {
                     return <li key={articleKey}>
                         - <Link to={`/${libName}/${articleKey}`}>{articleKey}</Link>
                     </li>
