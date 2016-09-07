@@ -59,11 +59,12 @@ const config = {
 		root: __dirname,
 		extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
 		alias: {
-			'react-dom': getNodeModulePath('react-dom/dist/react-dom.js')
+			'react-dom': getNodeModulePath('react-dom/dist/react-dom.js'),
+			'articles': path.resolve(src, 'common/js', 'articles.js')
 		}
 	},
 
-	devtool: __DEV__ ? false : false,
+	devtool: __DEV__ ? 'source-map' : false,
 
 	plugins: [
 		new HtmlWebpackPlugin({
