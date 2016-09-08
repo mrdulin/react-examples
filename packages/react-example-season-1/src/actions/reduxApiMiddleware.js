@@ -1,8 +1,6 @@
 import {CALL_API} from 'redux-api-middleware';
+import * as Action from './common.action';
 
-export const REQUEST = 'REQUEST';
-export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
-export const REQUEST_FAIL = 'REQUEST_FAIL';
 
 export const requestCity = () => {
     const body = JSON.stringify({userId: '12adfaefsa123123sddfs'});
@@ -24,7 +22,7 @@ export const requestCity = () => {
             method: 'get',
 
             //types 必须是一个长度是3的数组，数组中每个元素数据类型必须是字符串，Symbol类型
-            types: [REQUEST, REQUEST_SUCCESS, REQUEST_FAIL],
+            types: [Action.REQUEST, Action.REQUEST_SUCCESS, Action.REQUEST_FAIL],
 
             //body 我们通常称的接口调用的时候向服务器端发送的数据，通常，一般是encode过的json或者
             // body: body

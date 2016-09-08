@@ -17,9 +17,10 @@ import * as reduxApiMiddlewareReducers from './reduxApiMiddleware';
 import * as reactRedux02Reducers from './reactRedux02';
 import * as reactRedux03Reducers from './reactRedux03';
 import * as scrollTop from './scrollTop.reducer';
-import * as redux03 from './redux03';
-import * as InitStateTreeData from './InitStateTreeData.reducer';
+import * as DefineReduxStateDataStructure from './DefineReduxStateDataStructure';
+import * as InitReduxStateTreeDataInComponentWillMount from './InitReduxStateTreeDataInComponentWillMount.reducer';
 import * as AsyncActionInCWRP from './AsyncActionInCWRP.reducer';
+import * as common from './common.reducer';
 
 //通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
 //传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
@@ -42,9 +43,10 @@ const rootReducer = combineReducers({
 	...reactRedux03Reducers,
 	...reduxApiMiddlewareReducers,
 	...scrollTop,
-	...redux03,
-	...InitStateTreeData,
-    ...AsyncActionInCWRP
+	...DefineReduxStateDataStructure,
+	...InitReduxStateTreeDataInComponentWillMount,
+    ...AsyncActionInCWRP,
+	...common
 });
 
 export default rootReducer;

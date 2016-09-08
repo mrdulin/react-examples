@@ -30,7 +30,7 @@ const style = {
 	}
 };
 
-class ModalInput extends Component{
+class SetModalWindowPositionOnInputFocus extends Component{
 	state = {
 		windowInnerHeight: window.innerHeight,
 		keyboardHeight: 0
@@ -88,4 +88,4 @@ class ModalInput extends Component{
 	}
 }
 
-export default ModalInput;
+export default SetModalWindowPositionOnInputFocus;

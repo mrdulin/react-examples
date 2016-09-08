@@ -32,6 +32,10 @@ import IOSScrollEvent from './pages/React/IOSScrollEvent.react';
 import DownloadAllTest from './pages/React/DownloadAllTest.react';
 import LoopScroll from './pages/React/LoopScroll.react';
 import GrabChildComponentState from './pages/React/GrabChildComponentState/GrabChildComponentState.react';
+import CreateIframe from './pages/React/CreateIframe.react';
+import InputTypeText from './pages/React/FormControl/InputTypeText.react';
+import SetModalWindowPositionOnInputFocus from './pages/React/SetModalWindowPositionOnInputFocus.react';
+import InputTypeCheckbox from './pages/React/FormControl/InputTypeCheckbox.react';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -42,6 +46,8 @@ import NamesComponent from './pages/React-router/NamesComponent.react';
 //redux
 
 //react-redux
+import InitReduxStateTreeDataInComponentWillMount from './pages/React-redux/InitReduxStateTreeDataInComponentWillMount.react';
+import DefineReduxStateDataStructure from './pages/React-redux/DefineReduxStateDataStructure.react';
 
 //react-dom
 import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMRenderInParentComponent.react';
@@ -58,15 +64,9 @@ import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
 import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
 import ScrollTop from './pages/ScrollTop.react';
-import ModalInput from './pages/ModalInput.react';
-import Redux03Middleware from './pages/Redux03-middleware.react';
 import ChangeStateTreeRefData from './pages/ChangeStateTreeRefData';
-import InitStateTreeData from './pages/initStateTreeData.react';
 import MobileInputFocusAndKeyboard from './pages/MobileInputFocusAndKeyboard.react';
-import IframePage from './pages/iframe.react';
-import IOSInputFocus from './pages/IOSInputFocus.react';
 import AsyncActionInComponentWillReceiveProps from './pages/AsyncActionInComponentWillReceiveProps.react';
-import InputPage from './pages/InputPage.react';
 import Redirect from './pages/Redirect.react';
 
 
@@ -100,6 +100,11 @@ const routes = (
             <Route path='download-all' component={DownloadAllTest}></Route>
             <Route path='loop-scroll' component={LoopScroll}></Route>
             <Route path='grab-child-component-state' component={GrabChildComponentState}></Route>
+            <Route path='create-iframe' component={CreateIframe}></Route>
+            <Route path='set-modal-window-position-on-input-focus' component={SetModalWindowPositionOnInputFocus}></Route>
+            <Route path='input-type-text' component={InputTypeText}/>
+            <Route path='input-type-checkbox' component={InputTypeCheckbox}></Route>
+
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -110,15 +115,14 @@ const routes = (
             <Route path='get-every-type-params(/:page)' component={GetEveryTypeParams}></Route>
             <Route path='router-will-leave' component={RouterWillLeave}></Route>
             <Route path='transition-to-all-ways' component={TransitionToAllWays}></Route>
-            <Route path='names-component' component={NamesComponent}>
-                <IndexRoute components={{main: Main, sidebar: Sidebar}}/>
-            </Route>
         </Route>
         <Route path='redux' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
         </Route>
         <Route path='react-redux' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
+            <Route path="init-store-data-in-componentWillMount-when-go-back" component={InitReduxStateTreeDataInComponentWillMount}></Route>
+            <Route path='define-redux-state-data-structure' component={DefineReduxStateDataStructure}></Route>
         </Route>
 
         <Route path='form' component={Form}></Route>
@@ -129,20 +133,13 @@ const routes = (
         <Route path='react-redux02' component={ReactRedux02}></Route>
         <Route path='react-redux03' component={ReactRedux03}></Route>
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
-       
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
         <Route path='ScrollTop' component={ScrollTop}></Route>
-        <Route path='modal-input' component={ModalInput}></Route>
-        <Route path='redux03-middleware' component={Redux03Middleware}></Route>
         <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
-        <Route path="initStateTreeData" component={InitStateTreeData}></Route>
         <Route path='MobileInputFocusAndKeyboard' component={Redirect}></Route>
         <Route path='focus' component={MobileInputFocusAndKeyboard}/>
-        <Route path='iframe' component={IframePage}></Route>
-        <Route path='ios-input-focus' component={IOSInputFocus}></Route>
         <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
-        <Route path='input' component={InputPage}/>
         <Route path='importImage' getComponent={(nextState, cb) => {
             cb(null, require('./pages/importImage.react'))
         }} />

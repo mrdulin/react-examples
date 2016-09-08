@@ -23,19 +23,23 @@ module.exports = {
             'ios-scroll-event-block-js-thread': "移动端ios设备滚动事件阻塞JS线程",
             "download-all": "一个React实现的\"下载全部\"的例子",
             "loop-scroll": "一个React实现的水平无缝滚动例子",
-            "grab-child-component-state": "在父组件中获取子组件的state"
+            "grab-child-component-state": "在父组件中获取子组件的state",
+            "create-iframe": "创建一个iframe",
+            "set-modal-window-position-on-input-focus": "移动端模态框中input聚焦虚拟键盘弹出后，重新设置模态框位置",
+            "input-type-text": "React表单控件——input[type='text']",
+            "input-type-checkbox": "React表单控件——input[type='checkbox']"
         },
         "react-router": {
             'get-every-type-params':  "获取路由url上的每个参数",
             "router-will-leave": "路由跳转前确认",
-            "transition-to-all-ways": "路由跳转的N种方法",
-            "names-component": "路由命名组件"
+            "transition-to-all-ways": "路由跳转的N种方法"
         },
         "redux": {
 
         },
         "react-redux": {
-            
+            "init-store-data-in-componentWillMount-when-go-back": "在componentWillMount中初始化state树问题",
+            "define-redux-state-data-structure": "定义redux的state树的数据结构，避免组件在render的时候出错"
         },
         "react-dom": {
             "call-react-dom-render-in-parent-component": "在父组件的componentDidMount生命周期内使用ReactDOM.render渲染子组件"

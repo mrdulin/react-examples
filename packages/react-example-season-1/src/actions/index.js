@@ -5,7 +5,7 @@ import store from '../store';
 import {bindActionCreators} from 'redux';
 
 import * as AsycnActions from './Async.action';
-import * as InitStateTreeData from './InitStateTreeData.action';
+import * as InitReduxStateTreeDataInComponentWillMount from './InitReduxStateTreeDataInComponentWillMount.action';
 
 const checkUniqueAction = (actionMap) => {
     //TODO 检查是否唯一
@@ -35,7 +35,7 @@ const conbineActions = (actionMap) => {
 
 const actions = conbineActions({
     AsycnActions,
-    InitStateTreeData
+    InitReduxStateTreeDataInComponentWillMount
 });
 
 

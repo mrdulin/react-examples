@@ -1,4 +1,6 @@
-import {makeActionCreator} from './makeActionCreator';
+import {util} from '../common/js/util';
+
+const makeActionCreator = util.makeActionCreator;
 
 export const ADD_TODO = 'ADD_TODO';
 export const COMPLETE_TODO = 'COMPLETE_TODO';

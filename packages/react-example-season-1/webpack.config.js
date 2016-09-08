@@ -45,11 +45,11 @@ const config = {
 			exclude: /node_modules/,
 			loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
 		}, {
-			test: /\.(png|jpg)$/,
+			test: /\.(png|jpg|gif|svg)$/,
 			exclude: /(node_modules|bower_components)/,
 			loader: 'file',
 			query: {
-				name: '[path][name].[ext]?[hash]',
+				name: '[path][name].[ext]',
 				context: './src'
 			}
 		}]

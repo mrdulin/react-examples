@@ -1,6 +1,9 @@
-const util = ((window, document) => {
+export const util = ((window, document) => {
     
     return {
+        openweatherApiHost: 'http://api.openweathermap.org/data/2.5',
+        openweatherApiKey: '2c36facc61cd4ec7543be24d6a7d0509',
+        
         getImgNaturalSize: (imageElement) => {
             const img = document.createElement('img');
             const size = {width: '', height: ''};
@@ -29,6 +32,16 @@ const util = ((window, document) => {
                     return transitions[t];
                 }
             }
+        },
+
+        makeActionCreator: (type, ...propertykeys) => {
+            return (...propertyValues) => {
+                let action = {type};
+                propertykeys.forEach((el, index) => {
+                    action[propertykeys[index]] = propertyValues[index];
+                });
+                return action;
+            };
         }
     }
 })(window, document);

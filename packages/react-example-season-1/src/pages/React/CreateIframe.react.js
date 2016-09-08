@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class IframePage extends Component{
+class CreateIframe extends Component{
     componentDidMount() {
         this.appendIframe()
     }
@@ -23,4 +23,4 @@ class IframePage extends Component{
     }
 }
 
-export default IframePage;
+export default CreateIframe;

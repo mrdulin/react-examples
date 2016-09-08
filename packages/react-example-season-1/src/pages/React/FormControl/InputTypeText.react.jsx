@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class InputPage extends Component{
+class InputTypeText extends Component{
     state = {
         value: 'novaline',
         text: 'test test test'
@@ -78,4 +78,4 @@ class InputPage extends Component{
     }
 }
 
-export default InputPage;
+export default InputTypeText;
