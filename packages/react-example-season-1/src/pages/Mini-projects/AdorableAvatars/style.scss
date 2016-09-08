@@ -1,0 +1,20 @@
+#adorable-avatars{
+    .adorable-avatars-container{
+        height: 560px;
+        background-image: url(../../../images/adorable-avatar-bg.jpg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: cover;
+        padding-bottom: 40px;
+        padding-top: 120px;
+        position: relative;
+    }
+
+    .row{
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 15px;
+        width: 100%;
+        max-width: 1000px;
+    }
+}

@@ -53,6 +53,11 @@ import DefineReduxStateDataStructure from './pages/React-redux/DefineReduxStateD
 import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMRenderInParentComponent.react';
 
 
+//mini-projects
+import AdorableAvatars from './pages/Mini-projects/AdorableAvatars/AdorableAvatars.react';
+import FileIO from './pages/Mini-projects/FileIO/FileIO.react';
+
+//待整理例子
 import Form from './pages/Form.react';
 import Redux01 from './pages/Redux01.react';
 import TodoList from './pages/TodoList.react';
@@ -123,6 +128,11 @@ const routes = (
             <IndexRoute component={ArticleList}/>
             <Route path="init-store-data-in-componentWillMount-when-go-back" component={InitReduxStateTreeDataInComponentWillMount}></Route>
             <Route path='define-redux-state-data-structure' component={DefineReduxStateDataStructure}></Route>
+        </Route>
+        <Route path='mini-projects' components={{sidebar: Sidebar, main: Main}}>
+            <IndexRoute component={ArticleList}/>
+            <Route path='adorable-avatar' component={AdorableAvatars}></Route>
+            <Route path='file-io' component={FileIO}></Route>
         </Route>
 
         <Route path='form' component={Form}></Route>

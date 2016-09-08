@@ -1,0 +1,1 @@
+import './AdorableAvatars/style.scss';

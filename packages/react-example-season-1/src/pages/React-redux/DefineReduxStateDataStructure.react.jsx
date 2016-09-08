@@ -51,6 +51,8 @@ class DefineReduxStateDataStructure extends Component{
 		})
 
 		return <div>
+			<h2>本例使用openweatherapi</h2>
+			<hr/>
 			<p>视图：</p>
 			<div>
 				<form>

@@ -1,4 +1,6 @@
 import './sass/index.scss';
+import './pages/Mini-projects';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, Link, browserHistory, hashHistory, RouterContext} from 'react-router';

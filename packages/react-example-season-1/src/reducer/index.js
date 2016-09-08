@@ -21,6 +21,7 @@ import * as DefineReduxStateDataStructure from './DefineReduxStateDataStructure'
 import * as InitReduxStateTreeDataInComponentWillMount from './InitReduxStateTreeDataInComponentWillMount.reducer';
 import * as AsyncActionInCWRP from './AsyncActionInCWRP.reducer';
 import * as common from './common.reducer';
+import * as FileIO from './FileIO.reducer';
 
 //通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
 //传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
@@ -46,7 +47,8 @@ const rootReducer = combineReducers({
 	...DefineReduxStateDataStructure,
 	...InitReduxStateTreeDataInComponentWillMount,
     ...AsyncActionInCWRP,
-	...common
+	...common,
+	...FileIO
 });
 
 export default rootReducer;

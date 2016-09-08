@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 class CreateIframe extends Component{
     componentDidMount() {
-        this.appendIframe()
+        this.appendIframe('http://www.baidu.com')
     }
 
-    appendIframe() {
+    appendIframe(url) {
         const iframe = document.createElement('iframe');
-        iframe.src = 'http://www.baidu.com';
+        iframe.src = url;
         iframe.addEventListener('load', this.handleIframeLoad.bind(this, iframe));
         document.body.appendChild(iframe);
     }
