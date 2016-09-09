@@ -22,9 +22,9 @@ class Todos extends Component {
             return <Todo {...todo} key={index} onClick={e => this.handleToggleTodo(e, index)}></Todo>
         });
         return (
-            <section id='main'>
+            <section id='main' style={{display: todos.length > 0 ? 'display' : 'none'}}>
                 <input type="checkbox" id="toggle-all" onClick={this.handleMarkAll}/>
-                <label for="toggle-all">Mark all as complete</label>
+                <label htmlFor="toggle-all">Mark all as complete</label>
                 <ul id='todo-list'>{todoItems}</ul>
             </section>
         );

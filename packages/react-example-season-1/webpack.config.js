@@ -23,7 +23,6 @@ const publicPath = __DEV__ ? '/' : '/';
 
 const config = {
 	entry: [
-		// 'babel-polyfill',
 		src + '/index.js'
 	],
 
@@ -39,6 +38,7 @@ const config = {
 		loaders: [{
 			test: /\.(js|jsx)?$/,
 			exclude: /(node_modules|bower_components)/,
+			include: src,
 			loader: 'babel'
 		}, {
 			test: /\.(scss|sass)$/,
@@ -94,14 +94,6 @@ const config = {
 
 };
 
-//以redux-logger为例,
-//未开启noParse时，编译时输出如下：
-//[368] ./~/redux-logger/lib/index.js 8.49 kB {0} [built]
-//[0] 418ms -> factory:546ms building:109ms = 1073ms
-//编译模块数量为547个
-
-//开启noParse时，编译模块数量为367个
-
 config.addNoParse(new Map([
 	['react', 'react/dist/react.js'],
 	//react-redux依赖react，因此不能使用noParse
@@ -126,20 +118,27 @@ if (__DEV__) {
 }
 
 if (__PROD__) {
-	config.plugins.push(new clearWebpackPlugin(['dist', 'build'], {
-		root: __dirname,
-		verbose: true,
-		dry: false
-	}));
-	config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+	config.plugins.push(
+		new clearWebpackPlugin(['dist', 'build'], {
+			root: __dirname,
+			verbose: true,
+			dry: false
+		}),
+		new webpack.optimize.UglifyJsPlugin({
 			compress: {
-				warnings: false
-			}
-		})),
-	config.plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"))
-	config.plugins.push(new webpack.optimize.DedupePlugin());
-	config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
+				warnings: false,
+				dead_code: true,
+				drop_debugger: true,
+				booleans: true,
+				loops: true,
+				unused: true
+			},
+			mangle: true
+		}),
+		new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"),
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurrenceOrderPlugin()
+	);
 }
-
 
 module.exports = config;

@@ -10,7 +10,7 @@ class AddTodo extends Component{
             <header id='header'>
                 <h1>todos</h1>
                 <form id='todo-form' onSubmit={(e) => {this.addTodoSubmit(e)}}>
-                    <input id='new-todo' ref='add_todo_input' type="text" placeholder="What needs to be done?" autofocus/>
+                    <input id='new-todo' ref='add_todo_input' type="text" placeholder="What needs to be done?" autoFocus/>
                 </form>
             </header>
         );

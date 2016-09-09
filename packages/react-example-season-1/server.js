@@ -4,9 +4,8 @@ const bodyParser = require('body-parser');
 // const multiparty = require('multiparty');
 const util = require('util');
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
-const static_dir = path.resolve(__dirname, 'dist');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -17,11 +16,11 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(express.static(static_dir));
+app.use(express.static(__dirname + '/dist'));
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(static_dir, 'index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
 
 app.get('/city', (req, res) => {
     const city = {
