@@ -39,7 +39,10 @@ module.exports = {
         },
         "react-redux": {
             "init-store-data-in-componentWillMount-when-go-back": "在componentWillMount中初始化state树问题",
-            "define-redux-state-data-structure": "定义redux的state树的数据结构，避免组件在render的时候出错(一个天气查询例子)"
+            "define-redux-state-data-structure": "定义redux的state树的数据结构，避免组件在render的时候出错(一个天气查询例子)",
+            "map-state-to-props": "mapStateToProps探究",
+            "inject-action-creators-to-component-props": "向组件的props注入action creators",
+            "map-dispatch-to-props": "mapDispatchToProps探究"
         },
         "react-dom": {
             "call-react-dom-render-in-parent-component": "在父组件的componentDidMount生命周期内使用ReactDOM.render渲染子组件"

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as Actions from '../actions/reactRedux02';
+import * as Actions from '../../actions/InjectActionCreatorsToComponentProps.action';
 
-class ReactRedux02 extends Component{
+class InjectActionCreatorsToComponentProps extends Component{
 
     render() {
         //组件的props上有被注入的action creator（getUser和deleteUser），以后直接调用即可
@@ -22,7 +22,7 @@ class ReactRedux02 extends Component{
 }
 
 const mapStateToProps = (state) => {
-    const {user, other} =  state.reactRedux02;
+    const {user, other} =  state.InjectActionCreatorsToComponentProps;
     return {user, other};
 };
 
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     Actions
-)(ReactRedux02);
+)(InjectActionCreatorsToComponentProps);

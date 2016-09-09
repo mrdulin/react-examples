@@ -12,10 +12,10 @@ import {
 import undoable, {
 	distinctState
 } from 'redux-undo';
-import * as reactRedux01Reducers from './reactRedux01';
+import * as MapStateToProps from './MapStateToProps.reducer';
 import * as reduxApiMiddlewareReducers from './reduxApiMiddleware';
-import * as reactRedux02Reducers from './reactRedux02';
-import * as reactRedux03Reducers from './reactRedux03';
+import * as InjectActionCreatorsToComponentProps from './InjectActionCreatorsToComponentProps.reducer';
+import * as MapDispatchToProps from './MapDispatchToProps.reducer';
 import * as scrollTop from './scrollTop.reducer';
 import * as DefineReduxStateDataStructure from './DefineReduxStateDataStructure';
 import * as InitReduxStateTreeDataInComponentWillMount from './InitReduxStateTreeDataInComponentWillMount.reducer';
@@ -39,9 +39,9 @@ const rootReducer = combineReducers({
 	visibilityFilter,
 	user,
 	polling,
-	...reactRedux01Reducers,
-	...reactRedux02Reducers,
-	...reactRedux03Reducers,
+	...MapStateToProps,
+	...InjectActionCreatorsToComponentProps,
+	...MapDispatchToProps,
 	...reduxApiMiddlewareReducers,
 	...scrollTop,
 	...DefineReduxStateDataStructure,

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-class ReactRedux01Form extends Component{
+class ChildComponent extends Component{
 
     render() {
         // console.log('selectCity', this.props.selectCity);
@@ -37,4 +37,4 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
     mapStateToProps
-)(ReactRedux01Form);
+)(ChildComponent);

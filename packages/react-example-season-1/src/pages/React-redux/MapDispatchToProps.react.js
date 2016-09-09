@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as ActionCreators from '../actions/reactRedux03';
+import * as ActionCreators from '../../actions/MapDispatchToProps.action';
 
-class ReactRedux03 extends Component{
+class MapDispatchToProps extends Component{
     render() {
         const {book, actions} = this.props;
         return (
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ReactRedux03);
+)(MapDispatchToProps);

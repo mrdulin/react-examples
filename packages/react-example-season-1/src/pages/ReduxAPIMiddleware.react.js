@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {requestCity, login} from '../actions/reduxApiMiddleware';
-import {selectCity} from '../actions/reactRedux01';
+import {selectCity} from '../actions/MapStateToProps.action';
 
 class ReduxAPIMiddleware extends Component{
 

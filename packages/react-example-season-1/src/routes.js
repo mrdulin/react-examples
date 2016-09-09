@@ -48,6 +48,9 @@ import NamesComponent from './pages/React-router/NamesComponent.react';
 //react-redux
 import InitReduxStateTreeDataInComponentWillMount from './pages/React-redux/InitReduxStateTreeDataInComponentWillMount.react';
 import DefineReduxStateDataStructure from './pages/React-redux/DefineReduxStateDataStructure.react';
+import MapStateToProps from './pages/React-redux/MapStateToProps/MapStateToProps.react';
+import InjectActionCreatorsToComponentProps from './pages/React-redux/InjectActionCreatorsToComponentProps.react';
+import MapDispatchToProps from './pages/React-redux/MapDispatchToProps.react';
 
 //react-dom
 import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMRenderInParentComponent.react';
@@ -62,9 +65,6 @@ import Form from './pages/Form.react';
 import Redux01 from './pages/Redux01.react';
 import TodoList from './pages/TodoList.react';
 import Redux02 from './pages/Redux02.react';
-import ReactRedux01 from './pages/ReactRedux01.react';
-import ReactRedux02 from './pages/ReactRedux02.react';
-import ReactRedux03 from './pages/ReactRedux03.react';
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
 import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
@@ -128,6 +128,9 @@ const routes = (
             <IndexRoute component={ArticleList}/>
             <Route path="init-store-data-in-componentWillMount-when-go-back" component={InitReduxStateTreeDataInComponentWillMount}></Route>
             <Route path='define-redux-state-data-structure' component={DefineReduxStateDataStructure}></Route>
+            <Route path='map-state-to-props' component={MapStateToProps}></Route>
+            <Route path='inject-action-creators-to-component-props' component={InjectActionCreatorsToComponentProps}></Route>
+            <Route path='map-dispatch-to-props' component={MapDispatchToProps}></Route>
         </Route>
         <Route path='mini-projects' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -139,9 +142,6 @@ const routes = (
         <Route path='redux01' component={Redux01}></Route>
         <Route path='redux02' component={Redux02}></Route>
         <Route path='todoList' component={TodoList}></Route>
-        <Route path='react-redux01' component={ReactRedux01}></Route>
-        <Route path='react-redux02' component={ReactRedux02}></Route>
-        <Route path='react-redux03' component={ReactRedux03}></Route>
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
@@ -150,9 +150,6 @@ const routes = (
         <Route path='MobileInputFocusAndKeyboard' component={Redirect}></Route>
         <Route path='focus' component={MobileInputFocusAndKeyboard}/>
         <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
-        <Route path='importImage' getComponent={(nextState, cb) => {
-            cb(null, require('./pages/importImage.react'))
-        }} />
         <Route path='*' component={NoMatch}></Route>
     </Route>
 );

@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {selectCity, fetchCity} from '../actions/reactRedux01';
-import Form from '../components/reactRedux01Form.react';
-import {bindActionCreators  } from 'redux';
+import {selectCity, fetchCity} from '../../../actions/MapStateToProps.action';
+import Form from './components/ChildComponent.react';
+import {bindActionCreators } from 'redux';
 
-class ReactRedux01 extends Component{
+class MapStateToProps extends Component{
     constructor(props) {
         super(props);
     }
@@ -18,14 +18,13 @@ class ReactRedux01 extends Component{
     }
 
     componentDidMount() {
-        // console.log('props', this.props)
         this.props.dispatch(fetchCity('novaline_12312312313'));
     }
 
     render() {
         return (
             <div>
-                <h2>react-redux api测试_mapStateToProps</h2>
+                <h2>react-redux mapStateToProps</h2>
                 <Form cityList={this.props.cityList} selectCity={this.props.city} onSelectCity={(e) => this.onSelectCity(e)}></Form>
             </div>
         );
@@ -55,5 +54,4 @@ const mapStateToProps = (state, ownProps) => {
 //connect被调用了两次，第一次调用的参数是mapStateToProps,mapDispatchToProps等，第二次调用是组件class
 export default connect(
     mapStateToProps
-
-)(ReactRedux01);
+)(MapStateToProps);

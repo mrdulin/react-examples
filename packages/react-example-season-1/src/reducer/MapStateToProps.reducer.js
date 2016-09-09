@@ -1,4 +1,4 @@
-import {SELECT_CITY, REQUEST_CITY, RECEIVE_CITY} from '../actions/reactRedux01';
+import {SELECT_CITY, REQUEST_CITY, RECEIVE_CITY} from '../actions/MapStateToProps.action';
 
 export const city = (state = '', action) => {
     switch (action.type) {
