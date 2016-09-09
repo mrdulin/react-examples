@@ -1,17 +1,8 @@
-import {
-	todos,
-	visibilityFilter
-} from './redux01';
-import {
-	user,
-	polling
-} from './redux02';
-import {
-	combineReducers
-} from 'redux';
-import undoable, {
-	distinctState
-} from 'redux-undo';
+import {combineReducers} from 'redux';
+import TodoList from './TodoList.reducer';
+import {user, polling} from './redux02';
+import undoable, {distinctState} from 'redux-undo';
+
 import * as MapStateToProps from './MapStateToProps.reducer';
 import * as reduxApiMiddlewareReducers from './reduxApiMiddleware';
 import * as InjectActionCreatorsToComponentProps from './InjectActionCreatorsToComponentProps.reducer';
@@ -33,10 +24,11 @@ import * as FileIO from './FileIO.reducer';
 
 // console.log(reactRedux01Reducers);
 const rootReducer = combineReducers({
-	todos: undoable(todos, {
-		filter: distinctState()
-	}),
-	visibilityFilter,
+	TodoList,
+	// todos: undoable(todos, {
+	// 	filter: distinctState()
+	// }),
+	// visibilityFilter,
 	user,
 	polling,
 	...MapStateToProps,

@@ -59,11 +59,11 @@ import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMR
 //mini-projects
 import AdorableAvatars from './pages/Mini-projects/AdorableAvatars/AdorableAvatars.react';
 import FileIO from './pages/Mini-projects/FileIO/FileIO.react';
+import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
 
 //待整理例子
 import Form from './pages/Form.react';
 import Redux01 from './pages/Redux01.react';
-import TodoList from './pages/TodoList.react';
 import Redux02 from './pages/Redux02.react';
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
@@ -136,12 +136,12 @@ const routes = (
             <IndexRoute component={ArticleList}/>
             <Route path='adorable-avatar' component={AdorableAvatars}></Route>
             <Route path='file-io' component={FileIO}></Route>
+            <Route path='todoList' component={TodoList}></Route>
         </Route>
 
         <Route path='form' component={Form}></Route>
         <Route path='redux01' component={Redux01}></Route>
         <Route path='redux02' component={Redux02}></Route>
-        <Route path='todoList' component={TodoList}></Route>
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>

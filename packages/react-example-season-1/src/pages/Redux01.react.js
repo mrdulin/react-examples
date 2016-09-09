@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
 import rootReducer from '../reducer/index';
-import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFIlters} from '../actions/redux01';
+import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFIlters} from '../actions/TodoList.action';
 
 class Redux01 extends Component{
 

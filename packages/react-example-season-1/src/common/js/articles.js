@@ -49,7 +49,8 @@ module.exports = {
         },
         "mini-projects": {
             "adorable-avatar": "Adorable Avatars —— Generate random cartoon avatars",
-            "file-io": "file.io —— Ephemeral file sharing Convenient, anonymous and secure"
+            "file-io": "file.io —— Ephemeral file sharing Convenient, anonymous and secure",
+            "todoList": "TodoList"
         }
     }
 }

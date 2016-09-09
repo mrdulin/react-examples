@@ -7,14 +7,12 @@ class AddTodo extends Component{
 
     render() {
         return (
-            <div>
-                <form onSubmit={(e) => {this.addTodoSubmit(e)}}>
-                    <label>
-                        <input ref='add_todo_input' type="text" placeholder="add a todo item"/>
-                    </label>
-                    <button type="submit">add</button>
+            <header id='header'>
+                <h1>todos</h1>
+                <form id='todo-form' onSubmit={(e) => {this.addTodoSubmit(e)}}>
+                    <input id='new-todo' ref='add_todo_input' type="text" placeholder="What needs to be done?" autofocus/>
                 </form>
-            </div>
+            </header>
         );
     }
 
@@ -23,7 +21,7 @@ class AddTodo extends Component{
         let node = this.refs.add_todo_input;
         let text = node.value.trim();
         if(!text.length) return;
-        this.props.onAddClick(text);
+        this.props.addTodo(text);
         node.value = '';
     }
 }
