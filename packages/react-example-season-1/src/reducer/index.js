@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import TodoList from './TodoList.reducer';
+import {TodoList} from './TodoList.reducer';
 import {user, polling} from './redux02';
 import undoable, {distinctState} from 'redux-undo';
 

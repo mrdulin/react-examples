@@ -3,16 +3,17 @@ import Todo from './Todo.react';
 
 class Todos extends Component {
     static propTypes = {
-        todoClickHandler: PropTypes.func.isRequired,
+        toggleTodo: PropTypes.func.isRequired,
         todos: PropTypes.arrayOf(PropTypes.shape({
             text: PropTypes.string.isRequired,
             completed: PropTypes.bool.isRequired
-        }).isRequired).isRequired
+        }).isRequired).isRequired,
+        markAll: PropTypes.func.isRequired
     }
 
     constructor() {
         super();
-        this.markAll = ::this.markAll;   
+        this.handleMarkAll = ::this.handleMarkAll;
     }
 
     render() {

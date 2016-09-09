@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 
 class AddTodo extends Component{
     static propTypes = {
-        onAddClick: PropTypes.func.isRequired
+        addTodo: PropTypes.func.isRequired
     }
 
     render() {
@@ -17,11 +17,12 @@ class AddTodo extends Component{
     }
 
     addTodoSubmit(e) {
+        const {addTodo} = this.props;
         e.preventDefault();
         let node = this.refs.add_todo_input;
         let text = node.value.trim();
         if(!text.length) return;
-        this.props.addTodo(text);
+        addTodo && addTodo(text);
         node.value = '';
     }
 }

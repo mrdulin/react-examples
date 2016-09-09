@@ -7,6 +7,20 @@ const initState = {
 export const TodoList = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_TODO':
+            const todos = state.todos;
+            const newTodo = {completed: false, text: action.text};
+            todos.push(newTodo);
+            let todosFiltered = [];
+            const todosClone = todos.slice(0);
+
+            switch (filter) {
+                case 'SHOW_ALL':
+                    todosFiltered = todosClone;
+                    break;
+                case 'SHOW_COMPLETE':
+                    todosFiltered = todosClone.filter(todo => todo.completed);
+                    break;
+            }
 
             return Object.assign({}, state, {todos})
         default:
