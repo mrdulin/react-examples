@@ -15,7 +15,7 @@ class ArticleList extends Component {
 
     componentWillReceiveProps(nextProps) {
         // console.log(nextProps.filterText);
-        if(this.props.filterText !== nextProps.filterText) {
+        if(typeof nextProps.filterText !== 'undefined' && this.props.filterText !== nextProps.filterText) {
             this.setState({filterText: nextProps.filterText});
         }
     }

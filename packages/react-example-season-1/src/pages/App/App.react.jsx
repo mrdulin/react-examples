@@ -19,9 +19,10 @@ class App extends React.Component{
         //ES6写法在constructor中初始化state
         this.state = {
             demoKey: routeName,
-            dataPassMainAndSidebar: {filterText: ''}
+            dataPassMainAndSidebar: {filterText: '', hideSideBar: false}
         };
         this.handleFilterChange = ::this.handleFilterChange;
+        this.handleSideBarHide = ::this.handleSideBarHide;
     }
 
     static defaultProps = {
@@ -103,9 +104,17 @@ class App extends React.Component{
         this.setState({dataPassMainAndSidebar: {filterText}})
     }
 
+    handleSideBarHide(hideSideBar) {
+        this.setState({dataPassMainAndSidebar: {hideSideBar}});
+    }
+
     render() {
+        console.count('App render')
         const {main, sidebar} = this.props;
-        const data = Object.assign({}, this.state.dataPassMainAndSidebar, {handleFilterChangeCallback: this.handleFilterChange});
+        const data = Object.assign({}, this.state.dataPassMainAndSidebar, {
+            handleFilterChangeCallback: this.handleFilterChange,
+            handleSideBarHideCallback: this.handleSideBarHide
+        });
         const mainWithData = React.cloneElement(main, data);
         const sidebarWithData = React.cloneElement(sidebar, data);
 

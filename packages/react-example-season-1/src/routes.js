@@ -36,6 +36,7 @@ import CreateIframe from './pages/React/CreateIframe.react';
 import InputTypeText from './pages/React/FormControl/InputTypeText.react';
 import SetModalWindowPositionOnInputFocus from './pages/React/SetModalWindowPositionOnInputFocus.react';
 import InputTypeCheckbox from './pages/React/FormControl/InputTypeCheckbox.react';
+import MobileInputFocusVistualKeyboard from './pages/React/MobileInputFocusVistualKeyboard.react';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -70,9 +71,7 @@ import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.r
 import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
 import ScrollTop from './pages/ScrollTop.react';
 import ChangeStateTreeRefData from './pages/ChangeStateTreeRefData';
-import MobileInputFocusAndKeyboard from './pages/MobileInputFocusAndKeyboard.react';
 import AsyncActionInComponentWillReceiveProps from './pages/AsyncActionInComponentWillReceiveProps.react';
-import Redirect from './pages/Redirect.react';
 
 
 //定义路由规则
@@ -109,7 +108,7 @@ const routes = (
             <Route path='set-modal-window-position-on-input-focus' component={SetModalWindowPositionOnInputFocus}></Route>
             <Route path='input-type-text' component={InputTypeText}/>
             <Route path='input-type-checkbox' component={InputTypeCheckbox}></Route>
-
+            <Route path='mobile-input-focus-vistual-keybroad' component={MobileInputFocusVistualKeyboard}/>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -147,8 +146,6 @@ const routes = (
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
         <Route path='ScrollTop' component={ScrollTop}></Route>
         <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
-        <Route path='MobileInputFocusAndKeyboard' component={Redirect}></Route>
-        <Route path='focus' component={MobileInputFocusAndKeyboard}/>
         <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
         <Route path='*' component={NoMatch}></Route>
     </Route>

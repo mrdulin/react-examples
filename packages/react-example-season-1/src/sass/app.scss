@@ -12,6 +12,11 @@
         overflow-y: auto;
         overflow-x: hidden;
         background-color: #fff;
+        transition: width cubic-bezier(0.075, 0.82, 0.165, 1) .2s;
+
+        &.hide{
+            width: 60px;
+        }
 
         .toc_title{
             display: block;
@@ -40,6 +45,10 @@
 
     .main{
         margin: 40px 40px 50px 410px;
+
+        &.sidebar-hide{
+           margin-left: 120px;
+        }
     }
 }
 
@@ -65,4 +74,16 @@
 
 #article-filter{
     width: 80%;
+}
+
+#hide-sidebar{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #ddd;
+    width: 30px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
 }

@@ -6,15 +6,19 @@ class Sidebar extends Component{
     constructor(props) {
         super(props);
         this.handleTextFilterChange = ::this.handleTextFilterChange;
+        this.toggleSideBar = ::this.toggleSideBar;
         this.state = {
-            filterText: this.props.filterText
+            filterText: this.props.filterText,
+            hideSideBar: this.props.hideSideBar
         }
     }
     render() {
         const sideBarItems = this.renderItems();
-        return <div className='sidebar'>
+        const {hideSideBar, filterText} = this.state;
+        return <div className={`sidebar ${hideSideBar ? 'hide' : ''}`}>
+            <a id='hide-sidebar' onClick={this.toggleSideBar}>隐藏</a>
             <Link className='toc_title' to='/'>React全家桶<span>(1.0)</span></Link>
-            <input id='article-filter' type="text" placeholder='Filter' value={this.state.filterText} onChange={this.handleTextFilterChange}/>
+            <input id='article-filter' type="text" placeholder='Filter' value={filterText} onChange={this.handleTextFilterChange}/>
             {sideBarItems}
         </div>
     }
@@ -42,6 +46,12 @@ class Sidebar extends Component{
                 <ul className='toc_section'>{articles}</ul>
             </div>
         })
+    }
+
+    toggleSideBar(e) {
+        const {handleSideBarHideCallback = () => {}} = this.props;
+        const hideSideBar = !this.state.hideSideBar;
+        this.setState({hideSideBar}, handleSideBarHideCallback.bind(this, hideSideBar));
     }
 
     handleTitleClick(e, libName) {
