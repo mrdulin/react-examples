@@ -37,6 +37,7 @@ import InputTypeText from './pages/React/FormControl/InputTypeText.react';
 import SetModalWindowPositionOnInputFocus from './pages/React/SetModalWindowPositionOnInputFocus.react';
 import InputTypeCheckbox from './pages/React/FormControl/InputTypeCheckbox.react';
 import MobileInputFocusVistualKeyboard from './pages/React/MobileInputFocusVistualKeyboard.react';
+import LogicalOperators from './pages/React/LogicalOperators.react';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -109,6 +110,7 @@ const routes = (
             <Route path='input-type-text' component={InputTypeText}/>
             <Route path='input-type-checkbox' component={InputTypeCheckbox}></Route>
             <Route path='mobile-input-focus-vistual-keybroad' component={MobileInputFocusVistualKeyboard}/>
+            <Route path='logical-operators' component={LogicalOperators}/>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>

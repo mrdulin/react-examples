@@ -27,8 +27,9 @@ module.exports = {
             "create-iframe": "创建一个iframe",
             "set-modal-window-position-on-input-focus": "移动端模态框中input聚焦虚拟键盘弹出后，重新设置模态框位置",
             "mobile-input-focus-vistual-keybroad": "移动设备路由切换时设置input聚焦，唤起虚拟键盘",
+            "logical-operators": "逻辑运算符插值探究",
             "input-type-text": "React表单控件——input[type='text']",
-            "input-type-checkbox": "React表单控件——input[type='checkbox']",
+            "input-type-checkbox": "React表单控件——input[type='checkbox']"
         },
         "react-router": {
             'get-every-type-params':  "获取路由url上的每个参数",
