@@ -7,6 +7,7 @@ import * as MapStateToProps from './MapStateToProps.reducer';
 import * as reduxApiMiddlewareReducers from './reduxApiMiddleware';
 import * as InjectActionCreatorsToComponentProps from './InjectActionCreatorsToComponentProps.reducer';
 import * as MapDispatchToProps from './MapDispatchToProps.reducer';
+import * as ChangeStateTreeRefData from './ChangeStateTreeRefData.reducer';
 import * as scrollTop from './scrollTop.reducer';
 import * as DefineReduxStateDataStructure from './DefineReduxStateDataStructure';
 import * as InitReduxStateTreeDataInComponentWillMount from './InitReduxStateTreeDataInComponentWillMount.reducer';
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
 	// visibilityFilter,
 	user,
 	polling,
+	...ChangeStateTreeRefData,
 	...MapStateToProps,
 	...InjectActionCreatorsToComponentProps,
 	...MapDispatchToProps,

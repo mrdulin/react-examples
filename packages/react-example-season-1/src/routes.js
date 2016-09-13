@@ -52,6 +52,7 @@ import DefineReduxStateDataStructure from './pages/React-redux/DefineReduxStateD
 import MapStateToProps from './pages/React-redux/MapStateToProps/MapStateToProps.react';
 import InjectActionCreatorsToComponentProps from './pages/React-redux/InjectActionCreatorsToComponentProps.react';
 import MapDispatchToProps from './pages/React-redux/MapDispatchToProps.react';
+import ChangeStateTreeRefData from './pages/React-redux/ChangeStateTreeRefData.react';
 
 //react-dom
 import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMRenderInParentComponent.react';
@@ -70,7 +71,6 @@ import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
 import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
 import ScrollTop from './pages/ScrollTop.react';
-import ChangeStateTreeRefData from './pages/ChangeStateTreeRefData';
 import AsyncActionInComponentWillReceiveProps from './pages/AsyncActionInComponentWillReceiveProps.react';
 
 
@@ -130,6 +130,7 @@ const routes = (
             <Route path='map-state-to-props' component={MapStateToProps}></Route>
             <Route path='inject-action-creators-to-component-props' component={InjectActionCreatorsToComponentProps}></Route>
             <Route path='map-dispatch-to-props' component={MapDispatchToProps}></Route>
+            <Route path='change-state-reference-type-data' component={ChangeStateTreeRefData}></Route>
         </Route>
         <Route path='mini-projects' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -145,7 +146,6 @@ const routes = (
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
         <Route path='ScrollTop' component={ScrollTop}></Route>
-        <Route path='changeStateTreeRefData' component={ChangeStateTreeRefData}></Route>
         <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
         <Route path='*' component={NoMatch}></Route>
     </Route>
