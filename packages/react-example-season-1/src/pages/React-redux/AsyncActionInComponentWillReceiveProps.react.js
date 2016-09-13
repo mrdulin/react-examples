@@ -1,10 +1,7 @@
-/**
- * Created by dulin on 16/8/19.
- */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as Action from '../actions/Async.action';
-import bindActions from '../actions/';
+import * as Action from '../../actions/AsyncActionInComponentWillReceiveProps.action';
+import bindActions from '../../actions/';
 
 class AsyncActionInComponentWillReceiveProps extends Component{
     

@@ -87,3 +87,23 @@
     text-align: center;
     font-size: 14px;
 }
+
+#auto-complete-list{
+    li {
+        display: flex;
+        height: 90px;
+    }
+
+    .left{
+        width: 64px;
+    }
+
+     .right{
+        flex: 1 0 auto;
+    }
+
+    .thumbnail{
+        width: 100%;
+        max-width: 100%;
+    }
+}

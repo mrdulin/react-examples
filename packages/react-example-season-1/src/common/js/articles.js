@@ -44,7 +44,9 @@ module.exports = {
             "map-state-to-props": "mapStateToProps探究",
             "inject-action-creators-to-component-props": "向组件的props注入action creators",
             "map-dispatch-to-props": "mapDispatchToProps探究",
-            "change-state-reference-type-data": "直接修改state树上引用类型数据的某个字段的值"
+            "change-state-reference-type-data": "直接修改state树上引用类型数据的某个字段的值",
+            "async-action-in-componentWillReceiveProps": "在componentWillReceiveProps中进行dispatch异步action，各项数据引用一致性探究",
+            "auto-complete-page": "一个搜索下拉列表的例子"
         },
         "react-dom": {
             "call-react-dom-render-in-parent-component": "在父组件的componentDidMount生命周期内使用ReactDOM.render渲染子组件"

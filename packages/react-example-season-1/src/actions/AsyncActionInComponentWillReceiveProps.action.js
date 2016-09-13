@@ -1,6 +1,3 @@
-/**
- * Created by dulin on 16/8/19.
- */
 export const requestCity = (key) => {
     return {type: 'requestCity'};
 };

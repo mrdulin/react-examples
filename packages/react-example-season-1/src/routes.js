@@ -53,6 +53,8 @@ import MapStateToProps from './pages/React-redux/MapStateToProps/MapStateToProps
 import InjectActionCreatorsToComponentProps from './pages/React-redux/InjectActionCreatorsToComponentProps.react';
 import MapDispatchToProps from './pages/React-redux/MapDispatchToProps.react';
 import ChangeStateTreeRefData from './pages/React-redux/ChangeStateTreeRefData.react';
+import AsyncActionInComponentWillReceiveProps from './pages/React-redux/AsyncActionInComponentWillReceiveProps.react';
+import AutoCompletePage from './pages/React-redux/AutoComplete';
 
 //react-dom
 import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMRenderInParentComponent.react';
@@ -66,12 +68,10 @@ import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
 //待整理例子
 import Form from './pages/Form.react';
 import Redux01 from './pages/Redux01.react';
-import Redux02 from './pages/Redux02.react';
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
 import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
 import ScrollTop from './pages/ScrollTop.react';
-import AsyncActionInComponentWillReceiveProps from './pages/AsyncActionInComponentWillReceiveProps.react';
 
 
 //定义路由规则
@@ -131,6 +131,8 @@ const routes = (
             <Route path='inject-action-creators-to-component-props' component={InjectActionCreatorsToComponentProps}></Route>
             <Route path='map-dispatch-to-props' component={MapDispatchToProps}></Route>
             <Route path='change-state-reference-type-data' component={ChangeStateTreeRefData}></Route>
+            <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
+            <Route path='auto-complete-page' component={AutoCompletePage}/>
         </Route>
         <Route path='mini-projects' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -141,12 +143,11 @@ const routes = (
 
         <Route path='form' component={Form}></Route>
         <Route path='redux01' component={Redux01}></Route>
-        <Route path='redux02' component={Redux02}></Route>
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
         <Route path='ScrollTop' component={ScrollTop}></Route>
-        <Route path='async-action-in-componentWillReceiveProps' component={AsyncActionInComponentWillReceiveProps}></Route>
+
         <Route path='*' component={NoMatch}></Route>
     </Route>
 );

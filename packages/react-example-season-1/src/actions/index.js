@@ -4,7 +4,7 @@
 import store from '../store';
 import {bindActionCreators} from 'redux';
 
-import * as AsycnActions from './Async.action';
+import * as AsyncActionInComponentWillReceiveProps from './AsyncActionInComponentWillReceiveProps.action';
 import * as InitReduxStateTreeDataInComponentWillMount from './InitReduxStateTreeDataInComponentWillMount.action';
 
 const checkUniqueAction = (actionMap) => {
@@ -34,7 +34,7 @@ const conbineActions = (actionMap) => {
 };
 
 const actions = conbineActions({
-    AsycnActions,
+    AsyncActionInComponentWillReceiveProps,
     InitReduxStateTreeDataInComponentWillMount
 });
 
