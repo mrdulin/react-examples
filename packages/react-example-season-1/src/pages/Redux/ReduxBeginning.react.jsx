@@ -6,41 +6,20 @@ class ReduxBeginning extends Component{
 
     constructor(props, context) {
         super(props, context);
-        debugger;
         this.store = createStore(rootReducer);
     }
 
     componentWillMount() {
-        console.log('redux01 initial state:', this.store.getState());
+
     }
 
     render() {
-        return (
-            <div>
-                <p>This is redux01 demo for testing redux, you can open the console to see more informations.</p>
-                <button type="button" onClick={() => {this.addTodo()}}>addTodo</button>
-                <button type="button" onClick={() => {this.toggleTodo()}}>toggleTodo</button>
-                <button type="button" onClick={() => {this.setVisibilityFilter()}}>setVisibilityFilter completed</button>
-                <button type="button" onClick={() => {this.subscribe()}}>subscribe</button>
-                <button type="button" onClick={() => {this.unsubscribe()}}>unsubscribe</button>
-            </div>
-        )
-    }
-
-    addTodo() {
-        this.store.dispatch(addTodo('test redux'));
-    }
-
-    toggleTodo() {
-        this.store.dispatch(toggleTodo(0));
-    }
-
-    setVisibilityFilter() {
-        this.store.dispatch(setVisibilityFilter(VisibilityFIlters.SHOW_COMPLETE));
+        return <div>
+        
+        </div>
     }
 
     subscribe() {
-        console.log(this);
         this.unsubscribe = this.store.subscribe(() => {
             console.log(this.store.getState());
         });

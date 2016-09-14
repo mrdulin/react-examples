@@ -151,8 +151,6 @@ const routes = (
 
         <Route path='form' component={Form}></Route>
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
-        <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
-        <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
         <Route path='ScrollTop' component={ScrollTop}></Route>
 
         <Route path='*' component={NoMatch}></Route>
