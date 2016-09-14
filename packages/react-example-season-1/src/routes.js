@@ -38,6 +38,7 @@ import SetModalWindowPositionOnInputFocus from './pages/React/SetModalWindowPosi
 import InputTypeCheckbox from './pages/React/FormControl/InputTypeCheckbox.react';
 import MobileInputFocusVistualKeyboard from './pages/React/MobileInputFocusVistualKeyboard.react';
 import LogicalOperators from './pages/React/LogicalOperators.react';
+import StaticMethod from './pages/React/StaticMethod.react';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -113,6 +114,7 @@ const routes = (
             <Route path='input-type-checkbox' component={InputTypeCheckbox}></Route>
             <Route path='mobile-input-focus-vistual-keybroad' component={MobileInputFocusVistualKeyboard}/>
             <Route path='logical-operators' component={LogicalOperators}/>
+            <Route path='static-method' component={StaticMethod}/>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
