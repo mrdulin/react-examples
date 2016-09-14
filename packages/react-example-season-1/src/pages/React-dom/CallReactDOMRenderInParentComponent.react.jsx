@@ -14,6 +14,10 @@ class ChildComponent extends Component{
             child component
         </div>
     }
+
+    say() {
+       alert('What the hell?'); 
+    }
 }
 
 class ParentComponent extends Component{
@@ -22,19 +26,21 @@ class ParentComponent extends Component{
     }
     componentDidMount() {
         console.log('ParentComponent did mount')
-        const el = ReactDOM.findDOMNode(this);
-        console.log(el);
-        // ReactDOM.render(
-        //     <MyComponent />,
-        //     document.getElementById('content')
-        // )
+        // const el = ReactDOM.findDOMNode(this);
+        // console.log(el);
+        const ChildComponentIns = ReactDOM.render(
+            <ChildComponent />,
+            document.getElementById('content')
+        )
+
+        ChildComponentIns.say();
     }
     render() {
         console.count('ParentComponent render');
         return <div id='parent-component'>
             parent component
             <div id='content'>
-                <ChildComponent />
+                {/*<ChildComponent />*/}
             </div>
         </div>
     }

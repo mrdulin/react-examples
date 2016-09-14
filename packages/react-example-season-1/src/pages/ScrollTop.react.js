@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import {getBook} from '../actions/scrollTop.action';
 import {connect} from 'react-redux';
-import asyncModule from '../components/asyncModule';
-
-// console.log('asyncModule------>>>>', asyncModule);
-// asyncModule().then(data => {
-//     console.log(data)
-// })
 
 class Image extends Component{
     componentDidMount() {

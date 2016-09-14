@@ -1,29 +1,22 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 
 class InsertAnElementOnMouseOver extends Component{
-    static defaultProps = {
-        demoRouteMap: new Map([
-            ['onMouseOver', '鼠标移动到一个元素时，插入另一个元素'],
-            ['domRerenderOrAppendNew', 'dom重新渲染还是append']
-        ])
+    state = {
+        insert: false
     }
-    render() {
-        const {demoRouteMap} = this.props;
 
+    render() {
         return (
             <div>
-                <h2>React-China各种问题解决demo</h2>
-                <ul>
-                    {
-                        [...demoRouteMap.keys()].map((demoRouteKey, index) => {
-                            return <li key={demoRouteKey}><Link to={`/${demoRouteKey}`}>{demoRouteMap.get(demoRouteKey)}</Link></li>
-                        })
-                    }
-                </ul>
-
+                <h2>鼠标移动到一个元素时，插入另一个元素</h2>
+                <div onMouseOver={() => this.onMouseOverHandler()}>鼠标移动到我</div>
+                {this.state.insert ? <div>被插入的元素</div> : null}
             </div>
         );
+    }
+
+    onMouseOverHandler() {
+        this.setState({insert: true});
     }
 }
 

@@ -73,8 +73,6 @@ import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
 //待整理例子
 import Form from './pages/Form.react';
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
-import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
-import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
 import ScrollTop from './pages/ScrollTop.react';
 
 
