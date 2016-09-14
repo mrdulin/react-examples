@@ -37,7 +37,9 @@ module.exports = {
             "transition-to-all-ways": "路由跳转的N种方法"
         },
         "redux": {
-
+            'redux-beginning': 'redux初探',
+            'create-store-in-component-compare-with-connect-state': '在component中createStore，并与connect注入的store比较',
+            "check-data-in-state-and-new-createStore-state-is-same-when-dispatch-action": "当dispatch一个action修改state树上的数据后，检查通过connect注入的现有state树上的数据和通过createStore新创建state的数据是否同步修改"
         },
         "react-redux": {
             "init-store-data-in-componentWillMount-when-go-back": "在componentWillMount中初始化state树问题",

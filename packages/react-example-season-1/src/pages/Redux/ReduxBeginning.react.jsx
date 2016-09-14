@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
-import rootReducer from '../reducer/index';
-import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFIlters} from '../actions/TodoList.action';
+import rootReducer from '../../reducer/index';
 
-class Redux01 extends Component{
+class ReduxBeginning extends Component{
 
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
+        debugger;
         this.store = createStore(rootReducer);
     }
 
@@ -51,4 +51,4 @@ class Redux01 extends Component{
     }
 }
 
-export default Redux01;
+export default ReduxBeginning;

@@ -4,7 +4,7 @@ const initState = {
 
 export const reactRedux03 = (state = initState, action) => {
     switch (action.type) {
-        case 'reactRedux03_getBook':
+        case 'MapDispatchToProps_getBook':
             return {
                 ...state.book,
                 book: {
@@ -12,7 +12,7 @@ export const reactRedux03 = (state = initState, action) => {
                     author: 'novaline'
                 }
             };
-        case 'reactRedux03_deleteBook':
+        case 'MapDispatchToProps_deleteBook':
             return {
                 ...state.book,
                 book: {}

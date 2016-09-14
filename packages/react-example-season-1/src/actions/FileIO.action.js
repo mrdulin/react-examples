@@ -20,7 +20,7 @@ export const uploadFilesFail = (err) => {
 }
 
 export const uploadFiles = (formData) => {
-    return (dispatch, state) => {
+    return (dispatch, getState) => {
         const url = 'http://file.io';
         dispatch(Action.request());
 

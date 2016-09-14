@@ -26,7 +26,7 @@ class DefineReduxStateDataStructure extends Component{
 
 	fetchWeatherData() {
 		const {dispatch} = this.props;
-		dispatch(fetchWeatherData(this.state.city));
+		dispatch(fetchWeatherData(this.state.city))
 	}
 
 	render() {

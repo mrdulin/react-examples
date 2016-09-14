@@ -26,7 +26,7 @@ export const getWeatherFail = (err) => {
 }
 
 export const fetchWeatherData = (q = 'shanghai', units = 'metric') => {
-	return (dispatch, state) => {
+	return (dispatch, getState) => {
 		let url = util.openweatherApiHost + '/weather';
 		//TODO 转移下面3行到util中
 		url = new URL(url);

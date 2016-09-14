@@ -1,7 +1,7 @@
 export const getBook = () => {
-    return {type: 'reactRedux03_getBook'};
+    return {type: 'MapDispatchToProps_getBook'};
 };
 
 export const deleteBook = (id) => {
-    return {type: 'reactRedux03_deleteBook', id};
+    return {type: 'MapDispatchToProps_deleteBook', id};
 };

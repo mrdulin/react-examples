@@ -46,7 +46,9 @@ import TransitionToAllWays from './pages/React-router/TransitionToAllWays.react'
 import NamesComponent from './pages/React-router/NamesComponent.react';
 
 //redux
-
+import ReduxBeginning from './pages/Redux/ReduxBeginning.react';
+import CreateStoreInComponentCompareWithConnectState from './pages/Redux/CreateStoreInComponentCompareWithConnectState.react';
+import CheckDataInStateAndNewCreateStoreStateIsSameWhenDispatchAction from './pages/Redux/CheckDataInStateAndNewCreateStoreStateIsSameWhenDispatchAction.react';
 //react-redux
 import InitReduxStateTreeDataInComponentWillMount from './pages/React-redux/InitReduxStateTreeDataInComponentWillMount.react';
 import DefineReduxStateDataStructure from './pages/React-redux/DefineReduxStateDataStructure.react';
@@ -69,7 +71,6 @@ import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
 
 //待整理例子
 import Form from './pages/Form.react';
-import Redux01 from './pages/Redux01.react';
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import OnMouseOverComponent from './components/ReactChinaQuestions/onMouseOver.react';
 import DomRerenderOrAppendNew from './components/ReactChinaQuestions/domRerenderOrAppendNew.react';
@@ -125,6 +126,9 @@ const routes = (
         </Route>
         <Route path='redux' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
+            <Route path='redux-beginning' component={ReduxBeginning}/>
+            <Route path='create-store-in-component-compare-with-connect-state' component={CreateStoreInComponentCompareWithConnectState}/>
+            <Route path='check-data-in-state-and-new-createStore-state-is-same-when-dispatch-action' component={CheckDataInStateAndNewCreateStoreStateIsSameWhenDispatchAction}/>
         </Route>
         <Route path='react-redux' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -146,7 +150,6 @@ const routes = (
         </Route>
 
         <Route path='form' component={Form}></Route>
-        <Route path='redux01' component={Redux01}></Route>
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
         <Route path='onMouseOver' component={OnMouseOverComponent}></Route>
         <Route path='domRerenderOrAppendNew' component={DomRerenderOrAppendNew}></Route>
