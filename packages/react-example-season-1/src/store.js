@@ -15,7 +15,14 @@ import {ajaxMiddleware} from './middlewares/ajaxMiddleware';
 const api_host = 'http://www.google.com';
 let middlewares = [apiMiddleware, ajaxMiddleware, thunk.withExtraArgument({api_host})];
 if(__DEV__) {
-    const logger = createLogger();
+    //如果action常量是Symbol类型，那么会报错： Uncaught (in promise) TypeError: Cannot convert a Symbol value to a string
+    //解决方法: 如下，将Symbol类型转换成字符串
+    const logger = createLogger({
+        actionTransformer: (action) => ({
+            ...action,
+            type: String(action.type),
+        })
+    });
     middlewares = [...middlewares, logger];
 }
 
