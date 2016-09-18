@@ -1,26 +1,21 @@
+//ES6
+//中间件的getState,dispatch参数是redux的applyMiddleware方法注入的
 const ajaxMiddleware = ({
 	getState,
 	dispatch
 }) => next => action => {
 	// console.log('middleware', next, action);
-
-	if (action.type !== 'ajax') return next(action);
-	fetch(action.url, {
-			method: action.method
-		})
-		.then(res => res.json())
-		// .then(json => action.cb(json, store.dispatch));
-		.then(json => {
-			action.content = json;
-			return next(action);
-		})
-}
+	const prevState = getState();
+	const returnValue = next(action);
+	const nextState = getState();
+	return returnValue;
+}	
 
 //es5
 var middlewware = function middlewware(store) {
 	return function(next) {
 		return function(action) {
-			if (action.type !== 'ajax') return next(action);
+			return next(action);
 		};
 	};
 };
@@ -28,3 +23,16 @@ var middlewware = function middlewware(store) {
 export {
 	ajaxMiddleware
 };
+
+
+//next 源码
+
+/**
+ * function (action) {
+		if (typeof action === 'function') {
+			return action(dispatch, getState, extraArgument);
+		}
+
+		return next(action);
+	}
+ */
