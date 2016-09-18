@@ -39,6 +39,7 @@ import InputTypeCheckbox from './pages/React/FormControl/InputTypeCheckbox.react
 import MobileInputFocusVistualKeyboard from './pages/React/MobileInputFocusVistualKeyboard.react';
 import LogicalOperators from './pages/React/LogicalOperators.react';
 import StaticMethod from './pages/React/StaticMethod.react';
+import ComponentCommunication from './pages/React/ComponentCommunication';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -113,6 +114,7 @@ const routes = (
             <Route path='mobile-input-focus-vistual-keybroad' component={MobileInputFocusVistualKeyboard}/>
             <Route path='logical-operators' component={LogicalOperators}/>
             <Route path='static-method' component={StaticMethod}/>
+            <Route path='component-communication' component={ComponentCommunication}/>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>

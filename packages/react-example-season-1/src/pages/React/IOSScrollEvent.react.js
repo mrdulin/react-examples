@@ -15,7 +15,7 @@ class IOSScrollEvent extends Component{
     render() {
         const options = {
             start: new Date(this.state.currentTime),
-            end: new Date('2016/06/30')
+            end: new Date(this.state.currentTime + 10000)
         };
         return (
             <div style={{height: '1000px'}}>

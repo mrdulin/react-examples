@@ -3,14 +3,12 @@ import './pages/Mini-projects';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link, browserHistory, hashHistory, RouterContext} from 'react-router';
+import {Router, browserHistory, RouterContext} from 'react-router';
 import {Provider} from 'react-redux';
 import 'whatwg-fetch';
 
 import routes from './routes';
 import store from './store';
-
-// console.log('init state is:', store.getState());
 
 const createElement = (Component, props) => {
     // console.log(Component, props);
@@ -29,5 +27,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('container')
 );
-
-// console.log(process)
