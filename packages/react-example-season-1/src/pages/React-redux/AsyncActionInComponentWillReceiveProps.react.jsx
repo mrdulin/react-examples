@@ -27,6 +27,7 @@ class AsyncActionInComponentWillReceiveProps extends Component{
 
         if(this.state.count > 1) {
             dispatch(Action.fetchCity()).then(store => {
+                console.assert(store.AsyncActionInCWRP.cityMap === nextProps.AsyncActionInCWRP.cityMap, 'nextProps.AsyncActionInCWRP.cityMap is equal with store which resolve from async action promise')
                 this.setState({count: this.state.count - 1});
             })
         }
@@ -49,6 +50,7 @@ class AsyncActionInComponentWillReceiveProps extends Component{
                 <li>this.props上的所有引用类型的数据和nextProps上的引用类型的数据不相等</li>
                 <li>在componentWillReceiveProps中，this.props.dispatch和nextProps..dispatch是两个不同的引用地址。</li>
                 <li>在componentWillReceiveProps中不加条件或者条件永远成立的dispatch将会导致死循环。</li>
+                <li>从异步action中通过promise.resolve(getState())返回的store上得reducer和nextProps上得reducer是不同的引用。</li>
             </ol>
         </div>
     }

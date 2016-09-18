@@ -31,12 +31,16 @@ export const uploadFiles = (formData) => {
             return res.json();
         }).then(json => {
             if(json.success) {
-                dispatch(uploadFilesSuccess(json)).then(() => dispatch(Action.requestSuccess()));
+                dispatch(uploadFilesSuccess(json));
+                dispatch(Action.requestSuccess());
+                return Promise.resolve(getState())
             } else {
                 return Promise.reject(json);
             }
         }).catch(err => {
-            dispatch(uploadFilesFail(err)).then(() => dispatch(Action.requestFail()))
+            dispatch(uploadFilesFail(err));
+            dispatch(Action.requestFail());
+            return Promise.reject(getState());
         });
     }
 }

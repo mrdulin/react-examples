@@ -37,7 +37,7 @@ class TableES6WithES7StaticProps extends React.Component {
 
     //ES6的类的静态方法
     static classMethod() {
-        console.log('This is a class method');
+        // console.log('This is a class method');
     }
 
     render() {

@@ -27,6 +27,6 @@ class TextInput extends Component{
 
 
 
-console.log('TextInput.focusInputMethod3', TextInput.focusInputMethod3);
+// console.log('TextInput.focusInputMethod3', TextInput.focusInputMethod3);
 
 export default TextInput;

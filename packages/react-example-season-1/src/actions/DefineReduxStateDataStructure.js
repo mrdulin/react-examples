@@ -40,11 +40,15 @@ export const fetchWeatherData = (q = 'shanghai', units = 'metric') => {
 			if(Number.parseInt(json.cod, 10) !== 200) {
 				return Promise.reject(json);
 			} else {
-				return dispatch(getWeatherSuccess(json)).then(() => dispatch(Action.requestSuccess()));
+				dispatch(getWeatherSuccess(json));
+				dispatch(Action.requestSuccess());
+				return Promise.resolve(getState());
 			}
 		})
 		.catch(err => {
-			dispatch(getWeatherFail(err)).then(() => dispatch(Action.requestFail()));
+			dispatch(getWeatherFail(err));
+			dispatch(Action.requestFail());
+			return Promise.reject(getState());
 		});
 	}
 }

@@ -14,7 +14,7 @@ export const fetchCityFail = err => ({
     }
 });
 
-export const fetchCity = () => (dispatch, getState, {api_host}) => {
+export const fetchCity = () => (dispatch, getState) => {
     dispatch(request());
     const cityMap = {
         'shanghai': '上海',
@@ -27,9 +27,17 @@ export const fetchCity = () => (dispatch, getState, {api_host}) => {
         setTimeout(() => {
             resolve(cityMap);
         }, 2000);
-    }).then(data => {
-        return dispatch(requestSuccess()).then(() => dispatch(fetchCitySuccess(data)));
-    }).catch(err => {
-        return dispatch(requestFail()).then(() => dispatch(fetchCityFail(err)));
-    });
+    }).then(
+        data => {
+            dispatch(requestSuccess())
+            dispatch(fetchCitySuccess(data))
+            return Promise.resolve(getState());
+        }
+    ).catch(
+        err => {
+            dispatch(requestFail())
+            dispatch(fetchCityFail(err))
+            return Promise.reject(getState());
+        }
+    )
 }
