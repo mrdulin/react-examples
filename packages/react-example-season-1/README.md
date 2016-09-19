@@ -65,7 +65,3 @@ dulindeiMac:react-examples dulin$ npm i webpack-dev-middleware express --save-de
 ```
 
 原因：据说是因为node 6.x版本有些`package`不支持。所以使用`nvm`或者`n`切换node到`LTS`版本，注意，切换node版本后，`npm`的版本也会相应的切换
-
-2.
-
-`react`表单控件属性`value`和`defaultValue`的区别？
