@@ -3,7 +3,7 @@ import './pages/Mini-projects';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, browserHistory, RouterContext} from 'react-router';
+import {Router, browserHistory, RouterContext, hashHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import 'whatwg-fetch';
 
@@ -17,7 +17,7 @@ const createElement = (Component, props) => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory} routes={routes} createElement={createElement} render={props => {
+        <Router history={__DEV__ ? browserHistory : hashHistory} routes={routes} createElement={createElement} render={props => {
             return <RouterContext {...props}/>
         }}>
             {/**或者将routes当作chilren插入也可以 */}

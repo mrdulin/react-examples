@@ -126,17 +126,17 @@ if (__PROD__) {
 			verbose: true,
 			dry: false
 		}),
-		// new webpack.optimize.UglifyJsPlugin({
-		// 	compress: {
-		// 		warnings: false,
-		// 		dead_code: true,
-		// 		drop_debugger: true,
-		// 		booleans: true,
-		// 		loops: true,
-		// 		unused: true
-		// 	},
-		// 	mangle: true
-		// }),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false,
+				dead_code: true,
+				drop_debugger: true,
+				booleans: true,
+				loops: true,
+				unused: true
+			},
+			mangle: true
+		}),
 		new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"),
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.OccurrenceOrderPlugin()
