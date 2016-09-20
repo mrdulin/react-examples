@@ -20,7 +20,7 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + '/' + filename + symbol + 'min' + ext));
 }
 
-const publicPath = __DEV__ ? '/' : '/';
+const publicPath = __PROD__ ? 'http://novaline.space' : '/';
 
 const config = {
 	entry: [
