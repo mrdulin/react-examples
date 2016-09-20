@@ -18,6 +18,9 @@ class Sidebar extends Component{
         return <div className={`sidebar ${hideSideBar ? 'hide' : ''}`}>
             <a id='hide-sidebar' onClick={this.toggleSideBar}>隐藏</a>
             <Link className='toc_title' to='/'>React全家桶<span>(1.0)</span></Link>
+            <ul className='toc_section'>
+                <li>» <a href="https://github.com/mrdulin/react-examples">GitHub Repository</a></li>
+            </ul>
             <input id='article-filter' type="text" placeholder='Filter' value={filterText} onChange={this.handleTextFilterChange}/>
             {sideBarItems}
         </div>

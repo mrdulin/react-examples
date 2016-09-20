@@ -19,7 +19,8 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + '/' + filename + symbol + 'min' + ext));
 }
 
-const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : './';
+//史上巨坑，'/'和'./'是不同的
+const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : '/';
 
 const config = {
 	PORT: 3001,
@@ -77,7 +78,7 @@ const config = {
 			__DEV__: __DEV__,
 			__PROD__: __PROD__,
 			'process.env': {
-				NODE_ENV: JSON.stringify(__PROD__ ? 'production' : 'development')
+				'NODE_ENV': JSON.stringify(__PROD__ ? 'production' : 'development')
 			}
 		}),
 		new ExtractTextPlugin('[name].[contenthash].css', {
@@ -142,5 +143,4 @@ if (__PROD__) {
 		new webpack.optimize.OccurrenceOrderPlugin()
 	);
 }
-
 module.exports = config;
