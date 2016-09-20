@@ -64,8 +64,8 @@
   "scripts": {
     "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail",
     "start": "webpack-dev-server --progress --inline --hot",
-    "build": "./node_modules/.bin/cross-env NODE_ENV=production webpack --progress",
-    "server": "rm -rf ./dist && ./node_modules/.bin/cross-env NODE_ENV=production webpack --progress --profile && nodemon server.js"
+    "build": "cross-env NODE_ENV=production webpack --progress",
+    "server": "rm -rf ./dist && cross-env NODE_ENV=production webpack --progress --profile && cross-env NODE_ENV=production nodemon server.js"
   },
   "keywords": [],
   "author": "",

@@ -115,11 +115,8 @@ class App extends React.Component{
             handleFilterChangeCallback: this.handleFilterChange,
             handleSideBarHideCallback: this.handleSideBarHide
         });
-        let mainWithData, sidebarWithData;
-        if(main && sidebar) {
-            mainWithData = React.cloneElement(main, data);
-            sidebarWithData = React.cloneElement(sidebar, data);
-        }
+        const mainWithData = React.cloneElement(main, data);
+        const sidebarWithData = React.cloneElement(sidebar, data);
        
 
         // let demoKeys = Object.keys(this.props.demoMap);

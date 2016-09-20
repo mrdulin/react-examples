@@ -32,7 +32,7 @@ const config = {
 		path: dist,
 		filename: __DEV__ ? '[name].js' : '[name].[hash].js',
 		chunkFilename: '[id].chunk.js',
-		publicPath: publicPath
+		publicPath
 	},
 
 	module: {
