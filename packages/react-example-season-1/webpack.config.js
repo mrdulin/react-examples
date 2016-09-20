@@ -4,12 +4,13 @@ const clearWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const dist = path.resolve(__dirname, 'dist');
-const src = path.resolve(__dirname, 'src');
-const PORT = 3001;
-
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
+
+const dist = path.resolve(__dirname, __PROD__ ? 'docs' : 'dist');
+const src = path.resolve(__dirname, 'src');
+
+const PORT = 3001;
 
 const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	const filePath = path.dirname(nodeModulePath);
@@ -119,7 +120,7 @@ if (__DEV__) {
 
 if (__PROD__) {
 	config.plugins.push(
-		new clearWebpackPlugin(['dist', 'build'], {
+		new clearWebpackPlugin(['dist', 'build', 'docs'], {
 			root: __dirname,
 			verbose: true,
 			dry: false
