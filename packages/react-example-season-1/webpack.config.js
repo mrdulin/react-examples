@@ -11,8 +11,6 @@ const __DEV__ = __PROD__ === false;
 const dist = path.resolve(__dirname, __PROD__ ? 'docs' : 'dist');
 const src = path.resolve(__dirname, 'src');
 
-const PORT = 3001;
-
 const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	const filePath = path.dirname(nodeModulePath);
 	const filename = path.basename(nodeModulePath, '.js');
@@ -21,12 +19,14 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + '/' + filename + symbol + 'min' + ext));
 }
 
-const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : '/';
+const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : './';
 
 const config = {
-	entry: [
-		src + '/index.js'
-	],
+	PORT: 3001,
+
+	entry: {
+		app: src + '/index.js'
+	},
 
 	output: {
 		path: dist,
@@ -114,7 +114,7 @@ if (__DEV__) {
 		contentBase: dist,
 		historyApiFallback: true,
 		colors: true,
-		port: PORT,
+		port: config.PORT,
 		progress: true
 	};
 }

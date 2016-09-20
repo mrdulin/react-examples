@@ -3,8 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const multiparty = require('multiparty');
 const util = require('util');
+const webpackConfig = require('./webpack.config');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || webpackConfig.PORT;
 const app = express();
 
 const __PRODUCTION__ = process.env.NODE_ENV === 'production';
