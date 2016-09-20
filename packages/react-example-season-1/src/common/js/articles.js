@@ -54,7 +54,8 @@ module.exports = {
             "async-action-in-componentWillReceiveProps": "在componentWillReceiveProps中进行dispatch异步action，各项数据引用一致性探究",
             "auto-complete-page": "一个搜索下拉列表的例子",
             "es6-component-inherit-es5-component": "es6写法的组件能否继承es5写法的组件",
-            "connect-multiple-nested-components": "connect多层嵌套组件, 观察各个组件的render次数"
+            "connect-multiple-nested-components": "connect多层嵌套组件, 观察各个组件的render次数",
+            "inject-state-to-es5-component-mixins": "HOC connect 可以注入store到mixins的方法中"
         },
         "react-dom": {
             "call-react-dom-render-in-parent-component": "在父组件的componentDidMount生命周期内使用ReactDOM.render渲染子组件"

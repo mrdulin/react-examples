@@ -62,6 +62,7 @@ import AsyncActionInComponentWillReceiveProps from './pages/React-redux/AsyncAct
 import AutoCompletePage from './pages/React-redux/AutoComplete';
 import Es6ComponentInheritEs5Component from './pages/React-redux/Es6ComponentInheritEs5Component.react';
 import ConnectMultipleNestedComponents from './pages/React-redux/ConnectMultipleNestedComponents';
+import InjectStateToEs5ComponentMixins from './pages/React-redux/InjectStateToEs5ComponentMixins.react';
 
 //react-dom
 import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMRenderInParentComponent.react';
@@ -145,6 +146,7 @@ const routes = (
             <Route path='auto-complete-page' component={AutoCompletePage}/>
             <Route path='es6-component-inherit-es5-component' component={Es6ComponentInheritEs5Component}></Route>
             <Route path='connect-multiple-nested-components' component={ConnectMultipleNestedComponents}/>
+            <Route path='inject-state-to-es5-component-mixins' component={InjectStateToEs5ComponentMixins}/>
         </Route>
         <Route path='mini-projects' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
