@@ -39,7 +39,11 @@ var InjectStateToEs5ComponentMixins = React.createClass({
 
     renderHome() {
         const {InjectStateToEs5ComponentMixins} = this.props;
-        return <h2>Welcome! {InjectStateToEs5ComponentMixins.user.name}</h2>
+        return <div>
+            <h2>Welcome! {InjectStateToEs5ComponentMixins.user.name}</h2>
+            <p>react-redux通过connect HOC，注入store，在mixins方法中同样可以拿到this.props，及this.props上得方法和属性。</p>
+            <p>需要注意的是：mixins方法必须要用<code>function</code>写法，不能用ES6的箭头函数(this.props报错)，因为this指针会不同。而且，由于要使用mixins，ES6的class写法的组件不支持，只能用<code>React.createClass</code>写法。</p>
+        </div>
     }
 })
 
