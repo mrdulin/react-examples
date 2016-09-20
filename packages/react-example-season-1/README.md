@@ -21,8 +21,10 @@ dulin@dulindeiMac-2:~/workspace/react-examples (master*=) % gulp -v
 _如何运行:_
 
 1.  `npm install`
-2.  `npm run server`启动开发服务器，浏览器访问`localhost:3001`（使用Webpack Development Server)
-3.  `npm start`启动`node`api服务器，用于提供测试数据，测试异步请求
+2.  `npm start`，使用`webpack-dev-server`进行开发，不刷新页面，热替换
+3.  `npm run server`启动`node`服务器，浏览器访问`localhost:3001`
+4.  `npm run build`，发布到`github` `master`分支的`docs`目录，访问链接`http://novaline.space/react-examples/index.html`, `github page`不支持`html5`路由方式(`browserHistory`)
+使用`hashHistory`。
 
 
 _说明:_

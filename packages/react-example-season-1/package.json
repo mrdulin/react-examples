@@ -62,9 +62,8 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "scripts": {
-    "dev": "rm -rf ./dist && webpack --progress --profile --display-error-detail",
     "start": "webpack-dev-server --progress --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress",
+    "build": "cross-env NODE_ENV=production webpack --progress && git commit -am 'build' && git pull origin master && git push origin master",
     "server": "rm -rf ./dist && cross-env NODE_ENV=production webpack --progress --profile && cross-env NODE_ENV=production nodemon server.js"
   },
   "keywords": [],
