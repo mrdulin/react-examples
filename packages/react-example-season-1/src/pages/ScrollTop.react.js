@@ -78,10 +78,6 @@ class ScrollTop extends Component{
         );
     }
 
-    search() {
-        
-    }
-
     reload(forcedReload) {
         document.location.reload(forcedReload);
     }
@@ -91,11 +87,9 @@ class ScrollTop extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => ({
         scrollTop: state.scrollTop
-    }
-}
+    })
 
 export default connect(
     mapStateToProps

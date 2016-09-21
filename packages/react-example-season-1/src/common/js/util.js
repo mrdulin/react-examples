@@ -1,6 +1,7 @@
-export const util = ((window, document) => {
+export default util = ((window, document) => {
     
     return {
+        API: '',
         openweatherApiHost: 'http://api.openweathermap.org/data/2.5',
         openweatherApiKey: '2c36facc61cd4ec7543be24d6a7d0509',
         
@@ -16,6 +17,10 @@ export const util = ((window, document) => {
                 size.height = img.height;
             }
             return size;
+        },
+
+        needReLogin: () => {
+
         },
 
         getTransitionEvent: () => {

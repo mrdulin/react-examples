@@ -1,6 +1,6 @@
 //ES6
 //中间件的getState,dispatch参数是redux的applyMiddleware方法注入的
-const ajaxMiddleware = ({
+const testMiddleware = ({
 	getState,
 	dispatch
 }) => next => action => {
@@ -21,7 +21,7 @@ var middlewware = function middlewware(store) {
 };
 
 export {
-	ajaxMiddleware
+	testMiddleware
 };
 
 

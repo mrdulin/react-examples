@@ -83,6 +83,9 @@ const config = {
 		}),
 		new ExtractTextPlugin('[name].[contenthash].css', {
 			allChunks: true
+		}),
+		new webpack.ProvidePlugin({
+			util: path.resolve(src, 'common/js', 'util.js')
 		})
 	],
 
