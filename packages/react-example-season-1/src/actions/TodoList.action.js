@@ -1,4 +1,3 @@
-import {util} from '../common/js/util';
 const makeActionCreator = util.makeActionCreator;
 
 export const addTodo = makeActionCreator('todolist_addTodo', 'text');

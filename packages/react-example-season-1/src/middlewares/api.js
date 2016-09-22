@@ -1,5 +1,3 @@
-import {REQUEST, REQUEST_SUCCESS, REQUEST_FAIL} from '../actions/common.action';
-
 export const CALL_API = Symbol('MY CALL API MIDDLEWARE');
 
 const actionWith = (origAction, data) => {
@@ -8,16 +6,19 @@ const actionWith = (origAction, data) => {
     return action;
 }
 
-const getRequest = ({method = 'get', body, params = {}, headers, credentials = 'include'}) => {
+const getRequest = ({api, method = 'get', body, params = {}, headers, credentials = 'same-origin'}) => {
         const reqMethod = method.toLowerCase();
-        let url = util.API;
+        let url = api || util.API;
         let reqOpts;
         if(reqMethod === 'get') {
             const u = new URLSearchParams();
-            Object.keys(params).forEach((key, index) => {
-                u.append(key, params[key]);
-            });
-            url = url + `?${u}`;
+            const paramKeys = Object.assign(params);
+            if(paramKeys.length > 0) {
+                paramKeys.forEach((key, index) => {
+                    u.append(key, params[key]);
+                });
+                url = url + `?${u}`;
+            }
             reqOpts = {method, headers, credentials};
         } else if(reqMethod === 'post') {
             reqOpts = {method, body, headers, credentials};
@@ -33,16 +34,15 @@ const callApi = (opts) => {
 
 const callApiMiddleware = store => next => action => {
     const call_api = action[CALL_API];
-
     if(typeof call_api === 'undefined') {
-        next(action);
+        return next(action);
     }
 
-    const {payload, types} = action;
+    const {payload, types} = call_api;
 
     const [BUSSINESS_REQUEST_SUCCESS, REQUEST, REQUEST_SUCCESS, REQUEST_FAIL, BUSSINESS_REQUEST_FAIL] = types;
 
-    REQUEST && actionWith(action, {type: REQUEST});
+    REQUEST && next(actionWith(action, {type: REQUEST}));
 
     return callApi(payload)
         .then(data => {
@@ -54,16 +54,16 @@ const callApiMiddleware = store => next => action => {
             }
 
             if(REQUEST_SUCCESS) {
-                return next(actionWith(action, {type: REQUEST_SUCCESS, res: data.systime || new Date().getTime()}));
+                next(actionWith(action, {type: REQUEST_SUCCESS, res: data.systime || new Date().getTime()}));
             }
 
             //code检查，进行相应逻辑
-            if(data.code == 401) {
+            if(data.Error == 401) {
                 util.needReLogin(payload.isIndirect);
-            } else if(data.code > 1) {
+            } else if(data.Error > 1) {
                 data.ext = 'BUSSINESS_REQUEST_FAIL';
                 return next(actionWith(action, {type: BUSSINESS_REQUEST_FAIL, res: data}));
-            } else if(data.code === 0) {
+            } else if(data.Error == 0) {
                 return next(actionWith(action, {type: BUSSINESS_REQUEST_SUCCESS, res: data}));
             } 
 

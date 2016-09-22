@@ -84,6 +84,7 @@ const config = {
 		new ExtractTextPlugin('[name].[contenthash].css', {
 			allChunks: true
 		}),
+		//暴露全局变量，暴露后的模块如果再使用import或者require该模块，会报错
 		new webpack.ProvidePlugin({
 			util: path.resolve(src, 'common/js', 'util.js')
 		})

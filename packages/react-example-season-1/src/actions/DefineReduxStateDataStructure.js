@@ -1,5 +1,4 @@
 import * as Action from './common.action';
-import {util} from '../common/js/util';
 
 // export const getWeather = () => {
 // 	return {type: 'DefineReduxStateDataStructure_getWeather'}

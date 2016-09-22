@@ -18,6 +18,7 @@ import * as Es6ComponentInheritEs5Component from './Es6ComponentInheritEs5Compon
 import * as CheckDataInStateAndNewCreateStoreStateIsSameWhenDispatchAction from './CheckDataInStateAndNewCreateStoreStateIsSameWhenDispatchAction.reducer';
 import * as ConnectMultipleNestedComponents from './ConnectMultipleNestedComponents.reducer';
 import * as InjectStateToEs5ComponentMixins from './InjectStateToEs5ComponentMixins.reducer';
+import * as TestApiMiddleware from './TestApiMiddleware.reducer';
 
 //通过combineReducers合成reducer后，state的数据结构就为{todos: [], visibilityFilter: ''}
 //传入combineReducers的对象的key名就是state对象的key名，combineReducers的对象的key对应的reducer函数名，可以与key名相同，也可以不同，
@@ -37,7 +38,7 @@ const rootReducer = combineReducers({
 	...MapStateToProps,
 	...InjectActionCreatorsToComponentProps,
 	...MapDispatchToProps,
-	...reduxApiMiddlewareReducers,
+	// ...reduxApiMiddlewareReducers,
 	...scrollTop,
 	...DefineReduxStateDataStructure,
 	...InitReduxStateTreeDataInComponentWillMount,
@@ -48,7 +49,8 @@ const rootReducer = combineReducers({
 	...Es6ComponentInheritEs5Component,
 	...CheckDataInStateAndNewCreateStoreStateIsSameWhenDispatchAction,
 	...ConnectMultipleNestedComponents,
-	...InjectStateToEs5ComponentMixins
+	...InjectStateToEs5ComponentMixins,
+	...TestApiMiddleware
 });
 
 export default rootReducer;

@@ -1,5 +1,3 @@
-import {util} from '../common/js/util';
-
 const makeActionCreator = util.makeActionCreator;
 
 export const REQUEST = 'REQUEST';
