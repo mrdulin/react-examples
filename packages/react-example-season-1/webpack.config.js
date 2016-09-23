@@ -19,8 +19,6 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + '/' + filename + symbol + 'min' + ext));
 }
 
-console.log(pkg);
-
 //史上巨坑，'/'和'./'是不同的
 const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : '/';
 

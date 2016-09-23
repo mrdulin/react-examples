@@ -55,7 +55,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server --progress --inline --hot",
+    "start": "nodemon --watch webpack.config.js --watch package.json ./node_modules/.bin/webpack-dev-server --progress --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress && git add . && git commit -m 'build' && git pull origin master && git push origin master",
     "server": "rm -rf ./dist ./docs && cross-env NODE_ENV=production webpack --progress --profile && cross-env NODE_ENV=production nodemon server.js"
   },
@@ -72,5 +72,5 @@
     "mini-projects"
   ],
   "author": "mrdulin",
-  "license": "ISC"
+  "license": "MIT"
 }
