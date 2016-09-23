@@ -40,6 +40,7 @@ import MobileInputFocusVistualKeyboard from './pages/React/MobileInputFocusVistu
 import LogicalOperators from './pages/React/LogicalOperators.react';
 import StaticMethod from './pages/React/StaticMethod.react';
 import ComponentCommunication from './pages/React/ComponentCommunication';
+import ComponentDidUpdateInputFocus from './pages/React/ComponentDidUpdateInputFocus.react';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -118,6 +119,7 @@ const routes = (
             <Route path='logical-operators' component={LogicalOperators}/>
             <Route path='static-method' component={StaticMethod}/>
             <Route path='component-communication' component={ComponentCommunication}/>
+            <Route path='componentDidUpdate-input-focus' component={ComponentDidUpdateInputFocus}/>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
