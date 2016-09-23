@@ -20,7 +20,8 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 }
 
 //史上巨坑，'/'和'./'是不同的
-const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : '/';
+//webpack result is served from /./dist 
+const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : dist;
 
 const config = {
 	PORT: 3001,

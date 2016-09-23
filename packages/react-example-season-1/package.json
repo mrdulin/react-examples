@@ -55,9 +55,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "nodemon --watch webpack.config.js --watch package.json ./node_modules/.bin/webpack-dev-server --progress --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress && git add . && git commit -m 'build' && git pull origin master && git push origin master",
-    "server": "rm -rf ./dist ./docs && cross-env NODE_ENV=production webpack --progress --profile && cross-env NODE_ENV=production nodemon server.js"
+    "watch": "nodemon --watch webpack.config.js --watch package.json",
+    "start": "npm run watch ./node_modules/.bin/webpack-dev-server --progress --inline --hot",
+    "release": "cross-env NODE_ENV=production webpack --progress && git add . && git commit -m 'build' && git pull origin master && git push origin master",
+    "pre-release": "npm run watch && rm -rf ./dist ./docs && cross-env NODE_ENV=production HOST=local webpack --progress --profile && cross-env NODE_ENV=production nodemon server.js"
   },
   "keywords": [
     "react",
@@ -69,7 +70,11 @@
     "HOC",
     "examples",
     "react-dom",
-    "mini-projects"
+    "mini-projects",
+    "webpack",
+    "es6",
+    "nodemon",
+    "scss"
   ],
   "author": "mrdulin",
   "license": "MIT"

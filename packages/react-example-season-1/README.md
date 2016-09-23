@@ -20,11 +20,12 @@ dulin@dulindeiMac-2:~/workspace/react-examples (master*=) % gulp -v
 
 _如何运行:_
 
-1.  `npm install`
+1.  `npm install`，安装依赖
 2.  `npm start`，使用`webpack-dev-server`进行开发，不刷新页面，热替换
-3.  `npm run server`启动`node`服务器，浏览器访问`localhost:3001`
-4.  `npm run build`，发布到`github` `master`分支的`docs`目录，访问链接`http://novaline.space/react-examples/index.html`, `github page`不支持`html5`路由方式(`browserHistory`)
+3.  `npm run pre-release`启动`node`服务器，浏览器访问`localhost:3001`，测试预发布代码
+4.  `npm run release`，发布到`github` `master`分支的`docs`目录，访问链接`http://novaline.space/react-examples/index.html`, `github page`不支持`html5`路由方式(`browserHistory`)
 使用`hashHistory`。
+5.  `npm version | major | minor | patch |`，修改本项目版本号。在`git`仓库中使用`npm version`会创建一个`git` `tag`。`git push origin --tags`，推送所有`tag`到远端。
 
 
 _说明:_
