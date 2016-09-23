@@ -19,6 +19,10 @@ export default util = ((window, document) => {
             return size;
         },
 
+        setTitle: (title) => {
+            document.title = title || __TITLE__
+        },
+
         needReLogin: () => {
 
         },

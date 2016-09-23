@@ -15,6 +15,8 @@ const createElement = (Component, props) => {
     return <Component {...props} />
 }
 
+util.setTitle(__TITLE__);
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={__DEV__ ? browserHistory : hashHistory} routes={routes} createElement={createElement} render={props => {

@@ -19,6 +19,8 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + '/' + filename + symbol + 'min' + ext));
 }
 
+console.log(pkg);
+
 //史上巨坑，'/'和'./'是不同的
 const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : '/';
 
@@ -71,7 +73,6 @@ const config = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: pkg.description,
 			template: src + '/index.html',
 			filename: 'index.html'
 		}),
@@ -81,7 +82,8 @@ const config = {
 			'process.env': {
 				'NODE_ENV': JSON.stringify(__PROD__ ? 'production' : 'development')
 			},
-			__VERSION__: JSON.stringify(pkg.version)
+			__VERSION__: JSON.stringify(pkg.version),
+			__TITLE__: JSON.stringify(pkg.description)
 		}),
 		new ExtractTextPlugin('[name].[contenthash].css', {
 			allChunks: true

@@ -17,7 +17,7 @@ class Sidebar extends Component{
         const {hideSideBar, filterText} = this.state;
         return <div className={`sidebar ${hideSideBar ? 'hide' : ''}`}>
             <a id='hide-sidebar' onClick={this.toggleSideBar}>隐藏</a>
-            <Link className='toc_title' to='/'>React全家桶<span>(__VERSION__)</span></Link>
+            <Link className='toc_title' to='/'>React全家桶<span>({__VERSION__})</span></Link>
             <ul className='toc_section'>
                 <li>» <a href="https://github.com/mrdulin/react-examples">GitHub Repository</a></li>
             </ul>
