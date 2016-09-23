@@ -12,7 +12,7 @@
             "regenerator": true
         }]
     ],
-    "env": {
+     "env": {
         "development": {
             "presets": ["react-hmre"]
         }

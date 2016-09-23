@@ -19,9 +19,13 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 	return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + '/' + filename + symbol + 'min' + ext));
 }
 
-//史上巨坑，'/'和'./'是不同的
-//webpack result is served from /./dist 
-const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : dist;
+//史上巨坑，'/'和'./'是不同的，publicPath只能使用绝对路径
+//webpack result is served from /./dist ，可见路径是错误的
+//publicPath将添加在index.html的bundle.js,bundle.css和所有静态资源文件路径前
+//例如：开发中：background-image: url(../../../images/adorable-avatar-bg.jpg);
+//打包编译后：在dist目录下得images目录下
+//部署后：http://novaline.space/react-examples/images/adorable-avatar-bg.jpg
+const publicPath = __PROD__ ? `http://novaline.space/${pkg.name}/` : '/';
 
 const config = {
 	PORT: 3001,
