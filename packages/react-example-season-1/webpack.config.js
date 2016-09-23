@@ -71,6 +71,7 @@ const config = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
+			title: pkg.description,
 			template: src + '/index.html',
 			filename: 'index.html'
 		}),
@@ -79,7 +80,8 @@ const config = {
 			__PROD__: __PROD__,
 			'process.env': {
 				'NODE_ENV': JSON.stringify(__PROD__ ? 'production' : 'development')
-			}
+			},
+			__VERSION__: JSON.stringify(pkg.version)
 		}),
 		new ExtractTextPlugin('[name].[contenthash].css', {
 			allChunks: true
@@ -126,7 +128,7 @@ if (__DEV__) {
 
 if (__PROD__) {
 	config.plugins.push(
-		new clearWebpackPlugin(['dist', 'build', 'docs'], {
+		new clearWebpackPlugin(['dist', 'docs'], {
 			root: __dirname,
 			verbose: true,
 			dry: false

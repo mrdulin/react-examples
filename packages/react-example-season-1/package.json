@@ -1,7 +1,7 @@
 {
   "name": "react-examples",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.2.0",
+  "description": "Learn React Family by Examples",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -59,7 +59,18 @@
     "build": "cross-env NODE_ENV=production webpack --progress && git add . && git commit -m 'build' && git pull origin master && git push origin master",
     "server": "rm -rf ./dist ./docs && cross-env NODE_ENV=production webpack --progress --profile && cross-env NODE_ENV=production nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "redux",
+    "react-redux",
+    "react-router",
+    "react-thunk",
+    "middleware",
+    "HOC",
+    "examples",
+    "react-dom",
+    "mini-projects"
+  ],
+  "author": "mrdulin",
   "license": "ISC"
 }
