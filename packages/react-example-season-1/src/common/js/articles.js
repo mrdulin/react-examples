@@ -38,7 +38,8 @@ module.exports = {
         "react-router": {
             'get-every-type-params':  "获取路由url上的每个参数",
             "router-will-leave": "路由跳转前确认",
-            "transition-to-all-ways": "路由跳转的N种方法"
+            "transition-to-all-ways": "路由跳转的N种方法",
+            "create-path": "测试react-router的createPath方法"
         },
         "redux": {
             'redux-beginning': 'redux初探',

@@ -47,6 +47,8 @@ import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
 import RouterWillLeave from './pages/React-router/RouterWillLeave.react';
 import TransitionToAllWays from './pages/React-router/TransitionToAllWays.react';
 import NamesComponent from './pages/React-router/NamesComponent.react';
+import CreatePath from './pages/React-router/CreatePath.react';
+
 
 //redux
 import ReduxBeginning from './pages/Redux/ReduxBeginning.react';
@@ -130,6 +132,7 @@ const routes = (
             <Route path='get-every-type-params(/:page)' component={GetEveryTypeParams}></Route>
             <Route path='router-will-leave' component={RouterWillLeave}></Route>
             <Route path='transition-to-all-ways' component={TransitionToAllWays}></Route>
+            <Route path='create-path' component={CreatePath}/>
         </Route>
         <Route path='redux' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
