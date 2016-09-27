@@ -10,14 +10,6 @@ const src = path.resolve(__dirname, 'src');
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
 
-const getNodeModulePath = (nodeModulePath, symbol = '.') => {
-    const filePath = path.dirname(nodeModulePath);
-    const filename = path.basename(nodeModulePath);
-    const ext = path.extname(filename);
-
-    return path.resolve(__dirname, './node_modules/', __DEV__ ? nodeModulePath : (filePath + filename + symbol + 'min' + ext));
-}
-
 const config = {
     port: 3002,
     entry: {
@@ -52,7 +44,7 @@ const config = {
         root: __dirname,
         extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
         alias: {
-            // 'react-dom': getNodeModulePath('react-dom/dist/react-dom.js')
+          
         }
     },
 
@@ -69,26 +61,12 @@ const config = {
         }),
         new ExtractTextPlugin('[name].css', {
             allChunks: true
+        }),
+        new webpack.ProvidePlugin({
+            util: src + '/util'
         })
-    ],
-
-    addNoParse: (noParseMap) => {
-        if (noParseMap.keys().length === 0) return;
-        for (let [name, path] of noParseMap.entries()) {
-            const filepath = getNodeModulePath(path);
-            config.resolve.alias[name] = filepath;
-            config.module.noParse.push(filepath);
-        }
-    }
-
+    ]
 };
-
-config.addNoParse(new Map([
-    // ['react', 'react/dist/react.js'],
-    ['redux', 'redux/dist/redux.js'],
-    ['redux-logger', 'redux-logger/dist/index.js'],
-    ['redux-thunk', 'redux-thunk/dist/redux-thunk.js']
-]));
 
 if (__DEV__) {
     config.devServer = {

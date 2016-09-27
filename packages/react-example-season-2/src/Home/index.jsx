@@ -11,16 +11,7 @@ class Home extends Component {
     }
 
     static defaultProps = {
-        tools: [
-            {
-                key: 'ip',
-                name: 'ip地址'
-            },
-            {
-                key: 'mobile',
-                name: '手机号码归属地'
-            }
-        ]
+        tools: require('../tools').datas
     }
 
     render() {

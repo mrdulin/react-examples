@@ -12,15 +12,14 @@
   },
   "homepage": "https://github.com/mrdulin/react-examples#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "material-ui": "^0.15.4",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "react-tap-event-plugin": "^1.0.0",
-    "redux": "^3.5.2",
-    "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.1.0"
+    "request": "^2.75.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.8.0",
