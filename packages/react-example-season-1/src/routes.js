@@ -41,6 +41,7 @@ import LogicalOperators from './pages/React/LogicalOperators.react';
 import StaticMethod from './pages/React/StaticMethod.react';
 import ComponentCommunication from './pages/React/ComponentCommunication';
 import ComponentDidUpdateInputFocus from './pages/React/ComponentDidUpdateInputFocus.react';
+import SelectOption from './pages/React/FormControl/SelectOption.react';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -48,6 +49,7 @@ import RouterWillLeave from './pages/React-router/RouterWillLeave.react';
 import TransitionToAllWays from './pages/React-router/TransitionToAllWays.react';
 import NamesComponent from './pages/React-router/NamesComponent.react';
 import CreatePath from './pages/React-router/CreatePath.react';
+import ListenEvent from './pages/React-router/ListenEvent.react';
 
 
 //redux
@@ -78,7 +80,6 @@ import FileIO from './pages/Mini-projects/FileIO/FileIO.react';
 import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
 
 //待整理例子
-import Form from './pages/Form.react';
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 import ScrollTop from './pages/ScrollTop.react';
 
@@ -122,6 +123,7 @@ const routes = (
             <Route path='static-method' component={StaticMethod}/>
             <Route path='component-communication' component={ComponentCommunication}/>
             <Route path='componentDidUpdate-input-focus' component={ComponentDidUpdateInputFocus}/>
+            <Route path='select' component={SelectOption}/>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -133,6 +135,7 @@ const routes = (
             <Route path='router-will-leave' component={RouterWillLeave}></Route>
             <Route path='transition-to-all-ways' component={TransitionToAllWays}></Route>
             <Route path='create-path' component={CreatePath}/>
+            <Route path='listen-event' component={ListenEvent}/>
         </Route>
         <Route path='redux' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -162,7 +165,6 @@ const routes = (
             <Route path='todoList' component={TodoList}></Route>
         </Route>
 
-        <Route path='form' component={Form}></Route>
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
         <Route path='ScrollTop' component={ScrollTop}></Route>
 

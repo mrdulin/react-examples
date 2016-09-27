@@ -33,13 +33,15 @@ module.exports = {
             "input-type-text": "React表单控件——input[type='text']",
             "input-type-checkbox": "React表单控件——input[type='checkbox']",
             "textarea": "React表单控件——textarea",
+            "select": "React表单控件——select",
             "componentDidUpdate-input-focus": "input的onBlur, onFocus事件与删除按钮的onMouseDown，onClick事件的触发的先后顺序。"
         },
         "react-router": {
             'get-every-type-params':  "获取路由url上的每个参数",
             "router-will-leave": "路由跳转前确认",
             "transition-to-all-ways": "路由跳转的N种方法",
-            "create-path": "测试react-router的createPath方法"
+            "create-path": "测试react-router的createPath方法",
+            "listen-event": "监听路由跳转"
         },
         "redux": {
             'redux-beginning': 'redux初探',
