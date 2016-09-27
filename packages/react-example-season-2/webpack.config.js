@@ -19,8 +19,9 @@ const getNodeModulePath = (nodeModulePath, symbol = '.') => {
 }
 
 const config = {
+    port: 3002,
     entry: {
-        app: src + '/app.js'
+        app: src + '/index.js'
     },
 
     output: {
@@ -51,7 +52,7 @@ const config = {
         root: __dirname,
         extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
         alias: {
-            'react-dom': getNodeModulePath('react-dom/dist/react-dom.js')
+            // 'react-dom': getNodeModulePath('react-dom/dist/react-dom.js')
         }
     },
 
@@ -82,52 +83,38 @@ const config = {
 
 };
 
-//以redux-logger为例,
-//未开启noParse时，编译时输出如下：
-//[368] ./~/redux-logger/lib/index.js 8.49 kB {0} [built]
-//[0] 418ms -> factory:546ms building:109ms = 1073ms
-//编译模块数量为547个
-
-//开启noParse时，编译模块数量为367个
-
 config.addNoParse(new Map([
-    ['react', 'react/dist/react.js'],
-    //react-redux依赖react，因此不能使用noParse
-    // ['react-redux', 'react-redux/dist/react-redux.js'],
+    // ['react', 'react/dist/react.js'],
     ['redux', 'redux/dist/redux.js'],
     ['redux-logger', 'redux-logger/dist/index.js'],
     ['redux-thunk', 'redux-thunk/dist/redux-thunk.js']
 ]));
 
-console.log(config.module.noParse)
-
 if (__DEV__) {
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
     config.devServer = {
         contentBase: dist,
         historyApiFallback: true,
-        hot: true,
         colors: true,
-        port: 8080,
-        inline: true
+        port: config.port
     };
 }
 
 if (__PROD__) {
-    config.plugins.push(new clearWebpackPlugin(['dist', 'build'], {
-        root: __dirname,
-        verbose: true,
-        dry: false
-    }));
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
-    })),
-    config.plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"))
-    config.plugins.push(new webpack.optimize.DedupePlugin());
-    config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
+    config.plugins.push(
+        new clearWebpackPlugin(['dist', 'build'], {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin()
+    );
 }
-
 
 module.exports = config;
