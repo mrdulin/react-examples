@@ -12,6 +12,7 @@
   },
   "homepage": "https://github.com/mrdulin/react-examples#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "material-ui": "^0.15.4",
     "react": "^15.1.0",

@@ -5,7 +5,7 @@
             "name": "启动",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/server.js",
+            "program": "${workspaceRoot}/webpack.config.js",
             "stopOnEntry": false,
             "args": [],
             "cwd": "${workspaceRoot}",

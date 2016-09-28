@@ -24,6 +24,8 @@ const config = {
         publicPath: '/'
     },
 
+    debug: __DEV__,
+
     module: {
         noParse: [],
         loaders: [{
@@ -73,7 +75,26 @@ if (__DEV__) {
         contentBase: dist,
         historyApiFallback: true,
         colors: true,
-        port: config.port
+        port: config.port,
+        proxy: {
+            '/api/**': {
+                target: 'http://apis.juhe.cn',
+                secure: false,
+                changeOrigin: true,
+                // bypass: (req, res, opt) => {
+                   // console.log('------------------------>>>>>>>>>>>' + req.path);
+                    
+                //     if (req.headers.accept.indexOf('html') !== -1) {
+                //         return dist + '/index.html';
+                //     }
+                // },
+
+                //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite
+                rewrite: (req, opts) => {
+                    req.url = req.url.replace(/^\/api(.+)$/, '$1');
+                }
+            }
+        }
     };
 }
 
