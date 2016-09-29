@@ -46,7 +46,6 @@ const config = {
         root: __dirname,
         extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
         alias: {
-          
         }
     },
 
@@ -65,7 +64,8 @@ const config = {
             allChunks: true
         }),
         new webpack.ProvidePlugin({
-            util: src + '/util'
+            util: src + '/util',
+            API: src + '/api'
         })
     ]
 };
@@ -81,13 +81,13 @@ if (__DEV__) {
                 target: 'http://apis.juhe.cn',
                 secure: false,
                 changeOrigin: true,
-                // bypass: (req, res, opt) => {
-                   // console.log('------------------------>>>>>>>>>>>' + req.path);
+                bypass: (req, res, opt) => {
+                   console.log('------------------------>>>>>>>>>>>' + req.path);
                     
-                //     if (req.headers.accept.indexOf('html') !== -1) {
-                //         return dist + '/index.html';
-                //     }
-                // },
+                    if (req.headers.accept.indexOf('html') !== -1) {
+                        return dist + '/index.html';
+                    }
+                },
 
                 //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite
                 rewrite: (req, opts) => {
