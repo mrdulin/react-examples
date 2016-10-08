@@ -78,6 +78,7 @@ import CallReactDOMRenderInParentComponent from './pages/React-dom/CallReactDOMR
 import AdorableAvatars from './pages/Mini-projects/AdorableAvatars/AdorableAvatars.react';
 import FileIO from './pages/Mini-projects/FileIO/FileIO.react';
 import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
+import i18n from './pages/Mini-projects/i18n/i18n.react';
 
 //待整理例子
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
@@ -163,6 +164,7 @@ const routes = (
             <Route path='adorable-avatar' component={AdorableAvatars}></Route>
             <Route path='file-io' component={FileIO}></Route>
             <Route path='todoList' component={TodoList}></Route>
+            <Route path='i18n' component={i18n}/>
         </Route>
 
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>

@@ -10,6 +10,14 @@ import 'whatwg-fetch';
 import routes from './routes';
 import store from './store';
 
+import {IntlProvider, addLocaleData} from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import zh from 'react-intl/locale-data/zh';
+import en_US from './pages/Mini-projects/i18n/lang/en_US';
+import zh_CN from './pages/Mini-projects/i18n/lang/zh_CN';
+
+addLocaleData([...en, ...zh]);
+
 const createElement = (Component, props) => {
     // console.log(Component, props);
     return <Component {...props} />
