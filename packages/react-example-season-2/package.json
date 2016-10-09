@@ -31,15 +31,17 @@
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "favicons-webpack-plugin": "0.0.7",
     "html-webpack-plugin": "^2.21.0",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
+    "webpack-browser-plugin": "^1.0.12",
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "nodemon --watch webpack.config.js --exec webpack-dev-server --inline --hot --progress"
+    "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --inline --hot --progress"
   },
   "keywords": [],
   "author": "",

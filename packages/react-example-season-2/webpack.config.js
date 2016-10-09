@@ -1,8 +1,10 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const clearWebpackPlugin = require('clean-webpack-plugin');
+const ClearWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const WebpackBrowserPlugin = require('webpack-browser-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const dist = path.resolve(__dirname, 'dist');
 const src = path.resolve(__dirname, 'src');
@@ -13,7 +15,18 @@ const __DEV__ = __PROD__ === false;
 const config = {
     port: 3002,
     entry: {
-        app: src + '/index.js'
+        app: [
+            path.resolve(src, 'index.js'),
+            path.resolve(src, './scss/')
+        ],
+        vendor: [
+            'react',
+            'react-dom',
+            'react-router',
+            'react-tap-event-plugin',
+            'material-ui',
+            'whatwg-fetch'
+        ]
     },
 
     output: {
@@ -66,7 +79,23 @@ const config = {
         new webpack.ProvidePlugin({
             util: src + '/util',
             API: src + '/api'
-        })
+        }),
+        new WebpackBrowserPlugin({
+            browser: 'default',
+            //port, 默认是8080，但如果webpack-dev-server指定了port，则会使用后者
+            // port: 8080
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.js',
+            minChunks: Infinity
+        }),
+        new ClearWebpackPlugin(['dist', 'build'], {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        }),
+        new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png'))
     ]
 };
 
@@ -100,17 +129,11 @@ if (__DEV__) {
 
 if (__PROD__) {
     config.plugins.push(
-        new clearWebpackPlugin(['dist', 'build'], {
-            root: __dirname,
-            verbose: true,
-            dry: false
-        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin()
     );
