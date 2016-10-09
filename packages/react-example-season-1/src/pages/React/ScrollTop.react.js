@@ -1,24 +1,6 @@
 import React, {Component} from 'react';
-import {getBook} from '../actions/scrollTop.action';
+import {getBook} from '../../actions/scrollTop.action';
 import {connect} from 'react-redux';
-
-class Image extends Component{
-    componentDidMount() {
-        this.image.onload = () => {
-            this.image.removeAttribute('data-src');
-        }
-        this.image.src = this.image.dataset.src; 
-    }
-
-    render() {
-        const placeholder = 'http://placehold.it/200x246';
-        return <div style={{position: 'relative', width: '200px', paddingTop: `${200 / 246 * 100}%`, backgroundColor: '#ddd'}}>
-            <div style={{position: 'absolute', top: 0, left: 0, zIndex: 1, height: '100%', width: '100%'}}>
-                <img style={{maxWidth: '100%'}} ref={ref => this.image = ref} data-src={this.props.src}/>
-            </div>
-        </div>
-    }
-}
 
 class ScrollTop extends Component{
     static defaultProps = {
@@ -39,6 +21,11 @@ class ScrollTop extends Component{
         this.props.dispatch(getBook('react'));
     }
 
+    handleSearch = e => {
+        e.preventDefault();
+        this.props.dispatch(getBook(this.input.value.trim()));
+    }
+
     render() {
         const {books} = this.props.scrollTop;
         return (
@@ -52,7 +39,7 @@ class ScrollTop extends Component{
                     </div>
                 </div>
                 <div>
-                    <form onSubmit={() => this.search()}>
+                    <form onSubmit={this.handleSearch}>
                         <div>
                             <label>
                                 <input ref={ref => this.input = ref} className="search" type="search" placeholder="输入书名搜索"/>
@@ -67,7 +54,7 @@ class ScrollTop extends Component{
                             return <li style={{borderBottom: '1px solid #ddd', padding: '10px'}} key={index}>
                                 <h3>{book.Title}</h3>
                                 <h4>{book.SubTitle}</h4>
-                                <Image src={book.Image}/>
+                                <img style={{maxWidth: '100%'}} src={book.Image}/>
                                 <p>ISBN: <span>{book.isbn}</span></p>
                                 <p>{book.Description}</p>
                             </li>;

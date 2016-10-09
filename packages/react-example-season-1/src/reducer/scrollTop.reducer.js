@@ -5,15 +5,15 @@ const initState = {
 
 export const scrollTop = (state = initState, action) => {
     switch (action.type) {
-        case 'requestSuccess':
-            const data = action.data;
+        case 'scrollTop_getBookSuccess':
+            const data = action.payload.data;
             return Object.assign({}, state, {
                 books: data.Books,
                 err: data.Error
             });
-        case 'requestError':
+        case 'scrollTop_getBookFail':
             return Object.assign({}, state, {
-                err: action.err
+                err: action.payload.err
             })
         default:
             return state;

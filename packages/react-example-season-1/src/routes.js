@@ -42,6 +42,8 @@ import StaticMethod from './pages/React/StaticMethod.react';
 import ComponentCommunication from './pages/React/ComponentCommunication';
 import ComponentDidUpdateInputFocus from './pages/React/ComponentDidUpdateInputFocus.react';
 import SelectOption from './pages/React/FormControl/SelectOption.react';
+import ScrollTop from './pages/React/ScrollTop.react';
+
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -82,7 +84,6 @@ import i18n from './pages/Mini-projects/i18n/i18n.react';
 
 //待整理例子
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
-import ScrollTop from './pages/ScrollTop.react';
 
 
 //定义路由规则
@@ -125,6 +126,7 @@ const routes = (
             <Route path='component-communication' component={ComponentCommunication}/>
             <Route path='componentDidUpdate-input-focus' component={ComponentDidUpdateInputFocus}/>
             <Route path='select' component={SelectOption}/>
+            <Route path='ScrollTop' component={ScrollTop}></Route>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -168,7 +170,6 @@ const routes = (
         </Route>
 
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
-        <Route path='ScrollTop' component={ScrollTop}></Route>
 
         <Route path='*' component={NoMatch}></Route>
     </Route>
