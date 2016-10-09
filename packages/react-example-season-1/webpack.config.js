@@ -133,7 +133,7 @@ if (__DEV__) {
 
 if (__PROD__) {
 	config.plugins.push(
-		new cleanWebpackPlugin(['dist', 'docs'], {
+		new CleanWebpackPlugin(['dist', 'docs'], {
 			root: __dirname,
 			verbose: true,
 			dry: false
