@@ -88,12 +88,6 @@ const config = {
             util: src + '/util',
             API: src + '/api'
         }),
-        new WebpackBrowserPlugin({
-            browser: 'default',
-            //port, 默认是8080，但如果webpack-dev-server指定了port，则会使用后者
-            // port: 8080
-            url: 'http://localhost'
-        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: 'vendor.js',
@@ -109,6 +103,16 @@ const config = {
 };
 
 if (__DEV__) {
+
+    config.plugins.push(
+        new WebpackBrowserPlugin({
+            browser: 'default',
+            //port, 默认是8080，但如果webpack-dev-server指定了port，则会使用后者
+            // port: 8080
+            url: 'http://localhost'
+        })
+    )
+
     config.devServer = {
         contentBase: dist,
         historyApiFallback: true,
