@@ -14,8 +14,6 @@ const __DEV__ = __PROD__ === false;
 const dist = path.resolve(__dirname, __PROD__ ? 'docs' : 'dist');
 const src = path.resolve(__dirname, 'src');
 
-console.log('--------->>>>>>', dist);
-
 const config = {
     port: 3002,
     entry: {

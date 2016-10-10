@@ -19,7 +19,7 @@ const rootRoute = {
 
 ReactDOM.render(
   <MuiThemeProvider>
-    <Router history={__PRO__ ? hashHistory : browserHistory} routes={rootRoute}/>
+    <Router history={__PROD__ ? hashHistory : browserHistory} routes={rootRoute}/>
   </MuiThemeProvider>, 
   document.getElementById('container')
 )
