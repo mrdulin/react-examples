@@ -1,16 +1,16 @@
 {
-  "name": "workspace",
+  "name": "react-juhe-tools",
   "version": "1.0.0",
-  "description": "",
+  "description": "juhe tools",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrdulin/react-examples.git"
+    "url": "git+https://github.com/mrdulin/react-juhe-tools.git"
   },
   "bugs": {
-    "url": "https://github.com/mrdulin/react-examples/issues"
+    "url": "https://github.com/mrdulin/react-juhe-tools/issues"
   },
-  "homepage": "https://github.com/mrdulin/react-examples#readme",
+  "homepage": "https://github.com/mrdulin/react-juhe-tools#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -29,6 +29,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "clean-webpack-plugin": "^0.1.9",
+    "cross-env": "^3.1.2",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "favicons-webpack-plugin": "0.0.7",
@@ -38,12 +39,27 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-browser-plugin": "^1.0.12",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-shell-plugin": "^0.4.3"
   },
   "scripts": {
-    "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --inline --hot --progress"
+    "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --inline --hot --progress",
+    "build": "cross-env NODE_ENV=production webpack --progress"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "react",
+    "react-dom",
+    "react-lazy-load",
+    "code-split",
+    "webpack",
+    "babel",
+    "react-router",
+    "material-ui",
+    "juhe",
+    "tool",
+    "ip",
+    "mobile"
+  ],
+  "author": "mrdulin",
+  "license": "MIT"
 }

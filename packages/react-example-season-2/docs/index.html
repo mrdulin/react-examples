@@ -1,0 +1,46 @@
+Html Webpack Plugin:
+<pre>
+  TypeError: Cannot use 'in' operator to search for 'html5' in true
+  
+  - htmlminifier.js:610 
+    [react-juhe-tools]/[html-minifier]/src/htmlminifier.js:610:18
+  
+  - Array.forEach
+  
+  - htmlminifier.js:609 processOptions
+    [react-juhe-tools]/[html-minifier]/src/htmlminifier.js:609:41
+  
+  - htmlminifier.js:819 minify
+    [react-juhe-tools]/[html-minifier]/src/htmlminifier.js:819:3
+  
+  - htmlminifier.js:1294 exports.minify
+    [react-juhe-tools]/[html-minifier]/src/htmlminifier.js:1294:10
+  
+  - index.js:287 
+    [react-juhe-tools]/[html-webpack-plugin]/index.js:287:16
+  
+  - util.js:16 tryCatcher
+    [react-juhe-tools]/[bluebird]/js/release/util.js:16:23
+  
+  - promise.js:504 Promise._settlePromiseFromHandler
+    [react-juhe-tools]/[bluebird]/js/release/promise.js:504:31
+  
+  - promise.js:561 Promise._settlePromise
+    [react-juhe-tools]/[bluebird]/js/release/promise.js:561:18
+  
+  - promise.js:606 Promise._settlePromise0
+    [react-juhe-tools]/[bluebird]/js/release/promise.js:606:10
+  
+  - promise.js:685 Promise._settlePromises
+    [react-juhe-tools]/[bluebird]/js/release/promise.js:685:18
+  
+  - async.js:138 Async._drainQueue
+    [react-juhe-tools]/[bluebird]/js/release/async.js:138:16
+  
+  - async.js:148 Async._drainQueues
+    [react-juhe-tools]/[bluebird]/js/release/async.js:148:10
+  
+  - async.js:17 Immediate.Async.drainQueues
+    [react-juhe-tools]/[bluebird]/js/release/async.js:17:14
+  
+</pre>
