@@ -5,7 +5,6 @@ const app = express();
 
 const host = 'http://apis.juhe.cn';
 const port = 3003;
-const appKey = 'd50bed2f4503d59bf5ccaef7d9de405b';
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -14,18 +13,30 @@ app.use(function(req, res, next) {
 });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded(extended: true)); 
+app.use(bodyParser.urlencoded({extended: true})); 
 
-app.get('/ip/ip2addr', (req, res) => {
-    const url = util.API + '/ip/ip2addr' + `?ip=${this.state.ip}&key=${appKey}`;
+app.get('/ip/ip2addr', (req, res, next) => {
+    const {ip, key: appKey} = req.query;
+    const url = host + '/ip/ip2addr' + `?ip=${ip}&key=${appKey}`;
+    req.api = url;
+    next();
+}, get);
 
+app.get('/mobile/get', (req, res, next) => {
+    const {phone, key: appKey} = req.query;
+    const url = host + '/mobile/get' + `?phone=${phone}&key=${appKey}`;
+    req.api = url;
+    next();
+}, get);
+
+function get(req, res) {
     request
-        .get({url}, (err, response, body) => {
+        .get({url: req.api}, (err, response, body) => {
             if (!err && response.statusCode == 200) {
-                res.json(body);
+                res.json(JSON.parse(body));
             }
         })
-});
+}
 
 app.listen(port, err => {
     if(err) throw err;

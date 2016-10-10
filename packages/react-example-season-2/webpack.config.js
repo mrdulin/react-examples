@@ -35,7 +35,6 @@ const config = {
         path: dist,
         filename: '[name].[hash].js',
         chunkFilename: '[id].chunk.js',
-        //publicPath的路径将被加载chunkFile的前面，例如http://localhost:8080/{publicPath}/6.chunk.js
         publicPath: __DEV__ ? '/' : 'http://novaline.space/react-juhe-tools/'
     },
 
@@ -84,7 +83,7 @@ const config = {
         }),
         new webpack.ProvidePlugin({
             util: src + '/util',
-            API: src + '/api'
+            API: src + '/api',
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -118,18 +117,17 @@ if (__DEV__) {
         port: config.port,
         proxy: {
             '/api/**': {
-                target: 'http://apis.juhe.cn',
+                target: process.env.NODE_ENV === 'node-server-proxy' ? 'http://localhost:3003' : 'http://apis.juhe.cn',
                 secure: false,
                 changeOrigin: true,
                 bypass: (req, res, opt) => {
-                   console.log('------------------------>>>>>>>>>>>' + req.path);
-                    
+                    console.log(req.headers.accept);
                     if (req.headers.accept.indexOf('html') !== -1) {
                         return dist + '/index.html';
                     }
                 },
 
-                //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite
+                //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite    
                 rewrite: (req, opts) => {
                     req.url = req.url.replace(/^\/api(.+)$/, '$1');
                 }

@@ -44,6 +44,7 @@
   },
   "scripts": {
     "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --inline --hot --progress",
+    "serve": "NODE_ENV=node-server-proxy webpack-dev-server --inline --hot --progress",
     "build": "cross-env NODE_ENV=production webpack --progress"
   },
   "keywords": [
