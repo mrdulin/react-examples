@@ -30,8 +30,13 @@ app.get('/mobile/get', (req, res, next) => {
 }, get);
 
 function get(req, res) {
+    console.log(req.api)
     request
         .get({url: req.api}, (err, response, body) => {
+if(err){
+   return res.json(err)
+}
+
             if (!err && response.statusCode == 200) {
                 res.json(JSON.parse(body));
             }
