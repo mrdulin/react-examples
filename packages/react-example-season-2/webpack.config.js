@@ -71,8 +71,7 @@ const config = {
         new HtmlWebpackPlugin({
             template: src + '/index.html',
             filename: 'index.html',
-            title: pkg.name + `(${pkg.version})`,
-            minify: __PROD__
+            title: pkg.name + `(${pkg.version})`
         }),
         new webpack.DefinePlugin({
             __DEV__,
