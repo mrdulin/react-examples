@@ -15,7 +15,7 @@ const dist = path.resolve(__dirname, __PROD__ ? 'docs' : 'dist');
 const src = path.resolve(__dirname, 'src');
 
 const nodeServerHost = 'http://localhost:3003';
-const juheHost = 'http://apis.juhe.cn';
+
 
 const config = {
     port: 3002,
@@ -87,6 +87,8 @@ const config = {
         new webpack.ProvidePlugin({
             util: src + '/util',
             API: src + '/api',
+            React: 'react',
+            ReactDOM: 'react-dom'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -101,6 +103,36 @@ const config = {
         new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png'))
     ]
 };
+
+function setProxy(pathTargets) {
+    const proxy = {};
+    const baseConfig = {
+        secure: false,
+        changeOrigin: true,
+        bypass: (req, res, opt) => {
+            if (req.headers.accept.indexOf('html') !== -1) {
+                return dist + '/index.html';
+            }
+        },
+
+        //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite    
+        rewrite: (req, opts) => {
+            req.url = req.url.replace(/^\/api(.+)$/, '$1');
+        }
+    };
+
+    for (let pathTarget of pathTargets) {
+        const {paths, target: targetHost} = pathTarget;
+        const {length: len} = paths;
+        for(let i = 0; i < len; i++) {
+            const target = process.env.NODE_ENV === 'node-server-proxy' ? nodeServerHost : targetHost;
+            proxy[paths[i]] = Object.assign({}, baseConfig, {target})
+        }
+    }
+
+    return proxy;
+}
+
 
 if (__DEV__) {
 
@@ -118,24 +150,16 @@ if (__DEV__) {
         historyApiFallback: true,
         colors: true,
         port: config.port,
-        proxy: {
-            '/api/**': {
-                target: process.env.NODE_ENV === 'node-server-proxy' ? nodeServerHost : juheHost,
-                secure: false,
-                changeOrigin: true,
-                bypass: (req, res, opt) => {
-                    console.log(req.headers.accept);
-                    if (req.headers.accept.indexOf('html') !== -1) {
-                        return dist + '/index.html';
-                    }
-                },
-
-                //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite    
-                rewrite: (req, opts) => {
-                    req.url = req.url.replace(/^\/api(.+)$/, '$1');
-                }
+        proxy: setProxy([
+            {
+                paths: ['/api/ip/ip2addr', '/api/mobile/get'],
+                target: 'http://apis.juhe.cn'
+            },
+            {
+                paths: ['/api/toutiao/index'],
+                target: 'http://v.juhe.cn'
             }
-        }
+        ])
     };
 }
 

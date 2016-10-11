@@ -37,3 +37,19 @@ __擦;__ `VPS`的`node server`调第三方接口总是报如下错误：
 ```
 
 本地`node server`没有问题。
+
+
+*   在使用[聚合数据](https://www.juhe.cn/)，调用接口的时候，出现如下错误：
+
+    <img src="./README/ip-white-list.png" alt="ip-white-list" width='200px'>
+
+    需要将`VPS`（线上服务器）的公网`IP`地址或者本地服务器(开发机，使用`http://localhost`开发调试)的公网IP地址(如果你在公司偷着做自己项目的话，公司可能有自己的内网IP，内网IP显然是不行的，[如何查看公网IP?](#public-ip))加入到聚合数据控制面板->IP白名单中。
+
+    但是公司的公网IP是经常变化的，每次变化后都要把旧的删除，添加新的公网IP，这确实有点麻烦。
+
+
+__FAQ__
+
+1. <b id='public-ip'>如何查看公网IP?</b>
+
+    使用SB百度，搜索`ip`；或者`curl ifconfig.me`.

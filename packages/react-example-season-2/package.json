@@ -17,7 +17,9 @@
     "material-ui": "^0.15.4",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-motion": "^0.4.5",
     "react-router": "^2.4.1",
+    "react-swipeable-views": "^0.7.10",
     "react-tap-event-plugin": "^1.0.0",
     "request": "^2.75.0",
     "whatwg-fetch": "^1.0.0"
@@ -45,7 +47,7 @@
   "scripts": {
     "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --inline --hot --progress",
     "serve": "NODE_ENV=node-server-proxy webpack-dev-server --inline --hot --progress",
-    "build": "cross-env NODE_ENV=production webpack --progress"
+    "build": "cross-env NODE_ENV=production webpack --progress && git add . && git commit -m 'build' && git push origin master &&  git push origin --tags"
   },
   "keywords": [
     "react",

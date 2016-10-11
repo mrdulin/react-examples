@@ -12,7 +12,8 @@ const rootRoute = {
     component: require('./Home').default,
     childRoutes: [
       require('./Ip'),
-      require('./Mobile')
+      require('./Mobile'),
+      require('./Toutiao')
     ]
   }]
 }

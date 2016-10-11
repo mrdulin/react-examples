@@ -7,5 +7,9 @@ module.exports = {
     MOBILE: {
         url: `${prefix}/mobile/get`,
         appKey: 'b2c81c2612ac13fb11caa3862f46ef5b'
+    },
+    toutiao: {
+        url: `${prefix}/toutiao/index`,
+        key: '85d9e28863a9a6fe3d84cdb06dcd6278'
     }
 }
