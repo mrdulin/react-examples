@@ -1,8 +1,10 @@
-# react-juhe-tools
+# 聚合工具
+
+_React + Webpack + ES6 + node + express_
 
 *   `npm install`, 安装依赖
 *   `npm start`, 启动`webpack-dev-server`，通过`proxy`代理联调第三方接口（第三方接口服务器没有开启`CORS`，在浏览器中直接调用接口，会报跨域错误）
-*   `npm run serve`，启动`node server`，使用`node server`作为中转（代理服务器）访问第三方接口，也是为了联调`node server`代码，`node server`最终将部署在`VPS`上。
+*   `npm run serve`，启动`node server`，使用`node server`作为中转（代理服务器，使用`nodemon server.js`启动`node server`）访问第三方接口，也是为了联调`node server`代码，`node server`最终将部署在`VPS`上。
 *   `npm run build`, 发布
 *   `SSH -p <ssh-port> root@<IP address>`连接`vps`, `vps`(`centos`)安装`git`,`sudo yum install git`
 *   使用`scp`上传`server.js`, `scp -P 29041 /Users/dulin/workspace/react-juhe-tools/server.js root@<ip_address>:/root/workspace/react-juhe-tools`
@@ -24,6 +26,8 @@ nvm --version
 
 *   安装最新版`nodejs`, `nvm install node`, 查看`node`版本`node -v`(`v6.7.0`), 查看`npm`版本`npm -v`(`3.10.3`)
 *   安装`pm2`, `npm install pm2 -g`, 查看`pm2`版本`pm2 --version`(`2.0.18`)
+*   在`VPS`上新建一个`package.json`文件，安装`node server`的依赖（如`express body-parser`）等
+*   在`VPS`上启动`node server`，`pm2 start server.js`， `pm2 logs`查看日志。
 
 
 __擦;__ `VPS`的`node server`调第三方接口总是报如下错误：
