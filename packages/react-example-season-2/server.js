@@ -1,6 +1,7 @@
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
+const http = require('http');
 const app = express();
 
 const host = 'http://apis.juhe.cn';
@@ -30,17 +31,28 @@ app.get('/mobile/get', (req, res, next) => {
 }, get);
 
 function get(req, res) {
-    console.log(req.api)
-    request
-        .get({url: req.api}, (err, response, body) => {
-if(err){
-   return res.json(err)
-}
 
-            if (!err && response.statusCode == 200) {
-                res.json(JSON.parse(body));
-            }
+     http.get(req.api, (response) => {
+        let body = '';
+        response.on('data', (chunk) => {
+            body += chunk;
+        }).on('end', () => {
+            res.json(JSON.parse(body))
         })
+    }).on('error', (e) => {
+        res.json(e);
+        console.log(`problem with request: ${e.message}`);
+    });
+    // request
+    //     .get({url: req.api}, (err, response, body) => {
+    //         if(err){
+    //             return res.json(err)
+    //         }
+
+    //         if (!err && response.statusCode == 200) {
+    //             res.json(JSON.parse(body));
+    //         }
+    //     })
 }
 
 app.listen(port, err => {

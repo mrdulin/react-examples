@@ -14,6 +14,9 @@ const __DEV__ = __PROD__ === false;
 const dist = path.resolve(__dirname, __PROD__ ? 'docs' : 'dist');
 const src = path.resolve(__dirname, 'src');
 
+const nodeServerHost = 'http://localhost:3003';
+const juheHost = 'http://apis.juhe.cn';
+
 const config = {
     port: 3002,
     entry: {
@@ -117,7 +120,7 @@ if (__DEV__) {
         port: config.port,
         proxy: {
             '/api/**': {
-                target: process.env.NODE_ENV === 'node-server-proxy' ? 'http://localhost:3003' : 'http://apis.juhe.cn',
+                target: process.env.NODE_ENV === 'node-server-proxy' ? nodeServerHost : juheHost,
                 secure: false,
                 changeOrigin: true,
                 bypass: (req, res, opt) => {
