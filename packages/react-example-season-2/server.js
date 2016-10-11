@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const app = express();
 
-const host = 'http://apis.juhe.cn';
 const port = 3003;
 
 app.use(function(req, res, next) {
@@ -18,14 +17,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/ip/ip2addr', (req, res, next) => {
     const {ip, key: appKey} = req.query;
-    const url = host + '/ip/ip2addr' + `?ip=${ip}&key=${appKey}`;
+    const url = `http://apis.juhe.cn/ip/ip2addr?ip=${ip}&key=${appKey}`;
     req.api = url;
     next();
 }, get);
 
 app.get('/mobile/get', (req, res, next) => {
     const {phone, key: appKey} = req.query;
-    const url = host + '/mobile/get' + `?phone=${phone}&key=${appKey}`;
+    const url = `http://apis.juhe.cn/mobile/get?phone=${phone}&key=${appKey}`;
+    req.api = url;
+    next();
+}, get);
+
+app.get('/toutiao/index', (req, res, next) => {
+    const {type, key} = req.query;
+    const url = `http://v.juhe.cn/toutiao/index?type=${type}&key=${key}`;
     req.api = url;
     next();
 }, get);
