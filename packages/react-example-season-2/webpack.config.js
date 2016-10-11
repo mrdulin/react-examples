@@ -147,11 +147,7 @@ if (__PROD__) {
             }
         }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new WebpackShellPlugin({
-            onBuildStart:['echo "Webpack Start"'], 
-            onBuildEnd:['echo "Webpack End" && git add . && git commit -m "build" && git push origin master &&  git push origin --tags']
-        })
+        new webpack.optimize.OccurrenceOrderPlugin()
     );
 }
 
