@@ -15,7 +15,8 @@ const rootRoute = {
     childRoutes: [
       require('./Ip'),
       require('./Mobile'),
-      require('./Toutiao')
+      require('./Toutiao'),
+      require('./transitionToSelf')
     ]
   }]
 }
@@ -24,7 +25,7 @@ const history = useRouterHistory(createHashHistory)({ queryKey: false })
 
 ReactDOM.render(
   <MuiThemeProvider>
-    <Router history={__PROD__ ? history : browserHistory} routes={rootRoute}/>
+    <Router history={true ? history : browserHistory} routes={rootRoute}/>
   </MuiThemeProvider>, 
   document.getElementById('container')
 )

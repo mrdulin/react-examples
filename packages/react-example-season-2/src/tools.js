@@ -11,6 +11,10 @@ module.exports = {
         {
             key: 'toutiao',
             name: '新闻头条'
+        },
+        {
+            key: 'transitionToSelf',
+            name: '路由跳转自己'
         }
     ]
 }

@@ -73,6 +73,11 @@ const config = {
             filename: 'index.html',
             title: `聚合工具 v${pkg.version}`
         }),
+        new HtmlWebpackPlugin({
+            template: src + '/index.html',
+            filename: 'home.html',
+            title: `聚合工具 v${pkg.version}`
+        }),
         new webpack.DefinePlugin({
             __DEV__,
             __PROD__,
