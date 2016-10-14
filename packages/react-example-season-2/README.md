@@ -5,7 +5,8 @@ _React + Webpack + ES6 + node + express_
 *   `npm install`, 安装依赖
 *   `npm start`, 启动`webpack-dev-server`，通过`proxy`代理联调第三方接口（第三方接口服务器没有开启`CORS`，在浏览器中直接调用接口，会报跨域错误）
 *   `npm run serve`，启动`node server`，使用`node server`作为中转（代理服务器，使用`nodemon server.js`启动`node server`）访问第三方接口，也是为了联调`node server`代码，`node server`最终将部署在`VPS`上。
-*   `npm run build`, 发布
+*   `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]`，给项目添加版本号.
+*   `npm run build`, 发布上线，并将`npm version`生成的`git tag`推送到到远端(`github`).
 *   `SSH -p <ssh-port> root@<IP address>`连接`vps`, `vps`(`centos`)安装`git`,`sudo yum install git`
 *   使用`scp`上传`server.js`, `scp -P 29041 /Users/dulin/workspace/react-juhe-tools/server.js root@<ip_address>:/root/workspace/react-juhe-tools`
 *   `head -n 1 /etc/issue`查看`VPS`操作系统版本，结果`CentOS release 6.6 (Final)`

@@ -22,7 +22,7 @@ const config = {
     entry: {
         app: [
             src + '/index.js',
-            src + '/scss/'
+            src + '/scss/',
         ],
         vendor: [
             'react',
@@ -155,6 +155,7 @@ if (__DEV__) {
         historyApiFallback: true,
         colors: true,
         port: config.port,
+        hot: true,
         proxy: setProxy([
             {
                 paths: ['/api/ip/ip2addr', '/api/mobile/get'],
