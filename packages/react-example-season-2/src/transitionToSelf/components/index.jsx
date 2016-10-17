@@ -2,21 +2,40 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router';
 
 export default withRouter(class TransitionToSelf extends Component{
+    constructor() {
+        super();
+        this.state = {items: []}
+
+        for(let i = 0; i < 10; i++) {
+            this.state.items.push(i);
+        }
+    }
     render() {
         const {params} = this.props;
         return <div>
             {params.id === '1' ? <button type='button' onClick={this.handleClick}>跳转自己</button> : <button type='button' onClick={this.handleGoBack}>返回</button>}
             <p>id: {params.id}</p>
             <p>页面没有刷新，但是改变hash，会走componentWillReceiveProps方法</p>
-        </div>
+
+            <ul>
+                {
+                    this.state.items.map((item, index) => {
+                        return <li id={index} key={index}>{item}</li>
+                    })
+                }
+            </ul>
+        </div>  
     }
 
-    componentDidMount() {
-        console.log('TransitionToSelf componentDidMount')
+    async componentDidMount() {
+        console.log('TransitionToSelf componentDidMount');
+        console.log(document.getElementById('99999'));
     }
 
-    componentWillReceiveProps(nextProps) {
+    async componentWillReceiveProps(nextProps) {
         console.log(nextProps.params.id);
+        const xxx = await this.loadxxx();
+        const aaa = await this.loadaaa();
     }
 
     handleGoBack = e => {

@@ -16,7 +16,6 @@ const src = path.resolve(__dirname, 'src');
 
 const nodeServerHost = 'http://localhost:3003';
 
-
 const config = {
     port: 3002,
     entry: {
