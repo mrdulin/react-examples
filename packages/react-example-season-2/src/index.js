@@ -16,7 +16,8 @@ const rootRoute = {
       require('./Ip'),
       require('./Mobile'),
       require('./Toutiao'),
-      require('./transitionToSelf')
+      require('./transitionToSelf'),
+      require('./react-custom-attribute')
     ]
   }]
 }

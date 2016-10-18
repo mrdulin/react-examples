@@ -15,6 +15,10 @@ module.exports = {
         {
             key: 'transitionToSelf',
             name: '路由跳转自己'
+        },
+        {
+            key: 'react-custom-attribute',
+            name: 'React自定义属性'
         }
     ]
 }
