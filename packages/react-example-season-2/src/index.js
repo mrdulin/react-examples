@@ -17,7 +17,8 @@ const rootRoute = {
       require('./Mobile'),
       require('./Toutiao'),
       require('./transitionToSelf'),
-      require('./react-custom-attribute')
+      require('./react-custom-attribute'),
+      require('./childComponentDidMountErrorStopParentDidMount')
     ]
   }]
 }
