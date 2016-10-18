@@ -37,7 +37,8 @@ const config = {
         path: dist,
         filename: '[name].[hash].js',
         chunkFilename: '[id].chunk.js',
-        publicPath: __DEV__ ? '/' : 'http://novaline.space/react-juhe-tools/'
+        publicPath: __DEV__ ? '/' : 'http://novaline.space/react-juhe-tools/',
+        pathinfo: __DEV__,
     },
 
     debug: __DEV__,

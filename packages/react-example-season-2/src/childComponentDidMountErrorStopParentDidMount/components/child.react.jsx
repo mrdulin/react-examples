@@ -4,10 +4,11 @@ export default class Parent extends React.Component{
         setTimeout(() => {
             console.log('child componentDidMount setTimeout')
             this.load();
-        }, 200)   
+        }, 0)   
         // this.load();
     }
     render() {
+        console.count('child render');
         return <div className='child'>
             <p>child component</p>
         </div>

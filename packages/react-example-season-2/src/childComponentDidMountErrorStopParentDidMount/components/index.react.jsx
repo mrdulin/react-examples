@@ -11,12 +11,17 @@ export default class ChildComponentDidMountErrorStopParentDidMount extends React
                 <Child></Child>
             </Parent>
 
+
             <hr/>
             <p>结论: 成立</p>
             <h3>没有setTimeout的程序流程：</h3>
+            <p>parent render</p>
+            <p>child render</p>
             <p>child componentDidMount</p>
             <p style={{color: 'red'}}>Uncaught TypeError: this.load is not a function</p>
             <h3>有setTimeout的程序流程：</h3>
+            <p>parent render</p>
+            <p>child render</p>
             <p>child componentDidMount</p>
             <p>parent componentDidMount</p>
             <p>child componentDidMount setTimeout</p>
