@@ -37,6 +37,7 @@
     "favicons-webpack-plugin": "0.0.7",
     "html-webpack-plugin": "^2.21.0",
     "node-sass": "^3.8.0",
+    "react-addons-perf": "^15.3.2",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",

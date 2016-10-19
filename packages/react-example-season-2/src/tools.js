@@ -13,7 +13,7 @@ module.exports = {
             name: '新闻头条'
         },
         {
-            key: 'transitionToSelf',
+            key: 'transitionToSelf/1',
             name: '路由跳转自己'
         },
         {

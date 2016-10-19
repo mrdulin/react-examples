@@ -5,6 +5,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'whatwg-fetch';
 import createHashHistory from 'history/lib/createHashHistory'
+import Perf from 'react-addons-Perf';
+window.Perf = Perf;
 
 injectTapEventPlugin();
 
@@ -16,7 +18,7 @@ const rootRoute = {
       require('./Ip'),
       require('./Mobile'),
       require('./Toutiao'),
-      require('./transitionToSelf'),
+      require('./transitionToSelf/1'),
       require('./react-custom-attribute'),
       require('./childComponentDidMountErrorStopParentDidMount')
     ]
