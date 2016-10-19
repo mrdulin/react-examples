@@ -38,22 +38,22 @@ export default withRouter(class TransitionToSelf extends Component{
 
     handleGoBack = e => {
         //hashHistory
-        const url = 'http://localhost:3002/index.html#/transitionToSelf/1'; //重启应用
+        // const url = 'http://localhost:3002/index.html#/transitionToSelf/1'; //重启应用
         // const url = 'http://localhost:3002/#/transitionToSelf/1'  //不重启应用也不刷新页面（不走生命周期和render方法）
 
         //browserHistory
-        // const url = 'http://localhost:3002/transitionToSelf/1'  //重启应用
+        const url = 'http://localhost:3002/transitionToSelf/1'  //重启应用
         window.location.href = url;
         // window.location.reload();
     }
 
     handleClick = e => {
         // hashHistory
-        const url = 'http://localhost:3002/index.html#/transitionToSelf/123' //重启应用
+        // const url = 'http://localhost:3002/index.html#/transitionToSelf/123' //重启应用
         // const url = 'http://localhost:3002/#/transitionToSelf/123' //不重启应用也不刷新页面（不走生命周期和render方法）
 
         //browserHistory
-        // const url = 'http://localhost:3002/transitionToSelf/123' //重启应用
+        const url = 'http://localhost:3002/transitionToSelf/123' //重启应用
         window.location.href = url;
         // window.location.reload();
     }
