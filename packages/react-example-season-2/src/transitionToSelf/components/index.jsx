@@ -27,15 +27,13 @@ export default withRouter(class TransitionToSelf extends Component{
         </div>  
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         console.log('TransitionToSelf componentDidMount');
         console.log(document.getElementById('99999'));
     }
 
-    async componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {
         console.log(nextProps.params.id);
-        const xxx = await this.loadxxx();
-        const aaa = await this.loadaaa();
     }
 
     handleGoBack = e => {

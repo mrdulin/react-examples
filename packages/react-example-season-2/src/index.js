@@ -18,7 +18,7 @@ const rootRoute = {
       require('./Ip'),
       require('./Mobile'),
       require('./Toutiao'),
-      require('./transitionToSelf/1'),
+      require('./transitionToSelf'),
       require('./react-custom-attribute'),
       require('./childComponentDidMountErrorStopParentDidMount')
     ]
