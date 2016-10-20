@@ -23,6 +23,10 @@ module.exports = {
         {
             key: 'child-component-did-mount-error-stop-parent-component-did-mount',
             name: '子组件didMount出错，阻止父组件didMount执行'
+        },
+        {
+            key: 'react-event-argument',
+            name: 'react事件对象参数位置'
         }
     ]
 }

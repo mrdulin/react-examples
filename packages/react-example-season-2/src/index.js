@@ -20,7 +20,8 @@ const rootRoute = {
       require('./Toutiao'),
       require('./transitionToSelf'),
       require('./react-custom-attribute'),
-      require('./childComponentDidMountErrorStopParentDidMount')
+      require('./childComponentDidMountErrorStopParentDidMount'),
+      require('./react-event-argument')
     ]
   }]
 }
