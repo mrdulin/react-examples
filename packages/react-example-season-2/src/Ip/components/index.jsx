@@ -15,13 +15,6 @@ class Ip extends Component{
         }
     }
 
-    componentDidMount() {
-        setTimeout(() => {
-            alert('ip componentDidMount');
-            history.back();
-        }, 2000)
-    }
-
     render() {
         console.count('ip render');
         return <div>
