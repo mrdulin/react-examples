@@ -12,7 +12,7 @@ module.exports = {
     ], (require) => {
       const IP = require('./components').default;
       const ipReducer = require('./reducer').juhe_ip;
-      const action = require('./action');
+      // const action = require('./action');
       
       injectAsyncReducer(store, 'juhe_ip', ipReducer);
       cb(null, {content: IP});

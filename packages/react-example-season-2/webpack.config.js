@@ -3,7 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ClearWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const WebpackBrowserPlugin = require('webpack-browser-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const pkg = require('./package.json');
@@ -27,7 +26,10 @@ const config = {
             'react',
             'react-dom',
             'react-router',
+            'redux',
+            'react-redux',
             'react-tap-event-plugin',
+            'react-addons-css-transition-group',
             'material-ui',
             'whatwg-fetch'
         ]
@@ -118,16 +120,19 @@ function setProxy(pathTargets) {
     const baseConfig = {
         secure: false,
         changeOrigin: true,
-        bypass: (req, res, opt) => {
-            if (req.headers.accept.indexOf('html') !== -1) {
-                return dist + '/index.html';
-            }
-        },
+        // bypass: (req, res, opt) => {
+        //     if (req.headers.accept.indexOf('html') !== -1) {
+        //         return 'index.html';
+        //     }
+        // },
 
         //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite    
-        rewrite: (req, opts) => {
-            req.url = req.url.replace(/^\/api(.+)$/, '$1');
-        }
+        // rewrite: (req, opts) => {
+        //     req.url = req.url.replace(/^\/api(.+)$/, '$1');
+        // }
+
+        pathRewrite: {'^/api' : ''}
+        
     };
 
     for (let pathTarget of pathTargets) {

@@ -27,6 +27,10 @@ module.exports = {
         {
             key: 'react-event-argument',
             name: 'react事件对象参数位置'
+        },
+        {
+            key: 'animation',
+            name: 'react动画'
         }
     ]
 }

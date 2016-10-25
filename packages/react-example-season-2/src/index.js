@@ -26,10 +26,13 @@ const rootRoute = {
       require('./transitionToSelf'),
       require('./react-custom-attribute'),
       require('./childComponentDidMountErrorStopParentDidMount'),
-      require('./react-event-argument')
+      require('./react-event-argument'),
+      require('./animation')
     ]
   }]
 }
+
+console.log(__PROD__);
 
 const history = useRouterHistory(createHashHistory)({ queryKey: false })
 
