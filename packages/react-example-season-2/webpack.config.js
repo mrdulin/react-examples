@@ -32,6 +32,11 @@ const config = {
             'react-addons-css-transition-group',
             'material-ui',
             'whatwg-fetch'
+        ],
+        commons: [
+            path.join(src, 'api'),
+            path.join(src, 'util'),
+            path.join(src, 'tools')
         ]
     },
 

@@ -31,6 +31,10 @@ module.exports = {
         {
             key: 'animation',
             name: 'react动画'
+        },
+        {
+            key: 'getWrappedInstance',
+            name: '获取connect高阶组件包含的组件实例'
         }
     ]
 }

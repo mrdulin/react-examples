@@ -27,7 +27,8 @@ const rootRoute = {
       require('./react-custom-attribute'),
       require('./childComponentDidMountErrorStopParentDidMount'),
       require('./react-event-argument'),
-      require('./animation')
+      require('./animation'),
+      require('./getWrappedInstance').default
     ]
   }]
 }
