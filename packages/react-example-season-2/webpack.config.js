@@ -100,6 +100,10 @@ const config = {
             filename: 'vendor.js',
             minChunks: Infinity
         }),
+        //  new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'app',
+        //     async: true
+        // }), 
         new ClearWebpackPlugin(['dist', 'docs', 'build'], {
             root: __dirname,
             verbose: true,
