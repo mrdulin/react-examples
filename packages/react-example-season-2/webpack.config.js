@@ -90,8 +90,8 @@ const config = {
             allChunks: true
         }),
         new webpack.ProvidePlugin({
-            util: src + '/util',
-            API: src + '/api',
+            util: path.join(src, 'util.js'),
+            API: path.join(src, 'api.js'),
             React: 'react',
             ReactDOM: 'react-dom'
         }),

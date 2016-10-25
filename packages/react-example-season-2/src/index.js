@@ -5,8 +5,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'whatwg-fetch';
 import createHashHistory from 'history/lib/createHashHistory'
+import store from './store';
+import {Provider} from 'react-redux';
+
+//addons
 import Perf from 'react-addons-Perf';
 window.Perf = Perf;
+
 
 injectTapEventPlugin();
 
@@ -29,8 +34,10 @@ const rootRoute = {
 const history = useRouterHistory(createHashHistory)({ queryKey: false })
 
 ReactDOM.render(
+  <Provider store={store}>
   <MuiThemeProvider>
     <Router history={__PROD__ ? history : browserHistory} routes={rootRoute}/>
-  </MuiThemeProvider>, 
+  </MuiThemeProvider>
+  </Provider>, 
   document.getElementById('container')
 )

@@ -3,6 +3,8 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
+import * as Action from '../action';
+import {connect} from 'react-redux';
 
 class Ip extends Component{
     constructor() {
@@ -17,11 +19,16 @@ class Ip extends Component{
 
     render() {
         console.count('ip render');
+        const {juhe_ip, dispatch} = this.props; 
         return <div>
             <form onSubmit={this.handleSubmit}>
                 <TextField type='text' id="ip-text-field" hintText="输入ip地址" value={this.state.ip} onChange={this.handleTextChange}/>
                 <RaisedButton label='查询' type='submit'/>
             </form>
+            <RaisedButton label='action1' type='button' onClick={() => dispatch(Action.action1())}/>
+            <RaisedButton label='action2' type='button' onClick={() => dispatch(Action.action2())}/>
+            <p>name: {juhe_ip.name}</p>
+            <p>age: {juhe_ip.age}</p>
             {this.state.res.error_code === 0 ? this.renderResult() : this.renderError(2000)}
         </div>
     }
@@ -75,4 +82,8 @@ class Ip extends Component{
     }
 }
 
-export default Ip;
+const mapStateToProp = state => ({
+    juhe_ip: state.juhe_ip
+})
+
+export default connect(mapStateToProp)(Ip);
