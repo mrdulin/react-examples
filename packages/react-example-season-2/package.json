@@ -52,7 +52,10 @@
     "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --progress --inline --hot",
     "serve": "NODE_ENV=node-server-proxy webpack-dev-server --inline --hot --progress",
     "pre:build": "webpack --progress",
-    "build": "cross-env NODE_ENV=production webpack --progress && git add . && git commit -m 'build' && git push origin master &&  git push origin --tags"
+    "build:webpack": "cross-env NODE_ENV=production webpack --progress && git add . && git commit -m 'build' && git push origin master &&  git push origin --tags",
+    "build:dll": "webpack --config webpack.dll.js --progress",
+    "build": "cross-env NODE_ENV=production npm run build:dll && npm run build:webpack",
+    "watch": "webpack --watch --progress"
   },
   "keywords": [
     "react",

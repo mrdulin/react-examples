@@ -16,23 +16,27 @@ const src = path.resolve(__dirname, 'src');
 const nodeServerHost = 'http://localhost:3003';
 
 const config = {
-    port: 3002,
+    /**
+     * webpack 自身就有 cache 的配置，并且在 watch 模式下自动开启，虽然效果不是最明显的，但却对所有的 module 都有效。
+     */
+    cache: __DEV__,
+
     entry: {
         app: [
             src + '/index.js',
             src + '/scss/',
         ],
-        vendor: [
-            'react',
-            'react-dom',
-            'react-router',
-            'redux',
-            'react-redux',
-            'react-tap-event-plugin',
-            'react-addons-css-transition-group',
-            'material-ui',
-            'whatwg-fetch'
-        ],
+        // vendor: [
+        //     'react',
+        //     'react-dom',
+        //     'react-router',
+        //     'redux',
+        //     'react-redux',
+        //     'react-tap-event-plugin',
+        //     'react-addons-css-transition-group',
+        //     'material-ui',
+        //     'whatwg-fetch'
+        // ],
         commons: [
             path.join(src, 'api'),
             path.join(src, 'util'),
@@ -58,7 +62,13 @@ const config = {
             include: [
                 src
             ],
-            loader: 'babel'
+            loader: 'babel',
+            query: {
+                /**
+                 * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
+                 */
+                cacheDirectory: __DEV__
+            }
         }, {
             test: /\.(scss|sass)$/,
             include: src,
@@ -67,12 +77,17 @@ const config = {
     },
 
     resolve: {
-        root: __dirname,
+        root: src,
+        modulesDirectories: ['node_modules'],
         extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
         alias: {}
     },
 
-    devtool: __DEV__ ? 'source-map' : false,
+    /**
+     * 使用何种sourceMap
+     * https://github.com/webpack/docs/wiki/configuration#devtool
+     */
+    devtool: __DEV__ ? 'cheap-source-map' : false,
 
     plugins: [
         new HtmlWebpackPlugin({
@@ -90,10 +105,10 @@ const config = {
             __PROD__,
             __VERSION__: pkg.version,
             'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
             }
         }),
-        new ExtractTextPlugin('[name].css', {
+        new ExtractTextPlugin('[name].[contentHash].css', {
             allChunks: true
         }),
         new webpack.ProvidePlugin({
@@ -103,19 +118,15 @@ const config = {
             ReactDOM: 'react-dom'
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.js',
+            name: 'commons',
+            filename: 'commons.js',
             minChunks: Infinity
         }),
-        //  new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'app',
-        //     async: true
-        // }), 
-        new ClearWebpackPlugin(['dist', 'docs', 'build'], {
-            root: __dirname,
-            verbose: true,
-            dry: false
+        new webpack.DllReferencePlugin({
+            context: path.join(__dirname, "src"),
+            manifest: require("./dll/vendor-manifest.json")
         }),
+       
         new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png'))
     ]
 };
@@ -155,20 +166,11 @@ function setProxy(pathTargets) {
 
 if (__DEV__) {
 
-    // config.plugins.push(
-    //     new WebpackBrowserPlugin({
-    //         browser: 'default',
-    //         //port, 默认是8080，但如果webpack-dev-server指定了port，则会使用后者
-    //         // port: 8080
-    //         url: 'http://localhost'
-    //     })
-    // )
-
     config.devServer = {
         contentBase: dist,
         historyApiFallback: true,
         colors: true,
-        port: config.port,
+        port: 3000,
         hot: true,
         proxy: setProxy([
             {
@@ -191,7 +193,12 @@ if (__PROD__) {
             }
         }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin()
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new ClearWebpackPlugin(['dist', 'docs', 'build'], {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })
     );
 }
 
