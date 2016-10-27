@@ -28,7 +28,8 @@ const rootRoute = {
       require('./childComponentDidMountErrorStopParentDidMount'),
       require('./react-event-argument'),
       require('./animation'),
-      require('./getWrappedInstance').default
+      require('./getWrappedInstance').default,
+      require('./shouldComponentUpdate-1').default
     ]
   }]
 }

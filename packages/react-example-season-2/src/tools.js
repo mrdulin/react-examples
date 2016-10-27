@@ -35,6 +35,10 @@ module.exports = {
         {
             key: 'getWrappedInstance',
             name: '获取connect高阶组件包含的组件实例'
+        },
+        {
+            key: 'shouldComponentUpdate-1',
+            name: 'shouldComponentUpdate研究-1'
         }
     ]
 }

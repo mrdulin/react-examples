@@ -16,11 +16,11 @@
   transition: opacity 300ms ease-in;
 }
 
-.example-appear {
+.head-appear {
   opacity: 0.01;
 }
 
-.example-appear.example-appear-active {
+.head-appear.head-appear-active {
   opacity: 1;
   transition: opacity .5s ease-in;
 }

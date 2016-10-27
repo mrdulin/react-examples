@@ -26,21 +26,16 @@ const config = {
             src + '/index.js',
             src + '/scss/',
         ],
-        // vendor: [
-        //     'react',
-        //     'react-dom',
-        //     'react-router',
-        //     'redux',
-        //     'react-redux',
-        //     'react-tap-event-plugin',
-        //     'react-addons-css-transition-group',
-        //     'material-ui',
-        //     'whatwg-fetch'
-        // ],
-        commons: [
-            path.join(src, 'api'),
-            path.join(src, 'util'),
-            path.join(src, 'tools')
+        vendor: [
+            'react',
+            'react-dom',
+            'react-router',
+            'redux',
+            'react-redux',
+            'react-tap-event-plugin',
+            'react-addons-css-transition-group',
+            'material-ui',
+            'whatwg-fetch'
         ]
     },
 
@@ -118,14 +113,14 @@ const config = {
             ReactDOM: 'react-dom'
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'commons',
-            filename: 'commons.js',
+            name: 'vendor',
+            filename: 'vendor.js',
             minChunks: Infinity
         }),
-        new webpack.DllReferencePlugin({
-            context: path.join(__dirname, "src"),
-            manifest: require("./dll/vendor-manifest.json")
-        }),
+        // new webpack.DllReferencePlugin({
+        //     context: path.join(__dirname, "src"),
+        //     manifest: require("./dll/vendor-manifest.json")
+        // }),
        
         new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png'))
     ]
