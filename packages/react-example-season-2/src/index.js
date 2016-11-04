@@ -12,8 +12,8 @@ import {Provider} from 'react-redux';
 import Perf from 'react-addons-Perf';
 window.Perf = Perf;
 
-
 injectTapEventPlugin();
+
 
 const rootRoute = {
   childRoutes: [{
@@ -29,7 +29,9 @@ const rootRoute = {
       require('./react-event-argument'),
       require('./animation'),
       require('./getWrappedInstance').default,
-      require('./shouldComponentUpdate-1').default
+      require('./shouldComponentUpdate-1').default,
+      require('./RouterHOC').default,
+      require('./call-component-method-outside').default
     ]
   }]
 }

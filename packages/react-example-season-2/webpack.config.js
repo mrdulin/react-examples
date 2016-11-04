@@ -110,7 +110,8 @@ const config = {
             util: path.join(src, 'util.js'),
             API: path.join(src, 'api.js'),
             React: 'react',
-            ReactDOM: 'react-dom'
+            ReactDOM: 'react-dom',
+            Pubsub: 'pubsub-js'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',

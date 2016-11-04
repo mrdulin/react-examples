@@ -1,10 +1,7 @@
 export default {
-    path: 'shouldComponentUpdate-1',
+    path: 'call-component-method-outside',
     getComponents(nextState, cb) {
-        require.ensure([
-            './components'
-        ], require => {
-            console.log(cb);
+        require.ensure([], require => {
             const component = require('./components').default;
             cb(null, {content: component});
         })

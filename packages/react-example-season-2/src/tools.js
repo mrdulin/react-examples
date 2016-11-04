@@ -39,6 +39,14 @@ module.exports = {
         {
             key: 'shouldComponentUpdate-1',
             name: 'shouldComponentUpdate研究-1'
+        },
+        {
+            key: 'call-component-method-outside',
+            name: '在react组件外部调用组件的方法'
+        },
+        {
+            key: 'RouterHOC',
+            name: 'react-router高阶组件'
         }
     ]
 }
