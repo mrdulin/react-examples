@@ -33,10 +33,12 @@
 * [Rufus](https://rufus.akeo.ie/?locale=zh_CN)  轻松创建USB启动盘
 * [TumblOne](http://www.tumblone.com/) free Tumblr image downloader
 * [Lingoes Translator 灵格斯词霸](http://www.lingoes.cn/) 免费的词典与文本翻译软件
-* [f.lux](https://justgetflux.com/) software to make your life better
+* [f.lux](https://justgetflux.com/) 护眼工具
 * [AutoHotkey](https://www.autohotkey.com/)
-* [LICEcap](http://www.cockos.com/licecap/) simple animated screen captures
+* [LICEcap](http://www.cockos.com/licecap/) GIF录制工具
 * [Clover 3](http://cn.ejie.me/)
+* [AppCleaner](http://freemacsoft.net/appcleaner/) mac osx卸载软件及其相关文件
+* [CheatSheet](https://www.mediaatelier.com/CheatSheet/) 按`command`快速查看当前软件的快捷键
 
 ### HTTP&FTP&SSH
 
@@ -54,6 +56,7 @@
 * [WebStorm](https://www.jetbrains.com/webstorm/)
 * [Atom](https://atom.io/)
 * [gedit](https://wiki.gnome.org/Apps/Gedit)
+* [vscode](https://code.visualstudio.com/)
 
 ### Git图形管理
 
@@ -71,6 +74,7 @@
 
 * [完美解码](http://jm.wmzhe.com/)
 * [potplayer](http://potplayer.daum.net/?lang=en)
+* [MplayerX](http://mplayerx.org/)
 
 ### 翻墙
 
@@ -115,3 +119,4 @@
 * [WEB前端助手(FeHelper)](https://chrome.google.com/webstore/detail/web%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8Bfehelper/pkgccpejnmalmdinmhkkfafefagiiiad?hl=zh-CN&gl=US)
 * [Flash Video Downloader](https://chrome.google.com/webstore/detail/flash-video-downloader/aiimdkdngfcipjohbjenkahhlhccpdbc?hl=zh-CN&gl=US)
 * [React Developer Tools](https://chrome.google.com/webstore/detail/fmkadmapgofadopljbjfkapdkoienihi)
+* [Emmet Re:view](https://chrome.google.com/webstore/detail/epejoicbhllgiimigokgjdoijnpaphdp)
