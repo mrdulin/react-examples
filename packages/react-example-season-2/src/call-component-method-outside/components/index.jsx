@@ -1,11 +1,16 @@
 // const Pubsub = require('pubsub-js');
 
+React.Component.prototype.setTitle = function(title) {
+    document.title = title || 'default title';
+}
+
 export default class MyComponent extends React.Component{
     constructor() {
         super();
         this.state = {msg: ''};
     }
     componentWillMount() {
+        this.setTitle('React is cool')
         console.log('componentWillMount');
         Pubsub.subscribe('something',  (msg, data) => {
             console.log(msg, data) ;
