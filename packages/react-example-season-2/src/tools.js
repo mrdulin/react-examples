@@ -47,6 +47,10 @@ module.exports = {
         {
             key: 'RouterHOC',
             name: 'react-router高阶组件'
+        },
+        {
+            key: 'core-js-or-babel-polyfill',
+            name: '测试core-js和babel-polyfill，及打包后bundle文件的大小'
         }
     ]
 }
