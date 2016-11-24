@@ -71,6 +71,9 @@ const config = {
             test: /\.(scss|sass)$/,
             include: src,
             loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
+        }, { 
+            test: /\.css$/, 
+            loader: "style-loader!css-loader" 
         }, {
 			test: /\.(png|jpg|gif|svg)$/,
 			exclude: /(node_modules|bower_components)/,

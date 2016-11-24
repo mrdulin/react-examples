@@ -55,6 +55,10 @@ module.exports = {
         {
             key: 'image-zoom',
             name: '手势图片缩放'
+        },
+        {
+            key: 'react-pinch-zoom-test',
+            name: 'react-pinch-zoom测试'
         }
     ]
 }
