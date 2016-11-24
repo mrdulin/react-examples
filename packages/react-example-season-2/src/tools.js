@@ -51,6 +51,10 @@ module.exports = {
         {
             key: 'core-js-or-babel-polyfill',
             name: '测试core-js和babel-polyfill，及打包后bundle文件的大小'
+        },
+        {
+            key: 'image-zoom',
+            name: '手势图片缩放'
         }
     ]
 }

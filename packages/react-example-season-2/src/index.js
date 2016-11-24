@@ -32,7 +32,8 @@ const rootRoute = {
       require('./shouldComponentUpdate-1').default,
       require('./RouterHOC').default,
       require('./call-component-method-outside').default,
-      require('./core-js-or-babel-polyfill')
+      require('./core-js-or-babel-polyfill'),
+      require('./image-zoom')
     ]
   }]
 }

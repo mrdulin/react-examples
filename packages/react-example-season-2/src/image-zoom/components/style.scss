@@ -1,0 +1,26 @@
+#image-zoom{
+    .mask{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100000;
+        background-color: #000;
+        overflow: scroll;
+        justify-content: center;
+
+        img{
+            align-self: center;
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+        }
+
+        .count{
+            position: absolute;
+            bottom: 100px;
+            color: #fff;
+        }
+    }
+}

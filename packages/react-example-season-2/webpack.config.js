@@ -35,7 +35,10 @@ const config = {
             'react-tap-event-plugin',
             'react-addons-css-transition-group',
             'material-ui',
-            'whatwg-fetch'
+            'whatwg-fetch',
+            'hammerjs',
+            'jQuery',
+            'velocity-animate'
         ]
     },
 
@@ -68,7 +71,15 @@ const config = {
             test: /\.(scss|sass)$/,
             include: src,
             loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
-        }]
+        }, {
+			test: /\.(png|jpg|gif|svg)$/,
+			exclude: /(node_modules|bower_components)/,
+			loader: 'file',
+			query: {
+				name: '[path][name].[ext]',
+				context: './src'
+			}
+		}]
     },
 
     resolve: {
@@ -111,7 +122,9 @@ const config = {
             API: path.join(src, 'api.js'),
             React: 'react',
             ReactDOM: 'react-dom',
-            Pubsub: 'pubsub-js'
+            Pubsub: 'pubsub-js',
+            Hammer: 'hammerjs',
+            $: 'jQuery'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
