@@ -43,7 +43,7 @@ import ComponentCommunication from './pages/React/ComponentCommunication';
 import ComponentDidUpdateInputFocus from './pages/React/ComponentDidUpdateInputFocus.react';
 import SelectOption from './pages/React/FormControl/SelectOption.react';
 import ScrollTop from './pages/React/ScrollTop.react';
-
+import ReplaceImgSrcWithinComponent from './pages/React/ReplaceImgSrcWithinComponent.react';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -127,6 +127,7 @@ const routes = (
             <Route path='componentDidUpdate-input-focus' component={ComponentDidUpdateInputFocus}/>
             <Route path='select' component={SelectOption}/>
             <Route path='ScrollTop' component={ScrollTop}></Route>
+            <Route path='replace-img-src-within-component' component={ReplaceImgSrcWithinComponent}></Route>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
