@@ -31,25 +31,9 @@ export default class extends React.Component{
         this.$img = $(img);
         const manager = new Hammer.Manager(img);    
         const Pinch = new Hammer.Pinch();
-        const Pan = new Hammer.Pan();
-        Pinch.recognizeWith([Pan]);
-        manager.add([Pinch, Pan]);
+        manager.add([Pinch]);
         manager.on('pinchmove', this.onPinchMove.bind(this));
         manager.on('pinchend', this.onPinchEnd.bind(this));
-        manager.on('panmove', (e) => {
-        // do something cool
-            var dX = this.state.deltaX + (e.deltaX);
-            var dY = this.state.deltaY + (e.deltaY);
-            console.log(dX, dY);
-            Velocity.hook(this.$img, 'translateX', dX + 'px');
-            Velocity.hook(this.$img, 'translateY', dY + 'px');
-        });
-        manager.on('panend', e => {
-            this.setState({
-                deltaX: this.state.deltaX + e.deltaX,
-                deltaY: e.deltaY + this.state.deltaY
-            })
-        });
     }
 
     render() {
