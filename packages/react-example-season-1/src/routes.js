@@ -44,6 +44,12 @@ import ComponentDidUpdateInputFocus from './pages/React/ComponentDidUpdateInputF
 import SelectOption from './pages/React/FormControl/SelectOption.react';
 import ScrollTop from './pages/React/ScrollTop.react';
 import ReplaceImgSrcWithinComponent from './pages/React/ReplaceImgSrcWithinComponent.react';
+import ReactCreateClass from './pages/React/React.createClass.jsx';
+import ReactChildren from './pages/React/React.children.jsx';
+import ReactCreateElement from './pages/React/React.createElement.jsx';
+import InitPropsAndState from './pages/React/InitPropsAndState.jsx';
+import InitLifecycle from './pages/React/InitLifecycle.jsx';
+import StateChangeLifecycle from './pages/React/StateChangeLifecycle.jsx';	
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -128,6 +134,12 @@ const routes = (
             <Route path='select' component={SelectOption}/>
             <Route path='ScrollTop' component={ScrollTop}></Route>
             <Route path='replace-img-src-within-component' component={ReplaceImgSrcWithinComponent}></Route>
+			<Route path='react-create-class' component={ReactCreateClass}></Route>
+			<Route path='react-children' component={ReactChildren}></Route>
+			<Route path='react-createElement' component={ReactCreateElement}></Route>
+			<Route path='init-props-and-state' component={InitPropsAndState}></Route>
+			<Route path='init-lifecycle' component={InitLifecycle}></Route>
+			<Route path='state-change-lifecycle' component={StateChangeLifecycle}></Route>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>

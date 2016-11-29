@@ -36,7 +36,14 @@ module.exports = {
             "select": "React表单控件——select",
             "componentDidUpdate-input-focus": "input的onBlur, onFocus事件与删除按钮的onMouseDown，onClick事件的触发的先后顺序。",
             'ScrollTop': 'ScrollTop测试',
-            'replace-img-src-within-component': '替换组件内部包含的img标签的src'
+            'replace-img-src-within-component': '替换组件内部包含的img标签的src',
+			'react-create-class': '使用React.createClass方法创建一个组件',
+			'react-children': 'React.thildren用法',
+			'react-createElement': 'React.createElement用法',
+			'init-props-and-state': '初始化props和state',
+			'init-lifecycle': '初始化，组件生命周期执行顺序',
+			'state-change-lifecycle': '组件state改变时，生命周期执行顺序',
+			'nested-component': '组件嵌套'
         },
         "react-router": {
             'get-every-type-params':  "获取路由url上的每个参数",
