@@ -43,7 +43,10 @@ module.exports = {
 			'init-props-and-state': '初始化props和state',
 			'init-lifecycle': '初始化，组件生命周期执行顺序',
 			'state-change-lifecycle': '组件state改变时，生命周期执行顺序',
-			'nested-component': '组件嵌套'
+			'nested-component': '组件嵌套',
+			'component-namespace': '组件命名空间',
+            'spread-props': '组件spread props'
+			
         },
         "react-router": {
             'get-every-type-params':  "获取路由url上的每个参数",
@@ -78,7 +81,8 @@ module.exports = {
             "adorable-avatar": "Adorable Avatars —— Generate random cartoon avatars",
             "file-io": "file.io —— Ephemeral file sharing Convenient, anonymous and secure",
             "todoList": "TodoList",
-            "i18n": "React 国际化"
+            "i18n": "React 国际化",
+            "mini-app": '迷你应用'
         }
     }
 }

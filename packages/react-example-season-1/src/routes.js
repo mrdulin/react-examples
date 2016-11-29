@@ -50,6 +50,8 @@ import ReactCreateElement from './pages/React/React.createElement.jsx';
 import InitPropsAndState from './pages/React/InitPropsAndState.jsx';
 import InitLifecycle from './pages/React/InitLifecycle.jsx';
 import StateChangeLifecycle from './pages/React/StateChangeLifecycle.jsx';	
+import ComponentNamespace from './pages/React/ComponentNamespace.jsx';
+import SpreadProps from './pages/React/SpreadProps.jsx';
 
 //react-router
 import GetEveryTypeParams from './pages/React-router/GetEveryTypeParams.react';
@@ -87,6 +89,7 @@ import AdorableAvatars from './pages/Mini-projects/AdorableAvatars/AdorableAvata
 import FileIO from './pages/Mini-projects/FileIO/FileIO.react';
 import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
 import i18n from './pages/Mini-projects/i18n/i18n.react';
+import MiniApp from './pages/Mini-projects/mini-app/app.jsx';
 
 //待整理例子
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
@@ -140,6 +143,8 @@ const routes = (
 			<Route path='init-props-and-state' component={InitPropsAndState}></Route>
 			<Route path='init-lifecycle' component={InitLifecycle}></Route>
 			<Route path='state-change-lifecycle' component={StateChangeLifecycle}></Route>
+			<Route path='component-namespace' component={ComponentNamespace}></Route>
+            <Route path='spread-props' component={SpreadProps}></Route>
         </Route>
         <Route path='react-dom' components={{sidebar: Sidebar, main: Main}}>
             <IndexRoute component={ArticleList}/>
@@ -180,6 +185,7 @@ const routes = (
             <Route path='file-io' component={FileIO}></Route>
             <Route path='todoList' component={TodoList}></Route>
             <Route path='i18n' component={i18n}/>
+            <Route path='mini-app' component={MiniApp}></Route>
         </Route>
 
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
