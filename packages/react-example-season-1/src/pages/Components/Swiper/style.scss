@@ -1,0 +1,45 @@
+.swiper{
+    position: relative;
+    height: 100%;
+
+    &-list{
+        position: relative;
+        height: 100%;
+    }
+
+    .slider{
+        position: absolute;
+        opacity: 0;
+        transition: 1s ease-in-out opacity;
+        &.fadein{
+            opacity: 1;
+        }
+
+        img{
+            max-width: 100%;
+            display: block;
+        }
+    }
+
+    &-indicators{
+        position: absolute;
+        bottom: 10px;
+        
+        > li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0, 0, 0, 0);
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            margin: 1px;
+            cursor: pointer;
+
+            &.active{
+                background-color: #fff;
+            }
+        }
+       
+
+    }
+}

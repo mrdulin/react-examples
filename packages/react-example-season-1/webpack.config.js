@@ -68,7 +68,8 @@ const config = {
 		extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
 		alias: {
 			'react-dom': getNodeModulePath('react-dom/dist/react-dom.js'),
-			'articles': path.resolve(src, 'common/js', 'articles.js')
+			'articles': path.resolve(src, 'common/js', 'articles.js'),
+			'images': path.resolve(src, 'images')
 		}
 	},
 
@@ -93,7 +94,8 @@ const config = {
 		}),
 		//暴露全局变量，暴露后的模块如果再使用import或者require该模块，会报错
 		new webpack.ProvidePlugin({
-			util: path.resolve(src, 'common/js', 'util.js')
+			util: path.resolve(src, 'common/js', 'util.js'),
+			React: 'react'
 		})
 	],
 

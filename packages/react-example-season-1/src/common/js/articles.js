@@ -83,6 +83,10 @@ module.exports = {
             "todoList": "TodoList",
             "i18n": "React 国际化",
             "mini-app": '迷你应用'
+        },
+        "components": {
+            "swiper": "轮播"
         }
+
     }
 }

@@ -91,6 +91,9 @@ import TodoList from './pages/Mini-projects/TodoList/TodoList.react';
 import i18n from './pages/Mini-projects/i18n/i18n.react';
 import MiniApp from './pages/Mini-projects/mini-app/app.jsx';
 
+//components
+import Swiper from './pages/Components/Swiper';
+
 //待整理例子
 import ReduxAPIMiddleware from './pages/ReduxAPIMiddleware.react';
 
@@ -186,6 +189,10 @@ const routes = (
             <Route path='todoList' component={TodoList}></Route>
             <Route path='i18n' component={i18n}/>
             <Route path='mini-app' component={MiniApp}></Route>
+        </Route>
+        <Route path='components' components={{sidebar: Sidebar, main: Main}}>
+            <IndexRoute component={ArticleList}/>
+            <Route path='swiper' component={Swiper}></Route>
         </Route>
 
         <Route path='redux-api-middware' component={ReduxAPIMiddleware}></Route>
