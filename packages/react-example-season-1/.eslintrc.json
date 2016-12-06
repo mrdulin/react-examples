@@ -1,5 +1,5 @@
 {   
-    "root": true
+    "root": true,
     "parser": "esprima",
     "parserOptions": {
     },
@@ -18,7 +18,37 @@
         "no-debugger": "error",
         "no-dupe-args": "error",
         "no-dupe-keys": "error",
-        "no-duplicate-case": "error"
-
+        "no-duplicate-case": "error",
+        "no-empty-character-class": "error",
+        "no-empty": "warn",
+        "no-ex-assign": "error",
+        "no-extra-boolean-cast": "warn",
+        "no-extra-semi": "warn",
+        "no-func-assign": "warn",
+        "no-inner-declarations": "error",
+        "no-invalid-regexp": "error",
+        "no-irregular-whitespace": "warn",
+        "no-obj-calls": "error",
+        "no-prototype-builtins": "warn",
+        "no-regex-spaces": "error",
+        "no-sparse-arrays": "error",
+        "no-template-curly-in-string": "error",
+        "no-unexpected-multiline": "error",
+        "no-unreachable": "warn",
+        "no-unsafe-finally": "error",
+        "no-unsafe-negation": "error",
+        "use-isnan": "error",
+        "valid-jsdoc": "off",
+        "valid-typeof": "error",
+        "block-scoped-var": "error",
+        "guard-for-in": "warn",
+        "no-alert": "off",
+        "no-caller": "error",
+        "no-case-declarations": "off",
+        "no-else-return": "error",
+        "no-empty-function": "off",
+        "no-empty-pattern": "error",
+        "no-eq-null": "error",
+        "no-eval": "error"
     }
 }
