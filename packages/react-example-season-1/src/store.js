@@ -1,4 +1,4 @@
-import {applyMiddleware, createStore} from 'redux';
+import {applyMiddleware, createStore, compose} from 'redux';
 import rootReducer from './reducer/index';
 //webpack未开启noParse
 import createLogger from 'redux-logger';
@@ -28,7 +28,10 @@ if(__DEV__) {
 }
 
 //logger中间件必须放在所有中间件的最后，否则它会打印出thunk和promise中间件的一些操作，而不是action
-const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
+const createStoreWithMiddleware = compose(
+    applyMiddleware(...middlewares), 
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+)(createStore);
 const store = createStoreWithMiddleware(rootReducer);
 
 export default store;
