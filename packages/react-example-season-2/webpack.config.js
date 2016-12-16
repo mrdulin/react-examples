@@ -129,11 +129,11 @@ const config = {
             Hammer: 'hammerjs',
             $: 'jQuery'
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.js',
-            minChunks: Infinity
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor',
+        //     filename: 'vendor.js',
+        //     minChunks: Infinity
+        // }),
         // new webpack.DllReferencePlugin({
         //     context: path.join(__dirname, "src"),
         //     manifest: require("./dll/vendor-manifest.json")
