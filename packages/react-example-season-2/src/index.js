@@ -34,7 +34,8 @@ const rootRoute = {
       require('./call-component-method-outside').default,
       require('./core-js-or-babel-polyfill'),
       require('./image-zoom'),
-      require('./react-pinch-zoom-test')
+      require('./react-pinch-zoom-test'),
+      require('./IScroll-loadMore')
     ]
   }]
 }

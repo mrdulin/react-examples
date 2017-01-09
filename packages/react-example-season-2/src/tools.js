@@ -59,6 +59,10 @@ module.exports = {
         {
             key: 'react-pinch-zoom-test',
             name: 'react-pinch-zoom测试'
+        },
+        {
+            key: 'iscroll-loadMore',
+            name: 'iscroll配合react实现loadmore'
         }
     ]
 }
