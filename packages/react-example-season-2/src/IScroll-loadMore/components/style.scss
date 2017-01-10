@@ -1,19 +1,13 @@
 #iscroll-loadMore{
-    .book-list{
-        > li {
-            height: 120px;
-            border-bottom: 1px solid #ddd;
-        }
-    }
 
     .wrapper{
         position: absolute;
         z-index: 1;
-        top: 64px;
+        top: 114px;
         bottom: 0;
         left: 0;
         width: 100%;
-        background: #ccc;
+        background: #fff;
         overflow: hidden;
 
         /* Prevent native touch events on Windows */
@@ -38,7 +32,7 @@
         position: absolute;
         z-index: 1;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
-        width: 2000px;
+        width: 100%;
         -webkit-transform: translateZ(0);
         -moz-transform: translateZ(0);
         -ms-transform: translateZ(0);
@@ -55,5 +49,62 @@
         -o-text-size-adjust: none;
         text-size-adjust: none;
         background: #fff;
+    }
+
+    .load-more-text{
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .search-form{
+        height: 50px;
+        display: flex;
+        padding: 10px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ddd;
+
+        input{
+            outline: none;
+            border: 1px solid #ddd;
+            flex: 1;
+            padding: 0 8px;
+            border-radius: 3px;
+        }
+    }
+
+    .book-list{
+        padding: 0 !important;
+    }
+
+    .book-thumbnail{
+        width: 60px !important;
+        height: auto !important;
+        margin: 0 12px !important;
+    }
+
+    .search-history-list{
+        list-style: none;
+        overflow: hidden;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .search-history-item{
+        float: left;
+        border: 1px solid #ddd;
+        padding: 10px 8px;
+        text-align: center;
+        margin-bottom: 10px;
+        flex: 1 0 25%;
+
+        &:not(:nth-of-type(3n)) {
+            margin-right: 5px;
+        }
+    }
+    .search-history-text{
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
     }
 }

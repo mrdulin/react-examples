@@ -96,7 +96,7 @@ const config = {
      * 使用何种sourceMap
      * https://github.com/webpack/docs/wiki/configuration#devtool
      */
-    devtool: __DEV__ ? 'cheap-source-map' : false,
+    devtool: __DEV__ ? 'source-map' : '',
 
     plugins: [
         new HtmlWebpackPlugin({
@@ -193,7 +193,8 @@ if (__DEV__) {
                 paths: ['/api/toutiao/index'],
                 target: 'http://v.juhe.cn'
             }
-        ])
+        ]),
+        host: '0.0.0.0'
     };
 }
 
