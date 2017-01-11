@@ -1,0 +1,5 @@
+392K	dist/bundles/app.cb54eac9.js
+396K	dist/bundles/app.cb54eac9.js.map
+2.9M	dist/bundles/vendor-720dacbe.js
+3.3M	dist/bundles/vendor-720dacbe.js.map
+7.0M	dist/bundles

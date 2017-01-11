@@ -1,14 +1,13 @@
-import store, {injectAsyncReducer} from 'app/store';
+import {injectAsyncReducer} from 'app/store';
 
 module.exports = {
   path: 'ip',
   getComponents(nextState, cb) {
     require.ensure([], (require) => {
       const IP = require('./components');
-      const ipReducer = require('./reducer').juhe_ip;
-      // const action = require('./action');
+      const {ip} = require('./reducer');
 
-      injectAsyncReducer(store, 'juhe_ip', ipReducer);
+      injectAsyncReducer('ip', ip);
       cb(null, {content: IP});
     })
   }

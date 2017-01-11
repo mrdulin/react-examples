@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import IScroll from 'IScroll';
 
+// const fetch = require('imports?self=>{},es6p=es6-promise,Promise=>es6p.Promise!exports?self.fetch!whatwg-fetch');
+
 import {List, ListItem} from 'material-ui/List';
 
 import SearchBar from './SearchBar';

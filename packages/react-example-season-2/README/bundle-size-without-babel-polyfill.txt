@@ -1,0 +1,5 @@
+ 72K	dist/bundles/app.0fd6478b.js
+ 76K	dist/bundles/app.0fd6478b.js.map
+2.9M	dist/bundles/vendor-c4a83f28.js
+3.3M	dist/bundles/vendor-c4a83f28.js.map
+6.4M	dist/bundles

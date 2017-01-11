@@ -81,7 +81,7 @@ class Ip extends React.Component{
 }
 
 const mapStateToProp = state => ({
-    juhe_ip: state.juhe_ip
+    juhe_ip: state.ip
 })
 
 export default ReactRedux.connect(mapStateToProp)(Ip);

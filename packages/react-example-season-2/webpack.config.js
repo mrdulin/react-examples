@@ -26,7 +26,9 @@ const config = {
     cache: __DEV__,
 
     entry: {
-        app: path.join(app, 'index.js'),
+        app: [
+            path.join(app, 'index.js')
+        ],
         vendor: [
             'react',
             'react-dom',
@@ -35,9 +37,10 @@ const config = {
             'react-redux',
             'react-addons-css-transition-group',
             'material-ui',
-            'whatwg-fetch',
             'hammerjs',
             'jQuery',
+            'whatwg-fetch',
+            'es6-promise',
             'velocity-animate',
             'react-tap-event-plugin'
         ]
@@ -64,9 +67,9 @@ const config = {
                 babelrc: false,
                 presets: ["es2015", "react", "stage-0"],
                 plugins: ['transform-runtime', "add-module-exports"],
-                 /**
-                 * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
-                 */
+                /**
+                * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
+                */
                 cacheDirectory: __DEV__
             }
         }, {
@@ -77,20 +80,20 @@ const config = {
             test: /\.css$/,
             loader: "style!css"
         }, {
-			test: /\.(png|jpg|gif|svg)$/,
-			exclude: /(node_modules|bower_components)/,
-			loader: 'url',
-			query: {
+            test: /\.(png|jpg|gif|svg)$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'url',
+            query: {
                 limit: 8192,
-				name: 'images/[name]-[hash:8].[ext]'
-			}
-		}]
+                name: 'images/[name]-[hash:8].[ext]'
+            }
+        }]
     },
 
     sassLoader: {
-		includePaths: ['app/common/scss'],
-		sourceMap: true
-	},
+        includePaths: ['app/common/scss'],
+        sourceMap: true
+    },
 
     resolve: {
         root: __dirname,
@@ -141,6 +144,18 @@ const config = {
             Pubsub: 'pubsub-js',
             Hammer: 'hammerjs',
             $: 'jQuery',
+            /**
+             *  promise和fetch的polyfill
+             *  在chrome 50+上使用fetch和promise的地方断点调试，发现是
+             *  function fetch() { [native code] }
+             *  function Promise() { [native code] }
+             *  使用的是原生的fetch和promise方法
+             *  最开始以为webpack配置的不对，后来想了下，polyfill的含义是： 检测原生的方法是否可用，可用就使用原生的，否则就使用polyfill的
+             *  在safari 版本 9.1.2 (11601.7.7)上测试了下，断点查看fetch和promise，使用了polyfill的fetch和promise，没毛病
+             */
+
+            Promise: 'es6-promise',
+            fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
             ReactCSSTransitionGroup: 'react-addons-css-transition-group',
             util: path.join(app, 'common/js/util.js')
         }),
@@ -183,16 +198,16 @@ function setProxy(pathTargets) {
         //     req.url = req.url.replace(/^\/api(.+)$/, '$1');
         // }
 
-        pathRewrite: {'^/api' : ''}
+        pathRewrite: { '^/api': '' }
 
     };
 
     for (let pathTarget of pathTargets) {
         const {paths, target: targetHost} = pathTarget;
         const {length: len} = paths;
-        for(let i = 0; i < len; i++) {
+        for (let i = 0; i < len; i++) {
             const target = process.env.NODE_ENV === 'node-server-proxy' ? nodeServerHost : targetHost;
-            proxy[paths[i]] = Object.assign({}, baseConfig, {target})
+            proxy[paths[i]] = Object.assign({}, baseConfig, { target })
         }
     }
 
