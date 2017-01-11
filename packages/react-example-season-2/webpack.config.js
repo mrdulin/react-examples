@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ClearWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const pkg = require('./package.json');
@@ -47,7 +47,7 @@ const config = {
         path: dist,
         filename: 'bundles/[name].[chunkhash:8].js',
         chunkFilename: 'modules/[id].[name].chunk.[chunkhash:8].js',
-        publicPath: __DEV__ ? '/' : 'http://novaline.space/react-juhe-tools/',
+        publicPath: __DEV__ ? '/' : 'http://novaline.space/react-mobile/',
         pathinfo: __DEV__,
     },
 
@@ -63,7 +63,7 @@ const config = {
                 compact: false,
                 babelrc: false,
                 presets: ["es2015", "react", "stage-0"],
-                plugins: ["add-module-exports"],
+                plugins: ['transform-runtime', "add-module-exports"],
                  /**
                  * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
                  */
@@ -143,6 +143,11 @@ const config = {
             $: 'jQuery',
             ReactCSSTransitionGroup: 'react-addons-css-transition-group',
             util: path.join(app, 'common/js/util.js')
+        }),
+        new CleanWebpackPlugin(['dist', 'docs', 'build'], {
+            root: __dirname,
+            verbose: true,
+            dry: false
         }),
 
         /**
@@ -227,12 +232,7 @@ if (__PROD__) {
         }),
         new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png')),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new ClearWebpackPlugin(['dist', 'docs', 'build'], {
-            root: __dirname,
-            verbose: true,
-            dry: false
-        })
+        new webpack.optimize.OccurrenceOrderPlugin()
     );
 }
 
