@@ -10,12 +10,12 @@ _React + Webpack + ES6 + node + express_
 *   `SSH -p <ssh-port> root@<IP address>`连接`vps`, `vps`(`centos`)安装`git`,`sudo yum install git`
 *   使用`scp`上传`server.js`, `scp -P 29041 /Users/dulin/workspace/react-juhe-tools/server.js root@<ip_address>:/root/workspace/react-juhe-tools`
 *   `head -n 1 /etc/issue`查看`VPS`操作系统版本，结果`CentOS release 6.6 (Final)`
-*   `VPS`安装`nvm`, 
+*   `VPS`安装`nvm`,
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
 ```
-```bash 
+```bash
 export NVM_DIR="/root/.nvm"
 ```
 ```bash
@@ -59,7 +59,7 @@ __擦;__ `VPS`的`node server`调第三方接口总是报如下错误：
 
 __TODO__
 
-- [ ] 异步加载的每个`chunk`文件都包含`api`和`util`模块, 将公用的提出来。  
+- [ ] 异步加载的每个`chunk`文件都包含`api`和`util`模块, 将公用的提出来。
 
 
 __FAQ__
@@ -71,4 +71,16 @@ __FAQ__
 2. `npm`脚本中`&`和`&&`的区别？
 
     `&`是并行执行（即同时的平行执行），`&&`是继发执行（即只有前一个任务成功，才执行下一个任务）。
-    
+
+3. `webpack-dev-server --hide-modules`无效果？
+
+    注意像`inline`和`hot`这些选项是`Webpack-dev-server`特有的，而另外的如`hide-modules`则是`CLI`模式特有的选项。`webpack-dev-server`要实现相同的功能，可以设置
+
+    ```js
+    {
+        devServer: {
+            stats: 'errors-only',
+        },
+    }
+    ```
+

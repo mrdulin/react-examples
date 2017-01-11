@@ -4,14 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ClearWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 const pkg = require('./package.json');
 
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
+const env = __PROD__ ? 'production' : 'development';
 
-const dist = path.resolve(__dirname, __PROD__ ? 'docs' : 'dist');
-const src = path.resolve(__dirname, 'src');
+console.log('========================================================');
+console.log('WEBPACK NODE_ENV :: ', JSON.stringify(env));
+console.log('========================================================');
+
+const dist = path.join(__dirname, __PROD__ ? 'docs' : 'dist');
+const app = path.join(__dirname, 'app');
 
 const nodeServerHost = 'http://localhost:3003';
 
@@ -22,30 +26,27 @@ const config = {
     cache: __DEV__,
 
     entry: {
-        app: [
-            src + '/index.js',
-            src + '/scss/',
-        ],
+        app: path.join(app, 'index.js'),
         vendor: [
             'react',
             'react-dom',
             'react-router',
             'redux',
             'react-redux',
-            'react-tap-event-plugin',
             'react-addons-css-transition-group',
             'material-ui',
             'whatwg-fetch',
             'hammerjs',
             'jQuery',
-            'velocity-animate'
+            'velocity-animate',
+            'react-tap-event-plugin'
         ]
     },
 
     output: {
         path: dist,
-        filename: '[name].[hash].js',
-        chunkFilename: '[id].chunk.js',
+        filename: 'bundles/[name].[chunkhash:8].js',
+        chunkFilename: 'modules/[id].[name].chunk.[chunkhash:8].js',
         publicPath: __DEV__ ? '/' : 'http://novaline.space/react-juhe-tools/',
         pathinfo: __DEV__,
     },
@@ -57,39 +58,49 @@ const config = {
         loaders: [{
             test: /\.(js|jsx)?$/,
             exclude: /(node_modules|bower_components)/,
-            include: [
-                src
-            ],
             loader: 'babel',
             query: {
-                /**
+                compact: false,
+                babelrc: false,
+                presets: ["es2015", "react", "stage-0"],
+                plugins: ["add-module-exports"],
+                 /**
                  * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
                  */
                 cacheDirectory: __DEV__
             }
         }, {
             test: /\.(scss|sass)$/,
-            include: src,
-            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
-        }, { 
-            test: /\.css$/, 
-            loader: "style-loader!css-loader" 
+            exclude: /(node_modules|bower_components)/,
+            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass')
+        }, {
+            test: /\.css$/,
+            loader: "style!css"
         }, {
 			test: /\.(png|jpg|gif|svg)$/,
 			exclude: /(node_modules|bower_components)/,
-			loader: 'file',
+			loader: 'url',
 			query: {
-				name: '[path][name].[ext]',
-				context: './src'
+                limit: 8192,
+				name: 'images/[name]-[hash:8].[ext]'
 			}
 		}]
     },
 
+    sassLoader: {
+		includePaths: ['app/common/scss'],
+		sourceMap: true
+	},
+
     resolve: {
-        root: src,
-        modulesDirectories: ['node_modules'],
+        root: __dirname,
+        modulesDirectories: ['node_modules', 'app'],
         extensions: ['', '.js', '.jsx', '.scss', '.sass', '.css', '.json'],
-        alias: {}
+        alias: {
+            app: app,
+            modules: path.join(app, 'modules'),
+            common: path.join(app, 'common')
+        }
     },
 
     /**
@@ -100,12 +111,12 @@ const config = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: src + '/index.html',
+            template: path.join(app, 'index.html'),
             filename: 'index.html',
             title: `聚合工具 v${pkg.version}`
         }),
         new HtmlWebpackPlugin({
-            template: src + '/index.html',
+            template: path.join(app, 'index.html'),
             filename: 'home.html',
             title: `聚合工具 v${pkg.version}`
         }),
@@ -114,32 +125,34 @@ const config = {
             __PROD__,
             __VERSION__: pkg.version,
             'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+                NODE_ENV: JSON.stringify(env)
             }
         }),
-        new ExtractTextPlugin('[name].[contentHash].css', {
+        new ExtractTextPlugin('[name].[contentHash:8].css', {
             allChunks: true
         }),
         new webpack.ProvidePlugin({
-            util: path.join(src, 'util.js'),
-            API: path.join(src, 'api.js'),
+            API: path.join(app, 'api.js'),
             React: 'react',
             ReactDOM: 'react-dom',
+            ReactRouter: 'react-router',
+            Redux: 'redux',
+            ReactRedux: 'react-redux',
             Pubsub: 'pubsub-js',
             Hammer: 'hammerjs',
-            $: 'jQuery'
+            $: 'jQuery',
+            ReactCSSTransitionGroup: 'react-addons-css-transition-group',
+            util: path.join(app, 'common/js/util.js')
         }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     filename: 'vendor.js',
-        //     minChunks: Infinity
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'bundles/vendor-[chunkhash:8].js',
+            minChunks: Infinity
+        }),
         // new webpack.DllReferencePlugin({
         //     context: path.join(__dirname, "src"),
         //     manifest: require("./dll/vendor-manifest.json")
         // }),
-       
-        new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png'))
     ]
 };
 
@@ -154,13 +167,13 @@ function setProxy(pathTargets) {
         //     }
         // },
 
-        //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite    
+        //webpack-dev-server <=1.14.1版本是rewrite不是pathRewrite
         // rewrite: (req, opts) => {
         //     req.url = req.url.replace(/^\/api(.+)$/, '$1');
         // }
 
         pathRewrite: {'^/api' : ''}
-        
+
     };
 
     for (let pathTarget of pathTargets) {
@@ -183,7 +196,8 @@ if (__DEV__) {
         historyApiFallback: true,
         colors: true,
         port: 3000,
-        hot: true,
+        inline: true,
+        stats: 'errors-only',
         proxy: setProxy([
             {
                 paths: ['/api/ip/ip2addr', '/api/mobile/get'],
@@ -205,6 +219,7 @@ if (__PROD__) {
                 warnings: false
             }
         }),
+        new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png')),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new ClearWebpackPlugin(['dist', 'docs', 'build'], {
