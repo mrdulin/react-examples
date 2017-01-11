@@ -32,7 +32,7 @@ const routes = {
     }
 };
 
-const history = useRouterHistory(createHashHistory);
+const history = useRouterHistory(createHashHistory)({queryKey: false});
 
 const Root = () => {
     return <Provider store={store}>

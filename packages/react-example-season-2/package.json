@@ -24,7 +24,7 @@
     "react-hammerjs": "^0.5.0",
     "react-motion": "^0.4.5",
     "react-pinch-zoom": "^0.1.4",
-    "react-router": "^3.0.0",
+    "react-router": "^2.8.1",
     "react-swipeable-views": "^0.7.11",
     "react-tap-event-plugin": "^2.0.1",
     "request": "^2.75.0",
