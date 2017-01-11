@@ -21,7 +21,7 @@ module.exports = {
             name: '组件的data-*自定义属性'
         },
         {
-            key: 'child-component-did-mount-error-stop-parent-component-did-mount',
+            key: 'did-mount-error',
             name: '子组件didMount出错，阻止父组件didMount执行'
         },
         {

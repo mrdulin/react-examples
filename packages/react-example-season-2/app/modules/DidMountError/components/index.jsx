@@ -1,8 +1,8 @@
 import './style';
-import Parent from './parent.react';
-import Child from './Child.react';
+import Parent from './parent';
+import Child from './child';
 
-export default class ChildComponentDidMountErrorStopParentDidMount extends React.Component{
+export default class extends React.Component{
     render() {
         return <div>
             <p>问题：父子组件嵌套，在子组件的componentDidMount中如果有错误，会阻止父组件的componentDidMount，但是在报错的js加个setTimeout，则不会影响父组件的componentDidMount方法执行。</p>
@@ -28,4 +28,4 @@ export default class ChildComponentDidMountErrorStopParentDidMount extends React
             <p style={{color: 'red'}}>Uncaught TypeError: _this2.load is not a function</p>
         </div>
     }
-}   
+}

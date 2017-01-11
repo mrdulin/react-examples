@@ -144,9 +144,15 @@ const config = {
             ReactCSSTransitionGroup: 'react-addons-css-transition-group',
             util: path.join(app, 'common/js/util.js')
         }),
+
+        /**
+         * ERROR in chunk vendor [entry]
+            bundles/vendor-[chunkhash:8].js
+            Cannot use [chunkhash] for chunk in 'bundles/vendor-[chunkhash:8].js' (use [hash] instead)
+         */
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'bundles/vendor-[chunkhash:8].js',
+            filename: 'bundles/vendor-[hash:8].js',
             minChunks: Infinity
         }),
         // new webpack.DllReferencePlugin({

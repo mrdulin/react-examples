@@ -1,12 +1,12 @@
-import Child from './Child.react';
+import Child from './child';
 
-export default class Parent extends React.Component{
+export default class extends React.Component{
     componentDidMount() {
         console.log('parent componentDidMount');
         const p = ReactDOM.findDOMNode(this._p);
         p.style.color = 'green';
     }
-       
+
     render() {
         console.count('parent render');
         return <div className='parent'>

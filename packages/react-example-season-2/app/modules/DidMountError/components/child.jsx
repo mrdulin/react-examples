@@ -1,10 +1,10 @@
-export default class Parent extends React.Component{
+export default class extends React.Component{
     componentDidMount() {
         console.log('child componentDidMount');
         setTimeout(() => {
             console.log('child componentDidMount setTimeout')
             this.load();
-        }, 0)   
+        }, 0)
         // this.load();
     }
     render() {
