@@ -230,7 +230,7 @@ if (__PROD__) {
                 warnings: false
             }
         }),
-        new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/favicon.png')),
+        new FaviconsWebpackPlugin(path.join(app, 'favicon.png')),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin()
     );
