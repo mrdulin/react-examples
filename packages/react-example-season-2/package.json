@@ -60,7 +60,7 @@
   "scripts": {
     "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --progress --hot",
     "serve": "NODE_ENV=node-server-proxy webpack-dev-server --progress --hot",
-    "publish": "cross-env NODE_ENV=production webpack --progress --hide-modules && git add . && git commit -m 'build' && git push origin master &&  git push origin --tags",
+    "publish": "cross-env NODE_ENV=production webpack --progress --hide-modules && git add . && git commit -m 'publish' && git push &&  git push --tags",
     "build:dll": "webpack --config webpack.dll.js --progress",
     "build": "cross-env NODE_ENV=production npm run build:dll && npm run build:webpack",
     "watch": "webpack --watch --progress --hide-modules"
