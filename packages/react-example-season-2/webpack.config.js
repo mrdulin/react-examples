@@ -19,6 +19,10 @@ const app = path.join(__dirname, 'app');
 
 const nodeServerHost = 'http://localhost:3003';
 
+const cssLoaderOptions = {
+    sourceMap: true
+}
+
 const config = {
     /**
      * webpack 自身就有 cache 的配置，并且在 watch 模式下自动开启，虽然效果不是最明显的，但却对所有的 module 都有效。
@@ -74,11 +78,15 @@ const config = {
             }
         }, {
             test: /\.(scss|sass)$/,
-            exclude: /(node_modules|bower_components)/,
-            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass')
+            exclude: [/(node_modules|bower_components)/, /\.module\.scss$/],
+            loader: ExtractTextPlugin.extract('style', `css?sourceMap!sass`)
+        }, {
+            test: /\.scss$/,
+            include: [/\.module\.scss$/],
+            loaders: ['style', 'css?modules&sourceMap&localIdentName=[name]__[local]--[hash:base64:5]!sass']
         }, {
             test: /\.css$/,
-            loader: "style!css"
+            loader: 'style!css'
         }, {
             test: /\.(png|jpg|gif|svg)$/,
             exclude: /(node_modules|bower_components)/,

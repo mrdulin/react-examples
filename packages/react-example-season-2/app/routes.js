@@ -26,7 +26,8 @@ const routes = {
                 require('./modules/core-js-or-babel-polyfill'),
                 require('./modules/ImageZoom'),
                 require('./modules/ReactPinchZoom'),
-                require('./modules/SearchBook')
+                require('./modules/SearchBook'),
+                require('./modules/TestScoller')
             ]);
         });
     }

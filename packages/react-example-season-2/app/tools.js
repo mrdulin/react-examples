@@ -63,6 +63,10 @@ module.exports = {
         {
             key: 'book-search',
             name: 'IT书籍搜索'
+        },
+        {
+            key: 'test-scroller',
+            name: '测试scroller组件'
         }
     ]
 }

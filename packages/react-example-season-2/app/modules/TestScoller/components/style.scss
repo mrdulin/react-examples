@@ -1,0 +1,12 @@
+#test-scroller{
+    background: #fff;
+    .list{
+        list-style: none;
+        li {
+            height: 100px;
+            border-bottom: 1px solid #ddd;
+            background: #fff;
+        }
+    }
+}
+
