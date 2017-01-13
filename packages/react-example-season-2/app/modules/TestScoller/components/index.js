@@ -9,7 +9,9 @@ export default class extends React.Component{
         this.state = {
             items: [],
             distance: 20,
-            top: 64
+            top: 64,
+
+            el: null
         };
     }
 
@@ -44,19 +46,39 @@ export default class extends React.Component{
         })
     }
 
+    _handleClick(e) {
+        alert(e);
+    }
+
+    _scrollToElement() {
+        const el = `.list > li:nth-child(${Math.floor(Math.random() * 10)})`
+        this.setState({el});
+    }
+
     render() {
-        const {items, distance, top} = this.state;
+        const {items, distance, top, el} = this.state;
+
+        const scrollerOptions = {
+            bounce: false
+        }
 
         return <div id='test-scroller'>
-            <Scroller top={top} onInfinite={cb => this._loadMore(cb)} hasMore={true} distance={distance}>
+            <Scroller
+                top={top}
+                bottom={50}
+                toEl={el}
+                onInfinite={cb => this._loadMore(cb)}
+                hasMore={true} distance={distance}
+                options={scrollerOptions}>
                 {
                     !items.length ? null : <ul className='list'>
                             {
-                                items.map((item, idx) => <li key={idx}>{item}</li>)
+                                items.map((item, idx) => <li onClick={e => this._handleClick(e)} key={idx}>{item}</li>)
                             }
                     </ul>
                 }
             </Scroller>
+            <footer className='footer'><button type="button" onClick={() => this._scrollToElement()}>scrollToElement</button></footer>
         </div>
     }
 }
