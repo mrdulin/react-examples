@@ -16,6 +16,7 @@ console.log('========================================================');
 
 const dist = path.join(__dirname, __PROD__ ? 'docs' : 'dist');
 const app = path.join(__dirname, 'app');
+const nodeModules = path.join(__dirname, 'node_modules');
 
 const nodeServerHost = 'http://localhost:3003';
 
@@ -110,7 +111,8 @@ const config = {
         alias: {
             app: app,
             modules: path.join(app, 'modules'),
-            common: path.join(app, 'common')
+            common: path.join(app, 'common'),
+            IScroll: path.join(nodeModules, 'iscroll/build/iscroll-lite.js')
         }
     },
 

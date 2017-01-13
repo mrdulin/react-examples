@@ -2,6 +2,8 @@ import IScroll from 'IScroll';
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 
+// console.log(IScroll);
+
 import './style';
 
 const LoadMore = ({show, text}) => {
