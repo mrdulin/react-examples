@@ -20,10 +20,6 @@ const nodeModules = path.join(__dirname, 'node_modules');
 
 const nodeServerHost = 'http://localhost:3003';
 
-const cssLoaderOptions = {
-    sourceMap: true
-}
-
 const config = {
     /**
      * webpack 自身就有 cache 的配置，并且在 watch 模式下自动开启，虽然效果不是最明显的，但却对所有的 module 都有效。

@@ -8,7 +8,10 @@ import './style';
 
 const LoadMore = ({show, text}) => {
     if(!show) return null;
-    return  <p className='scroller-infinite-text'>{text}</p>
+    return  <div className='scroller-infinite-text'>
+        <i className='scroller-loader'></i>
+        <span>{text}</span>
+    </div>
 }
 
 /**
