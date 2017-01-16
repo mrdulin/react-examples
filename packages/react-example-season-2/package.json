@@ -35,6 +35,7 @@
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^3.5.0",
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-runtime": "^6.15.0",
@@ -42,6 +43,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "clean-webpack-plugin": "^0.1.13",
+    "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.3",
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
@@ -63,10 +65,9 @@
   "scripts": {
     "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --progress --hot",
     "serve": "NODE_ENV=node-server-proxy webpack-dev-server --progress --hot",
-    "publish": "cross-env NODE_ENV=production webpack --progress --hide-modules && git add . && git commit -m 'publish' && git push &&  git push --tags",
-    "build:dll": "webpack --config webpack.dll.js --progress",
-    "build": "cross-env NODE_ENV=production npm run build:dll && npm run build:webpack",
-    "watch": "webpack --watch --progress --hide-modules"
+    "publish": "npm run dll && cross-env NODE_ENV=production webpack --progress --hide-modules && git add . && git commit -m 'publish' && git push &&  git push --tags",
+    "dll": "cross-env NODE_ENV=production webpack --config webpack.dll.js --progress -p",
+    "watch": "webpack --watch --progress"
   },
   "keywords": [
     "react",

@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
 
 const __PROD__ = process.env.NODE_ENV === 'production';
@@ -17,6 +18,7 @@ console.log('========================================================');
 const dist = path.join(__dirname, __PROD__ ? 'docs' : 'dist');
 const app = path.join(__dirname, 'app');
 const nodeModules = path.join(__dirname, 'node_modules');
+const publicPath = __DEV__ ? '/' : 'http://novaline.space/react-mobile/';
 
 const nodeServerHost = 'http://localhost:3003';
 
@@ -29,30 +31,30 @@ const config = {
     entry: {
         app: [
             path.join(app, 'index.js')
-        ],
-        vendor: [
-            'react',
-            'react-dom',
-            'react-router',
-            'redux',
-            'react-redux',
-            'react-addons-css-transition-group',
-            'material-ui',
-            'hammerjs',
-            'jQuery',
-            'whatwg-fetch',
-            'es6-promise',
-            'velocity-animate',
-            'react-tap-event-plugin'
         ]
+        // vendor: [
+        //     'react',
+        //     'react-dom',
+        //     'react-router',
+        //     'redux',
+        //     'react-redux',
+        //     'react-addons-css-transition-group',
+        //     'material-ui',
+        //     'hammerjs',
+        //     'jQuery',
+        //     'whatwg-fetch',
+        //     'es6-promise',
+        //     'velocity-animate',
+        //     'react-tap-event-plugin'
+        // ]
     },
 
     output: {
         path: dist,
-        filename: 'bundles/[name].[chunkhash:8].js',
+        filename: '[name].[hash:8].js',
         chunkFilename: 'modules/[id].[name].chunk.[chunkhash:8].js',
-        publicPath: __DEV__ ? '/' : 'http://novaline.space/react-mobile/',
-        pathinfo: __DEV__,
+        publicPath,
+        pathinfo: __DEV__
     },
 
     debug: __DEV__,
@@ -122,13 +124,18 @@ const config = {
         new HtmlWebpackPlugin({
             template: path.join(app, 'index.html'),
             filename: 'index.html',
-            title: `聚合工具 v${pkg.version}`
+            title: `聚合工具 v${pkg.version}`,
+            dll: publicPath + require('./dll/assets.json').vendor.js
         }),
         new HtmlWebpackPlugin({
             template: path.join(app, 'index.html'),
             filename: 'home.html',
-            title: `聚合工具 v${pkg.version}`
+            title: `聚合工具 v${pkg.version}`,
+            dll: publicPath + require('./dll/assets.json').vendor.js
         }),
+        new CopyWebpackPlugin([
+            {from: `dll/${require('./dll/assets.json').vendor.js}`, to: ''}
+        ]),
         new webpack.DefinePlugin({
             __DEV__,
             __PROD__,
@@ -176,15 +183,15 @@ const config = {
             bundles/vendor-[chunkhash:8].js
             Cannot use [chunkhash] for chunk in 'bundles/vendor-[chunkhash:8].js' (use [hash] instead)
          */
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'bundles/vendor-[hash:8].js',
-            minChunks: Infinity
-        }),
-        // new webpack.DllReferencePlugin({
-        //     context: path.join(__dirname, "src"),
-        //     manifest: require("./dll/vendor-manifest.json")
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor',
+        //     filename: 'bundles/vendor-[hash:8].js',
+        //     minChunks: Infinity
         // }),
+        new webpack.DllReferencePlugin({
+            context: path.join(__dirname, "app"),
+            manifest: require(path.join(__dirname, './dll/vendor-manifest.json'))
+        }),
     ]
 };
 

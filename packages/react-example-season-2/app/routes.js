@@ -1,5 +1,5 @@
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Router, browserHistory, hashHistory, useRouterHistory } from 'react-router';
+import { Router, browserHistory, useRouterHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import createHashHistory from 'history/lib/createHashHistory';
 

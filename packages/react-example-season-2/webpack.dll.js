@@ -1,5 +1,13 @@
 const path = require("path");
 const webpack = require("webpack");
+const AssetsPlugin = require('assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+console.log('========================================================');
+console.log('WEBPACK NODE_ENV :: ', JSON.stringify(env));
+console.log('========================================================');
 
 module.exports = {
     entry: {
@@ -13,33 +21,46 @@ module.exports = {
             'react-router',
             'redux',
             'react-redux',
-            'react-tap-event-plugin',
             'react-addons-css-transition-group',
             'material-ui',
-            'whatwg-fetch'
+            'hammerjs',
+            'jQuery',
+            'whatwg-fetch',
+            'es6-promise',
+            'velocity-animate',
+            'react-tap-event-plugin'
         ]
     },
     output: {
-        path: path.join(__dirname, 'dist', "dll"),
-        filename: "dll.[name].js",
+        path: path.join(__dirname, 'dll'),
+        filename: "[name]-[hash:8].js",
         library: "[name]"
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+                'NODE_ENV': JSON.stringify(env)
             }
+        }),
+        new AssetsPlugin({
+            filename: 'dll/assets.json',
+            prettyPrint: true
         }),
         new webpack.DllPlugin({
             path: path.join(__dirname, "dll", "[name]-manifest.json"),
-            name: "[name]",
-            context: path.resolve(__dirname, "src")
+            name: "[name].js",
+            context: __dirname
         }),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+         new CleanWebpackPlugin('dll', {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })
     ],
     resolve: {
-        root: path.resolve(__dirname, "src"),
+        root: __dirname,
         modulesDirectories: ["node_modules"]
     }
 };
+
+
