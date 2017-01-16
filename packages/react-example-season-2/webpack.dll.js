@@ -21,6 +21,9 @@ module.exports = {
             'react-router',
             'redux',
             'react-redux',
+            // 开发依赖
+            // 'redux-logger',
+            // 'react-addons-Perf',
             'react-addons-css-transition-group',
             'material-ui',
             'hammerjs',
@@ -34,7 +37,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dll'),
         filename: "[name]-[hash:8].js",
-        library: "[name]"
+        library: "[name]",
+        pathinfo: env === 'development'
     },
     plugins: [
         new webpack.DefinePlugin({

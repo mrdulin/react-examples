@@ -188,8 +188,13 @@ const config = {
         //     filename: 'bundles/vendor-[hash:8].js',
         //     minChunks: Infinity
         // }),
+
+        /**
+         * 报错
+         * https://github.com/webpack/webpack/issues/3975
+         */
         new webpack.DllReferencePlugin({
-            context: path.join(__dirname, "app"),
+            context: __dirname,
             manifest: require(path.join(__dirname, './dll/vendor-manifest.json'))
         }),
     ]
