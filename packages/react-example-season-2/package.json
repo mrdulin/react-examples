@@ -66,7 +66,7 @@
     "start": "nodemon --watch webpack.config.js --delay 1000ms --exec webpack-dev-server --progress --hot",
     "serve": "NODE_ENV=node-server-proxy webpack-dev-server --progress --hot",
     "publish": "npm run dll && cross-env NODE_ENV=production webpack --progress --hide-modules && git add . && git commit -m 'publish' && git push &&  git push --tags",
-    "dll": "cross-env NODE_ENV=production webpack --config webpack.dll.js --progress -p",
+    "dll": "cross-env NODE_ENV=production webpack --config webpack.dll.js --progress",
     "watch": "webpack --watch --progress"
   },
   "keywords": [

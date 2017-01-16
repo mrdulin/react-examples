@@ -125,16 +125,16 @@ const config = {
             template: path.join(app, 'index.html'),
             filename: 'index.html',
             title: `聚合工具 v${pkg.version}`,
-            dll: publicPath + require('./dll/assets.json').vendor.js
+            dll: require(path.join(__dirname, './dll/assets.json')).vendor.js
         }),
         new HtmlWebpackPlugin({
             template: path.join(app, 'index.html'),
             filename: 'home.html',
             title: `聚合工具 v${pkg.version}`,
-            dll: publicPath + require('./dll/assets.json').vendor.js
+            dll: require(path.join(__dirname, './dll/assets.json')).vendor.js
         }),
         new CopyWebpackPlugin([
-            {from: `dll/${require('./dll/assets.json').vendor.js}`, to: ''}
+            {from: `dll/${require(path.join(__dirname, 'dll/assets.json')).vendor.js}`, to: ''}
         ]),
         new webpack.DefinePlugin({
             __DEV__,
@@ -189,14 +189,11 @@ const config = {
         //     minChunks: Infinity
         // }),
 
-        /**
-         * 报错
-         * https://github.com/webpack/webpack/issues/3975
-         */
+
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require(path.join(__dirname, './dll/vendor-manifest.json'))
-        }),
+        })
     ]
 };
 

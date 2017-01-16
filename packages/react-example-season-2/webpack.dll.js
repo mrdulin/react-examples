@@ -24,6 +24,7 @@ module.exports = {
             // 开发依赖
             // 'redux-logger',
             // 'react-addons-Perf',
+
             'react-addons-css-transition-group',
             'material-ui',
             'hammerjs',
@@ -47,18 +48,29 @@ module.exports = {
             }
         }),
         new AssetsPlugin({
-            filename: 'dll/assets.json',
+            filename: 'assets.json',
+            path: path.join(__dirname, 'dll'),
             prettyPrint: true
         }),
         new webpack.DllPlugin({
             path: path.join(__dirname, "dll", "[name]-manifest.json"),
-            name: "[name].js",
+            /**
+             * 这里的name写成'[name].js'，会报错
+             * https://github.com/webpack/webpack/issues/3975
+             */
+            name: "[name]",
             context: __dirname
         }),
          new CleanWebpackPlugin('dll', {
             root: __dirname,
             verbose: true,
             dry: false
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
         })
     ],
     resolve: {
