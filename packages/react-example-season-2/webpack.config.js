@@ -122,7 +122,8 @@ const config = {
             app: app,
             modules: path.join(app, 'modules'),
             common: path.join(app, 'common'),
-            IScroll: path.join(nodeModules, 'iscroll/build/iscroll-lite.js')
+            // IScroll: path.join(nodeModules, 'iscroll/build/iscroll-lite.js')
+            IScroll: path.join(nodeModules, 'iscroll/build/iscroll-probe.js')
         }
     },
 

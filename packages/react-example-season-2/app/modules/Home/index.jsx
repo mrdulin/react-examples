@@ -18,7 +18,7 @@ class Home extends React.Component {
             return <ListItem onTouchTap={() => this.handleToolClick(tool.key)} key={tool.key} primaryText={tool.name}></ListItem>
         })
         return <div>
-            <AppBar title="聚合工具" onLeftIconButtonTouchTap={this.handleDrawerToggle}/>
+            <AppBar id="appBar" title="聚合工具" onLeftIconButtonTouchTap={this.handleDrawerToggle}/>
             <Drawer docked={false} width={200} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
                 <AppBar title="工具导航" showMenuIconButton={false}/>
                 <List>

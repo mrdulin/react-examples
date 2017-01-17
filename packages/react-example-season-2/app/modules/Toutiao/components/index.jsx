@@ -84,17 +84,26 @@ export default class Toutiao extends React.Component{
     componentDidUpdate(prevProps, prevState) {
         if(this.state.slideIndex !== prevState.slideIndex) {
             const tabRoot = ReactDOM.findDOMNode(this._tabs);
+            const tabButton = tabRoot.querySelector('button');
+            const tabButtonWidth = this.getTabWidth(tabButton);
+
             const inkBar = tabRoot.children[1].children[0];
-            inkBar.style.left = this.state.slideIndex * 50 + 'px';
+            inkBar.style.left = this.state.slideIndex * tabButtonWidth + 'px';
         }
     }
 
+    getTabWidth(tab) {
+        let width = window.getComputedStyle(tab).getPropertyValue('width');
+        width.replace('px', '');
+        return Number.parseInt(width, 10);
+    }
+
     render() {
-        const {types, slideIndex, res} = this.state; 
+        const {types, slideIndex, res} = this.state;
         const tabDom = types.map((type, index) => {
             return <Tab key={type.key + '-' + index} style={{color: 'rgb(0, 188, 212)', WebkitTapHighlightColor: 'rgba(0, 0, 0, 0.1)', width: '50px'}} label={type.name} value={index}/>
-        }) 
-        
+        })
+
         let slide = '';
         if(res.length > 0) {
             slide = types.map((type, index) => {
@@ -110,14 +119,14 @@ export default class Toutiao extends React.Component{
                 }
             })
         }
-       
+
         return <div id='toutiao'>
-            <Tabs className="tabs" ref={ref => this._tabs = ref} inkBarStyle={{width: '50px'}} style={{overflowX: 'auto'}} tabItemContainerStyle={{backgroundColor: '#fff'}} onChange={this.handleChange} value={slideIndex}>{tabDom}</Tabs>
+            <Tabs className="tabs" ref={ref => this._tabs = ref} inkBarStyle={{width: '50px'}} style={{overflowX: 'auto'}} tabItemContainerStyle={{backgroundColor: '#fff', display: 'block'}} onChange={this.handleChange} value={slideIndex}>{tabDom}</Tabs>
             <div className="content">
                 <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange}>{slide}</SwipeableViews>
             </div>
              {this.state.res.error_code !== 0 && this.renderError()}
         </div>
     }
-    
+
 }

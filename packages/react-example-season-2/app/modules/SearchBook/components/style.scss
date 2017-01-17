@@ -57,11 +57,20 @@
     }
 
     .search-form{
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        background-color: #fff;
         height: 50px;
         display: flex;
         padding: 10px;
         box-sizing: border-box;
         border-bottom: 1px solid #ddd;
+        transition: .5s ease 0s;
+
+        &.sticky{
+            transform: translateY(-64px);
+        }
 
         input{
             outline: none;
@@ -80,6 +89,12 @@
         width: 60px !important;
         height: auto !important;
         margin: 0 12px !important;
+    }
+
+    .search-history{
+        position: absolute;
+        width: 100%;
+        top: 114px;
     }
 
     .search-history-list{

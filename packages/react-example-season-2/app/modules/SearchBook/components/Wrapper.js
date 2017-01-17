@@ -3,7 +3,9 @@ const Wrapper = class extends React.Component{
         return this._wrapper;
     }
     render() {
-        return <div className="wrapper" ref={ref => this._wrapper = ref}>
+        const {top} = this.props;
+
+        return <div style={{top: `${top}px`}} className="wrapper" ref={ref => this._wrapper = ref}>
             {this.props.children}
         </div>
     }

@@ -1,8 +1,8 @@
 module.exports = {
     path: 'toutiao',
-    getComponent(nextState, cb) {
+    getComponents(nextState, cb) {
         require.ensure([], (require) => {
-            cb(null, {content: require('./components').default})
+            cb(null, {content: require('./components')})
         })
     }
 }
