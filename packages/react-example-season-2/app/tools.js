@@ -49,7 +49,7 @@ module.exports = {
             name: 'react-router高阶组件'
         },
         {
-            key: 'core-js-or-babel-polyfill',
+            key: 'core-js-and-transform-runtime',
             name: '测试core-js和babel-polyfill，及打包后bundle文件的大小'
         },
         {

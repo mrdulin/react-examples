@@ -23,7 +23,7 @@ const routes = {
                 require('./modules/SCU'),
                 require('./modules/RouterHOC'),
                 require('./modules/CallComponentMethodOutside'),
-                require('./modules/core-js-or-babel-polyfill'),
+                require('./modules/CoreJSAndTransformRuntime'),
                 require('./modules/ImageZoom'),
                 require('./modules/ReactPinchZoom'),
                 require('./modules/SearchBook'),
