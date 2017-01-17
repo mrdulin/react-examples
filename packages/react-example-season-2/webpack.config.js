@@ -70,8 +70,12 @@ const config = {
                 babelrc: false,
                 presets: ["es2015", "react", "stage-0"],
                 plugins: [
+                    /**
+                     * https://babeljs.io/docs/plugins/transform-runtime/
+                     * transform-runtime对于实例方法例如"foobar".includes("foo")是不支持的，还是需要babel-polyfill或者引入core-js指定的方法
+                     */
                     ['transform-runtime',  {
-                        "helpers": false, // defaults to true
+                        "helpers": true, // defaults to true
                         "polyfill": true, // defaults to true
                         "regenerator": false, // defaults to true
                         "moduleName": "babel-runtime" // defaults to "babel-runtime"

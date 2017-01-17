@@ -6,7 +6,7 @@ export default {
         require.ensure([], require => {
              const component = require('./components');
              const reducer = require('./reducer').RouterHOC;
-             injectAsyncReducer(store, 'RouterHOC', reducer)
+             injectAsyncReducer('RouterHOC', reducer)
              cb(null, {content: component});
         })
     }
