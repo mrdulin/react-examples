@@ -11,9 +11,9 @@ const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
 const env = __PROD__ ? 'production' : 'development';
 
-console.log('========================================================');
-console.log('WEBPACK NODE_ENV :: ', JSON.stringify(env));
-console.log('========================================================');
+// console.log('========================================================');
+// console.log('WEBPACK NODE_ENV :: ', JSON.stringify(env));
+// console.log('========================================================');
 
 const dist = path.join(__dirname, __PROD__ ? 'docs' : 'dist');
 const app = path.join(__dirname, 'app');
@@ -69,7 +69,15 @@ const config = {
                 compact: false,
                 babelrc: false,
                 presets: ["es2015", "react", "stage-0"],
-                plugins: ['transform-runtime', "add-module-exports"],
+                plugins: [
+                    ['transform-runtime',  {
+                        "helpers": false, // defaults to true
+                        "polyfill": true, // defaults to true
+                        "regenerator": false, // defaults to true
+                        "moduleName": "babel-runtime" // defaults to "babel-runtime"
+                    }],
+                    "add-module-exports"
+                ],
                 /**
                 * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
                 */
@@ -188,7 +196,6 @@ const config = {
         //     filename: 'bundles/vendor-[hash:8].js',
         //     minChunks: Infinity
         // }),
-
 
         new webpack.DllReferencePlugin({
             context: __dirname,

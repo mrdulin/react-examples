@@ -2,7 +2,7 @@
 // require('core-js/library/fn/array/fill');
 
 //  使用babel-polyfill打包后，该模块的chunk.js为326kb
-require('babel-polyfill');
+// require('babel-polyfill');
 
 export default class TestComponent extends React.Component{
     constructor() {
@@ -10,7 +10,7 @@ export default class TestComponent extends React.Component{
         const arr = [1,2,3];
         this.state = {
             arr: arr.fill(0)
-        } 
+        }
     }
     render() {
         return <div>

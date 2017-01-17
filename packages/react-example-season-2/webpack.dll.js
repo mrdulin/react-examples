@@ -30,9 +30,13 @@ module.exports = {
             'hammerjs',
             'jQuery',
             'whatwg-fetch',
-            'es6-promise',
             'velocity-animate',
-            'react-tap-event-plugin'
+            'react-tap-event-plugin',
+
+            // babel-loader使用了transform-runtime插件，会自动添加polyfill
+            // 因此没必要使用以下两个
+            // 'es6-promise',
+            // 'babel-polyfill'
         ]
     },
     output: {
@@ -59,6 +63,9 @@ module.exports = {
              * https://github.com/webpack/webpack/issues/3975
              */
             name: "[name]",
+            /**
+             * 上下文和DllReferencePlugin保持一致
+             */
             context: __dirname
         }),
          new CleanWebpackPlugin('dll', {
