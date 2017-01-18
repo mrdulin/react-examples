@@ -66,9 +66,9 @@
         padding: 10px;
         box-sizing: border-box;
         border-bottom: 1px solid #ddd;
-        transition: .5s ease 0s;
 
         &.sticky{
+            transition: .5s ease 0s;
             transform: translateY(-64px);
         }
 

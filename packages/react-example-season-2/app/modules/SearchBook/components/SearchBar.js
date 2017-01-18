@@ -7,11 +7,18 @@ const SearchBar = class extends React.Component {
 
     _blurSearchInput = () => {
         this._input.blur();
-        this._toggleFixSearch('remove');
     };
 
-    _toggleFixSearch = (action) => {
+    _toggleFixSearch = (action, immediate) => {
+        if(immediate) {
+            this._form.style.transition = 'none';
+        }
         this._form.classList[action]('sticky');
+    };
+
+    _recoverTransition = () => {
+        this._form.style.removeProperty('transition');
+        this._form.style.transition = '.5s ease 0s';
     };
 
     get height() {

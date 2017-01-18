@@ -30,10 +30,10 @@ export default class extends Component {
         this._scroller = null;
         this.threshold = 50;
         this.pageSize = 10;
-        this.historyQuerys = [];
 
         this._winHeight = window.innerHeight || document.documentElement.clientHeight;
         this._lastScrollTop = 0;
+        this._invalidDistance = 10;
     }
 
     componentDidMount() {
@@ -48,10 +48,13 @@ export default class extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this._appBar.removeEventListener('transitionend', this._handleAppBarTransitionEnd);
+        document.removeEventListener('touchmove', this._preventTouchmoveDefault);
+    }
+
     _initScroller() {
-        document.addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, false);
+        document.addEventListener('touchmove', this._preventTouchmoveDefault, false);
         this._wrapperElement = findDOMNode(this._wrapperRef);
         this._scroller = new IScroll(this._wrapperInstance.wrapperElement, {
             probeType: 2
@@ -62,6 +65,10 @@ export default class extends Component {
         this._scroller.on('beforeScrollStart', ::this._blurSearchInput);
         this._scroller.on('scroll', this._toggleFixHeader.bind(this, this._scroller));
         return this._scroller;
+    }
+
+    _preventTouchmoveDefault(e) {
+        e.preventDefault();
     }
 
     _blurSearchInput() {
@@ -85,21 +92,22 @@ export default class extends Component {
     }
 
     _toggleFixHeader(scroller) {
-        console.log(scroller);
         const st = Math.abs(scroller.y);
-        this._appBarTransitionTmp = this._appBar.style.transition;
 
-        if (st > this._winHeight && st > this._lastScrollTop) {
+        console.log(st, this._lastScrollTop);
+        this._resetTransition();
+
+        if (st > this._winHeight && (st - this._lastScrollTop) >= this._invalidDistance) {
             let appBarHeight = window.getComputedStyle(this._appBar).getPropertyValue('height');
             this._appBar.style.transform = `translateY(-${appBarHeight})`;
-            this._appBar.style.transition = '.5s ease 0s';
             this._searchBarInstance._toggleFixSearch('add');
             this.setState({top: this._searchBarHeight});
         } else {
-            this._appBar.style.transform = 'translateY(0px)';
-            this._appBar.style.transition = this._appBarTransitionTmp;
-            this._searchBarInstance._toggleFixSearch('remove');
-            this.setState({top: 114});
+            if(this._lastScrollTop - st > this._invalidDistance) {
+                this._appBar.style.transform = 'translateY(0px)';
+                this._searchBarInstance._toggleFixSearch('remove');
+                this.setState({top: 114});
+            }
         }
         this._lastScrollTop = st;
 
@@ -130,6 +138,7 @@ export default class extends Component {
     }
 
     _refreshScroller(scroller) {
+        if(!scroller) return;
         setTimeout(() => {
             scroller.refresh();
         }, 100)
@@ -176,8 +185,9 @@ export default class extends Component {
         }, () => {
             this._fetchData(query, this.state.page).then(data => {
                 const {books, total} = data;
-                this.historyQuerys.push(query);
-                localStorage.setItem('historyQuerys', JSON.stringify(this.historyQuerys));
+                const historyQuerys = this._getHistoryQuerys();
+                historyQuerys.push(query);
+                localStorage.setItem('historyQuerys', JSON.stringify(historyQuerys));
                 this.setState({books, total, isLoading: false, isSubmitted: true}, () => {
                     const _scroller = this._initScroller();
                     this._refreshScroller.bind(this, _scroller);
@@ -218,8 +228,19 @@ export default class extends Component {
         const newState = {query};
         if (!query) {
             newState.isSubmitted = false;
+            this._searchBarInstance._toggleFixSearch('remove', true);
+            this._appBar.style.transition = 'none';
+            this._appBar.style.transform = 'translateY(0px)';
         }
         this.setState(newState);
+    }
+
+    _resetTransition() {
+        this._appBar.style.removeProperty('transition');
+        this._searchBarInstance._recoverTransition();
+
+
+        this._appBar.style.transition = '.5s ease 0s';
     }
 
     render() {
