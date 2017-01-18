@@ -3,8 +3,8 @@ const util = ((window, document) => {
         params: (paramsObj) => {
             const esc = encodeURIComponent;
             return Object.keys(paramsObj)
-                        .map(k => esc(k) + '=' + esc(paramsObj[k]))
-                        .join('&');
+                .map(k => esc(k) + '=' + esc(paramsObj[k]))
+                .join('&');
         }
     }
 })(window, document);

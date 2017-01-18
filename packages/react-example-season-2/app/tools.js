@@ -67,6 +67,10 @@ module.exports = {
         {
             key: 'test-scroller',
             name: '测试scroller组件'
+        },
+        {
+            key: 'test-star-rating',
+            name: '测试StarRating组件'
         }
     ]
 }
