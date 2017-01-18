@@ -63,6 +63,7 @@
         background-color: #fff;
         height: 50px;
         display: flex;
+        align-items: center;
         padding: 10px;
         box-sizing: border-box;
         border-bottom: 1px solid #ddd;
@@ -78,6 +79,7 @@
             flex: 1;
             padding: 0 8px;
             border-radius: 3px;
+            height: 34px;
         }
     }
 
@@ -121,5 +123,12 @@
     .search-history-text{
         padding: 10px;
         border-bottom: 1px solid #ddd;
+    }
+
+    .grid-list-switcher{
+        width: 50px;
+        margin-left: 10px;
+        color: #666;
+        text-align: center;
     }
 }

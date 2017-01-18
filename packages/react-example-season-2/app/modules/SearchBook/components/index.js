@@ -5,14 +5,31 @@ import IScroll from 'IScroll';
 // const fetch = require('imports?self=>{},es6p=es6-promise,Promise=>es6p.Promise!exports?self.fetch!whatwg-fetch');
 
 import {List, ListItem} from 'material-ui/List';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
 import SearchBar from './SearchBar';
 import Wrapper from './Wrapper';
 import LoadMore from './LoadMore';
 import SearchHistory from './SearchHistory';
+import GridListSwitcher from './GridListSwitcher';
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import './style';
 
 const API = 'http://it-ebooks-api.info/v1';
+
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around'
+    },
+    gridList: {
+        width: window.innerWidth || document.documentElemenet.clientWidth
+    }
+};
 
 export default class extends Component {
     constructor(props) {
@@ -24,7 +41,9 @@ export default class extends Component {
             total: 0,
             query: '',
             isSubmitted: false,
-            top: 114
+            top: 114,
+            open: false,
+            layout: 'list'
         };
 
         this._scroller = null;
@@ -94,7 +113,7 @@ export default class extends Component {
     _toggleFixHeader(scroller) {
         const st = Math.abs(scroller.y);
 
-        console.log(st, this._lastScrollTop);
+        // console.log(st, this._lastScrollTop);
         this._resetTransition();
 
         if (st > this._winHeight && (st - this._lastScrollTop) >= this._invalidDistance) {
@@ -186,8 +205,10 @@ export default class extends Component {
             this._fetchData(query, this.state.page).then(data => {
                 const {books, total} = data;
                 const historyQuerys = this._getHistoryQuerys();
-                historyQuerys.push(query);
-                localStorage.setItem('historyQuerys', JSON.stringify(historyQuerys));
+                if(historyQuerys.indexOf(query) === -1) {
+                    historyQuerys.push(query);
+                    localStorage.setItem('historyQuerys', JSON.stringify(historyQuerys));
+                }
                 this.setState({books, total, isLoading: false, isSubmitted: true}, () => {
                     const _scroller = this._initScroller();
                     this._refreshScroller.bind(this, _scroller);
@@ -243,39 +264,97 @@ export default class extends Component {
         this._appBar.style.transition = '.5s ease 0s';
     }
 
+    _handleListItemClick(e) {
+        this.setState({open: true});
+    }
+
+    _handleClose = () => {
+        this.setState({open: false});
+    };
+
+    _switchLayout(type) {
+        this.setState({layout: type}, () => {
+            this._refreshScroller(this._scroller);
+            this._scroller.scrollTo(0, 0);
+        });
+
+    }
+
     render() {
         console.count('render count');
-        const {books, query, isSubmitted, top} = this.state;
+        const {books, query, isSubmitted, top, layout} = this.state;
 
         const items = this._getHistoryQuerys();
 
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onTouchTap={this._handleClose}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                onTouchTap={this._handleClose}
+            />
+        ];
+
         return <div id='iscroll-loadMore'>
             <SearchBar onSubmit={e => this._handleSearchSubmit(e)} ref={c => this._searchBarInstance = c} value={query}
-                       onChange={e => this._handleQueryChange(e)}></SearchBar>
+                       onChange={e => this._handleQueryChange(e)}>
+                <GridListSwitcher show={isSubmitted} type={layout} onClick={type => this._switchLayout(type)}/>
+            </SearchBar>
             <SearchHistory show={!isSubmitted} items={items}
                            onItemClick={text => this._handleHistoryClick(text)}></SearchHistory>
             {isSubmitted ? <Wrapper top={top} ref={c => this._wrapperInstance = c}>
                 <div className="scroller">
-                    <List className='book-list'>
-                        {
-                            books.map((book, index) =>
-                                <ListItem
-                                    innerDivStyle={{
-                                        height: "100px",
-                                        boxSizing: 'border-box',
-                                        paddingLeft: '84px',
-                                        'borderBottom': '1px solid #ddd'
-                                    }}
-                                    key={index}
-                                    primaryText={book.Title}
-                                    secondaryText={book.SubTitle}
-                                    leftIcon={<img className='book-thumbnail' src={book.Image} alt='thumbnail'/>}>
-                                </ListItem>)
-                        }
-                    </List>
+                    {
+                        layout === 'list' ?
+                        <List className='book-list'>
+                            {
+                                books.map((book, index) =>
+                                    <ListItem
+                                        innerDivStyle={{
+                                            height: "100px",
+                                            boxSizing: 'border-box',
+                                            paddingLeft: '84px',
+                                            'borderBottom': '1px solid #ddd'
+                                        }}
+                                        onTouchTap={(event) => this._handleListItemClick(event)}
+                                        key={index}
+                                        primaryText={book.Title}
+                                        secondaryText={book.SubTitle}
+                                        leftIcon={<img className='book-thumbnail' src={book.Image} alt='thumbnail'/>}>
+                                    </ListItem>)
+                            }
+                        </List> :
+                        <div style={styles.root}>
+                            <GridList
+                                cellHeight={180}
+                                style={styles.gridList}>
+                                {books.map((book, index) => (
+                                    <GridTile
+                                        key={book.ID}
+                                        title={book.Title}
+                                        subtitle={<span><b>{book.SubTitle}</b></span>}
+                                        actionIcon={<IconButton><StarBorder color="white" /></IconButton>}>
+                                        <img style={{}} src={book.Image} />
+                                    </GridTile>
+                                ))}
+                            </GridList>
+                        </div>
+                    }
                     <LoadMore show={this.hasMore} text={this.loadMoreText}></LoadMore>
                 </div>
             </Wrapper> : null}
+            <Dialog
+                title="Dialog With Actions"
+                actions={actions}
+                modal={false}
+                open={this.state.open}
+                onRequestClose={this._handleClose}>
+                The actions in this window were passed in as an array of React objects.
+            </Dialog>
         </div>
     }
 }

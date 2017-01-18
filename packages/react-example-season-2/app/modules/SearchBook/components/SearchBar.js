@@ -29,10 +29,11 @@ const SearchBar = class extends React.Component {
     }
 
     render() {
-        const {onSubmit, value, onChange} = this.props;
+        const {onSubmit, value, onChange, children} = this.props;
 
         return <form ref={ref => this._form = ref} className='search-form' onSubmit={onSubmit} >
             <input ref={ref => this._input = ref} type="search" name="search" placeholder='输入书名搜索' autoComplete='off' autoFocus onChange={onChange} value={value}/>
+            {children}
         </form>
     }
 }
