@@ -28,7 +28,8 @@ const routes = {
                 require('./modules/ReactPinchZoom'),
                 require('./modules/SearchBook'),
                 require('./modules/TestScroller'),
-                require('./modules/TestStarRating')
+                require('./modules/TestStarRating'),
+                require('./modules/ImageUpload')
             ]);
         });
     }

@@ -94,10 +94,10 @@ const config = {
         }, {
             test: /\.scss$/,
             include: [/\.module\.scss$/],
-            loaders: ['style', 'css?modules&sourceMap&localIdentName=[name]__[local]--[hash:base64:5]!sass']
+            loaders: ['style', 'css?modules&camelCase&sourceMap&localIdentName=[local]--[hash:base64:5]!sass']
         }, {
             test: /\.css$/,
-            loader: 'style!css'
+            loader: 'style!css?sourceMap'
         }, {
             test: /\.(png|jpg|gif|svg)$/,
             exclude: /(node_modules|bower_components)/,
