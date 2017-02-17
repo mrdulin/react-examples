@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, compose } from 'redux';
+import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import { createReducer } from './reducer';
 
 let middlewares = [
@@ -40,6 +40,38 @@ const configureStore = (reducer, preloadedState = {}) => {
 
 const initialReducer = createReducer();
 const initStore = configureStore(initialReducer);
+
+///测试多个store
+// function reducerB(state = {fxxk: false, kao: false}, action) {
+//     switch(action.type) {
+//         case 'aaa': 
+//             return Object.assign({}, state, {fxxk: action.fxxk});
+//         case 'bbb': 
+//             return Object.assign({}, state, {kao: action.kao});
+//         default: 
+//             return state;
+//     }
+// }
+// const storeB = configureStore(
+//     combineReducers({
+//         reducerB
+//     })
+// );
+// console.log(initStore, storeB);
+// console.log(storeB.getState());
+// const unsubscribe = storeB.subscribe(() => {
+//     console.log(storeB.getState());
+// });
+
+// const fxxk = truth => ({type: 'aaa', fxxk: truth});
+// const kao = truth => ({type: 'bbb', kao: truth});
+
+// storeB.dispatch(fxxk(true));
+// storeB.dispatch(kao(true));
+
+// unsubscribe();
+///
+
 
 /**
  * @desc 异步加载reducer
