@@ -71,6 +71,10 @@ module.exports = {
         {
             key: 'test-star-rating',
             name: '测试StarRating组件'
+        },
+        {
+            key: 'immutability-helper',
+            name: '测试immutability-helper'
         }
     ]
 }

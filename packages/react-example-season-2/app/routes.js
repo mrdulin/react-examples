@@ -29,7 +29,8 @@ const routes = {
                 require('./modules/SearchBook'),
                 require('./modules/TestScroller'),
                 require('./modules/TestStarRating'),
-                require('./modules/ImageUpload')
+                require('./modules/ImageUpload'),
+                require('./modules/ImmutabilityHelper')
             ]);
         });
     }
