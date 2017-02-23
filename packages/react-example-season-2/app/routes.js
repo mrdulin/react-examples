@@ -30,7 +30,8 @@ const routes = {
                 require('./modules/TestScroller'),
                 require('./modules/TestStarRating'),
                 require('./modules/ImageUpload'),
-                require('./modules/ImmutabilityHelper')
+                require('./modules/ImmutabilityHelper'),
+                require('./modules/AvoidRequireDuplication')
             ]);
         });
     }

@@ -75,6 +75,10 @@ module.exports = {
         {
             key: 'immutability-helper',
             name: '测试immutability-helper'
+        },
+        {
+            key: 'avoid-require-duplication',
+            name: '避免重复require'
         }
     ]
 }
