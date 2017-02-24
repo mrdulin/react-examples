@@ -1,7 +1,10 @@
 import update from 'immutability-helper';
+import $update from 'react/lib/update';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
+
+// console.log($update);
 
 class ImmutabilityHelper extends React.PureComponent{
     state = {
@@ -37,7 +40,18 @@ class ImmutabilityHelper extends React.PureComponent{
                 id: 3,
                 title: '优惠劵3'
             }
-        ]
+        ],
+
+        category: {
+            lv1: {
+                //1: [],
+                //2: []
+            },
+            lv2: {
+                //1: [],
+                //2: []
+            }
+        }
     };
 
     handleButtonClick = e => {
@@ -53,12 +67,66 @@ class ImmutabilityHelper extends React.PureComponent{
 
     handleCouponClick = (coupon, idx) => {
         const newState = {
-            coupons: update(this.state.coupons, {
+            coupons: $update(this.state.coupons, {
                 [idx]: {
                     isExpand: {$set: !this.state.coupons[idx].isExpand}
                 }
             })
         };
+
+        console.log('ref equal', this.state.coupons === newState.coupons);
+
+        this.setState(newState);
+    }
+
+    handleCategoryClick = () => {
+        // const lv1 = {
+        //     1: [1,2,3],
+        //     2: [2,3,4]
+        // };
+        // const lv2 = {
+        //     3: [1,2,3],
+        //     4: [4,5,6]
+        // };
+
+        //false false false
+        // const newState = {
+        //     category: update(this.state.category, {
+        //         lv1: {$set: lv1},
+        //         lv2: {$set: lv2}
+        //     })
+        // }
+
+        //false false false
+        // const newState = update(this.state, {
+        //     category: {
+        //         lv1: {$set: lv1},
+        //         lv2: {$set: lv2}
+        //     }
+        // });
+
+        
+        const category = this.state.category;
+        let lv1 = category.lv1;
+        let lv2 = category.lv2;
+
+        lv1[1] = [];
+        lv1[1].push(1,2,3);
+        
+        lv2[3] = [];
+        lv2[3].push(1,2,3);
+        
+
+        const newState = update(this.state, {
+            category: {
+                lv1: {$set: lv1},
+                lv2: {$set: lv2}
+            }
+        });
+
+        console.log(this.state === newState)
+        console.log(this.state.category === newState.category);
+        console.log(this.state.category.lv1 === newState.category.lv1);
 
         this.setState(newState);
     }
@@ -98,6 +166,10 @@ class ImmutabilityHelper extends React.PureComponent{
                     })
                 }
             </ul>
+
+            <h2>例3: </h2>
+            <FlatButton label='修改category' onClick={this.handleCategoryClick}/>
+            <p>{JSON.stringify(this.state.category, null, 4)}</p>
         </div>
     }
 }

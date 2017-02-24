@@ -31,7 +31,8 @@ const routes = {
                 require('./modules/TestStarRating'),
                 require('./modules/ImageUpload'),
                 require('./modules/ImmutabilityHelper'),
-                require('./modules/AvoidRequireDuplication')
+                require('./modules/AvoidRequireDuplication'),
+                require('./modules/DataRef')
             ]);
         });
     }

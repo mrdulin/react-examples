@@ -79,6 +79,10 @@ module.exports = {
         {
             key: 'avoid-require-duplication',
             name: '避免重复require'
+        },
+        {
+            key: 'data-ref',
+            name: '组件的数据引用问题'
         }
     ]
 }
