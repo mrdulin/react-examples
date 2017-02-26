@@ -59,7 +59,7 @@ __擦;__ `VPS`的`node server`调第三方接口总是报如下错误：
 
 __TODO__
 
-- [ ] 异步加载的每个`chunk`文件都包含`api`和`util`模块, 将公用的提出来。
+- [x] 异步加载的每个`chunk`文件都包含`api`和`util`模块, 将公用的提出来。
 
 
 __FAQ__
@@ -74,7 +74,7 @@ __FAQ__
 
 3. `webpack-dev-server --hide-modules`无效果？
 
-    注意像`inline`和`hot`这些选项是`Webpack-dev-server`特有的，而另外的如`hide-modules`则是`CLI`模式特有的选项。`webpack-dev-server`要实现相同的功能，可以设置
+    注意像`--inline`和`--hot`这些配置参数是`webpack-dev-server`特有的，而另外的如`--hide-modules`则是`webpack`的`cli`（命令行工具）特有的配置参数。`webpack-dev-server`要实现相同的功能，可以设置
 
     ```js
     {
