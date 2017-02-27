@@ -4,6 +4,6 @@ export default {
         require.ensure([], require => {
             const component = require('./components');
             cb(null, {content: component});
-        })
+        }, 'SCU')
     }
 }

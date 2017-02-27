@@ -6,19 +6,23 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
+const EnvReporter = require('./plugins/envReporter');
+
+const genEntry = require('./genEntry');
 
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
 const env = __PROD__ ? 'production' : 'development';
 
-// console.log('========================================================');
-// console.log('WEBPACK NODE_ENV :: ', JSON.stringify(env));
-// console.log('========================================================');
-
 const dist = path.join(__dirname, __PROD__ ? 'docs' : 'dist');
 const app = path.join(__dirname, 'app');
 const nodeModules = path.join(__dirname, 'node_modules');
 const publicPath = __DEV__ ? '/' : 'http://novaline.space/react-mobile/';
+const commonPaths = [
+    './app/common/js/components',
+];
+
+genEntry(commonPaths);
 
 const nodeServerHost = 'http://localhost:3003';
 
@@ -31,7 +35,12 @@ const config = {
     entry: {
         app: [
             path.join(app, 'index.js')
-        ]
+        ],
+
+        common: commonPaths.concat([
+            './app/common/js/util',
+            './app/api'
+        ])
         // vendor: [
         //     'react',
         //     'react-dom',
@@ -51,7 +60,7 @@ const config = {
 
     output: {
         path: dist,
-        filename: '[name].[hash:8].js',
+        filename: 'bundles/[name].[hash:8].js',
         chunkFilename: 'modules/[id].[name].chunk.[chunkhash:8].js',
         publicPath,
         pathinfo: __DEV__
@@ -134,20 +143,21 @@ const config = {
     devtool: __DEV__ ? 'source-map' : '',
 
     plugins: [
+        new EnvReporter('webpack compile env :: '),
         new HtmlWebpackPlugin({
             template: path.join(app, 'index.html'),
             filename: 'index.html',
             title: `聚合工具 v${pkg.version}`,
-            dll: require(path.join(__dirname, './dll/assets.json')).vendor.js
+            dll: 'bundles/' + require(path.join(__dirname, './dll/assets.json')).vendor.js
         }),
         new HtmlWebpackPlugin({
             template: path.join(app, 'index.html'),
             filename: 'home.html',
             title: `聚合工具 v${pkg.version}`,
-            dll: require(path.join(__dirname, './dll/assets.json')).vendor.js
+            dll: 'bundles/' + require(path.join(__dirname, './dll/assets.json')).vendor.js
         }),
         new CopyWebpackPlugin([
-            {from: `dll/${require(path.join(__dirname, 'dll/assets.json')).vendor.js}`, to: ''}
+            {from: `dll/${require(path.join(__dirname, 'dll/assets.json')).vendor.js}`, to: 'bundles'}
         ]),
         new webpack.DefinePlugin({
             __DEV__,
@@ -201,6 +211,13 @@ const config = {
         //     filename: 'bundles/vendor-[hash:8].js',
         //     minChunks: Infinity
         // }),
+
+        
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'bundles/common-[hash:8].js',
+            minChunks: Infinity
+        }), 
 
         new webpack.DllReferencePlugin({
             context: __dirname,

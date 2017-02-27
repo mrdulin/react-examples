@@ -3,6 +3,6 @@ module.exports = {
     getComponent(nextState, cb) {
         require.ensure([], (require) => {
             cb(null, {content: require('./components').default})
-        })
+        }, 'transitionToSelf')
     }
 }

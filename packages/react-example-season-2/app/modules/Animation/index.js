@@ -4,6 +4,6 @@ module.exports = {
         require.ensure([], require => {
             const animation = require('./components');
             cb(null, {content: animation});
-        })
+        }, 'animation')
     }
 }

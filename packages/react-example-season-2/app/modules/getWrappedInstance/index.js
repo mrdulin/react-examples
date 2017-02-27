@@ -4,6 +4,6 @@ export default {
         require.ensure([], require => {
             const component = require('./components').default;
             cb(null, {content: component});
-        })
+        }, 'getWrappedInstance')
     }
 }

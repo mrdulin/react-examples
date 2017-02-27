@@ -8,6 +8,6 @@ export default {
              const reducer = require('./reducer').RouterHOC;
              injectAsyncReducer('RouterHOC', reducer)
              cb(null, {content: component});
-        })
+        }, 'RouterHOC')
     }
 }

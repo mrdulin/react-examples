@@ -9,6 +9,6 @@ module.exports = {
 
       injectAsyncReducer('ip', ip);
       cb(null, {content: IP});
-    })
+    }, 'ip')
   }
 };
