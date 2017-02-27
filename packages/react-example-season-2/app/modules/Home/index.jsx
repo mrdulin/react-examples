@@ -25,7 +25,7 @@ class Home extends React.Component {
                     {toolItem}
                 </List>
             </Drawer>
-            {contentComponent}
+            {contentComponent || '点击左上角菜单选择例子'}
         </div>
     }
 

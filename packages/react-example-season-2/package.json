@@ -71,7 +71,7 @@
     "publish": "npm run dll && cross-env NODE_ENV=production webpack --progress --hide-modules && git pull && git add . && git commit -m 'publish' && git push &&  git push --tags",
     "dll": "cross-env NODE_ENV=production webpack --config webpack.dll.js --progress",
     "watch": "webpack --watch --progress",
-    "stats": "webpack --profile --json > stats.json"
+    "stats": "webpack --profile --json --progress > stats.json"
   },
   "keywords": [
     "react",
