@@ -33,13 +33,12 @@ const routes = {
                 require('./modules/ImmutabilityHelper'),
                 require('./modules/AvoidRequireDuplication'),
                 require('./modules/DataRef'),
-                //处理路由no match的情况
                 {
                     path: '*',
-                    onEnter: (nextState, replace) => replace('/')
+                    onEnter: (nState, replace) => replace('/')
                 }
             ]);
-        });
+        }, 'dynamicRoutes');
     }
 };
 

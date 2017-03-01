@@ -73,7 +73,8 @@ export default class extends Component {
     }
 
     _initScroller() {
-        document.addEventListener('touchmove', this._preventTouchmoveDefault, false);
+        const supportPassive = util.passiveSupport();
+        document.addEventListener('touchmove', this._preventTouchmoveDefault, supportPassive ? {passive: false} : false);
         this._wrapperElement = findDOMNode(this._wrapperRef);
         this._scroller = new IScroll(this._wrapperInstance.wrapperElement, {
             probeType: 2

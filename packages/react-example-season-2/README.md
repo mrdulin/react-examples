@@ -31,7 +31,7 @@ nvm --version
 *   在`VPS`上启动`node server`，`pm2 start server.js`， `pm2 logs`查看日志。
 
 
-__擦;__ `VPS`的`node server`调第三方接口总是报如下错误：
+__擦:__ `VPS`的`node server`调第三方接口总是报如下错误：
 
 ```json
 {
@@ -60,7 +60,17 @@ __擦;__ `VPS`的`node server`调第三方接口总是报如下错误：
 __TODO__
 
 - [x] 异步加载的每个`chunk`文件都包含`api`和`util`模块, 将公用的提出来。
+- [x] 使用`webpack`将第三方库打包成`dll`(动态链接库)
+- []  通过导入特定模块，而不是导入全部模块再解构赋值的方式进行优化，对比`import Router from 'react-router/lib/Router'`和`import {Router} from 'react-router'`，如果要将第三方库的特定模块打包成`dll`，那么初步想法是在打包`dll`的时候，在`entry`中指定第三方库的特定模块，如`'react-router/lib/Router'`，而不是指定`'react-router'`。
 
+__坑：__
+
+*   `"Uncaught Error: Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings."`
+    貌似有很多情况会导致这个错误，我的情况是，`app/modules/Home`模块下本来只有`index.jsx`文件，这样`require('modules/Home')`的时候，会默认找`index.jsx`，但是后来我创建了一个`index.js`的空文件，
+    一直没用到，但是忘记删除。估计`require`的时候`index.js`比`index.jsx`的优先级高，所以`require`了一个空文件，导致了这个错误。
+
+*   `Chrome 版本 56.0.2924.87 (64-bit)`，`SearchBook`模块出现了`Unable to preventDefault inside passive event listener due to target being treated as passive. See https://www.chromestatus.com/features/5093566007214080`的`warnings`。
+    `SearchBook`模块使用了`IScroll`，导致滑动出现问题。为了兼容老旧浏览器，需要做[特性检测](https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection)。
 
 __FAQ__
 
@@ -83,4 +93,8 @@ __FAQ__
         },
     }
     ```
+4. `git`如何撤销某些文件的更改？
 
+    `git checkout .` - 撤销当前目录全部文件的修改
+    `git checkout someFile` - 撤销某个文件的修改
+    `git checkout path/` - 撤销某个目录下所有文件的修改

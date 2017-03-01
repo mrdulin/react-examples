@@ -19,7 +19,7 @@ const app = path.join(__dirname, 'app');
 const nodeModules = path.join(__dirname, 'node_modules');
 const publicPath = __DEV__ ? '/' : 'http://novaline.space/react-mobile/';
 const commonPaths = [
-    './app/common/js/components',
+    './app/common/js/components'
 ];
 
 genEntry(commonPaths);

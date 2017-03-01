@@ -2,13 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const AssetsPlugin = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const EnvReporter = require('./plugins/envReporter');
 
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-
-// console.log('========================================================');
-// console.log('WEBPACK NODE_ENV :: ', JSON.stringify(env));
-// console.log('========================================================');
 
 module.exports = {
     entry: {
@@ -47,7 +42,6 @@ module.exports = {
         pathinfo: env === 'development'
     },
     plugins: [
-        new EnvReporter('webpack compile env :: '),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify(env)
