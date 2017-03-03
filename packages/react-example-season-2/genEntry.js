@@ -1,9 +1,11 @@
+"use strict";
+
 const fs = require('fs');
 const path = require('path');
-const webpackConfig = require('./webpack.config');
 
-const commonPaths = [
-    './src/common/js/components'
+const modulePaths = [
+    './app/common/js/components',
+    './app/common/js/basecomponent'
 ];
 
 function getDirnames(modulePath) {
@@ -12,16 +14,26 @@ function getDirnames(modulePath) {
     return dirnames;
 }
 
-function getData(modulePath, dirs = []) {
-    let data = '';
+function getData(modulePath, dirs, noModule) {
+    dirs = dirs || [];
+    let data = '', moduleName = '';
     for(let dir of dirs) {
         const filepath = path.join(__dirname, modulePath, dir);
         if(fs.lstatSync(filepath).isFile()) {
             const fileExt = path.extname(dir);
             dir = path.basename(dir, fileExt);
+            moduleName = dir + fileExt;
+        } else {
+            moduleName = dir;
         }
-        data += `import ${dir} from './${dir}';\n`; 
+        if(noModule) {
+            data += `import './${moduleName}';\n`;
+        } else {
+            data += `import ${dir} from './${moduleName}';\n`; 
+        }
     }
+
+    data += `\n\n/** 导入模块总数：${dirs.length} */\n`;
 
     // console.log(data);
     return data;
@@ -32,17 +44,11 @@ function writeDataToEntry(modulePath, data) {
     fs.writeFileSync(file, data, 'utf8');
 }
 
-function genEntry(modulePaths) {
-    for(let modulePath of modulePaths) {
-        const dirnames = getDirnames(modulePath);
-        const data = getData(modulePath, dirnames);
-        writeDataToEntry(modulePath, data);
-    }
+for(let modulePath of modulePaths) {
+    const dirnames = getDirnames(modulePath);
+    const data = getData(modulePath, dirnames);
+    writeDataToEntry(modulePath, data);
 }
 
-module.exports = genEntry;
-
-// process(commonPaths);
-
-
-
+exports['writeDataToEntry'] = writeDataToEntry;
+exports['getData'] = getData;
