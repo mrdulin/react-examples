@@ -27,5 +27,8 @@ ReactDOM.render(
             {/*这里的注释只能这样写，//这种方式的注释会报错*/}
         </Router>
     </Provider>,
-    document.getElementById('container')
+    document.getElementById('container'),
+    (...args) => {
+        console.log('ReactDOM.render callback', ...args);
+    }
 );
