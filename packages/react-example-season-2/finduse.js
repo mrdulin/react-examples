@@ -4,13 +4,14 @@ const fs = require('fs');
 const genEntry = require('./genEntry');
 
 const args = process.argv.slice(2);
+const context = process.cwd();
 
 //源目录
 const src = args[0];
-const srcAbsolute = path.join(__dirname, src);
+const srcAbsolute = path.join(context, src);
 //目标目录
 const dist = args[1];
-const distAbsolute = path.join(__dirname, dist);
+const distAbsolute = path.join(context, dist);
 
 //如果上述两个目录不存在，退出脚本执行并提示
 if (!fs.existsSync(srcAbsolute) || !fs.existsSync(distAbsolute)) {
@@ -42,10 +43,10 @@ exec(`diff -qr ${srcAbsolute} ${distAbsolute} | grep ${src} | grep -v 'index.js'
     console.log(`源目录总文件数:  ${filenames.length}\n`);
     console.log(`没有使用的文件数: ${datas.length}\n`);
     console.log(`使用的文件数： ${usedFilenames.length}\n`);
-    
-    const dataToWrite = genEntry.getData(src, usedFilenames, true);
+
+    const dataToWrite = genEntry.getData(context, src, usedFilenames, true);
     // console.log(dataToWrite);
-    genEntry.writeDataToEntry(src, dataToWrite);
+    genEntry.writeDataToEntry(context, src, dataToWrite);
 
 });
 
