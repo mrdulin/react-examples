@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
 const EnvReporter = require('./plugins/envReporter');
 
-const genEntry = require('./genEntry');
+// const genEntry = require('./genEntry');
 
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
@@ -22,7 +22,7 @@ const commonPaths = [
     './app/common/js/components'
 ];
 
-genEntry(commonPaths);
+// genEntry(commonPaths);
 
 const nodeServerHost = 'http://localhost:3003';
 
@@ -212,12 +212,12 @@ const config = {
         //     minChunks: Infinity
         // }),
 
-        
+
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'bundles/common-[hash:8].js',
             minChunks: Infinity
-        }), 
+        }),
 
         new webpack.DllReferencePlugin({
             context: __dirname,

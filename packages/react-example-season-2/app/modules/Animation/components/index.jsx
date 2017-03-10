@@ -1,44 +1,16 @@
 import './style';
 import AnimationInitialMounting from './AnimationInitialMounting';
+import Todos from './Todos';
 
-export default class Animation extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { items: ['hello', 'world', 'click', 'me'] };
-        this.handleAdd = this.handleAdd.bind(this);
-    }
-
-    handleAdd() {
-        const newItems = this.state.items.concat([
-            prompt('Enter some text')
-        ]);
-        this.setState({ items: newItems });
-    }
-
-    handleRemove(i) {
-        let newItems = this.state.items.slice();
-        newItems.splice(i, 1);
-        this.setState({ items: newItems });
-    }
-
+class AnimationContainer extends React.Component{
     render() {
-        const items = this.state.items.map((item, i) => (
-            <div key={item} onClick={() => this.handleRemove(i) }>
-                {item}
-            </div>
-        ));
-
         return (
             <div>
                 <AnimationInitialMounting/>
-                <button onClick={this.handleAdd}>Add Item</button>
-                <ReactCSSTransitionGroup
-                    transitionName="example"
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={300}>
-                    {items}
-                </ReactCSSTransitionGroup>
+                <Todos/>
             </div>
-        );
+        )
     }
 }
+
+export default AnimationContainer;
