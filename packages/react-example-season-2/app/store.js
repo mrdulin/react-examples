@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import { createReducer } from './reducer';
+import * as GlobalReducer from 'common/js/reducer';
 
 let middlewares = [
     //生产环境redux中间件
@@ -38,17 +39,18 @@ const configureStore = (reducer, preloadedState = {}) => {
     return store;
 }
 
-const initialReducer = createReducer();
+const initialReducer = createReducer(GlobalReducer);
+// console.log('initialReducer', initialReducer);
 const initStore = configureStore(initialReducer);
 
 ///测试多个store
 // function reducerB(state = {fxxk: false, kao: false}, action) {
 //     switch(action.type) {
-//         case 'aaa': 
+//         case 'aaa':
 //             return Object.assign({}, state, {fxxk: action.fxxk});
-//         case 'bbb': 
+//         case 'bbb':
 //             return Object.assign({}, state, {kao: action.kao});
-//         default: 
+//         default:
 //             return state;
 //     }
 // }

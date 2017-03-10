@@ -262,7 +262,7 @@ function setProxy(pathTargets) {
 if (__DEV__) {
 
     config.devServer = {
-        contentBase: dist,
+        contentBase: '.',
         historyApiFallback: true,
         colors: true,
         port: 3000,

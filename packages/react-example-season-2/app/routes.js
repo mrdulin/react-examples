@@ -33,6 +33,7 @@ const routes = {
                 require('./modules/ImmutabilityHelper'),
                 require('./modules/AvoidRequireDuplication'),
                 require('./modules/DataRef'),
+                require('./modules/ReturnListMapDirectly'),
                 {
                     path: '*',
                     onEnter: (nState, replace) => replace('/')

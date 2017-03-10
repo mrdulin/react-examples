@@ -98,3 +98,7 @@ __FAQ__
     `git checkout .` - 撤销当前目录全部文件的修改
     `git checkout someFile` - 撤销某个文件的修改
     `git checkout path/` - 撤销某个目录下所有文件的修改
+
+5. 怎么配合`webpack-dev-server`使用项目目录中`mock`的`json`数据？
+
+    `webpack-dev-server`需要设置`--content-base .`参数，这样就可以访问到项目根目录下的`mock`文件夹，例如：`http://localhost:3000/mock/city.json`

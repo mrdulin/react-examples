@@ -83,6 +83,10 @@ module.exports = {
         {
             key: 'data-ref',
             name: '组件的数据引用问题'
+        },
+        {
+            key: 'return-list-map-directly',
+            name: '直接在render中返回map遍历的list'
         }
     ]
 }
