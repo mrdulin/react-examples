@@ -24,3 +24,24 @@
   opacity: 1;
   transition: opacity 5s ease-in;
 }
+
+// 自定义ReactCSSTransitionGroup的class
+
+.fade-in{
+    opacity: 0;
+}
+
+.fade-in-active{
+    opacity: 1;
+    transition: opacity 5s ease-in;
+}
+
+.fade-out{
+    opacity: 1;
+}
+
+.fade-out-active{
+    opacity: 0;
+    transition: opacity 5s ease-in;
+}
+

@@ -14,8 +14,7 @@
  * 有什么关系？或者说，有什么影响？
  *
  * A: 该例子，`transitionAppearTimeout`的值被设置为`500ms`，`css`的`transition-duration`被设置为`5s`，该动画实际上将在`500ms`后被结束，
- * 现象就是，前`500ms`是过渡动画，过了`500ms`，将直接显示动画最终的效果。
- *
+ * 现象就是，前`500ms`是过渡动画，过了`500ms`，将直接显示动画最终的效果。一般是设置timeout的值等于`transition-duration`的值。
  *
  */
 export default class extends React.Component {
