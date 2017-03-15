@@ -87,6 +87,10 @@ module.exports = {
         {
             key: 'return-list-map-directly',
             name: '直接在render中返回map遍历的list'
+        },
+        {
+            key: 'function-as-child-components',
+            name: '函数作为组件的children'
         }
     ]
 }

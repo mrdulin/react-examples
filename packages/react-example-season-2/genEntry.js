@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 const modulePaths = [
-    '../app/common/js/components',
-    '../app/common/js/basecomponent'
+    './app/common/js/components',
+    './app/common/js/basecomponent'
 ];
 
 function getDirnames(modulePath) {
@@ -44,11 +44,14 @@ function writeDataToEntry(context, modulePath, data) {
     fs.writeFileSync(file, data, 'utf8');
 }
 
-for(let modulePath of modulePaths) {
-    const dirnames = getDirnames(modulePath);
-    const data = getData(__dirname, modulePath, dirnames);
-    writeDataToEntry(__dirname, modulePath, data);
+function gen(modulePaths) {
+    for(let modulePath of modulePaths) {
+        const dirnames = getDirnames(modulePath);
+        const data = getData(__dirname, modulePath, dirnames);
+        writeDataToEntry(__dirname, modulePath, data);
+    }
 }
 
 exports['writeDataToEntry'] = writeDataToEntry;
 exports['getData'] = getData;
+exports['gen'] = gen;

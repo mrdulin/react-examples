@@ -7,8 +7,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
 const EnvReporter = require('./plugins/envReporter');
-
-// const genEntry = require('./genEntry');
+const genEntry = require('./genEntry');
 
 const __PROD__ = process.env.NODE_ENV === 'production';
 const __DEV__ = __PROD__ === false;
@@ -22,7 +21,9 @@ const commonPaths = [
     './app/common/js/components'
 ];
 
-// genEntry(commonPaths);
+console.log('正在生成common的整合文件index.js...\n');
+genEntry.gen(commonPaths);
+console.log('common整合文件生成完毕.\n');
 
 const nodeServerHost = 'http://localhost:3003';
 

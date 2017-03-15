@@ -34,6 +34,7 @@ const routes = {
                 require('./modules/AvoidRequireDuplication'),
                 require('./modules/DataRef'),
                 require('./modules/ReturnListMapDirectly'),
+                require('./modules/FunctionAsChildComponents'),
                 {
                     path: '*',
                     onEnter: (nState, replace) => replace('/')
