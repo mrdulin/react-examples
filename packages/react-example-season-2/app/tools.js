@@ -91,6 +91,10 @@ module.exports = {
         {
             key: 'function-as-child-components',
             name: '函数作为组件的children'
+        },
+        {
+            key: 'default-props',
+            name: '组件默认props'
         }
     ]
 }

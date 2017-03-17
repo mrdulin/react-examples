@@ -76,7 +76,7 @@ const config = {
             exclude: /(node_modules|bower_components)/,
             loader: 'babel',
             query: {
-                compact: false,
+                // compact: false,
 
                 /**
                  * 如果要使用jest测试框架，在单元测试文件中*.spec.js,使用es6+的语法，
@@ -277,7 +277,10 @@ if (__DEV__) {
         colors: true,
         port: 3000,
         inline: true,
-        stats: 'errors-only',
+        // stats: 'errors-only',
+        stats: {
+            chunks: false
+        },
         proxy: setProxy([
             {
                 paths: ['/api/ip/ip2addr', '/api/mobile/get'],

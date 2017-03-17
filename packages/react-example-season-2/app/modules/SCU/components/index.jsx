@@ -2,7 +2,7 @@ class Child extends React.Component{
     shouldComponentUpdate(nextProps, nextState) {
         if(this.props.books.length !== nextProps.books.length) {
             return true;
-        } 
+        }
         if(this.props.people.name !== nextProps.people.name || this.props.people.age !== nextProps.people.age) {
             return true;
         }
@@ -10,7 +10,7 @@ class Child extends React.Component{
     }
 
     render() {
-        const {books, people} = this.props; 
+        const {books, people} = this.props;
         return <div>
             <div>test1: <pre>{JSON.stringify(books, null, 4)}</pre></div>
             <div>test2: <pre>{JSON.stringify(people, null, 4)}</pre></div>
@@ -53,5 +53,5 @@ export default class SCUDemo extends React.Component{
             <p>test2: 处理这种情况，可以是用Object.assign，spread properties, 克隆等方法，使下一次传入子组件的引用不同即可。</p>
         </div>
     }
-} 
+}
 
