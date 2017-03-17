@@ -56,6 +56,7 @@ __擦:__ `VPS`的`node server`调第三方接口总是报如下错误：
 
 *   无论在何种性能优化中，缓存总是必不可少的一部分，毕竟每次变动都只影响很小的一部分，如果能够缓存住那些没有变动的部分，直接拿来使用，自然会事半功倍，在 webpack 的整个构建过程中，有多个地方提供了缓存的机会，如果我们打开了这些缓存，会大大加速我们的构建，尤其是 rebuild 的效率。
 
+*   使用`jest`时，可能会遇到无法解析`wepback`的`alias`中配置的模块路径的问题，查看[app/modules/Ip](./app/modules/Ip)的`__tests__/reducer.spec.js`例子,引入了`reducer`文件，`reducer`文件中使用了`import {genReducer} from app/reducer`，其中`app`是`webpack`配置的`alias`，当运行`npm test`时，会报`Cannot find module 'app/reducer' from 'reducer.js'`错误，解决办法是使用`babel-plugin-module-resolver`，在`.babelrc`配置好`alias`即可。
 
 __TODO__
 

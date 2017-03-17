@@ -77,21 +77,30 @@ const config = {
             loader: 'babel',
             query: {
                 compact: false,
-                babelrc: false,
-                presets: ["es2015", "react", "stage-0"],
-                plugins: [
-                    /**
-                     * https://babeljs.io/docs/plugins/transform-runtime/
-                     * transform-runtime对于实例方法例如"foobar".includes("foo")是不支持的，还是需要babel-polyfill或者引入core-js指定的方法
-                     */
-                    ['transform-runtime',  {
-                        "helpers": true, // defaults to true
-                        "polyfill": true, // defaults to true
-                        "regenerator": false, // defaults to true
-                        "moduleName": "babel-runtime" // defaults to "babel-runtime"
-                    }],
-                    "add-module-exports"
-                ],
+
+                /**
+                 * 如果要使用jest测试框架，在单元测试文件中*.spec.js,使用es6+的语法，
+                 * 第一：安装babel-jest
+                 * 第二：配合.babelrc文件
+                 *
+                 * 所以，需要将webpack babel-loader中配置的babel的相关参数(presets, plugins)放在.babelrc配置文件中。
+                 * 这样，jest和webpack将会公用.babelrc配置
+                 */
+                // babelrc: false,
+                // presets: ["es2015", "react", "stage-0"],
+                // plugins: [
+                //     /**
+                //      * https://babeljs.io/docs/plugins/transform-runtime/
+                //      * transform-runtime对于实例方法例如"foobar".includes("foo")是不支持的，还是需要babel-polyfill或者引入core-js指定的方法
+                //      */
+                //     ['transform-runtime',  {
+                //         "helpers": true, // defaults to true
+                //         "polyfill": true, // defaults to true
+                //         "regenerator": false, // defaults to true
+                //         "moduleName": "babel-runtime" // defaults to "babel-runtime"
+                //     }],
+                //     "add-module-exports"
+                // ],
                 /**
                 * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
                 */

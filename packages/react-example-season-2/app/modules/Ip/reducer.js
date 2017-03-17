@@ -16,19 +16,18 @@ const initState = {
 //     }
 // }
 
-
 export const ip = genReducer(initState, {
     ip_action1: action1Handler,
     ip_action2: action2Handler
 })
 
-function action1Handler(state, action) {
+export function action1Handler(state, action) {
     return {
         ...state,
         name: 'novaline'
     };
 }
 
-function action2Handler(state, action) {
+export function action2Handler(state, action) {
     return Object.assign({}, state, {age: 23});
 }
