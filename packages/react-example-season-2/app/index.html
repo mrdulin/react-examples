@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-	<title><%= htmlWebpackPlugin.options.title %></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
 </head>
+
 <body>
-	<div id="container"></div>
-    <script src="<%= htmlWebpackPlugin.options.dll %>"></script>
+  <div id="container"></div>
+  <button type="button" onClick="window.renderComponent()">挂载</button>
+  <button type="button" onClick="window.setState()">更新</button>
+  <button type="button" onClick="window.unmountComponentAtNode()">卸载</button>
+  <script src="<%= htmlWebpackPlugin.options.dll %>"></script>
 </body>
+
 </html>
