@@ -76,7 +76,7 @@ class Parent extends React.Component{
         // const newState = {root: newRoot};
 
 
-        
+
         //2.
         // const newState = {root: this.state.root};
         // this.state.root.lv1.lv2 = [];
@@ -90,10 +90,10 @@ class Parent extends React.Component{
 
         // this.setState(newState);
 
-        
+
         //3.
         this.props.dispatch(Actions.changeData());
-    
+
     }
 }
 
