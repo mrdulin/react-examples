@@ -1,0 +1,2 @@
+export const REQUEST_BOOK_SUCCESS = Symbol('REQUEST_BOOK_SUCCESS');
+export const REQUEST_BOOK_FAIL = Symbol('REQUEST_BOOK_FAIL');

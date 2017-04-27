@@ -36,6 +36,7 @@ const routes = {
         require('./modules/ReturnListMapDirectly'),
         require('./modules/FunctionAsChildComponents'),
         require('./modules/DefaultProps'),
+        require('./modules/ComponentKeyProperty'),
         {
           path: '*',
           onEnter: (nState, replace) => replace('/')
@@ -67,14 +68,14 @@ class Root extends React.Component {
   }
 
   render() {
-    const { foo } = this.state;
-    this.handler();
-    window.handler = this.handler;
-    window.handler();
+    // const { foo } = this.state;
+    // this.handler();
+    // window.handler = this.handler;
+    // window.handler();
 
     return (
       <div>
-        <p onClick={this.handler}>{foo}</p>
+        {/*<p onClick={this.handler}>{foo}</p>*/}
         <Provider store={store}>
           <MuiThemeProvider>
             <Router history={__PROD__ ? history : browserHistory} routes={routes} />
@@ -86,4 +87,3 @@ class Root extends React.Component {
 }
 
 export default Root;
-

@@ -1,0 +1,38 @@
+.book-module{
+  border-bottom: 1px solid #ddd;
+}
+.book-module-header {
+  font-weight: normal;
+  font-size: 16px;
+  color: #999;
+  padding: 0 15px;
+  font-size: 14px;
+  background-color: #fff;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+.book-module-title {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.text-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.book-module-subtitle {
+  composes: text-overflow;
+  display: inline-block;
+  width: 200px;
+  vertical-align: middle;
+}
+
+.book-module-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}

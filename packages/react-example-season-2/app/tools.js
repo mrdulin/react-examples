@@ -95,6 +95,10 @@ module.exports = {
         {
             key: 'default-props',
             name: '组件默认props'
+        },
+        {
+          key: 'component-property-key',
+          name: '组件属性key的问题'
         }
     ]
 }

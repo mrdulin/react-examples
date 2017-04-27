@@ -1,42 +1,44 @@
-import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
-import { createReducer } from './reducer';
+import {applyMiddleware, createStore, compose, combineReducers} from 'redux';
+import {createReducer} from './reducer';
 import * as GlobalReducer from 'common/js/reducer';
+import createLogger from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 
-let middlewares = [
-    //生产环境redux中间件
-];
+//生产环境redux中间件
+let middlewares = [thunkMiddleware];
 
 if (__DEV__) {
-    const createLogger = require('redux-logger');
-    const logger = createLogger({
-        level: 'info',
-        duration: true,
-        timestamp: true,
-        collapsed: true
-    });
-    middlewares = [...middlewares, logger];
+	const logger = createLogger({
+		duration: true,
+		logErrors: true,
+		collapsed: true,
+		actionTransformer: (action) => ({
+			...action,
+			type: action.type && action.type.toString()
+		})
+	});
+	middlewares = [
+		...middlewares,
+		logger
+	];
 }
 
-let storeEnhancerFunctions = [
-    applyMiddleware(...middlewares)
-];
+let storeEnhancerFunctions = [applyMiddleware(...middlewares)];
 
 if (__DEV__) {
-    const devToolsExtension = window.devToolsExtension ? window.devToolsExtension() : f => f;
-    storeEnhancerFunctions = [
-        ...storeEnhancerFunctions,
-        devToolsExtension
-    ]
+	const devToolsExtension = window.devToolsExtension
+		? window.devToolsExtension()
+		: f => f;
+	storeEnhancerFunctions = [
+		...storeEnhancerFunctions,
+		devToolsExtension
+	]
 }
 
 const configureStore = (reducer, preloadedState = {}) => {
-    const store = createStore(
-        reducer,
-        preloadedState,
-        compose(...storeEnhancerFunctions)
-    );
-    store.asyncReducers = {};
-    return store;
+	const store = createStore(reducer, preloadedState, compose(...storeEnhancerFunctions));
+	store.asyncReducers = {};
+	return store;
 }
 
 const initialReducer = createReducer(GlobalReducer);
@@ -74,7 +76,6 @@ const initStore = configureStore(initialReducer);
 // unsubscribe();
 ///
 
-
 /**
  * @desc 异步加载reducer
  * @param store {Object} redux的store
@@ -82,14 +83,14 @@ const initStore = configureStore(initialReducer);
  * @param asyncReducer {Function} reducer纯函数
  */
 export const injectAsyncReducer = (name, asyncReducer, store = initStore) => {
-    if (typeof name === 'string' && typeof asyncReducer === 'function') {
-        store.asyncReducers[name] = asyncReducer;
-    }
-    if (Object.prototype.toString.call(name) === "[object Object]") {
-        store.asyncReducers = name;
-    }
-    const reducer = createReducer(store.asyncReducers);
-    store.replaceReducer(reducer);
+	if (typeof name === 'string' && typeof asyncReducer === 'function') {
+		store.asyncReducers[name] = asyncReducer;
+	}
+	if (Object.prototype.toString.call(name) === "[object Object]") {
+		store.asyncReducers = name;
+	}
+	const reducer = createReducer(store.asyncReducers);
+	store.replaceReducer(reducer);
 }
 
 export default initStore;

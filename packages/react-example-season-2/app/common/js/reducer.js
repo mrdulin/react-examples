@@ -1,4 +1,4 @@
-export const global = (state = {
+export const globalReducer = (state = {
     pagePath: ''
 }, action) => {
     switch(action.type) {
