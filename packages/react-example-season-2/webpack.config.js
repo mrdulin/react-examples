@@ -275,6 +275,7 @@ if (__DEV__) {
         contentBase: '.',
         historyApiFallback: true,
         colors: true,
+        https: true,
         port: 3000,
         inline: true,
         // stats: 'errors-only',

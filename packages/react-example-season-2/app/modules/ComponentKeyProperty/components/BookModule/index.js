@@ -1,7 +1,21 @@
 import style from './style.module.scss';
 import {PropTypes} from 'react';
 import Book from '../Book';
+import {connect} from 'react-redux';
+import {requestDoubanBook} from '../../action';
+import {bindActionCreators} from 'redux';
 
+const AD_MAP = new Map([
+  ['react', '人民的名义'],
+  ['angular', '小说']
+]);
+
+@connect(
+  state => ({}),
+  dispatch => ({
+    actions: bindActionCreators({requestDoubanBook}, dispatch)
+  })
+)
 class BookModule extends React.Component{
   static defaultProps = {
     title: '',
@@ -16,7 +30,11 @@ class BookModule extends React.Component{
   };
 
   componentDidMount() {
-
+    const {actions, title} = this.props;
+    const adQuery = AD_MAP.get(title);
+    if(adQuery) {
+      actions.requestDoubanBook(adQuery);
+    }
   }
 
   render() {

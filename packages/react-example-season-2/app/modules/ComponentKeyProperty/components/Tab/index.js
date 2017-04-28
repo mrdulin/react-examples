@@ -4,7 +4,7 @@ class Tab extends React.Component{
   render() {
     return (
       <div className={style.tab}>
-        
+
       </div>
     )
   }

@@ -19,7 +19,7 @@ class Book extends React.Component {
 	componentDidMount() {
 		const {book, category} = this.props;
 		if(category === 'react') {
-			console.log(book);
+			// console.log(book);
 		}
 	}
 
