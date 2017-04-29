@@ -3,9 +3,10 @@ import {createReducer} from './reducer';
 import * as GlobalReducer from 'common/js/reducer';
 import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
+import promiseMiddleware from 'common/js/middlewares/promise.js';
 
 //生产环境redux中间件
-let middlewares = [thunkMiddleware];
+let middlewares = [thunkMiddleware, promiseMiddleware];
 
 if (__DEV__) {
 	const logger = createLogger({

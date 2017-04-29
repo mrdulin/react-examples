@@ -37,6 +37,7 @@ class Book extends React.Component {
 			<li className={style.book}>
 				<div className={style.bookTopPart}>
 					<img className={style.bookImage} src={book.image} alt='book image'/>
+					{book.isbn10 && <span className={style.bookTag}>广告</span>}
 				</div>
 				<div className={style.bookBottomPart}>
 					<h2 className={style.bookTitle}>{book.title}</h2>

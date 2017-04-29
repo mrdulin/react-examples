@@ -8,11 +8,11 @@ import {combineReducers} from 'redux';
 function books(state = {
   books: [],
   error: null
-}, actioin) {
+}, action) {
   switch(action.type) {
     case REQUEST_DOUBAN_BOOK_SUCCESS: {
       const {books} = action.payload;
-      return update({}, state, {books});
+      return Object.assign({}, state, {books});
     }
     case REQUEST_DOUBAN_BOOK_FAIL: {
       return Object.assign({}, state, {error: action.payload});
