@@ -37,6 +37,7 @@ const routes = {
         require('./modules/FunctionAsChildComponents'),
         require('./modules/DefaultProps'),
         require('./modules/ComponentKeyProperty'),
+        require('./modules/setStateInComponentWillMount'),
         {
           path: '*',
           onEnter: (nState, replace) => replace('/')

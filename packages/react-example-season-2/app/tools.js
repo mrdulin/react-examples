@@ -99,6 +99,10 @@ module.exports = {
         {
           key: 'component-property-key',
           name: '组件属性key的问题'
+        },
+        {
+          key: 'setState-in-componentWillMount',
+          name: 'componentWillMount中setState'
         }
     ]
 }
