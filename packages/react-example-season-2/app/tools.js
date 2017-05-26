@@ -103,6 +103,10 @@ module.exports = {
         {
           key: 'setState-in-componentWillMount',
           name: 'componentWillMount中setState'
+        },
+        {
+          key: 'setState-from-store-data',
+          name: '从redux的store拿数据setState导致，在setState的第二个参数callback中的坑'
         }
     ]
 }

@@ -12,6 +12,8 @@ _React + Webpack + ES6 + node + express_
 *   使用`scp`上传`server.js`, `scp -P 29041 /Users/dulin/workspace/react-juhe-tools/server.js root@<ip_address>:/root/workspace/react-juhe-tools`
 *   `head -n 1 /etc/issue`查看`VPS`操作系统版本，结果`CentOS release 6.6 (Final)`
 *   `VPS`安装`nvm`,
+*   `npm run test`使用`jest`测试所有文件, `jest`配置在`package.json`文件中
+*   `./node_modules/.bin/jest app/__test__/redux-actions/createAction.spec.js`，使用`jest`测试指定的文件
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash

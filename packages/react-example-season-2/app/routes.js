@@ -38,6 +38,7 @@ const routes = {
         require('./modules/DefaultProps'),
         require('./modules/ComponentKeyProperty'),
         require('./modules/setStateInComponentWillMount'),
+        require('./modules/setStateFromStoreData'),
         {
           path: '*',
           onEnter: (nState, replace) => replace('/')
