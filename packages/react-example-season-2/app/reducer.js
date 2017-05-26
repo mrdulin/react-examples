@@ -1,14 +1,20 @@
 import {combineReducers} from 'redux';
+import * as GlobalReducer from 'common/js/reducer';
 
-export const createReducer = (asyncReducers) => {
-	if (Object.prototype.toString.call(asyncReducers) !== "[object Object]") {
-		throw new TypeError('Function "createReducer" params "asyncReducers" must be a object type');
-	}
-	asyncReducers = logSlowReducer(asyncReducers);
-	return combineReducers({
-		...asyncReducers
-	});
-}
+export const createReducer = (asyncReducers) => combineReducers({
+    ...asyncReducers,
+    ...GlobalReducer
+})
+// export const createReducer = (asyncReducers) => {
+// 	if (Object.prototype.toString.call(asyncReducers) !== "[object Object]") {
+// 		throw new TypeError('Function "createReducer" params "asyncReducers" must be a object type');
+// 	}
+// 	asyncReducers = logSlowReducer(asyncReducers);
+// 	return combineReducers({
+//     ...GlobalReducer,
+// 		...asyncReducers
+// 	});
+// }
 
 /**
  * @desc reducer switch..case helper

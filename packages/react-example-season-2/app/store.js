@@ -1,6 +1,5 @@
 import {applyMiddleware, createStore, compose, combineReducers} from 'redux';
 import {createReducer} from './reducer';
-import * as GlobalReducer from 'common/js/reducer';
 import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'common/js/middlewares/promise.js';
@@ -42,9 +41,9 @@ const configureStore = (reducer, preloadedState = {}) => {
 	return store;
 }
 
-const initialReducer = createReducer(GlobalReducer);
+// const initialReducer = createReducer(GlobalReducer);
 // console.log('initialReducer', initialReducer);
-const initStore = configureStore(initialReducer);
+const initStore = configureStore(createReducer());
 
 ///测试多个store
 // function reducerB(state = {fxxk: false, kao: false}, action) {
