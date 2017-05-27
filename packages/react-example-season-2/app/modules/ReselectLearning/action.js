@@ -1,7 +1,7 @@
 import {
-  RS_ACTION_1,
-  RS_ACTION_2
+  CHANGE_FILTER,
+  ADD_PERSON_INFO
 } from './actionTypes';
 
-export const rsAction1 = () => ({type: RS_ACTION_1});
-export const rsAction2 = () => ({type: RS_ACTION_2});
+export const changeFilter = (filter) => ({type: CHANGE_FILTER, payload: filter});
+export const addPersonInfo = () => ({type: ADD_PERSON_INFO});

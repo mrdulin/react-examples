@@ -2,22 +2,40 @@ import {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from './action';
+import {getBookNames, getBookByFilter} from './selectors';
+
+const FILTERS = ['SHOW_ALL', 'SHOW_SELL_OUT', 'SHOW_NOT_SELL_OUT'];
 
 class Container extends Component{
+
+  componentWillReceiveProps(nextProps) {
+    console.log('componentWillReceiveProps: ', this.props.books === nextProps.books);
+  }
+
+  handleFilterClick(filter) {
+    const {actions} = this.props;
+    actions.changeFilter(filter);
+  }
+
   render() {
-    const {actions, books = []} = this.props;
+    const {actions, books = [], person} = this.props;
     return (
       <div>
         <h3>reselect 研究</h3>
-        <button type='button' onClick={() => actions.rsAction1()}>action 1</button>
-        <button type='button' onClick={() => actions.rsAction2()}>action 2</button>
+        <ul>
+          {
+            FILTERS.map((filter, idx) => <li onClick={() => this.handleFilterClick(filter)} key={idx}>{filter}</li>)
+          }
+        </ul>
+        <button type='button' onClick={() => actions.addPersonInfo()}>ADD PERSON INFO</button>
         <ul>
           {
             books.map((book, idx) => {
-              return <li key={idx}>book</li>
+              return <li key={idx}>{book.name}</li>
             })
           }
         </ul>
+        <p>Her name is {person.name}, age is {person.age}</p>
       </div>
     )
   }
@@ -26,7 +44,11 @@ class Container extends Component{
 function mapStateToProps(state) {
   console.log('mapStateToProps', state);
   const {ReselectLearning} = state;
-  return {books: ReselectLearning.books};
+
+  return {
+    books: getBookByFilter(state),
+    person: ReselectLearning.person
+  }
 }
 
 function mapDispatchToProps(dispatch) {
