@@ -111,6 +111,10 @@ module.exports = {
         {
           key: 'reselect-learning',
           name: 'reselect研究'
+        },
+        {
+          key: 'get-url-query-parameters',
+          name: '获取url上的查询字符串'
         }
     ]
 }

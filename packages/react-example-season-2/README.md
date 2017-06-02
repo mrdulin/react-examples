@@ -105,3 +105,17 @@ __FAQ__
 5. 怎么配合`webpack-dev-server`使用项目目录中`mock`的`json`数据？
 
     `webpack-dev-server`需要设置`--content-base .`参数，这样就可以访问到项目根目录下的`mock`文件夹，例如：`http://localhost:3000/mock/city.json`
+
+6. 怎么查看实际依赖的`node_modules`中各个`module`的版本
+
+  `npm list --depth=0`
+
+7. 关于`React`组件的粒度，什么标准？
+
+  考虑到`React`中嵌套组件间的通信的复杂度，在实际运用中，嵌套和粒度之间应该有一个平衡，组件的粒度应该以组件嵌套不超过3层为标准。对于多层嵌套的组件，
+  虽然可以考虑使用`context`进行跨组件通信，但会导致组件间较强的耦合，优先还是以`props`作为通信方式。
+
+8. 关于`React`组件的划分?
+
+  一般分为`container component`容器型组件，`presentational component`展示型组件，`high-order component`高阶组件，这里只针对`container component`做一些总结,
+  容器型组件一般通过`react-redux`的`connect`来注入`redux`的`reducer`到该组件的`props`上，作为数据源。实际项目中，有时候业务会比较复杂，如果只有一个容器型组件，需要把容器型包含的所有组件需要的`reducer`都注入进来，层层传递下去，很繁琐。这时候，可以考虑在`root container component`下在构造几个`child container component`，各自作为一块视图的容器组件，然后分别给这些子容器组件注入相应的`reducer`。

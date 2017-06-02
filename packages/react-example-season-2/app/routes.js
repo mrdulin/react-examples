@@ -40,6 +40,7 @@ const routes = {
         require('./modules/setStateInComponentWillMount'),
         require('./modules/setStateFromStoreData'),
         require('./modules/ReselectLearning'),
+        require('./modules/GetUrlQueryParameters'),
         {
           path: '*',
           onEnter: (nState, replace) => replace('/')
