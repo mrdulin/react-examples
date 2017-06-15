@@ -5,8 +5,18 @@ import * as actionTypes from './actionTypes';
 
 const booksReducer = handleActions({
   [`${actionTypes.GET_BOOKS_BY_NAME.toString()}_FULFILLED`]: (state, action) => {
-    const {Books: books} = action.payload;
-    return state.concat(books);
+    const {entities: {books}} = action.payload;
+    return Object.assign({}, state, books);
+  },
+  [`${actionTypes.CLEAR_DATA.toString()}`]: (state, action) => {
+    return {};
+  }
+}, {});
+
+const bookIdsReducer = handleActions({
+  [`${actionTypes.GET_BOOKS_BY_NAME.toString()}_FULFILLED`]: (state, action) => {
+    const {result} = action.payload;
+    return state.concat(result);
   },
   [`${actionTypes.CLEAR_DATA.toString()}`]: (state, action) => {
     return [];
@@ -40,7 +50,8 @@ const queryReducer =  handleActions({
 const moduleReducer = combineReducers({
   books: booksReducer,
   paging: pagingReducer,
-  query: queryReducer
+  query: queryReducer,
+  bookIds: bookIdsReducer
 });
 
 export default moduleReducer;

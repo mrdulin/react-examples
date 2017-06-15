@@ -17,14 +17,14 @@ class Container extends Component{
 
   //组件默认属性，显示声明组件props上的属性
   static defaultProps = {
-    books: [],
+    books: {},
     query: '',
     paging: {}
   };
 
   //组件props类型检查
   static propTypes = {
-    books: PropTypes.array,
+    books: PropTypes.object,
     query: PropTypes.string,
     paging: PropTypes.object
   };
@@ -33,17 +33,13 @@ class Container extends Component{
   state = {};
 
   //组件实例属性, this._input
-  _input = null
+  _input = null;
 
   constructor() {
     super();
 
     //组件实例属性
     this._isLoading = false;
-  }
-
-  componentDidMount() {
-
   }
 
   //getter
@@ -57,18 +53,14 @@ class Container extends Component{
     };
   }
 
-  // onSearchInputChange = e => {
-  //   const query = e.target.value.trim();
-
-  // };
-
+  //视图事件处理函数，注意命名方式
   onSearchFormSubmit = e => {
     e.preventDefault();
     this.props.getBooksByName(this.params);
   };
 
   render() {
-    const {books, query} = this.props;
+    const {books, query, bookIds} = this.props;
     return (
       <article>
         <form onSubmit={this.onSearchFormSubmit}>
@@ -77,8 +69,8 @@ class Container extends Component{
         <section>
           <ul>
             {
-              books.map((book, idx) => {
-                return <li key={idx}>{book.Title}</li>
+              bookIds.map((id, idx) => {
+                return <li key={idx}>{books[id].Title}</li>
               })
             }
           </ul>
