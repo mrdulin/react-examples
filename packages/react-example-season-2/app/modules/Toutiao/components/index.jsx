@@ -1,5 +1,5 @@
 import {Tabs, Tab} from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
+// import SwipeableViews from 'react-swipeable-views';
 import Dialog from 'material-ui/Dialog';
 import {List, ListItem} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';

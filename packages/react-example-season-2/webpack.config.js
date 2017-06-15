@@ -188,7 +188,6 @@ const config = {
             Redux: 'redux',
             ReactRedux: 'react-redux',
             Pubsub: 'pubsub-js',
-            Hammer: 'hammerjs',
             $: 'jQuery',
             /**
              *  promise和fetch的polyfill
@@ -275,7 +274,7 @@ if (__DEV__) {
         contentBase: '.',
         historyApiFallback: true,
         colors: true,
-        https: true,
+        https: false,
         port: 3000,
         inline: true,
         // stats: 'errors-only',

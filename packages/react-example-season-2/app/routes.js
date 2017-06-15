@@ -41,6 +41,7 @@ const routes = {
         require('./modules/setStateFromStoreData'),
         require('./modules/ReselectLearning'),
         require('./modules/GetUrlQueryParameters'),
+        require('./modules/redux-actions-flow'),
         {
           path: '*',
           onEnter: (nState, replace) => replace('/')
