@@ -1,7 +1,7 @@
 import {injectAsyncReducer} from 'app/store';
 
 module.exports = {
-  path: 'redux-actions-flow',
+  path: 'redux-actions-flow(/:query)',
   getComponents(nextState, cb) {
     require.ensure([], require => {
       const component = require('./main');
