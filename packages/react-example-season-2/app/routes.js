@@ -14,7 +14,7 @@ const routes = {
         require('./modules/Ip'),
         require('./modules/Mobile'),
         require('./modules/Toutiao'),
-        require('./modules/transitionToSelf'),
+        require('./modules/route-to-self'),
         require('./modules/CustomAttributes'),
         require('./modules/DidMountError'),
         require('./modules/EventArguments'),

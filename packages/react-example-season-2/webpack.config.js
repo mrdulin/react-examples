@@ -276,7 +276,7 @@ if (__DEV__) {
     colors: true,
     //浏览器中访问必须是http协议，https协议是不能访问的
     https: false,
-    port: 3000,
+    port: 3002,
     inline: true,
     // stats: 'errors-only',
     stats: {

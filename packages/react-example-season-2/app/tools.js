@@ -13,8 +13,8 @@ module.exports = {
       name: '新闻头条'
     },
     {
-      key: 'transitionToSelf/1',
-      name: '路由跳转自己'
+      key: 'route-to-self/1',
+      name: '路由不变，路由参数改变'
     },
     {
       key: 'custom-attribute',
