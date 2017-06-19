@@ -49,10 +49,6 @@ module.exports = {
       name: 'react-router高阶组件'
     },
     {
-      key: 'core-js-and-transform-runtime',
-      name: '测试core-js和babel-polyfill，及打包后bundle文件的大小'
-    },
-    {
       key: 'image-zoom',
       name: '手势图片缩放'
     },
@@ -109,8 +105,8 @@ module.exports = {
       name: '从redux的store拿数据setState导致，在setState的第二个参数callback中的坑'
     },
     {
-      key: 'reselect-learning',
-      name: 'reselect研究'
+      key: 'reselect-flow',
+      name: '使用reselect'
     },
     {
       key: 'get-url-query-parameters',

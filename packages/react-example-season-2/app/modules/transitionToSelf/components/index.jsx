@@ -24,7 +24,7 @@ export default withRouter(class TransitionToSelf extends Component{
                     })
                 }
             </ul>
-        </div>  
+        </div>
     }
 
     componentDidMount() {
@@ -58,7 +58,7 @@ export default withRouter(class TransitionToSelf extends Component{
         // window.location.reload();
     }
 
-    
+
 })
 
 // 跳转前                                                          返回                                                             是否重启应用          路由模式

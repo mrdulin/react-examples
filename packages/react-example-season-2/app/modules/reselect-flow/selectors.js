@@ -1,8 +1,7 @@
 import {createSelector} from 'reselect';
 
-//selector返回的数据的引用不能变
-const getBooks = (state) => state.ReselectLearning.books;
-const getBookFilter = state => state.ReselectLearning.bookVisibleFilter;
+const getBooks = (state) => state.ReselectFlowReducers.books;
+const getBookFilter = state => state.ReselectFlowReducers.bookVisibleFilter;
 
 export const getBooksState = createSelector(
   [getBooks],
@@ -20,10 +19,11 @@ export const getBookNames = createSelector(
   }
 )
 
+//getBookByFilter selector只会在state.ReselectFlowReducers.bookVisibleFilter和state.ReselectFlowReducers.books发生变化时重新执行
 export const getBookByFilter = createSelector(
   [getBooks, getBookFilter],
   (books, filter) => {
-    console.log('getBookByFilter');
+    console.count('getBookByFilter execute count');
 
     switch(filter) {
       case 'SHOW_ALL': {

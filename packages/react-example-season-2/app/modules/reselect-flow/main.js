@@ -41,13 +41,17 @@ class Container extends Component{
   }
 }
 
+function getBookByFilterWithoutSelector(reducer) {
+  console.count('getBookByFilterWithoutSelector execute count');
+}
+
 function mapStateToProps(state) {
-  console.log('mapStateToProps', state);
-  const {ReselectLearning} = state;
+  const {ReselectFlowReducers} = state;
 
   return {
+    booksWithoutSelector: getBookByFilterWithoutSelector(ReselectFlowReducers),
     books: getBookByFilter(state),
-    person: ReselectLearning.person
+    person: ReselectFlowReducers.person
   }
 }
 

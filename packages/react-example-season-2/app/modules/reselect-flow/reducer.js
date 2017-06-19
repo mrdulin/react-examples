@@ -11,10 +11,6 @@ function booksReducer(state = [
   {name: 'react', sellout: true}
 ], action) {
   switch(action.type) {
-    //如果这里返回books新的引用，selector(getBookByFilter)在每次mapStateToProps中就会重新计算了
-    // case CHANGE_FILTER: {
-    //   return state.slice();
-    // }
     default:
       return state;
   }

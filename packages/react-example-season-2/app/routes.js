@@ -23,7 +23,6 @@ const routes = {
         require('./modules/SCU'),
         require('./modules/RouterHOC'),
         require('./modules/CallComponentMethodOutside'),
-        require('./modules/CoreJSAndTransformRuntime'),
         require('./modules/ImageZoom'),
         require('./modules/ReactPinchZoom'),
         require('./modules/SearchBook'),
@@ -39,7 +38,7 @@ const routes = {
         require('./modules/ComponentKeyProperty'),
         require('./modules/setStateInComponentWillMount'),
         require('./modules/setStateFromStoreData'),
-        require('./modules/ReselectLearning'),
+        require('./modules/reselect-flow'),
         require('./modules/GetUrlQueryParameters'),
         require('./modules/redux-actions-flow'),
         {
