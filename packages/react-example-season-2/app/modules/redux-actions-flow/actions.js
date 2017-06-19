@@ -28,7 +28,16 @@ const getBooksByName = createAction(actionTypes.GET_BOOKS_BY_NAME.toString(), as
 
 const clearData = createAction(actionTypes.CLEAR_DATA.toString());
 
+const action_1 = createAction('ACTION_1');
+const action_2 = createAction('ACTION_2');
+const action_3 = createAction('ACTION_3', num => {
+  return new Error('action_3 error');
+});
+
 export {
   getBooksByName,
-  clearData
+  clearData,
+  action_1,
+  action_2,
+  action_3
 };

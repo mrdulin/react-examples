@@ -1,4 +1,4 @@
-import {handleActions, combineActions} from 'redux-actions';
+import {handleActions, combineActions, handleAction} from 'redux-actions';
 import {combineReducers} from 'redux';
 
 import * as actionTypes from './actionTypes';
@@ -53,12 +53,38 @@ const isFetchingReducer = handleActions({
   [combineActions(`${actionTypes.GET_BOOKS_BY_NAME.toString()}_FULFILLED`, `${actionTypes.GET_BOOKS_BY_NAME.toString()}_REJECTED`)]: () => false
 }, false);
 
+
+//------测试action-----
+
+const action1Reducer = handleAction('ACTION_1', (state, action) => {
+  return action.payload;
+}, '');
+
+const action2Reducer = handleAction('ACTION_2', {
+  next(state, action) {
+    return state;
+  },
+  throw(state, action) {
+    return state;
+  }
+}, '');
+
+const  action3Reducer = handleAction('ACTION_3', {
+  throw(state, action) {
+    return state;
+  }
+}, '');
+
 const moduleReducer = combineReducers({
   books: booksReducer,
   paging: pagingReducer,
   query: queryReducer,
   bookIds: bookIdsReducer,
-  isFetching: isFetchingReducer
+  isFetching: isFetchingReducer,
+
+  //---测试action
+  action1State: action1Reducer,
+  action2State: action2Reducer
 });
 
 export default moduleReducer;

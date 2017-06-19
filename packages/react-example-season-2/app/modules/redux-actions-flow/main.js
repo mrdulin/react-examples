@@ -2,6 +2,10 @@ import {PureComponent, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import * as actions from './actions';
+console.log(actions);
+
+import SomeComponent from './components/SomeComponent';
+import style from './main.module.scss';
 
 //模块作用域，可以在这里声明一些和组件“无关”（可以从视图逻辑中抽象出来的）的常量，方法
 //应尽可能的从组件类中抽象出常量和方法，保持组件类中定义的属性和方法尽可能精简，具体见
@@ -89,6 +93,7 @@ class Container extends PureComponent{
         <form onSubmit={this.onSearchFormSubmit}>
           <input ref={ref => this._input = ref} type="search" placeholder='输入书名'/>
         </form>
+        <SomeComponent/>
         <section>
           <ul>
             {
@@ -121,7 +126,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     ...reduxActionsFlowReducers
   };
-}
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   console.log('mapDispatchToProps ownProps', ownProps);
