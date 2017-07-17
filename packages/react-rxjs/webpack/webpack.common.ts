@@ -7,7 +7,7 @@ declare const __dirname: string;
 
 const config: webpack.Configuration = {
   entry: {
-    app: path.resolve(__dirname, '../src/index.ts'),
+    app: path.resolve(__dirname, '../src/index.tsx'),
   },
 
   module: {
@@ -29,7 +29,10 @@ const config: webpack.Configuration = {
   },
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      modules: path.resolve(__dirname, '../src/modules')
+    }
   },
 
   plugins: [
