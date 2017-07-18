@@ -1,8 +1,8 @@
 {
-  "name": "react__redux-observable",
+  "name": "react-redux-rxjs-boilerplate",
   "version": "1.0.0",
   "main": "./src/index.js",
-  "repository": "git@github.com:mrdulin/react__redux-observable.git",
+  "repository": "git@github.com:mrdulin/react-redux-rxjs-boilerplate.git",
   "author": "mrdulin <novaline@qq.com>",
   "license": "MIT",
   "scripts": {

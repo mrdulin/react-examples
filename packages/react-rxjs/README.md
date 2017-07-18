@@ -1,1 +1,1 @@
-# React & Redux-Observable
+# React & Redux-Observable & rxjs & redux
