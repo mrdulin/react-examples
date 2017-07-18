@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { Router, browserHistory, hashHistory, PlainRoute } from 'react-router';
+
 import App from 'modules/App';
+import Home from 'modules/Home';
+import Search from 'modules/Search';
 
 const appRoutes: PlainRoute = {
   path: '/',
   component: App,
   indexRoute: {
-    component: () => <div>home</div>
+    component: Home
   },
   childRoutes: [
     {
-      path: 'about', 
-      component: () => <div>about</div>
+      path: 'search', 
+      component: Search
     }
   ]
 };
