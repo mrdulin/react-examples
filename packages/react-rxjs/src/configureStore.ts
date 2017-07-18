@@ -1,12 +1,13 @@
-import {createStore, applyMiddleware, Middleware, Store} from 'redux';
+import { createStore, applyMiddleware, Middleware, Store } from 'redux';
 import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
+import { routerMiddleware } from 'react-router-redux';
 
-import rootReducer from './reducer';
-import rootEpic from './epic';
+import rootReducer from './reducers';
+import rootEpic from './epics';
 
 const epicMiddleware: EpicMiddleware<any, any> = createEpicMiddleware<any, any>(rootEpic);
-const middlewares: Middleware[] = [epicMiddleware];
+const middlewares: Middleware[] = [epicMiddleware, routerMiddleware(hashHistory)];
 
 function configureStore(): Store<any> {
   const store: Store<any> = createStore<any>(
@@ -18,4 +19,4 @@ function configureStore(): Store<any> {
   return store;
 }
 
-export default configureStore;
+export default configureStore();

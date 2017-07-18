@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { Router, browserHistory, hashHistory, PlainRoute } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux'
+import store from './configureStore';
 
-import App from 'modules/App';
-import Home from 'modules/Home';
-import Search from 'modules/Search';
+const history = syncHistoryWithStore(hashHistory, store);
+
+import App from './containers/App';
+import Home from './containers/Home';
+import Search from './containers/Search';
 
 const appRoutes: PlainRoute = {
   path: '/',
@@ -21,7 +25,7 @@ const appRoutes: PlainRoute = {
 
 const AppRouter: React.SFC<any> = () => {
   return (
-    <Router history={hashHistory} routes={appRoutes}/>
+    <Router history={history} routes={appRoutes}/>
   );
 }
 

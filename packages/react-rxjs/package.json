@@ -6,7 +6,7 @@
   "author": "mrdulin <novaline@qq.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --progress --profile --colors --config webpack/webpack.dev.ts",
+    "start": "webpack-dev-server --progress --colors --config webpack/webpack.dev.ts",
     "build:dev": "webpack --env=dev --progress --profile --colors --config webpack/webpack.config.ts",
     "build:dist": "webpack --env=prod --progress --profile --colors --config webpack/webpack.config.ts"
   },
@@ -17,6 +17,7 @@
     "@types/react-dom": "^15.5.1",
     "@types/react-redux": "^4.4.46",
     "@types/react-router": "3.0.5",
+    "@types/react-router-redux": "4.0.44",
     "@types/webpack": "^3.0.4",
     "@types/webpack-dev-server": "^2.4.0",
     "@types/webpack-merge": "^0.0.4",
@@ -36,6 +37,7 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router": "3.0.5",
+    "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-observable": "^0.14.1",
     "rxjs": "^5.4.2"

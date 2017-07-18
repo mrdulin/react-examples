@@ -30,9 +30,6 @@ const config: webpack.Configuration = {
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias: {
-      modules: path.resolve(__dirname, '../src/modules')
-    }
   },
 
   plugins: [

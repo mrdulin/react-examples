@@ -18,7 +18,7 @@ const config: webpack.Configuration = Merge(webpackCommonConfig, {
     sourceMapFilename: '[name].map'
   },
 
-  devtool: 'inline-source-map',
+  devtool: 'cheap-source-map',
 
   devServer: {
     port: PORT,
