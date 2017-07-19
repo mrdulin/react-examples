@@ -1,9 +1,10 @@
 import * as t from '../actionTypes/book';
+import { IActionMeta } from '../interfaces';
 
 interface IBookModule {
   Books?: any[];
   Total?: string;
-  isLoading?: boolean;
+  isLoading: boolean;
 }
 
 interface IError {
@@ -12,28 +13,38 @@ interface IError {
 }
 
 interface IBookModules<T> {
-  [name: string]: T | IError;
+  [name: string]: T;
 }
 
-const bookModulesState: IBookModules<IBookModule> = {};
-const bookModulesReducer = (state = bookModulesState, action: any): IBookModules<IBookModule> => {
+
+type BookModule = IBookModule & IError;
+type BookModulesState = IBookModules<BookModule>;
+
+const bookModulesState: BookModulesState = {};
+const bookModulesReducer = (state = bookModulesState, action: IActionMeta<any, string>): BookModulesState => {
   switch (action.type) {
     case t.REQUEST_BOOKS:
       const names: string[] = action.payload.names;
       names.forEach((name: string) => {
-        state[name] = {};
+        state[name] = { error: false, message: '', isLoading: false };
         (state[name] as IBookModule).isLoading = true;
       });
       return Object.assign({}, state);
     case t.REQUEST_BOOKS_SUCCESS:
       const name: string = action.meta;
-      state[name] = action.payload;
+      state[name] = {
+        error: false,
+        message: '',
+        isLoading: false,
+        ...action.payload
+      };
       return Object.assign({}, state);
     case t.REQUEST_BOOKS_FAIL:
       return Object.assign({}, state, {
         [action.meta]: {
           error: action.error,
-          message: action.payload
+          message: action.payload,
+          isLoading: false
         }
       });
     default:
@@ -41,4 +52,7 @@ const bookModulesReducer = (state = bookModulesState, action: any): IBookModules
   }
 }
 
+export {
+  BookModule
+};
 export default bookModulesReducer;

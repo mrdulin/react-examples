@@ -10,15 +10,15 @@ interface IErrorMessage {
 }
 
 const errorMessage: IErrorMessage = {
-  1: '错误1',
-  2: '错误2'
+  1: 'error message 1',
+  2: 'error message 2'
 };
 
 const requestBooksEpic = (action$: ActionsObservable<any>) => {
   return action$.ofType(t.REQUEST_BOOKS)
     .mergeMap((action: any) => action.payload.names)
     .filter((name: string): boolean => typeof name === 'string' && name.length > 0)
-    .mergeMap(requestBookByName)
+    .mergeMap(requestBookByName);
 };
 
 function requestBookByName(name: string, idx: number) {

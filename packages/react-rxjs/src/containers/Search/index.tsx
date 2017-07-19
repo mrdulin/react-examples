@@ -21,16 +21,21 @@ class Search extends React.PureComponent<Props, any> {
   }
 
   private input: Rx.Subject<React.FormEvent<any>>;
+  private inputSub: Rx.Subscription;
 
   public constructor(props: Props) {
     super(props);
     this.input = new Rx.Subject();
 
-    this.input
+    this.inputSub = this.input
       // 事件和值的映射
       .map((e: any) => e.target.value.trim())
       // 使用onInputChangeObserver订阅该Observable
       .subscribe(this.onInputChangeObserver);
+  }
+
+  public componentWillUnmount() {
+    this.inputSub.unsubscribe();
   }
 
   public render() {

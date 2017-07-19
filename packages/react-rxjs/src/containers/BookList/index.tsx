@@ -2,6 +2,8 @@ import * as React from 'react';
 import { requestBooks } from '../../actions/book';
 import { connect } from 'react-redux';
 import * as Rx from 'rxjs';
+import { ISubscriptionObject, ISubjectObject } from '../../interfaces';
+import { BookModule } from '../../reducers/books';
 
 interface IProps {
   bookModules: any
@@ -15,19 +17,23 @@ type Props = IProps & IActions;
 
 class Container extends React.PureComponent<Props, any> {
 
-  private dom: any = {};
+  private subjects: ISubjectObject<any> = {};
+  private subscriptions: ISubscriptionObject = {};
 
   public static defaultProps: IProps = {
     bookModules: {}
   }
 
-  public constructor() {
-    super();
-    this.dom.getBooksButton = new Rx.Subject();
-    this.dom.retryButton = new Rx.Subject();
+  public constructor(props: Props) {
+    super(props);
+    this.subjects.getBooksButton = new Rx.Subject();
+    this.subjects.retryButton = new Rx.Subject();
 
-    this.dom.getBooksButton.sampleTime(2000).subscribe(this.onRequestBookObserver);
+    this.subscriptions.getBooksButtonSub = this.subjects.getBooksButton.sampleTime(2000).subscribe(this.onRequestBookObserver);
+  }
 
+  public componentWillUnmount() {
+    this.subscriptions.getBooksButtonSub.unsubscribe();
   }
 
   public render() {
@@ -39,9 +45,9 @@ class Container extends React.PureComponent<Props, any> {
         <button type='button' onClick={() => this.onRequestBook(['react', 'angular', 'javascript'])}>get books</button>
 
         {
-          Object.keys(bookModules).map((name: any, idx: number, self: any) => {
-            const bookModule: any = bookModules[name];
-            const books: any[] = bookModule.Books;
+          Object.keys(bookModules).map((name: string, idx: number) => {
+            const bookModule: BookModule = bookModules[name];
+            const books: any[] | undefined = bookModule.Books;
             const isLoading: boolean = bookModule.isLoading;
             return (
               <div key={name}>
@@ -74,7 +80,7 @@ class Container extends React.PureComponent<Props, any> {
   }
 
   private onRequestBook(names: string[]) {
-    this.dom.getBooksButton.next(names);
+    this.subjects.getBooksButton.next(names);
   }
 
   private onRequestBookObserver = (names: string[]) => {
