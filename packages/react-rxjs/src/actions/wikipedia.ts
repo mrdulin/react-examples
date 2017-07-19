@@ -14,7 +14,12 @@ const receiveWikipedia = (content: any) => ({
   }
 });
 
+const clearWikipedia = () => ({
+  type: t.CLEAR_WIKIPEDIA
+});
+
 export {
   searchWikipedia,
-  receiveWikipedia
+  receiveWikipedia,
+  clearWikipedia
 };

@@ -1,40 +1,57 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { searchWikipedia } from '../../actions/wikipedia';
+import { searchWikipedia, clearWikipedia } from '../../actions/wikipedia';
 import * as Rx from 'rxjs';
 
-class Search extends React.PureComponent<any, any> {
+interface IProps {
+  wikipedia: any[]
+}
+
+interface IActions {
+  searchWikipedia: (q: string) => void;
+  clearWikipedia: () => void;
+}
+
+type Props = IProps & IActions;
+
+class Search extends React.PureComponent<Props, any> {
+
+  public static defaultProps: IProps = {
+    wikipedia: []
+  }
 
   private input: Rx.Subject<React.FormEvent<any>>;
 
-  public constructor() {
-    super();
+  public constructor(props: Props) {
+    super(props);
     this.input = new Rx.Subject();
 
     this.input
       // 事件和值的映射
       .map((e: any) => e.target.value.trim())
-    //   // 过滤空值
-    //   .filter((text: string): boolean => text.length > 0)
-    //   // 两次发射值的间隔时间
-    //   .debounceTime(1000)
-    //   // 当值改变时才发射该值，例如用户输入aaa -> aaab -> aaa，最终的值和初始值相同，不发射
-    //   .distinctUntilChanged()
-    //   // 使用onInputChangeObserver订阅该Observable
-    //   .switchMap(this.onRequestKeywords)
+      // 使用onInputChangeObserver订阅该Observable
       .subscribe(this.onInputChangeObserver);
   }
 
   public render() {
+    const { wikipedia }: { wikipedia: any[] } = this.props;
+    console.count('Search render count');
     return (
       <section>
         <form>
           <input type="text" onChange={this.onInputChange} autoComplete="off" />
+          <button type='button' onClick={this.onClearClick}>clear</button>
         </form>
         <section>
           <ul>
             {
-
+              wikipedia.map((item: any, idx: number) => {
+                return (
+                  <li key={idx}>
+                    <a href={item.domain}>{item.name}</a>
+                  </li>
+                );
+              })
             }
           </ul>
         </section>
@@ -42,18 +59,14 @@ class Search extends React.PureComponent<any, any> {
     );
   }
 
+  private onClearClick = () => {
+    this.props.clearWikipedia();
+  }
+
   private onInputChange = (e: React.FormEvent<any>) => {
     e.persist();
     this.input.next(e);
   }
-
-  // private onRequestKeywords(x: string): Promise<any> {
-  //   return new Promise((resolve) => {
-  //     setTimeout(() => {
-  //       resolve(['react', 'angular', 'rxjs'])
-  //     }, 1000);
-  //   });
-  // }
 
   private onInputChangeObserver = (x: string) => {
     this.props.searchWikipedia(x);
@@ -62,5 +75,5 @@ class Search extends React.PureComponent<any, any> {
 
 export default connect(
   ({ wikipedia }) => ({ wikipedia }),
-  { searchWikipedia }
+  { searchWikipedia, clearWikipedia }
 )(Search);

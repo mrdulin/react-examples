@@ -1,8 +1,11 @@
-import {combineEpics} from 'redux-observable';
-import searchWikipedia from './wikipedia';
+import { combineEpics } from 'redux-observable';
+import { searchWikipediaEpic, clearWikipediaEpic } from './wikipedia';
+import { requestBooksEpic } from './book';
 
 const rootEpic = combineEpics<any>(
-  searchWikipedia
+  searchWikipediaEpic,
+  clearWikipediaEpic,
+  requestBooksEpic
 );
 
 export default rootEpic;

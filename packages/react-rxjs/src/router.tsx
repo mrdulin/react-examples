@@ -8,6 +8,7 @@ const history = syncHistoryWithStore(hashHistory, store);
 import App from './containers/App';
 import Home from './containers/Home';
 import Search from './containers/Search';
+import IdsToResults from './containers/IdsToResults';
 
 const appRoutes: PlainRoute = {
   path: '/',
@@ -19,6 +20,10 @@ const appRoutes: PlainRoute = {
     {
       path: 'search', 
       component: Search
+    },
+    {
+      path: 'idsToResults',
+      component: IdsToResults
     }
   ]
 };

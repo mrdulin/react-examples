@@ -18,7 +18,7 @@ const config: webpack.Configuration = Merge(webpackCommonConfig, {
     sourceMapFilename: '[name].map'
   },
 
-  devtool: 'cheap-source-map',
+  devtool: 'source-map',
 
   devServer: {
     port: PORT,
@@ -26,7 +26,17 @@ const config: webpack.Configuration = Merge(webpackCommonConfig, {
     historyApiFallback: false,
     noInfo: false,
     stats: 'minimal',
-    publicPath
+    publicPath,
+    proxy: {
+      "/clearbit/api": {
+        target: "https://autocomplete.clearbit.com",
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          "^/clearbit/api": "/v1/companies/suggest"
+        }
+      }
+    }
   },
 
   plugins: [
