@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { requestBooks } from '../../actions/book';
 import { connect } from 'react-redux';
+import * as Rx from 'rxjs';
 
 interface IProps {
   bookModules: any
@@ -14,8 +15,19 @@ type Props = IProps & IActions;
 
 class Container extends React.PureComponent<Props, any> {
 
+  private dom: any = {};
+
   public static defaultProps: IProps = {
     bookModules: {}
+  }
+
+  public constructor() {
+    super();
+    this.dom.getBooksButton = new Rx.Subject();
+    this.dom.retryButton = new Rx.Subject();
+
+    this.dom.getBooksButton.sampleTime(2000).subscribe(this.onRequestBookObserver);
+
   }
 
   public render() {
@@ -37,7 +49,7 @@ class Container extends React.PureComponent<Props, any> {
                 {
                   isLoading ? <p>模块加载中...</p> :
                     (
-                      books ?
+                      books && !bookModule.error ?
                         <ul>
                           {
                             books.map((book: any, idx: number) => {
@@ -62,8 +74,13 @@ class Container extends React.PureComponent<Props, any> {
   }
 
   private onRequestBook(names: string[]) {
+    this.dom.getBooksButton.next(names);
+  }
+
+  private onRequestBookObserver = (names: string[]) => {
     this.props.requestBooks(names);
   }
+
 }
 
 export default connect(
