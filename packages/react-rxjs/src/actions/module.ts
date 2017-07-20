@@ -1,24 +1,34 @@
 import * as t from '../actionTypes/cascade';
 import { IActionPayload, IActionMeta } from '../interfaces';
 
-const requestModuleById = (): IActionPayload<any> => ({
+const requestModuleById = (payload: any): IActionPayload<any> => ({
   type: t.REQUEST_MODULE_BY_ID,
+  payload
 });
 
-const requestModuleByIdSuccess = (payload: any, meta: any): IActionMeta<any, any> => ({
+const requestModuleByIdSuccess = (payload: any, meta: any): IActionMeta<any, number> => ({
   type: t.REQUEST_MODULE_BY_ID_SUCCESS,
   payload,
   meta
 });
 
-const requestModuleByIdFail = (payload: any): IActionPayload<any> => ({
+const requestModuleByIdFail = (payload: any, meta: number): IActionMeta<any, number> => ({
   type: t.REQUEST_MODULE_BY_ID_FAIL,
   payload,
-  error: true
+  error: true,
+  meta
 });
+
+const clearModuleById = (id: string): IActionPayload<any> => ({
+  type: t.CLEAR_MODULE_BY_ID,
+  payload: {
+    id
+  }
+})
 
 export {
   requestModuleById,
   requestModuleByIdSuccess,
-  requestModuleByIdFail
-}
+  requestModuleByIdFail,
+  clearModuleById
+};
