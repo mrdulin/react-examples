@@ -9,6 +9,7 @@ import App from './containers/App';
 import Home from './containers/Home';
 import Search from './containers/Search';
 import BookList from './containers/BookList';
+import Cascade from './containers/Cascade';
 
 const appRoutes: PlainRoute = {
   path: '/',
@@ -24,6 +25,10 @@ const appRoutes: PlainRoute = {
     {
       path: 'bookList',
       component: BookList
+    },
+    {
+      path: 'cascade',
+      component: Cascade
     }
   ]
 };

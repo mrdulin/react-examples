@@ -21,6 +21,7 @@ const config: webpack.Configuration = Merge(webpackCommonConfig, {
   devtool: 'source-map',
 
   devServer: {
+    contentBase: path.resolve(__dirname, '../src'),
     port: PORT,
     host: '0.0.0.0',
     historyApiFallback: false,

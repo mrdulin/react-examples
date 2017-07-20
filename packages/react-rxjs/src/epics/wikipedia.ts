@@ -26,8 +26,8 @@ const searchWikipediaEpic: Epic<any, any> = (action$: ActionsObservable<any>): O
           Observable.of(replace(`/search?q=${q}`)),
           ajax.getJSON(url)
             .map(receiveWikipedia)
+            .takeUntil(action$.ofType(t.CLEAR_WIKIPEDIA))
         ));
-
     })
 };
 

@@ -13,7 +13,7 @@ interface IActionBase {
 }
 
 interface IActionPayload<Payload> extends IActionBase {
-  payload: Payload;
+  payload?: Payload;
   error?: boolean;
 }
 

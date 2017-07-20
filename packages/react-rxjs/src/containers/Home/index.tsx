@@ -14,6 +14,7 @@ class Home extends React.PureComponent<any, any> {
         <ul>
           <li><Link to='/search'>search</Link></li>
           <li><Link to='/bookList'>bookList</Link></li>
+          <li><Link to='/cascade'>cascade</Link></li>
         </ul>
       </section>
     );
