@@ -38,9 +38,9 @@ const modulesReducer = (state = modulesState, action: IActionMeta<any, number>):
           errMsg: action.payload
         }
       });
-    case t.CLEAR_MODULE_BY_ID:
+    case t.CLEAR_MODULE_BY_ID_DONE:
       const ids: string[] = Object.keys(state)
-        .filter((id: string) => Number.parseInt(id, 10) !== action.payload.id);
+        .filter((id: string) => id !== action.payload.id);
       const nextState: IModulesState<any> = {};
 
       for (const id of ids) {

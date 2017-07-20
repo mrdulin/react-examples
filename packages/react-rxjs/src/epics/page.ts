@@ -4,7 +4,7 @@ import { ajax } from 'rxjs/observable/dom/ajax';
 import { ActionsObservable, Epic } from 'redux-observable';
 import { IActionPayload, IActionMeta } from '../interfaces';
 import { requestPageSuccess, requestPageFail } from '../actions/page';
-import { requestModuleById, requestModuleByIdSuccess, requestModuleByIdFail, clearModuleById } from '../actions/module';
+import { requestModuleById, requestModuleByIdSuccess, requestModuleByIdFail, clearModuleByIdDone } from '../actions/module';
 
 const correctUrl: string = '../../mockdata/page.json';
 
@@ -54,8 +54,9 @@ const clearModuleByIdEpic: Epic<any, any> = (action$: ActionsObservable<any>) =>
   return action$.ofType(t.CLEAR_MODULE_BY_ID)
     .map((action: IActionPayload<any>): string => action.payload.id)
     .map((id: string) => {
-      debugger;
-      return clearModuleById(id);
+      // !!!注意!!! 这里如果使用clearModuleById(id)，会死循环！
+      // 这里创建了一个新的同步action，clearModuleByIdDone，解决了死循环
+      return clearModuleByIdDone(id);
     });
 }
 

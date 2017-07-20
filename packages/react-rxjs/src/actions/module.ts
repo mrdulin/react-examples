@@ -24,11 +24,19 @@ const clearModuleById = (id: string): IActionPayload<any> => ({
   payload: {
     id
   }
+});
+
+const clearModuleByIdDone = (id: string): IActionPayload<any> => ({
+  type: t.CLEAR_MODULE_BY_ID_DONE,
+  payload: {
+    id
+  }
 })
 
 export {
   requestModuleById,
   requestModuleByIdSuccess,
   requestModuleByIdFail,
-  clearModuleById
+  clearModuleById,
+  clearModuleByIdDone
 };

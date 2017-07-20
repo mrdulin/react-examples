@@ -3,7 +3,6 @@ import { IActionMeta } from '../interfaces';
 
 const pageState = {
   content: {},
-  modules: {},
   error: false,
   errMsg: ''
 };
@@ -13,7 +12,7 @@ const pageReducer = (state = pageState, action: IActionMeta<any, any>) => {
     case t.REQUEST_PAGE:
       return state;
     case t.REQUEST_PAGE_SUCCESS:
-      return Object.assign({}, state, action.payload);
+      return Object.assign({}, state, { content: action.payload.content });
     case t.REQUEST_PAGE_FAIL:
       const errMsg: string = action.payload;
       return Object.assign({}, state, { errMsg, error: action.error });
