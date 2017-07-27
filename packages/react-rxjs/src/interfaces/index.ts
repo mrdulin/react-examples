@@ -25,5 +25,6 @@ export {
   ISubscriptionObject,
   ISubjectObject,
   IActionPayload,
-  IActionMeta
+  IActionMeta,
+  IActionBase
 };

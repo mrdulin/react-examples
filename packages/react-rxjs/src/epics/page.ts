@@ -50,18 +50,19 @@ const requestModuleEpic: Epic<any, any> = (action$: ActionsObservable<any>) => {
     });
 };
 
-const clearModuleByIdEpic: Epic<any, any> = (action$: ActionsObservable<any>) => {
-  return action$.ofType(t.CLEAR_MODULE_BY_ID)
-    .map((action: IActionPayload<any>): string => action.payload.id)
-    .map((id: string) => {
-      // !!!注意!!! 这里如果使用clearModuleById(id)，会死循环！
-      // 这里创建了一个新的同步action，clearModuleByIdDone，解决了死循环
-      return clearModuleByIdDone(id);
-    });
-}
+
+// 错误，clearModuleById是一个同步action，并不需要epic
+// const clearModuleByIdEpic: Epic<any, any> = (action$: ActionsObservable<any>) => {
+//   return action$.ofType(t.CLEAR_MODULE_BY_ID)
+//     .map((action: IActionPayload<any>): string => action.payload.id)
+//     .map((id: string) => {
+//       // !!!注意!!! 这里如果使用clearModuleById(id)，会死循环！
+//       // 这里创建了一个新的同步action，clearModuleByIdDone，解决了死循环
+//       return clearModuleByIdDone(id);
+//     });
+// }
 
 export {
   requestPageEpic,
-  requestModuleEpic,
-  clearModuleByIdEpic
+  requestModuleEpic
 };

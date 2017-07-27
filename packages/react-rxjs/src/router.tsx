@@ -10,6 +10,7 @@ import Home from './containers/Home';
 import Search from './containers/Search';
 import BookList from './containers/BookList';
 import Cascade from './containers/Cascade';
+import PromiseAll from './containers/PromiseAll';
 
 const appRoutes: PlainRoute = {
   path: '/',
@@ -19,7 +20,7 @@ const appRoutes: PlainRoute = {
   },
   childRoutes: [
     {
-      path: 'search', 
+      path: 'search',
       component: Search
     },
     {
@@ -29,13 +30,17 @@ const appRoutes: PlainRoute = {
     {
       path: 'cascade',
       component: Cascade
+    },
+    {
+      path: 'promiseAll',
+      component: PromiseAll
     }
   ]
 };
 
 const AppRouter: React.SFC<any> = () => {
   return (
-    <Router history={history} routes={appRoutes}/>
+    <Router history={history} routes={appRoutes} />
   );
 }
 
