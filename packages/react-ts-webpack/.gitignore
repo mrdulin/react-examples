@@ -57,7 +57,7 @@ npm-debug.log
 .editorconfig
 .browserslistrc
 src/
-scripts/
+/scripts/
 __mocks__
 package.json
 README.md
