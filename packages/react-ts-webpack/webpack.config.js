@@ -186,7 +186,7 @@ const config = {
   module: {
     rules
   },
-  devtool: 'inline-source-map',
+  devtool: __PROD__ ? 'source-map' : 'inline-source-map',
   plugins
 };
 
