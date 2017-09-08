@@ -19,10 +19,10 @@ const PORT = 2222;
 
 const publicPathMap = {
   local: `//localhost:${PORT}/${pkgConfig.name}/docs/`,
-  remote: `/${pkgConfig.name}/`
+  remote: `/`
 };
 
-const publicPath = publicPathMap[build_env] || '/react-ts-webpack2/';
+const publicPath = publicPathMap[build_env] || publicPathMap.remote;
 
 const cssLoaderOptions = {
   sourceMap: true,

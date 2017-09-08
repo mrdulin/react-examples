@@ -6,7 +6,12 @@
   "author": "mrdulin <novaline@qq.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --progress"
+    "start": "webpack-dev-server --progress",
+    "build": "cross-env NODE_ENV=production webpack --progress --profile",
+    "build:local": "cross-env NODE_ENV=production BUILD_ENV=local webpack --progress --profile",
+    "test": "jest",
+    "test:w": "jest --watch",
+    "serve": "http-server ./docs -p 2222 -a 0.0.0.0 -g -c10"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -52,6 +57,7 @@
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
+    "http-server": "^0.10.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^21.0.1",
     "nock": "^9.0.14",
@@ -74,10 +80,14 @@
     "automock": false,
     "bail": false,
     "globals": {
-      "__DEV__": true
+      "__DEV__": true,
+      "__PROD__": false
     },
     "moduleFileExtensions": [
       "ts",
+      "js",
+      "json",
+      "jsx",
       "tsx"
     ],
     "moduleDirectories": [
@@ -85,7 +95,8 @@
     ],
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/",
-      "<rootDir>/build/"
+      "<rootDir>/build/",
+      "<rootDir>/docs/"
     ],
     "notify": false,
     "clearMocks": false,
@@ -93,15 +104,22 @@
       "**/__tests__/**/*.ts?(x)",
       "**/?(*.)(spec|test).ts?(x)"
     ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
     "testPathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/build/",
       "<rootDir>/dist/",
-      "<rootDir>/src/components"
+      "<rootDir>/docs/"
     ],
     "moduleNameMapper": {
+      "^models(.*)": "<rootDir>/src/models$1",
+      "^components(.*)": "<rootDir>/src/components$1",
+      "^utils(.*)": "<rootDir>/src/utils$1",
+
       "^.+\\.(css|scss)$": "identity-obj-proxy",
-      "^.+\\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js"
+      "^.+\\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
     }
   }
 }

@@ -17,14 +17,15 @@ function LogFactory(mode: LogMode = 'args'): DecoratorFunction<PropertyDescripto
 
       const result: any = originalMethod.apply(this, args);
 
-      switch (mode) {
-        case 'count':
-          countLogMode(componentClassName, propertyKey);
-          break;
-        default:
-          argsLogMode(args, result);
+      if (process.env.NODE_ENV !== 'production') {
+        switch (mode) {
+          case 'count':
+            countLogMode(componentClassName, propertyKey);
+            break;
+          default:
+            argsLogMode(args, result);
+        }
       }
-
       return result;
     };
 
