@@ -1,17 +1,15 @@
 import * as React from 'react';
-// import * as swiper from 'swiper';
-const Swiper = require('swiper').default;
-import * as style from './style.module.scss';
+import * as PropTypes from 'prop-types';
+const Swiper = require('swiper');
+import './style.scss';
 import { Message, MessageColor, IMessageStyle } from '../Message';
-
-console.log(Swiper);
 
 class Rolling extends React.PureComponent<any, any> {
 
   public static defaultProps = {
     options: {},
-    width: '',
-    height: '',
+    width: '100%',
+    height: '50px',
     items: [{
       chatLog: 'angular',
       image: ''
@@ -19,6 +17,15 @@ class Rolling extends React.PureComponent<any, any> {
       chatLog: 'react',
       image: ''
     }]
+  };
+
+  public static propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        chatLog: PropTypes.string,
+        image: PropTypes.string
+      })
+    )
   };
 
   private containerRef: HTMLDivElement;
@@ -31,10 +38,14 @@ class Rolling extends React.PureComponent<any, any> {
 
     this.swiper = null;
     this.defaultOptions = {
-      speed: 400,
+      speed: 2000,
       autoplay: true,
-      spaceBetween: 20,
-      direction: 'vertical'
+      spaceBetween: 10,
+      direction: 'vertical',
+      loop: true,
+      slidesPerView: 'auto',
+      watchSlidesVisibility: true,
+      autoHeight: true
     };
   }
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classnames from 'classnames';
-import * as style from './style.module.scss';
+import './style.scss';
 
 type MessageColor = 'orange' | 'green';
 interface IMessageStyle {

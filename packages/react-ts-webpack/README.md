@@ -7,9 +7,8 @@
 ## 环境依赖：
 
 * System: `Mac OSX`
-* `nodejs`: `v6.10.3`
-* `npm`: `3.10.10`
-* `yarn`: `0.21.3`
+* `nodejs`: `v8.4.0`
+* `npm`: `5.3.0`
 
 ## 发布流程
 
@@ -140,8 +139,6 @@ charles的`Map Local`配置如下:
 
 ##遇到的问题：
 
-* 将`ts`的声明文件依赖`@types/xxx`使用`yarn add @types/xxx -D`，添加到`package.json`中的`devDependencies`中，`ts`静态检查报错，`webpack`打包报错。
-
 * `Cannot use [chunkhash] for chunk in '[name].[chunkhash].js' (use [hash] instead)`
 
 * `typescript` + `webpack2`中开启`css-loader`的`css module`, `import style from 'style.module.scss'`，`tsc`报错问题。参考：
@@ -155,7 +152,7 @@ charles的`Map Local`配置如下:
 
 * `es6`箭头函数形式的高阶函数，函数返回值`ts`类型注解写法。 - _已解决_
 
-* 怎么使用`yarn`来搜索一个`package`，按照前先验证这个`package`是否存在，或者是否是需要的那个`package`（排除`package`名字相近的）?
+* 怎么使用`yarn`或`npm`来搜索一个`package`，按照前先验证这个`package`是否存在，或者是否是需要的那个`package`（排除`package`名字相近的）?
 
   * `yarn info package`， 例如`yarn info autoprefixer description`,获取`autoprefixer`的描述信息
   * `yarn info package readme`，获取`package`的`readme`文件

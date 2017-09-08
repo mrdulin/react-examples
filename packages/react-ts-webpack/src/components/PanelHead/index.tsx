@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {string} from 'prop-types';
+import { string } from 'prop-types';
 
 // 使用这种方式，需要写模块定义文件，见types/index.d.ts
 import * as style from './style.module.scss';

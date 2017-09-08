@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Shallow from 'react-test-renderer/shallow';
+import { ShallowRenderer, createRenderer } from 'react-test-renderer/shallow';
 
 import LoadMore from '../';
 
@@ -7,33 +7,33 @@ describe('component - LoadMore test suites', () => {
 
   describe('shallow rendering test suites', () => {
 
-    let renderer: Shallow.ShallowRenderer;
+    let renderer: ShallowRenderer;
     let instance: React.ReactElement<any>;
 
     beforeEach(() => {
-      renderer = Shallow.createRenderer();
+      renderer = createRenderer();
     });
 
     it('renders correctly with initial props', () => {
-      
-      renderer.render(<LoadMore hasMore={false} onLoadMore={() => {}}/>);
+
+      renderer.render(<LoadMore hasMore={false} onLoadMore={() => { }} />);
       instance = renderer.getRenderOutput();
-      
+
       expect(instance.type).toBe('a');
     });
 
     it('renders correctly with hasMore=true, isBottom=true, isLoading=false', () => {
 
-      renderer.render(<LoadMore hasMore={true} onLoadMore={() => {}}/>);
+      renderer.render(<LoadMore hasMore={true} onLoadMore={() => { }} />);
       instance = renderer.getRenderOutput();
 
       // console.log('instance', instance);
-      
+
       // 不能这么搞 
       // (instance as any).setState({isLoading: false}); 
       // expect((instance as any).state.isLoading).toBeFalsy();
 
-      
+
 
     });
 

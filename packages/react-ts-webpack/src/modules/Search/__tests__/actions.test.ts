@@ -2,19 +2,19 @@
  * Created by dulin on 2017/7/10.
  */
 
-import createMockStore, {MockStoreCreator, MockStore} from 'redux-mock-store';
+import createMockStore, { MockStoreCreator, MockStore } from 'redux-mock-store';
 import promiseMiddleware from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
-import {createAction, Action, ActionMeta, ActionFunction1, ActionFunction0, BaseAction} from 'redux-actions';
-import {Middleware} from 'redux';
+import { createAction, Action, ActionMeta, ActionFunction1, ActionFunction0, BaseAction } from 'redux-actions';
+import { Middleware } from 'redux';
 import * as nock from 'nock';
 import constants from '../../../constants';
 import * as fetch from 'isomorphic-fetch';
 
 import * as actions from '../actions';
 import * as actionTypes from '../actionTypes';
-import {ISearchBook} from 'interfaces/book';
-import {ISearchEntity, ISearchParams} from '../interfaces';
+import { ISearchBook } from 'interfaces/book';
+import { ISearchEntity, ISearchParams } from '../interfaces';
 
 const middlewares: Middleware[] = [
   thunk,
@@ -25,6 +25,9 @@ const mockStore: MockStoreCreator<{}> = createMockStore<{}>(middlewares);
 
 type ActionPayload = Promise<any>;
 type ActionCreator = (...args: any[]) => Action<ActionPayload>;
+type ActionCreator1 = ActionFunction1<string, Action<ActionPayload>>;
+type ActionCreator2 = ActionFunction0<Action<ActionPayload>>;
+
 type ExpectedActions<T> = [BaseAction, Action<T>];
 type ExpectedActionsError = ExpectedActions<Error>;
 type ExpectedActions0<T, R> = [Action<T>, Action<R>];
@@ -69,7 +72,7 @@ describe('redux async actions test suites', () => {
         payload: message
       };
 
-      return await (store.dispatch(actionCreator(message)) as any).then(({value, action}: IFulfilledValue<string>) => {
+      return await (store.dispatch(actionCreator(message)) as any).then(({ value, action }: IFulfilledValue<string>) => {
         const actualActions: any[] = store.getActions();
         expect(actualActions).toEqual(expectedActions);
         expect(action).toEqual(expectedAction);
@@ -123,11 +126,11 @@ describe('redux async actions test suites', () => {
 
       const expectedActions = [{
         type: `${actionType}_PENDING`,
-        meta: {name: actionArg}
+        meta: { name: actionArg }
       }, {
         type: `${actionType}_FULFILLED`,
         payload: actionPayload,
-        meta: {name: actionArg}
+        meta: { name: actionArg }
       }];
 
       return await (store.dispatch(actionCreator(actionArg)) as any).then(() => {
@@ -155,11 +158,7 @@ describe('redux async actions test suites', () => {
           resolve(msg);
         });
       }
-
-      type ActionPayload = Promise<any>;
-      type ActionCreator = ActionFunction1<string, Action<ActionPayload>>;
-
-      const actionCreator: ActionCreator = createAction<ActionPayload, string>(actionType, payloadCreator);
+      const actionCreator: ActionCreator1 = createAction<ActionPayload, string>(actionType, payloadCreator);
 
       const expectedActions: ExpectedActions<string> = [{
         type: `${actionType}_PENDING`
@@ -192,10 +191,8 @@ describe('redux async actions test suites', () => {
         }
       }
 
-      type ActionPayload = Promise<any>;
-      type ActionCreator = ActionFunction0<Action<ActionPayload>>;
 
-      const actionCreator: ActionCreator = createAction<ActionPayload>(actionType, payloadCreator);
+      const actionCreator: ActionCreator2 = createAction<ActionPayload>(actionType, payloadCreator);
 
       const expectedActions: ExpectedActionsError = [{
         type: `${actionType}_PENDING`
@@ -240,7 +237,7 @@ describe('redux async actions test suites', () => {
       function payloadCreator(arg: IParams) {
         return {
           promise: new Promise((resolve) => {
-            const entity = {result: [], error: 0};
+            const entity = { result: [], error: 0 };
             resolve({
               entity,
               arg
@@ -297,7 +294,7 @@ describe('redux async actions test suites', () => {
         }
       };
 
-      return await (store.dispatch(actionCreator(params)) as any).then(({value, action}: IFulfilledValue<Payload>) => {
+      return await (store.dispatch(actionCreator(params)) as any).then(({ value, action }: IFulfilledValue<Payload>) => {
         const actualActions: any[] = store.getActions();
         expect(value).toEqual(expectedValue);
         expect(action).toEqual(expectedAction);
@@ -351,11 +348,11 @@ describe('redux async actions test suites', () => {
 
       nock('http://example.com/')
         .get('/todos')
-        .reply(200, {body: {todos: ['do something']}});
+        .reply(200, { body: { todos: ['do something'] } });
 
       const expectedActions = [
-        {type: 'FETCH_TODOS_REQUEST'},
-        {type: 'FETCH_TODOS_SUCCESS', body: {todos: ['do something']}}
+        { type: 'FETCH_TODOS_REQUEST' },
+        { type: 'FETCH_TODOS_SUCCESS', body: { todos: ['do something'] } }
       ];
 
       return await (store.dispatch(fetchTodos()) as any).then(() => {
@@ -419,7 +416,7 @@ describe('redux async actions test suites', () => {
         page: 1
       };
 
-      const scope: nock.Scope = nock(constants.API).get(`/search/${params.query}/page/${params.page}`).reply(200, {...body});
+      const scope: nock.Scope = nock(constants.API).get(`/search/${params.query}/page/${params.page}`).reply(200, { ...body });
 
       const expectedActions: SearchExpectedAction[] = [
         {
@@ -436,7 +433,7 @@ describe('redux async actions test suites', () => {
       // console.log(constants.API, actions.search);
 
       return await (store.dispatch(actions.search(params)) as any)
-        .then(({value, action}: IFulfilledValue<SearchActionPayload>) => {
+        .then(({ value, action }: IFulfilledValue<SearchActionPayload>) => {
           const actualActions: any[] = store.getActions();
           scope.done();
           expect(value).toEqual(body);
@@ -485,8 +482,8 @@ describe('redux async actions test suites', () => {
         });
 
     });
-    
-    it(`search - ${actionTypes.QUERY_BOOK}_REJECTED with no results`,  async () => {
+
+    it(`search - ${actionTypes.QUERY_BOOK}_REJECTED with no results`, async () => {
 
       expect.assertions(4);
 
@@ -521,11 +518,11 @@ describe('redux async actions test suites', () => {
           expect(scope.pendingMocks()).toHaveLength(0);
           expect(actualActions).toEqual(expectedActions);
         });
-      
+
     });
 
   });
-  
+
   // TODO actions.getBookById 测试 
 
 });

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as TestUtils from 'react-dom/test-utils';
-import * as ShallowRenderer from 'react-test-renderer/shallow';
+import { ShallowRenderer, createRenderer } from 'react-test-renderer/shallow';
 import PanelHead from '../';
 
 describe('PanelHead test suites', () => {
