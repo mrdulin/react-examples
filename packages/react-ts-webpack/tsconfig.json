@@ -28,8 +28,7 @@
     "noUnusedParameters": false
   },
   "include": [
-    "src/**/*",
-    "src/typings/*"   
+    "src/**/*"
   ],
   "exclude": [
     "dist",
