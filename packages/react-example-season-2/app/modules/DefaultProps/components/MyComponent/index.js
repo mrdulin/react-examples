@@ -17,18 +17,20 @@ class MyComponent extends React.PureComponent {
    */
   static defaultProps = {
     title: 'default title',
-    onButtonClick: () => { }
+    onButtonClick: () => {
+    }
   }
   handleButtonClick = () => {
-    const { title, onButtonClick } = this.props;
+    const {title, onButtonClick} = this.props;
     onButtonClick(title);
   }
+
   render() {
-    const { title } = this.props;
+    const {title} = this.props;
     return (
       <div>
         <h5>{title}</h5>
-        <RaisedButton type='button' onClick={this.handleButtonClick} label='按钮' />
+        <RaisedButton type='button' onClick={this.handleButtonClick} label='按钮'/>
       </div>
     )
   }

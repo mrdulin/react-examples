@@ -1,4 +1,4 @@
-import { injectAsyncReducer } from 'app/store';
+import {injectAsyncReducer} from 'app/store';
 
 module.exports = {
   path: 'component-property-key',
@@ -7,7 +7,7 @@ module.exports = {
       const main = require('./main');
       const reducer = require('./reducers');
       injectAsyncReducer('page_componentKeyProperty', reducer)
-      cb(null, { content: main });
+      cb(null, {content: main});
     }, 'component-key-property')
   }
 }

@@ -6,7 +6,7 @@ import {getBookNames, getBookByFilter} from './selectors';
 
 const FILTERS = ['SHOW_ALL', 'SHOW_SELL_OUT', 'SHOW_NOT_SELL_OUT'];
 
-class Container extends Component{
+class Container extends Component {
 
   componentWillReceiveProps(nextProps) {
     console.log('componentWillReceiveProps: ', this.props.books === nextProps.books);

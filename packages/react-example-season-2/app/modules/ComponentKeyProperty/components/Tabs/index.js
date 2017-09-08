@@ -1,6 +1,6 @@
 import style from './style.module.scss';
 
-class Tabs extends React.Component{
+class Tabs extends React.Component {
   render() {
     const {children} = this.props;
 

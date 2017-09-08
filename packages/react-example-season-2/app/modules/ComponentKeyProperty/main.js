@@ -21,25 +21,26 @@ const SUB_TITLE_MAP = new Map([
     ...page_componentKeyProperty
   };
 }, dispatch => {
-	return {actions: bindActionCreators(actionCreators, dispatch)};
+  return {actions: bindActionCreators(actionCreators, dispatch)};
 })
 class Container extends React.Component {
-	componentDidMount() {
+  componentDidMount() {
     const {actions} = this.props;
     actions.init(querys);
   }
-	render() {
+
+  render() {
     const {bookModuleByName = {}} = this.props;
-		return (
-			<div>
+    return (
+      <div>
         <div className={style.pageContent}>
           {
             Object.keys(bookModuleByName).map((moduleName, idx) => {
               const subTitle = SUB_TITLE_MAP.get(moduleName);
               const books = bookModuleByName[moduleName];
-              if(!books) return null;
+              if (!books) return null;
               const {length: bookCount} = books;
-              if(!bookCount) return null;
+              if (!bookCount) return null;
 
               return <BookModule key={idx} title={moduleName} subTitle={subTitle} books={books}/>
             })
@@ -55,8 +56,8 @@ class Container extends React.Component {
           </Tabs>
         </div>
       </div>
-		)
-	}
+    )
+  }
 }
 
 export default Container;

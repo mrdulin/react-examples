@@ -15,13 +15,13 @@ export function insertElementToArrayByIndex(src, dest, rules) {
     const findIdx = idxArr.indexOf(idx) !== -1;
 
     if (findIdx) {
-      if(destClone.length) {
+      if (destClone.length) {
         acc[idx] = destClone.shift();
       } else {
         acc = acc.concat(srcClone);
       }
     } else {
-      if(srcClone.length) {
+      if (srcClone.length) {
         acc[idx] = srcClone.shift();
       }
     }
@@ -35,4 +35,4 @@ export const AD_MAP = new Map([
   ['angular', '小说']
 ]);
 
-export const adInsertRules = [2,3,6];
+export const adInsertRules = [2, 3, 6];

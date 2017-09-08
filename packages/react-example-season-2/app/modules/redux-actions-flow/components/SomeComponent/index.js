@@ -3,13 +3,14 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {action_1, action_2, action_3} from '../../actions';
 
-class SomeComponent extends Component{
+class SomeComponent extends Component {
   componentDidMount() {
     console.log('SomeComponent', this.props);
     this.props.action_1('react');
     this.props.action_2(new Error('something bad happened'));
     this.props.action_3(Math.random());
   }
+
   render() {
     const {action1State, action2State} = this.props;
     return (

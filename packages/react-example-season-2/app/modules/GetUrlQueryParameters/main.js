@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import {withRouter} from 'react-router';
 
-class Container extends Component{
+class Container extends Component {
 
   componentWillReceiveProps(nextProps) {
     //路由参数变化，如/detail/:id的id，路由hash后面的查询字符串变化，如/home?from=github&useback=1
@@ -11,7 +11,7 @@ class Container extends Component{
 
   shouldComponentUpdate(nextProps, nextState) {
     const {location} = nextProps;
-    if(location.query.name === 'emilie') {
+    if (location.query.name === 'emilie') {
       return false;
     }
     return true;

@@ -11,7 +11,7 @@ import * as actionCreators from '../../action';
 }, dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 }))
-class EndlessLoop extends Component{
+class EndlessLoop extends Component {
   state = {
     person: {
       name: 'zxm',
@@ -23,7 +23,7 @@ class EndlessLoop extends Component{
   componentWillReceiveProps(nextProps) {
     const {actions} = this.props;
     const {person} = nextProps;
-    if(person.name === 'novaline') {
+    if (person.name === 'novaline') {
       this.setState({foo: 'yk is sb too'}, () => {
         // 死循环注释 - -
         // actions.addInfo();

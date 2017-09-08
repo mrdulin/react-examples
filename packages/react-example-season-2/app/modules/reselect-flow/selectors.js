@@ -25,7 +25,7 @@ export const getBookByFilter = createSelector(
   (books, filter) => {
     console.count('getBookByFilter execute count');
 
-    switch(filter) {
+    switch (filter) {
       case 'SHOW_ALL': {
         return books;
       }

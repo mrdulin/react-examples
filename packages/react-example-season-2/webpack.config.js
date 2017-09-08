@@ -102,8 +102,8 @@ const config = {
         //     "add-module-exports"
         // ],
         /**
-        * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
-        */
+         * babel-loader 可以利用系统的临时文件夹缓存经过 babel 处理好的模块，对于 rebuild js 有着非常大的性能提升。
+         */
         cacheDirectory: __DEV__
       }
     }, {
@@ -167,7 +167,7 @@ const config = {
       dll: 'bundles/' + require(path.join(__dirname, './dll/assets.json')).vendor.js
     }),
     new CopyWebpackPlugin([
-      { from: `dll/${require(path.join(__dirname, 'dll/assets.json')).vendor.js}`, to: 'bundles' }
+      {from: `dll/${require(path.join(__dirname, 'dll/assets.json')).vendor.js}`, to: 'bundles'}
     ]),
     new webpack.DefinePlugin({
       __DEV__,
@@ -212,8 +212,8 @@ const config = {
 
     /**
      * ERROR in chunk vendor [entry]
-        bundles/vendor-[chunkhash:8].js
-        Cannot use [chunkhash] for chunk in 'bundles/vendor-[chunkhash:8].js' (use [hash] instead)
+     bundles/vendor-[chunkhash:8].js
+     Cannot use [chunkhash] for chunk in 'bundles/vendor-[chunkhash:8].js' (use [hash] instead)
      */
     // new webpack.optimize.CommonsChunkPlugin({
     //     name: 'vendor',
@@ -251,16 +251,16 @@ function setProxy(pathTargets) {
     //     req.url = req.url.replace(/^\/api(.+)$/, '$1');
     // }
 
-    pathRewrite: { '^/api': '' }
+    pathRewrite: {'^/api': ''}
 
   };
 
   for (let pathTarget of pathTargets) {
-    const { paths, target: targetHost } = pathTarget;
-    const { length: len } = paths;
+    const {paths, target: targetHost} = pathTarget;
+    const {length: len} = paths;
     for (let i = 0; i < len; i++) {
       const target = process.env.NODE_ENV === 'node-server-proxy' ? nodeServerHost : targetHost;
-      proxy[paths[i]] = Object.assign({}, baseConfig, { target })
+      proxy[paths[i]] = Object.assign({}, baseConfig, {target})
     }
   }
 

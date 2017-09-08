@@ -10,10 +10,14 @@ class Child extends React.Component {
   }
 
   render() {
-    const { books, people } = this.props;
+    const {books, people} = this.props;
     return <div>
-      <div>test1: <pre>{JSON.stringify(books, null, 4)}</pre></div>
-      <div>test2: <pre>{JSON.stringify(people, null, 4)}</pre></div>
+      <div>test1:
+        <pre>{JSON.stringify(books, null, 4)}</pre>
+      </div>
+      <div>test2:
+        <pre>{JSON.stringify(people, null, 4)}</pre>
+      </div>
     </div>
   }
 }
@@ -33,19 +37,19 @@ export default class SCUDemo extends React.Component {
   clickhandler = e => {
     const books = this.state.books;
     books.push('jquery');
-    this.setState({ books });
+    this.setState({books});
   }
 
   clickHandler2 = e => {
     this.setState((prevState, currentProps) => {
-      const me = { ...prevState.me, name: 'novaline', age: 24 };
-      return { me };
+      const me = {...prevState.me, name: 'novaline', age: 24};
+      return {me};
     })
   }
 
   render() {
     return <div>
-      <Child books={this.state.books} people={this.state.me} />
+      <Child books={this.state.books} people={this.state.me}/>
       <button type='button' onClick={this.clickhandler}>click me!</button>
       <button type="button" onClick={this.clickHandler2}>click me to change people!</button>
       <br />

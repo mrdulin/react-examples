@@ -1,5 +1,5 @@
-import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
-import { createReducer } from './reducer';
+import {applyMiddleware, createStore, compose, combineReducers} from 'redux';
+import {createReducer} from './reducer';
 import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import promiseWithStateMiddleware from 'common/js/middlewares/promise.js';

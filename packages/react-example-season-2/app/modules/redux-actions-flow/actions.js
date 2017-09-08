@@ -18,7 +18,7 @@ const getBooksByName = createAction(actionTypes.GET_BOOKS_BY_NAME.toString(), as
         total
       };
     })
-  } catch(e) {
+  } catch (e) {
     return Promise.reject(e);
   }
 }, ({pageNum, query}) => ({

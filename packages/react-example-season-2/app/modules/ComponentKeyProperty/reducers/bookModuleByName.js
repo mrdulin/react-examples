@@ -7,7 +7,7 @@ import update from 'react/lib/update';
 import {insertElementToArrayByIndex, adInsertRules} from '../helper.js';
 
 export function objKeyToLowerCase(obj) {
-  Object.keys(obj).forEach(function(key, idx) {
+  Object.keys(obj).forEach(function (key, idx) {
     const lowercaseKey = key.toLowerCase();
     this[lowercaseKey] = this[key];
     delete this[key];
@@ -30,7 +30,7 @@ export function swapValue(book) {
 function bookModuleByNameReducer(state = {
   error: null
 }, action) {
-  switch(action.type) {
+  switch (action.type) {
     case REQUEST_BOOK_SUCCESS: {
       const {books, query} = action.payload;
 
@@ -42,10 +42,12 @@ function bookModuleByNameReducer(state = {
           $set: books
         }
       })
-    };
+    }
+      ;
     case REQUEST_BOOK_FAIL: {
       return Object.assign({}, state, {error: action.payload});
-    };
+    }
+      ;
     case MIXIN_DOUBAN_BOOK_INTO_BOOK_LIST: {
       const {bookModule, doubanBooks, type} = action.payload;
       doubanBooks.forEach(swapValue);

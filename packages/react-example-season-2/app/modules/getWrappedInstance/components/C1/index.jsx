@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 class C1 extends React.Component {
   render() {
@@ -6,4 +6,4 @@ class C1 extends React.Component {
   }
 }
 
-export default connect(null, null, null, { withRef: true })(C1)
+export default connect(null, null, null, {withRef: true})(C1)

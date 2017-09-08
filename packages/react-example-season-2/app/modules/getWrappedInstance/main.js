@@ -22,9 +22,9 @@ export default class Container extends Component {
       <div>
         <p>获取组件ref</p>
         <hr />
-        <C1 ref={ref => this.c1 = ref} />
-        <C2 ref={ref => this.c2 = ref} />
-        <C3 ref={ref => this.c3 = ref} />
+        <C1 ref={ref => this.c1 = ref}/>
+        <C2 ref={ref => this.c2 = ref}/>
+        <C3 ref={ref => this.c3 = ref}/>
         <C3Connected/>
         <hr />
         <p>this.c1.getWrappedInstance() === this.c1.refs.WrappedComponent</p>

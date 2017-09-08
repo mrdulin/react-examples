@@ -14,7 +14,7 @@ import EndlessLoop from './components/EndlessLoop';
 }, dispatch => ({
   actions: bindActionCreators(actionCreators, dispatch)
 }))
-class Container extends Component{
+class Container extends Component {
   state = {
     person: {
       name: 'emilie',
@@ -25,7 +25,7 @@ class Container extends Component{
 
   componentWillReceiveProps(nextProps) {
     const {person} = nextProps;
-    if(person) {
+    if (person) {
       console.log('componentWillReceiveProps this.state.person', this.state.person);
       console.log('componentWillReceiveProps nextProps.person', person);
       this.setState({person});

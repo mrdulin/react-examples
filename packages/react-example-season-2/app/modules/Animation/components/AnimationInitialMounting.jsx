@@ -18,15 +18,15 @@
  *
  */
 export default class extends React.Component {
-    render() {
-        return <ReactCSSTransitionGroup
-            transitionName="head"
-            transitionEnter={false}
-            transitionLeave={false}
-            transitionAppear={true}
-            transitionAppearTimeout={500}>
+  render() {
+    return <ReactCSSTransitionGroup
+      transitionName="head"
+      transitionEnter={false}
+      transitionLeave={false}
+      transitionAppear={true}
+      transitionAppearTimeout={500}>
 
-            <h1>Fading at Initial Mount</h1>
-        </ReactCSSTransitionGroup>
-    }
+      <h1>Fading at Initial Mount</h1>
+    </ReactCSSTransitionGroup>
+  }
 }

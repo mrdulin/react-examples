@@ -10,7 +10,7 @@ function booksReducer(state = [
   {name: 'jquery', sellout: false},
   {name: 'react', sellout: true}
 ], action) {
-  switch(action.type) {
+  switch (action.type) {
     default:
       return state;
   }
@@ -20,7 +20,7 @@ function personReducer(state = {
   name: '',
   age: 0
 }, action) {
-  switch(action.type) {
+  switch (action.type) {
     case ADD_PERSON_INFO: {
       const person = {name: 'emilie', age: 26};
       return Object.assign({}, state, {person});
@@ -31,7 +31,7 @@ function personReducer(state = {
 }
 
 function bookVisibleFilterReducer(state = 'SHOW_ALL', action) {
-  switch(action.type) {
+  switch (action.type) {
     case CHANGE_FILTER: {
       return action.payload;
     }

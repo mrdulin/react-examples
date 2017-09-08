@@ -32,7 +32,7 @@ const paging = {
 const pagingReducer = handleActions({
   [`${actionTypes.GET_BOOKS_BY_NAME.toString()}_FULFILLED`]: (state, action) => {
     const {total, result} = action.payload;
-    if(!result.length) return state;
+    if (!result.length) return state;
     const {pageNum} = action.meta;
     const hasMore = pageNum * state.pageSize < total;
     return Object.assign({}, state, {total, pageNum, hasMore});
@@ -42,7 +42,7 @@ const pagingReducer = handleActions({
   }
 }, paging);
 
-const queryReducer =  handleActions({
+const queryReducer = handleActions({
   [`${actionTypes.GET_BOOKS_BY_NAME.toString()}_PENDING`]: (state, action) => {
     return action.meta.query;
   }
@@ -69,7 +69,7 @@ const action2Reducer = handleAction('ACTION_2', {
   }
 }, '');
 
-const  action3Reducer = handleAction('ACTION_3', {
+const action3Reducer = handleAction('ACTION_3', {
   throw(state, action) {
     return state;
   }

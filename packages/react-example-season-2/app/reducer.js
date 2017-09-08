@@ -2,8 +2,8 @@ import {combineReducers} from 'redux';
 import * as GlobalReducer from 'common/js/reducer';
 
 export const createReducer = (asyncReducers) => combineReducers({
-    ...asyncReducers,
-    ...GlobalReducer
+  ...asyncReducers,
+  ...GlobalReducer
 })
 // export const createReducer = (asyncReducers) => {
 // 	if (Object.prototype.toString.call(asyncReducers) !== "[object Object]") {
@@ -20,11 +20,11 @@ export const createReducer = (asyncReducers) => combineReducers({
  * @desc reducer switch..case helper
  */
 export const genReducer = (initState, handlers) => (state = initState, action) => {
-	if (handlers.hasOwnProperty(action.type)) {
-		return handlers[action.type](state, action);
-	} else {
-		return state;
-	}
+  if (handlers.hasOwnProperty(action.type)) {
+    return handlers[action.type](state, action);
+  } else {
+    return state;
+  }
 }
 
 /**
@@ -36,20 +36,20 @@ export const genReducer = (initState, handlers) => (state = initState, action) =
  * @param {*} thresholdInMs 临界值
  */
 export const logSlowReducer = (reducers, thresholdInMs = 0.01) => {
-	Object.keys(reducers).forEach(name => {
-		const originalReducer = reducers[name];
-		reducers[name] = (state, action) => {
-			const start = Date.now();
-			//这里得到的result，是reducer的switch case中的default分支，计算这里执行的时间貌似没什么卵用
-			const result = originalReducer(state, action);
-			const diffInMs = Date.now() - start;
-			// console.log(start, diffInMs);
-			if (diffInMs >= thresholdInMs) {
-				console.warn('Reducer "' + name + '" took ' + diffInMs + 'ms for ' + action.type.toString());
-			}
-			return result;
-		}
-	});
+  Object.keys(reducers).forEach(name => {
+    const originalReducer = reducers[name];
+    reducers[name] = (state, action) => {
+      const start = Date.now();
+      //这里得到的result，是reducer的switch case中的default分支，计算这里执行的时间貌似没什么卵用
+      const result = originalReducer(state, action);
+      const diffInMs = Date.now() - start;
+      // console.log(start, diffInMs);
+      if (diffInMs >= thresholdInMs) {
+        console.warn('Reducer "' + name + '" took ' + diffInMs + 'ms for ' + action.type.toString());
+      }
+      return result;
+    }
+  });
 
-	return reducers;
+  return reducers;
 };

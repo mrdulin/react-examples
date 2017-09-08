@@ -1,8 +1,8 @@
 import {genReducer} from 'app/reducer';
 
 const initState = {
-    name: '',
-    age: 0
+  name: '',
+  age: 0
 };
 
 // export const juhe_ip = (state = initState, action) => {
@@ -17,17 +17,17 @@ const initState = {
 // }
 
 export const ip = genReducer(initState, {
-    ip_action1: action1Handler,
-    ip_action2: action2Handler
+  ip_action1: action1Handler,
+  ip_action2: action2Handler
 })
 
 export function action1Handler(state, action) {
-    return {
-        ...state,
-        name: 'novaline'
-    };
+  return {
+    ...state,
+    name: 'novaline'
+  };
 }
 
 export function action2Handler(state, action) {
-    return Object.assign({}, state, {age: 23});
+  return Object.assign({}, state, {age: 23});
 }

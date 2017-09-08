@@ -1,6 +1,6 @@
 export default class extends React.PureComponent {
   render() {
-    const { items } = this.props;
+    const {items} = this.props;
 
     //正确的方式
     return <div>

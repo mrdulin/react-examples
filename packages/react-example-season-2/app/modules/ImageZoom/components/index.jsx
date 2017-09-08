@@ -39,19 +39,20 @@ export default class extends React.Component {
   render() {
     return <div id='image-zoom'>
       <button type='button' onClick={() => this.open()}>预览图片</button>
-      <div className='mask' style={{ display: this.state.open ? 'flex' : 'none' }} onClick={() => this.close()}>
-        <img id='test' src={require('../images/QQ20161124-1@2x.png')} alt="缩放图" />
+      <div className='mask' style={{display: this.state.open ? 'flex' : 'none'}} onClick={() => this.close()}>
+        <img id='test' src={require('../images/QQ20161124-1@2x.png')} alt="缩放图"/>
         <div className='count'>1/1</div>
       </div>
     </div>
   }
 
   open() {
-    this.setState({ open: true })
+    this.setState({open: true})
   }
+
   close() {
     // this.resetViewport();
-    this.setState({ open: false });
+    this.setState({open: false});
   }
 
   getRelativeScale(scale) {
@@ -61,7 +62,7 @@ export default class extends React.Component {
 
   onPinchEnd(e) {
     let currentScale = this.getRelativeScale(e.scale);
-    this.setState({ liveScale: currentScale });
+    this.setState({liveScale: currentScale});
   }
 
   onPinchMove(e) {

@@ -2,49 +2,49 @@ import style from './style.module.scss';
 import {PropTypes} from 'react';
 
 class Book extends React.Component {
-	static defaultProps = {
-		book: {
-			image: '',
-			title: ''
-		}
-	};
+  static defaultProps = {
+    book: {
+      image: '',
+      title: ''
+    }
+  };
 
-	static propTypes = {
-		book: PropTypes.shape({
-			image: PropTypes.string,
-			title: PropTypes.string
-		})
-	};
+  static propTypes = {
+    book: PropTypes.shape({
+      image: PropTypes.string,
+      title: PropTypes.string
+    })
+  };
 
-	componentDidMount() {
-		const {book, category} = this.props;
-		if(category === 'react') {
-			// console.log(book);
-		}
-	}
+  componentDidMount() {
+    const {book, category} = this.props;
+    if (category === 'react') {
+      // console.log(book);
+    }
+  }
 
-	shouldComponentUpdate(nextProps, nextState) {
-		if(nextProps.book.id === this.props.book.id) {
-			return false;
-		}
-		return true;
-	}
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.book.id === this.props.book.id) {
+      return false;
+    }
+    return true;
+  }
 
-	render() {
-		const {book, category} = this.props;
+  render() {
+    const {book, category} = this.props;
 
-		return (
-			<li className={style.book}>
-				<div className={style.bookTopPart}>
-					<img className={style.bookImage} src={book.image} alt='book image'/>
-					{book.isbn10 && <span className={style.bookTag}>广告</span>}
-				</div>
-				<div className={style.bookBottomPart}>
-					<h2 className={style.bookTitle}>{book.title}</h2>
-				</div>
-			</li>
-		)
-	}
+    return (
+      <li className={style.book}>
+        <div className={style.bookTopPart}>
+          <img className={style.bookImage} src={book.image} alt='book image'/>
+          {book.isbn10 && <span className={style.bookTag}>广告</span>}
+        </div>
+        <div className={style.bookBottomPart}>
+          <h2 className={style.bookTitle}>{book.title}</h2>
+        </div>
+      </li>
+    )
+  }
 }
 
 export default Book;

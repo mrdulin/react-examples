@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React, {Component} from 'react';
+import {withRouter} from 'react-router';
 
 export default withRouter(class Container extends Component {
   constructor() {
     super();
-    this.state = { items: [] }
+    this.state = {items: []}
 
     for (let i = 0; i < 10; i++) {
       this.state.items.push(i);
     }
   }
+
   render() {
-    const { params } = this.props;
+    const {params} = this.props;
     return <div>
-      {params.id === '1' ? <button type='button' onClick={this.handleClick}>跳转自己</button> : <button type='button' onClick={this.handleGoBack}>返回</button>}
+      {params.id === '1' ? <button type='button' onClick={this.handleClick}>跳转自己</button> :
+        <button type='button' onClick={this.handleGoBack}>返回</button>}
       <p>id: {params.id}</p>
       <p>页面没有刷新，但是改变hash，会走componentWillReceiveProps方法</p>
 

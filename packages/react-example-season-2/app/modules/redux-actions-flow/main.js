@@ -17,7 +17,7 @@ const EVALUATE_CLASS_SUFFIX_MAP = new Map([
   [-1, {}]
 ]);
 
-class Container extends PureComponent{
+class Container extends PureComponent {
 
   //组件默认属性，显示声明组件props上的属性
   static defaultProps = {
@@ -67,7 +67,7 @@ class Container extends PureComponent{
 
 
   onLoadMore = () => {
-    if(!this.hasMore) return;
+    if (!this.hasMore) return;
     this.props.getBooksByName(this.params);
   };
 
@@ -75,7 +75,7 @@ class Container extends PureComponent{
   onSearchFormSubmit = e => {
     e.preventDefault();
     const {query} = this.props;
-    if(query === this.searchValue) return;
+    if (query === this.searchValue) return;
     this.props.clearData().then(() => {
       // this._isLoading = true;
       this.props.getBooksByName(this.params).then(() => {
@@ -105,14 +105,14 @@ class Container extends PureComponent{
           {
             (bookIds.length && !isFetching) ? (
               this.hasMore ?
-              <button type='button' onClick={this.onLoadMore}>加载更多</button> :
-              <p>没有更多了</p>
+                <button type='button' onClick={this.onLoadMore}>加载更多</button> :
+                <p>没有更多了</p>
             ) : null
           }
           {
             isFetching ?
-            <p>正在卖力搜索中...</p> :
-            (query && !bookIds.length && <p>暂无数据</p>)
+              <p>正在卖力搜索中...</p> :
+              (query && !bookIds.length && <p>暂无数据</p>)
           }
         </section>
       </article>

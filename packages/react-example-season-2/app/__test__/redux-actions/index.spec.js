@@ -65,7 +65,6 @@ describe('redux-actions', () => {
     });
 
 
-
   });
 
   describe('handleActions', () => {
@@ -75,7 +74,7 @@ describe('redux-actions', () => {
 
       const incrementReducer = handleActions({
         [increment]: (state, action) => {
-          if(action.error) {
+          if (action.error) {
             return state;
           } else {
             const counter = state.counter + action.payload;

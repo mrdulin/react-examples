@@ -12,7 +12,7 @@ import {AD_MAP} from '../../helper.js';
     actions: bindActionCreators({requestDoubanBook}, dispatch)
   })
 )
-class BookModule extends React.Component{
+class BookModule extends React.Component {
   static defaultProps = {
     title: '',
     subTitle: '',
@@ -28,7 +28,7 @@ class BookModule extends React.Component{
   componentDidMount() {
     const {actions, title} = this.props;
     const adQuery = AD_MAP.get(title);
-    if(adQuery) {
+    if (adQuery) {
       actions.requestDoubanBook(adQuery, title);
     }
   }

@@ -10,7 +10,7 @@ class AvoidRequireDuplication extends React.PureComponent {
         <h3>放在map中require的例子：</h3>
         <ul>
           {
-            Array.from({ length: 3 }, () => 0).map((el, idx) => {
+            Array.from({length: 3}, () => 0).map((el, idx) => {
               return <li key={idx}>
                 <DuplicationPlaceholder />
               </li>
@@ -23,7 +23,7 @@ class AvoidRequireDuplication extends React.PureComponent {
           {
             Array.from(Array(3), () => 0).map((el, idx) => {
               return <li key={idx}>
-                <Placeholder src={placeholderImgUrl} />
+                <Placeholder src={placeholderImgUrl}/>
               </li>
             })
           }

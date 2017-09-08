@@ -1,4 +1,4 @@
-import { withRouter } from 'react-router';
+import {withRouter} from 'react-router';
 
 const RouterHOC = ComposedComponent => withRouter(class extends React.Component {
   redirect = (url) => {
@@ -7,7 +7,7 @@ const RouterHOC = ComposedComponent => withRouter(class extends React.Component 
   }
 
   render() {
-    return <ComposedComponent redirect={this.redirect} />
+    return <ComposedComponent redirect={this.redirect}/>
   }
 })
 

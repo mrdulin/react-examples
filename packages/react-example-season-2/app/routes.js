@@ -1,6 +1,6 @@
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Router, browserHistory, useRouterHistory } from 'react-router';
-import { Provider } from 'react-redux';
+import {Router, browserHistory, useRouterHistory} from 'react-router';
+import {Provider} from 'react-redux';
 import createHashHistory from 'history/lib/createHashHistory';
 
 import store from './store';
@@ -50,15 +50,15 @@ const routes = {
   }
 };
 
-const history = useRouterHistory(createHashHistory)({ queryKey: false });
+const history = useRouterHistory(createHashHistory)({queryKey: false});
 
 /*const Root = () => {
-  return <Provider store={store}>
-    <MuiThemeProvider>
-      <Router history={__PROD__ ? history : browserHistory} routes={routes} />
-    </MuiThemeProvider>
-  </Provider>
-};*/
+ return <Provider store={store}>
+ <MuiThemeProvider>
+ <Router history={__PROD__ ? history : browserHistory} routes={routes} />
+ </MuiThemeProvider>
+ </Provider>
+ };*/
 
 const suffix = '被调用, this指向： ';
 
@@ -82,7 +82,7 @@ class Root extends React.Component {
         {/*<p onClick={this.handler}>{foo}</p>*/}
         <Provider store={store}>
           <MuiThemeProvider>
-            <Router history={__PROD__ ? history : browserHistory} routes={routes} />
+            <Router history={__PROD__ ? history : browserHistory} routes={routes}/>
           </MuiThemeProvider>
         </Provider>
       </div>

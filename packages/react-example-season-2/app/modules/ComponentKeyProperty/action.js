@@ -16,7 +16,7 @@ const DOUBAN_API = 'https://api.douban.com/v2';
 export const init = (querys) => {
   return (dispatch, getState) => {
 
-    for(let query of querys) {
+    for (let query of querys) {
       dispatch(requestBook(query));
     }
   }
@@ -82,7 +82,7 @@ export const requestDoubanBook = (query, type) => {
           const doubanBookModule = doubanBooksByName[AD_MAP.get(type)];
           const {books: doubanBooks} = doubanBookModule;
 
-          if(bookModule) {
+          if (bookModule) {
             dispatch(mixinDoubanBookIntoBookList(bookModule, doubanBooks, type));
           }
 

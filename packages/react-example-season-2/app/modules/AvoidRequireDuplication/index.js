@@ -3,7 +3,7 @@ module.exports = {
   getComponents(nextState, cb) {
     require.ensure([], require => {
       const main = require('./main');
-      cb(null, { content: main });
+      cb(null, {content: main});
     }, 'AvoidRequireDuplication')
   }
 }

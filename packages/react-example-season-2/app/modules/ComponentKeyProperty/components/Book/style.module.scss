@@ -1,29 +1,30 @@
-.book{
+.book {
   width: 50%;
   padding: 10px;
   box-sizing: border-box;
 }
 
-.book-title{
+.book-title {
   font-size: 14px;
   font-weight: normal;
 }
 
-.book-image{
+.book-image {
   display: block;
   width: 100%;
   max-width: 100%;
   margin: auto;
 }
-.book-top-part{
+
+.book-top-part {
   position: relative;
   margin-bottom: 10px;
 }
 
-.book-tag{
+.book-tag {
   position: absolute;
   bottom: 0;
   left: 0;
-  color : #999;
+  color: #999;
   font-size: 12px;
 }

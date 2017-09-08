@@ -9,7 +9,7 @@ function books(state = {
   books: [],
   error: null
 }, action) {
-  switch(action.type) {
+  switch (action.type) {
     case REQUEST_DOUBAN_BOOK_SUCCESS: {
       const {books} = action.payload;
       return Object.assign({}, state, {books});
@@ -24,7 +24,7 @@ function books(state = {
 
 
 function booksByName(state = {}, action) {
-  switch(action.type) {
+  switch (action.type) {
     case REQUEST_DOUBAN_BOOK_SUCCESS: {
       const {query} = action.payload;
       return Object.assign({}, state, {
