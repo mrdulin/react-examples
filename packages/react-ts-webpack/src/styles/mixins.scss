@@ -1,0 +1,179 @@
+/*
+  Mixins
+    - General Mixins
+    - Flexbox Mixins
+*/
+
+// General Mixins
+// --------------------------------------------------
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin multi-ellipsis($line:2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin clearfix {
+  *zoom: 1;
+
+  &::after,
+  &::before {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+@mixin gradient($top, $bottom) {
+  background: -webkit-linear-gradient($top, $bottom);
+  background: linear-gradient($top, $bottom);
+}
+
+@mixin grandient-border($position: bottom, $border-color: #e0e0e0) {
+
+  @if $position==top {
+
+    background-image: linear-gradient(180deg, $border-color, $border-color 50%, transparent 50%);
+    background-position: top;
+
+  } @else {
+
+    background-image: linear-gradient(0deg, $border-color, $border-color 50%, transparent 50%);
+    background-position: bottom;
+
+  }
+
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+
+@mixin placeholder($color: rgba(0, 0, 0, .4), $text-indent: 0) {
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color; // Safari placeholder margin issue
+    text-indent: $text-indent;
+  }
+}
+
+@mixin appearance($val) {
+  -webkit-appearance: $val;
+  appearance: $val;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// Flexbox Mixins
+// --------------------------------------------------
+// http://philipwalton.github.io/solved-by-flexbox/
+// https://github.com/philipwalton/solved-by-flexbox
+@mixin display-flex {
+  display: -webkit-box;
+  // display: -webkit-flex;
+  // display: flex;
+}
+
+// @mixin display-inline-flex {
+//   display: -webkit-inline-box;
+//   display: -webkit-inline-flex;
+//   display: inline-flex;
+// }
+
+@mixin flex-direction($value: row) {
+  @if $value==row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value==column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value==column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  // -webkit-flex-direction: $value;
+  // flex-direction: $value;
+}
+
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  flex-wrap: $value;
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+  display: block;
+  -webkit-box-flex: $fg;
+  // -webkit-flex: $fg $fs $fb;
+  // flex: $fg $fs $fb;
+}
+
+@mixin flex-flow($values: (row nowrap)) {
+  // No Webkit Box fallback.
+  -webkit-flex-flow: $values;
+  flex-flow: $values;
+}
+
+@mixin align-items($value: stretch) {
+  @if $value==flex-start {
+    -webkit-box-align: start;
+  } @else if $value==flex-end {
+    -webkit-box-align: end;
+  } @else {
+    -webkit-box-align: $value;
+  }
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+
+@mixin align-self($value: auto) {
+  -webkit-align-self: $value;
+  align-self: $value;
+}
+
+@mixin align-content($value: stretch) {
+  -webkit-align-content: $value;
+  align-content: $value;
+}
+
+@mixin justify-content($value: stretch) {
+  @if $value==flex-start {
+    -webkit-box-pack: start;
+
+  } @else if $value==flex-end {
+    -webkit-box-pack: end;
+
+  } @else if $value==space-between {
+
+    -webkit-box-pack: justify;
+
+  } @else {
+
+    -webkit-box-pack: $value;
+  }
+
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin flex-order($n) {
+  -webkit-order: $n;
+  order: $n;
+  -webkit-box-ordinal-group: $n;
+}

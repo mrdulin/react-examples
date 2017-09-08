@@ -1,0 +1,8 @@
+# Browsers that we support
+
+[production]
+> 1%
+last 5 versions
+IE 8
+
+[development]

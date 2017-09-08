@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component - PanelHead test suites renders correctly 1`] = `
+<div
+  className="panelHeading"
+>
+  <h3
+    className="panelTitle"
+  >
+    主标题
+    <small
+      className="panelSubTitle"
+    >
+      副标题
+    </small>
+  </h3>
+</div>
+`;

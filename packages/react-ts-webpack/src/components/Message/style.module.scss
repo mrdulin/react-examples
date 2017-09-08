@@ -1,0 +1,46 @@
+.message-box{
+  $green: #40E0BD;
+  $orange: #F6C261;
+
+  font-size: 13px;
+  opacity: 0.8;
+
+  &.orange {
+    background: $orange;
+  }
+
+  &.green{
+    background: $green;
+  }
+
+  .message-label{
+    @include ellipsis;
+    -webkit-flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .message-avatar-box {
+    width: 20px;
+    height: 20px;
+    @include border-radius(50%);
+    background-color: #ddd;
+    overflow: hidden;
+    margin-right: 4px;
+  }
+
+  .message-avatar {
+    height: 100%;
+  }
+
+  &-content{
+    @include flex(1);
+    min-width: 0;
+  }
+
+  &-inner{
+    @include display-flex;
+    @include align-items(center);
+    height: 100%;
+  }
+
+}

@@ -1,0 +1,20 @@
+@import "mixins";
+
+.contacts{
+  @include display-flex;
+}
+
+.contacts-left{
+  width: 80px;
+  margin-right: 10px;
+}
+
+.contacts-right{
+  @include flex(1);
+}
+
+.contacts-name{
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+}

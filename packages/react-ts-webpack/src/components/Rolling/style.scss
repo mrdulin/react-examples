@@ -1,0 +1,13 @@
+.rolling{
+  position: relative;
+  height: 50px;
+  width: 200px;
+
+  &-slide{
+    height: 30px;
+    line-height: 30px;
+    background-color: #666;
+    color: #fff;
+    border-radius: 10px;
+  }
+}

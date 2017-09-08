@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component - LoadMore test suites renders correctly when isBottom=true, hasMore=true, isLoading=true 1`] = `
+<a
+  className="loadMoreRoot"
+  onClick={[Function]}
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+>
+  加载更多
+</a>
+`;

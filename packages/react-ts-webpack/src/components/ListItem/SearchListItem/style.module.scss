@@ -1,0 +1,37 @@
+//导入公用的scss文件
+//https://github.com/webpack-contrib/sass-loader#imports
+@import '~styles/mixins';
+//或者通过sass-loader的includePaths的option指定根路径
+@import 'variables';
+
+.list-item {
+  display: flex;
+  padding: 10px;
+  background-color: $bg-color;
+}
+
+.col-left {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.col-right {
+  flex: 1;
+}
+
+.image {
+  width: 100%;
+  max-width: 100%;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.description {
+  font-size: 14px;
+
+  @include multi-ellipsis(2);
+}

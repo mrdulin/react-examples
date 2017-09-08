@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component - SearchListItem snapshots test suites renders correctly 1`] = `
+<div
+  className="listItem"
+  onClick={[Function]}
+>
+  <div
+    className="colLeft"
+  >
+    <img
+      alt="book-image"
+      className="image"
+      src=""
+    />
+  </div>
+  <div
+    className="colRight"
+  >
+    <h2
+      className="title"
+    >
+      react
+    </h2>
+    <p
+      className="description"
+    >
+      react is awesome
+    </p>
+  </div>
+</div>
+`;
