@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { requestBooks } from '../../actions/book';
+import { requestBooks, clearBooks } from '../../actions/book';
 import { connect } from 'react-redux';
 import * as Rx from 'rxjs';
 import { ISubscriptionObject, ISubjectObject } from '../../interfaces';
@@ -11,6 +11,7 @@ interface IProps {
 
 interface IActions {
   requestBooks: (names: string[]) => void;
+  clearBooks(): void;
 }
 
 type Props = IProps & IActions;
@@ -32,6 +33,13 @@ class Container extends React.PureComponent<Props, any> {
     this.subscriptions.getBooksButtonSub = this.subjects.getBooksButton.sampleTime(2000).subscribe(this.onRequestBookObserver);
   }
 
+  public componentWillMount() {
+    console.log('componentWillMount');
+    // 在此dispatch action，render方法中props上取到state依旧是旧的，
+    // 只有在组件下一轮render(经过mapStateToProps -> componentWillReceiveProps -> shouldComponentUpdate -> render)的时候，才能拿到最新的state数据
+    this.props.clearBooks();
+  }
+
   public componentWillUnmount() {
     this.subscriptions.getBooksButtonSub.unsubscribe();
   }
@@ -39,6 +47,8 @@ class Container extends React.PureComponent<Props, any> {
   public render() {
     console.count('render count');
     const { bookModules } = this.props;
+
+    console.log('bookModules', bookModules);
 
     return (
       <section>
@@ -91,5 +101,5 @@ class Container extends React.PureComponent<Props, any> {
 
 export default connect(
   ({ bookModules }) => ({ bookModules }),
-  ({ requestBooks })
+  ({ requestBooks, clearBooks })
 )(Container);

@@ -8,8 +8,8 @@ interface IBookModule {
 }
 
 interface IError {
-  error: boolean;
-  message: string;
+  error?: boolean;
+  message?: string;
 }
 
 interface IBookModules<T> {
@@ -25,20 +25,25 @@ const bookModulesReducer = (state = bookModulesState, action: IActionMeta<any, s
   switch (action.type) {
     case t.REQUEST_BOOKS:
       const names: string[] = action.payload.names;
+      let nextState: BookModulesState = {};
       names.forEach((name: string) => {
-        state[name] = { error: false, message: '', isLoading: false };
-        (state[name] as IBookModule).isLoading = true;
+        nextState[name] = {
+          error: false,
+          message: '',
+          isLoading: true
+        };
       });
-      return Object.assign({}, state);
+      return nextState;
     case t.REQUEST_BOOKS_SUCCESS:
       const name: string = action.meta;
-      state[name] = {
-        error: false,
-        message: '',
-        isLoading: false,
-        ...action.payload
-      };
-      return Object.assign({}, state);
+      return Object.assign({}, state, {
+        [name]: {
+          error: false,
+          message: '',
+          isLoading: false,
+          ...action.payload
+        }
+      })
     case t.REQUEST_BOOKS_FAIL:
       return Object.assign({}, state, {
         [action.meta]: {
@@ -47,6 +52,8 @@ const bookModulesReducer = (state = bookModulesState, action: IActionMeta<any, s
           isLoading: false
         }
       });
+    case t.CLEAR_BOOKS:
+      return bookModulesState;
     default:
       return state;
   }

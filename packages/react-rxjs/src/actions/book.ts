@@ -21,8 +21,11 @@ const requestBooksFail = (payload: any, meta: string): IActionMeta<any, string> 
   meta
 });
 
+const clearBooks = () => ({ type: t.CLEAR_BOOKS });
+
 export {
   requestBooks,
   requestBooksSuccess,
-  requestBooksFail
+  requestBooksFail,
+  clearBooks
 };
