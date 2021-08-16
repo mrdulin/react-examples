@@ -1,9 +1,0 @@
-node_modules/
-.c9/
-.DS_store
-dist/
-.vscode
-.idea/
-dll/
-
-stats.json
