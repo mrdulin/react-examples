@@ -23,5 +23,5 @@ App.propTypes = {
     nextPremium: PTs.number.isRequired,
     defaultSavingPremium: PTs.number.isRequired,
     defaultReducedPriceRate: PTs.number.isRequired,
-  }),
+  }).isRequired,
 };
