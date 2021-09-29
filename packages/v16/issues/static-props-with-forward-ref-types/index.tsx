@@ -14,5 +14,14 @@ const Modal: React.ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivE
   return <div ref={ref}>{title}</div>;
 });
 
-Modal.show = () => {};
-Modal.hide = () => {};
+// Modal.show = () => { };
+// Modal.hide = () => { };
+
+const ModalComponent = Modal as React.ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivElement>> &
+  ModalStaticProps;
+ModalComponent.show = () => {};
+ModalComponent.hide = () => {};
+
+function Consumer() {
+  return <div onClick={() => ModalComponent.show()} />;
+}
