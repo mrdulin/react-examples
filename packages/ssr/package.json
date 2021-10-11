@@ -1,22 +1,9 @@
 {
-  "name": "react-server-boilerplate",
+  "name": "react-ssr-boilerplate",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "webpack --progress && nodemon dist/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mrdulin/react-server-boilerplate.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mrdulin/react-server-boilerplate/issues"
-  },
-  "homepage": "https://github.com/mrdulin/react-server-boilerplate#readme",
   "dependencies": {
     "express": "^4.14.0",
     "react": "^15.4.2",
