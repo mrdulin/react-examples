@@ -1,0 +1,42 @@
+{
+  "name": "loadable-ssr",
+  "version": "1.0.0",
+  "publishConfig": {
+    "registry": "https://registry.npm.taobao.org/"
+  },
+  "scripts": {
+    "dev": "nodemon ./src/server/main.js",
+    "serve": "webpack serve --config-name web",
+    "build:webpack": "webpack",
+    "build:lib": "babel -d lib src",
+    "build": "rm -rf ./dist && NODE_ENV=production npm run build:webpack && npm run build:lib",
+    "start": "NODE_ENV=production node ./lib/server/main.js"
+  },
+  "dependencies": {
+    "core-js": "^3.18.2",
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/component": "^5.15.0",
+    "@loadable/server": "^5.15.1",
+    "@loadable/webpack-plugin": "^5.15.1",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.4.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.4.2",
+    "nodemon": "^2.0.13",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

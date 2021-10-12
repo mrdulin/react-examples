@@ -1,0 +1,9 @@
+{
+  "ignore": [
+    "client",
+    "dist"
+  ],
+  "execMap": {
+    "js": "babel-node"
+  }
+}
