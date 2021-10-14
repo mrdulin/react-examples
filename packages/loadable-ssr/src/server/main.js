@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
   const compiler = webpack(webpackConfig);
   app.use(
     middleware(compiler, {
-      publicPath: '/dist',
+      publicPath: '/dist/web',
       writeToDisk(filePath) {
         return /dist\/node\//.test(filePath) || /loadable-stats/.test(filePath);
       },
