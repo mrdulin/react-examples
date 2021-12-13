@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 const Button = React.memo<{ onClick: any; children: any }>(({ onClick, children }) => {
   console.log('render child');
