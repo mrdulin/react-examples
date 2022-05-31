@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 describe('unstable_batchedUpdates', () => {
@@ -56,6 +56,31 @@ describe('unstable_batchedUpdates', () => {
     const el = screen.getByText('TestComp');
     fireEvent.click(el);
     jest.advanceTimersByTime(1000);
+    expect(renderCounts).toBe(2);
+  });
+
+  test('should batch update the states and render once for native DOM event handler', () => {
+    let renderCounts = 0;
+    const TestComp = () => {
+      const [count, setCount] = useState(0);
+      const [visible, setVisible] = useState(false);
+
+      useEffect(() => {
+        window.addEventListener('load', () => {
+          ReactDOM.unstable_batchedUpdates(() => {
+            setCount((pre) => pre + 1);
+            setVisible((pre) => !pre);
+          });
+        });
+      }, []);
+
+      renderCounts++;
+      return <div>TestComp</div>;
+    };
+
+    render(<TestComp />);
+    expect(renderCounts).toBe(1);
+    window.dispatchEvent(new Event('load'));
     expect(renderCounts).toBe(2);
   });
 });
