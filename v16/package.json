@@ -1,7 +1,7 @@
 {
   "name": "v16",
   "dependencies": {
-    "@tanstack/react-query": "^4.22.0",
+    "@tanstack/react-query": "^4.29.12",
     "lodash": "^4.17.21",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
