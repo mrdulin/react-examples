@@ -15,7 +15,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@tanstack/react-query-devtools": "^4.22.0",
+    "@tanstack/react-query-devtools": "^4.29.12",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.0.1",
