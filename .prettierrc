@@ -2,5 +2,12 @@
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 120,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "semi": true,
+  "bracketSameLine": false,
+  "useTabs": true,
+  "bracketSpacing": true,
+  "jsxSingleQuote": true,
+  "tabWidth": 2,
+  "singleAttributePerLine": true
 }
