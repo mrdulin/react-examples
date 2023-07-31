@@ -1,0 +1,16 @@
+{
+	"name": "01-github-explore",
+	"scripts": {
+		"build": "babel src/index.js --out-file dist/bundle.js"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.22.5",
+		"@babel/core": "^7.22.5",
+		"@babel/preset-env": "^7.22.5",
+		"@babel/preset-react": "^7.22.5"
+	}
+}
