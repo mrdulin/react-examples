@@ -4,6 +4,8 @@ import { ExtendingStyles } from './03-extending-styles';
 import { AsPolymorphicProp } from './04-as-polymorphic-prop';
 import { StylingAnyComponent } from './05-styling-any-component';
 import { PassedProps } from './06-passed-props';
+import { AttachingAdditionalProps, OverridingAttrs } from './07-attaching-additional-props ';
+import { Animations } from './08-animations';
 
 function App() {
 	return (
@@ -20,6 +22,11 @@ function App() {
 			<StylingAnyComponent />
 			<p>06. passed-props</p>
 			<PassedProps />
+			<p>07. attaching-additional-props </p>
+			<AttachingAdditionalProps />
+			<OverridingAttrs />
+			<p>08. animations</p>
+			<Animations />
 		</>
 	);
 }
