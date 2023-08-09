@@ -2,6 +2,7 @@ import { Refs } from './advanced/02-refs';
 import { Security } from './advanced/03-security';
 import { Conditionally } from './advanced/04-tagged-template-literals';
 import { Caveat, ReferringToOtherComponents } from './advanced/05-referring-to-other-components';
+import { StyleObjects } from './advanced/06-style-objects';
 import { GetStarted } from './basics/01-get-started';
 import { AdaptingBasedOnProps } from './basics/02-adapting-based-on-props';
 import { ExtendingStyles } from './basics/03-extending-styles';
@@ -42,6 +43,8 @@ function App() {
 			<p>05. referring-to-other-components</p>
 			<ReferringToOtherComponents />
 			<Caveat />
+			<p>06. style-objects</p>
+			<StyleObjects />
 		</>
 	);
 }

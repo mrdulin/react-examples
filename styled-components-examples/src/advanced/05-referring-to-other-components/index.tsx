@@ -60,8 +60,7 @@ export const Caveat = () => {
 	return (
 		<div>
 			<B>
-				{/* <A>Text</A> */}
-				Text
+				<StyledA>Text</StyledA>
 			</B>
 		</div>
 	);
