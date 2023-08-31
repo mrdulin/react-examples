@@ -4,6 +4,7 @@ import './App.css';
 import { DatasetMapToSeries } from './examples/dataset-map-to-series';
 import { Transform } from './examples/transform';
 import { Axis } from './examples/axis';
+import { Legend } from './examples/legend';
 
 function App() {
 	return (
@@ -15,6 +16,8 @@ function App() {
 			<Transform />
 			<h2>axis</h2>
 			<Axis />
+			<h2>legend</h2>
+			<Legend />
 		</div>
 	);
 }
