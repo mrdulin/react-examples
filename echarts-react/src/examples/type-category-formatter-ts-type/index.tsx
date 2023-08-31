@@ -1,47 +1,22 @@
-import React from 'react';
-import ReactEcharts, { EChartsOption } from 'echarts-for-react';
-import { XAXisComponentOption } from 'echarts';
+import { EChartsOption } from 'echarts';
 import dayjs from 'dayjs';
-import data from './data.json';
 
 const getOption = (data: any[]): EChartsOption => {
-	const xAxis: XAXisComponentOption = {
+	const initialXAxis: EChartsOption['xAxis'] = {};
+	const xAxis: EChartsOption['xAxis'] = {
+		...initialXAxis,
 		type: 'category',
-		axisPointer: { label: { show: false } },
 		data: data.map((item) => item.issueTime),
 		axisLabel: {
 			formatter: (value: string) => dayjs(+value).format('HH:mm'),
 		},
 	};
 
-	const series = [
-		{
-			id: 'yield',
-			name: '成交价',
-			type: 'line',
-			data: data.map((item) => item.yield ?? '--'),
-		},
-		{
-			id: 'chinaBond',
-			name: '中债估值',
-			type: 'line',
-			data: data.map((item) => item.cbYieldStr),
-		},
-		{
-			id: 'csYieldStr',
-			name: '中证估值',
-			type: 'line',
-			data: data.map((item) => item.csYieldStr),
-		},
-	];
+	const series: EChartsOption['series'] = [];
 
 	return {
 		xAxis,
 		series,
 		yAxis: {},
 	};
-};
-
-export const Test = () => {
-	return <ReactEcharts option={getOption(data.data)} />;
 };
